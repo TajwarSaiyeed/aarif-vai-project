@@ -1,0 +1,425 @@
+@import url('./navbar-style.css');
+
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+#desktopHeaderPlaceHolder {
+    height: 82px;
+}
+
+
+.nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nav--visible {
+    pointer-events: auto;
+    z-index: 150;
+}
+
+
+
+.app-nav {
+    background-color: #fff;
+    color: #333;
+    position: relative;
+    max-width: 400px;
+    width: 90%;
+    height: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    z-index: 120;
+    pointer-events: auto;
+}
+
+.nav--visible .app-nav {
+    -webkit-transform: none;
+    transform: none;
+}
+
+.nav--animatable .app-nav {
+    transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0s;
+}
+
+.nav:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    will-change: opacity;
+    pointer-events: none;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.nav--visible.nav:after {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.layout {
+    position: relative;
+}
+
+#mainContent {
+    margin: 28px auto 0;
+    max-width: 400px;
+    background-color: #fff;
+    padding-top: 0 !important;
+}
+
+
+@media (min-width:600px) {
+    #mainContent {
+        width: 400px
+    }
+}
+
+
+
+#card {
+    min-height: calc(100vh - 50px);
+}
+
+
+
+.authPage {
+    position: relative
+}
+
+
+.LazyLoad {
+    width: auto !important;
+}
+
+.LazyLoad img {
+    background: #fff;
+    color: #fff;
+}
+
+
+
+.preLoad {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+
+
+.loaded {
+    opacity: 1;
+}
+
+
+.signInContainer {
+    padding: 36px 36px 0
+}
+
+.signInContainer .loginLinkContainer {
+    font-size: 11px
+}
+
+.signInContainer .loginLinkContainer a {
+    color: #ff3e6c
+}
+
+.welcome-header {
+    font-family: Assistant;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px
+}
+
+.welcome-header-small {
+    font-size: 16px;
+    font-weight: 400;
+    color: #535766
+}
+
+.mobileInputContainer {
+    position: relative
+}
+
+.mobileInputContainer .form-group {
+    margin-bottom: 24px
+}
+
+.mobileInputContainer .form-group .bar {
+    display: none
+}
+
+.mobileInputContainer .form-group .errorContainer {
+    margin-top: 4px;
+    font-size: 10px;
+    color: #ff5722
+}
+
+.mobileInputContainer .form-group .form-control {
+    border: 1px solid #d4d5d9;
+    width: 77%;
+    font-size: 14px;
+    padding: 11px 12px;
+    line-height: 16px;
+    height: auto;
+    color: #282c3f
+}
+
+.mobileInputContainer .form-group .mobileNumberInput {
+    padding-left: 62px
+}
+
+.mobileInputContainer .form-group .form-control-feedback {
+    right: 10px
+}
+
+.mobileInputContainer .form-group input:focus {
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 1px solid #282c3f;
+    outline: none;
+}
+
+.mobileInputContainer .form-group input:focus~.bar {
+    display: none
+}
+
+.mobileInputContainer .form-group input {
+    caret-color: #ff3f6c
+}
+
+.mobileInputContainer .form-group input:focus~.placeholderAlternative {
+    -webkit-transition: .2s;
+    transition: .2s;
+    top: -9px;
+    background-color: #fff;
+    padding: 0 2px;
+    color: #282c3f
+}
+
+.mobileInputContainer .form-group input:focus~.placeholderAlternative .mobileNumber {
+    color: red
+}
+
+.mobileInputContainer .form-group input:focus~.placeholderAlternative.mobileNumber {
+    -webkit-transition: .2s;
+    transition: .2s;
+    top: 10px;
+    background-color: #fff;
+    padding: 0 2px;
+    color: #282c3f
+}
+
+.mobileInputContainer .form-group input:focus~.placeholderAlternative.mobileNumber .mobileNumberPlacholder {
+    display: none
+}
+
+.mobileInputContainer .form-group input:focus~.placeholderAlternative.mobileNumber span {
+    padding-right: 8px !important
+}
+
+.mobileInputContainer .form-group input:focus~.topPlaceholderAlternative {
+    color: #282c3f
+}
+
+.mobileInputContainer .form-group .topPlaceholderAlternative {
+    color: #94969f;
+    top: -9px;
+    left: 12px;
+    font-size: 14px;
+    padding: 0 2px;
+    position: absolute;
+    background-color: #fff
+}
+
+.mobileInputContainer .form-group .placeholderAlternative {
+    color: #94969f;
+    top: 10px;
+    left: 12px;
+    font-size: 14px;
+    position: absolute;
+    pointer-events: none
+}
+
+.mobileInputContainer .form-group .rbContainer {
+    float: right;
+    display: inline-block;
+    margin-right: 24px
+}
+
+.mobileInputContainer .submitInlineOption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 6px;
+    max-height: 28px;
+    background-color: #ff3f6c;
+    border-radius: 2px
+}
+
+.mobileInputContainer .downArrow {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    position: relative;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    margin: 0 6px
+}
+
+.mobileInputContainer .submitBottomOption {
+    background-color: #ff3f6c
+}
+
+.mobileInputContainer .disabledSubmitBottomOption,
+.mobileInputContainer .submitBottomOption {
+    cursor: pointer;
+    text-align: center;
+    padding: 12px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px
+}
+
+.mobileInputContainer .disabledSubmitBottomOption {
+    background-color: #93959e
+}
+
+.mobileInputContainer .consentCheckbox {
+    margin-right: 8px
+}
+
+.mobileInputContainer .bottomLinks {
+    margin: 30px 0 0;
+    color: #282c3f;
+    font-size: 12px
+}
+
+.mobileInputContainer .bottomLinks span {
+    cursor: pointer;
+    color: #ff3f6c;
+    font-weight: 700
+}
+
+.mobileInputContainer .midLinks {
+    color: rgba(40, 44, 63, .8)
+}
+
+.mobileInputContainer .midLinks a {
+    cursor: pointer;
+    color: #ff3c6f;
+    font-weight: 700
+}
+
+.mobileInputContainer .consentContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 0 21px
+}
+
+
+.formContainer .form-group .bar {
+    display: none
+}
+
+.formContainer .form-group input:focus~.bar {
+    display: none
+}
+
+.form-group .bar {
+    position: relative;
+    border-bottom: 1px solid #a9abb3;
+    display: block;
+}
+
+.form-group .bar::before {
+    content: "";
+    height: 1px;
+    width: 0;
+    left: 50%;
+    bottom: -1px;
+    position: absolute;
+    transition: left 0.3s ease, width 0.3s ease;
+    z-index: 2;
+}
+
+.form-group input:focus~.bar::before {
+    width: 100%;
+    left: 0;
+}
+
+.form-group input:focus~.bar::before {
+    background: #0f0;
+}
+
+.form-group input:focus[readonly]~.bar::before {
+    background: 0 0;
+}
+
+.get-help {
+    margin: 30px 0
+}
+
+.get-help a,
+.get-help span {
+    cursor: pointer;
+    color: #ff3f6c;
+    font-weight: 700
+}
+
+
+.midLinks {
+    margin-left: 8px;
+    font-size: 14px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    font-weight: 600;
+    color: rgba(40, 44, 63, 0.8);
+}
+
+.midLinks a {
+    cursor: pointer;
+    color: #ff3c6f;
+    font-weight: 700;
+}
+
+.authPageLinks {
+    color: #282c3f;
+    font-size: 12px
+}
+
+.authPageLinks a,
+.authPageLinks span {
+    cursor: pointer;
+    color: #ff3f6c;
+    font-weight: 700
+}
+
+
+
+.nav {
+    background: linear-gradient(to bottom right, #feedf6, #fcf0e2);
+}

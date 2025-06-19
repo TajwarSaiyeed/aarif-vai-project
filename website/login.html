@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+    <title>Login</title>
 
-  <body>
-    <header class="desktop-container">
+    <link rel="stylesheet" href="./css/login-style.css" />
+  </head>
+  <body style="min-height: 100%">
+    <header class="desktop-container" style="padding: 0 30px">
       <div class="desktop-bound">
         <div class="desktop-logoContainer">
           <a
@@ -2465,66 +2465,6 @@
           </div>
         </nav>
         <div class="desktop-actions">
-          <div class="desktop-user">
-            <div class="desktop-userIconsContainer">
-              <span
-                class="myntraweb-sprite desktop-iconUser sprites-headerUser"
-              ></span
-              ><span class="desktop-userTitle">Profile</span>
-            </div>
-            <div class="desktop-userActions">
-              <div class="desktop-userActionsArrow"></div>
-              <div class="desktop-userActionsContent">
-                <div class="desktop-contentInfo">
-                  <div class="desktop-infoTitle">Welcome</div>
-                  <div class="desktop-infoEmail">
-                    To access account and manage orders
-                  </div>
-                </div>
-                <div>
-                  <div class="desktop-getUserInLinks desktop-getInLinks">
-                    <a
-                      data-refreshPage="true"
-                      href="#"
-                      data-track="login"
-                      class="desktop-linkButton"
-                      >login / Signup</a
-                    >
-                  </div>
-                  <div class="desktop-getInLinks">
-                    <a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Orders</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Wishlist</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Gift Cards</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Contact Us</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">
-                        Myntra Insider<span class="desktop-superscriptTag">
-                          New
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="desktop-getInLinks">
-                    <a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Myntra Credit</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Coupons</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Saved Cards</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Saved VPA</div> </a
-                    ><a href="#" data-track="coupons" class="desktop-info">
-                      <div class="desktop-infoSection">Saved Addresses</div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <a href="#" class="desktop-wishlist"
             ><span
               class="myntraweb-sprite desktop-iconWishlist sprites-headerWishlist"
@@ -2551,5 +2491,95 @@
         </div>
       </div>
     </header>
+    <div id="desktopHeaderPlaceHolder"></div>
+    <div id="mountPoint">
+      <div>
+        <div class="nav">
+          <div class="app-nav"><div id="navContent"></div></div>
+        </div>
+        <div class="layout">
+          <div id="mainContent">
+            <div id="card">
+              <div class="authPage">
+                <div>
+                  <div
+                    class="LazyLoad is-visible"
+                    style="
+                      height: 160px;
+                      width: 100%;
+                      background: rgb(229, 241, 255);
+                    "
+                  >
+                    <picture class="img-responsive" style="width: 100%"
+                      ><source
+                        srcset="
+                          //assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/1/25/f5e9a029-33c3-4a92-811b-ef7917fe6d441674670210687-offer-banner-300-600x240-code-_-MYNTRA300.jpg
+                        "
+                        type="image/webp" />
+                      <img
+                        src="./Myntra_files/f5e9a029-33c3-4a92-811b-ef7917fe6d441674670210687-offer-banner-300-600x240-code-_-MYNTRA300.jpg"
+                        class="img-responsive preLoad loaded"
+                        alt=""
+                        title=""
+                        style="width: 100%"
+                    /></picture>
+                  </div>
+                  <div class="signInContainer">
+                    <div class="welcome-header">
+                      Login
+                      <span class="welcome-header-small">or</span> Signup
+                    </div>
+                    <div class="mobileInputContainer">
+                      <div class="form-group">
+                        <input
+                          autocomplete="new-password"
+                          id=""
+                          type="tel"
+                          class="form-control mobileNumberInput"
+                          placeholder=""
+                          maxlength="10"
+                          value=""
+                        /><span class="placeholderAlternative mobileNumber"
+                          >+91<span
+                            style="
+                              padding: 0px 10px;
+                              position: relative;
+                              bottom: 1px;
+                            "
+                            >|</span
+                          ><span class="mobileNumberPlacholder"
+                            >Mobile Number<span style="color: rgb(255, 87, 34)"
+                              >*</span
+                            ></span
+                          > </span
+                        ><i class="bar"></i>
+                      </div>
+                      <div class="consentContainer">
+                        <input type="checkbox" class="consentCheckbox" />
+                        <div class="midLinks">
+                          By continuing, I agree to the
+                          <a href="https://www.myntra.com/termsofuse"
+                            >Terms of Use</a
+                          >
+                          &amp;
+                          <a href="https://www.myntra.com/privacypolicy"
+                            >Privacy Policy</a
+                          >
+                          and I am above 18 years old.
+                        </div>
+                      </div>
+                      <div class="disabledSubmitBottomOption">CONTINUE</div>
+                    </div>
+                    <div class="get-help">
+                      Have trouble logging in? <span>Get help</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
