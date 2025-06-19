@@ -1,0 +1,2478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myntra - Shopping Bag</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        color: #333;
+      }
+
+      /* Desktop Header */
+      .desktop-header {
+        background: white;
+        padding: 16px 24px;
+        border-bottom: 1px solid #e0e0e0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .desktop-header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        height: 45px;
+        width: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-inline {
+        width: 54px;
+        height: 45px;
+        display: inline-block;
+        background-position: center;
+        background-size: contain;
+      }
+
+      .progress-steps {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        font-size: 14px;
+      }
+
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .step.active {
+        color: #20b2aa;
+        font-weight: 600;
+      }
+
+      .step.inactive {
+        color: #999;
+      }
+
+      .step-line {
+        width: 60px;
+        height: 1px;
+        background: #ddd;
+      }
+
+      .security-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #20b2aa;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      /* Mobile Header */
+      .mobile-header {
+        background: white;
+        padding: 12px 16px;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e0e0e0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .mobile-header-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .back-arrow {
+        font-size: 20px;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .mobile-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .step-indicator {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .pin-code-btn {
+        background: none;
+        border: 1px solid #ff3f6c;
+        color: #ff3f6c;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+      }
+
+      /* Left Column */
+      .left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Right Column */
+      .right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      /* Section Styles */
+      .section {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Delivery Section */
+      .delivery-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .delivery-text {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .enter-pin-btn {
+        background: none;
+        border: 1px solid #ff3f6c;
+        color: #ff3f6c;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* Offers Section */
+      .offers-section {
+        border-left: 4px solid #ff3f6c;
+        padding-left: 20px;
+      }
+
+      .offers-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .offers-icon {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .offers-icon::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #ccc;
+        border-radius: 50%;
+      }
+
+      .offer-text {
+        color: #666;
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      .show-more {
+        color: #ff3f6c;
+        font-weight: 600;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Product Cards */
+      .product-card {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .product-card:last-child {
+        border-bottom: none;
+      }
+
+      .product-image {
+        width: 120px;
+        height: 150px;
+        background: #f8f8f8;
+        border-radius: 8px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .remove-btn {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 24px;
+        height: 24px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .product-info {
+        flex: 1;
+      }
+
+      .brand-name {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .product-name {
+        color: #666;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+
+      .seller-info {
+        font-size: 12px;
+        color: #999;
+        margin-bottom: 16px;
+      }
+
+      .product-options {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 16px;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .option select {
+        border: 1px solid #ddd;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: white;
+      }
+
+      .price-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .current-price {
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .original-price {
+        text-decoration: line-through;
+        color: #999;
+      }
+
+      .discount {
+        color: #ff9800;
+        font-weight: 600;
+      }
+
+      .return-info {
+        font-size: 12px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .return-icon {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+      }
+
+      /* Login Section */
+      .loginNudge-base-mainContainer {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .imageBanner-base-container {
+        display: inline-block;
+        flex-shrink: 0;
+      }
+
+      .loginNudge-base-messageIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-base-imgResponsive {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .loginNudge-base-messageContainer {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 12px;
+      }
+
+      .loginNudge-base-message {
+        color: #282c3f;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .loginNudge-base-loginCTA {
+        color: #ff3f6c;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        align-self: flex-end;
+        cursor: pointer;
+      }
+
+      /* Recommendations (Mobile Only) */
+      .recommendations {
+        display: none;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .rec-title {
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .rec-icon {
+        width: 24px;
+        height: 24px;
+        background: #f0f0f0;
+        border-radius: 4px;
+      }
+
+      .categories {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+      }
+
+      .category-btn {
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 20px;
+        font-size: 14px;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .category-btn.active {
+        background: #ff3f6c;
+        color: white;
+        border-color: #ff3f6c;
+      }
+
+      .products-grid {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+      }
+
+      .rec-product {
+        min-width: 120px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .rec-product-image {
+        width: 120px;
+        height: 150px;
+        background: #f8f8f8;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .rec-product-brand {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .rec-product-name {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .rec-product-price {
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .add-to-bag {
+        background: none;
+        border: 1px solid #ff3f6c;
+        color: #ff3f6c;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* Coupons Section */
+      .coupons-section {
+        padding: 20px;
+      }
+
+      .coupons-base-header {
+        font-size: 12px;
+        font-weight: 700;
+        color: #535766;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .coupons-base-content {
+        padding-bottom: 12px;
+        position: relative;
+        border-bottom: 1px solid #f5f5f6;
+        padding-left: 36px;
+      }
+
+      .coupons-base-logIn {
+        color: #ff3f6c;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .coupons-base-logIn:hover {
+        color: #ff3f6c;
+      }
+
+      .coupons-base-label {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 7px 0;
+      }
+
+      .coupons-base-label.coupons-base-applied {
+        padding: 0;
+      }
+
+      .coupons-base-couponMessage {
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .coupons-base-discountMessage {
+        font-size: 12px;
+        color: #03a685;
+      }
+
+      .coupons-base-disabledCouponMessage {
+        padding: 5px 0 0;
+      }
+
+      .coupons-base-rupeeIcon {
+        fill: #03a685;
+        height: 8px;
+      }
+
+      .coupons-base-rupeeIconLogin {
+        height: 9px;
+      }
+
+      .coupons-base-couponIcon {
+        position: absolute;
+        left: 0;
+        top: 7px;
+      }
+
+      .css-15k6cs5 {
+        padding: 4px 16px;
+        font-size: 12px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-weight: 700;
+        border-radius: 2px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(255, 63, 108);
+        border-color: rgb(255, 63, 108);
+        border-width: 1px;
+        border-style: solid;
+        cursor: pointer;
+      }
+
+      .css-xjhrni {
+        box-sizing: border-box;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        display: flex;
+      }
+
+      /* Gifting Section */
+      .giftWrap-base-container {
+        padding-bottom: 12px;
+        border-bottom: 1px solid #f5f5f6;
+      }
+
+      .giftWrap-base-header {
+        font-size: 12px;
+        font-weight: 700;
+        color: #535766;
+        margin: 24px 0 12px;
+      }
+
+      .giftWrap-base-content {
+        background: #fff1ec;
+        padding: 12px 12px 12px 63px;
+        font-size: 12px;
+        position: relative;
+        border-radius: 4px;
+        line-height: 16px;
+      }
+
+      .giftWrap-base-content.giftWrap-base-applied {
+        background: #f0f8f8;
+      }
+
+      .giftWrap-base-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 1px;
+      }
+
+      .giftWrap-base-rupeeIcon {
+        height: 8px;
+      }
+
+      .giftWrap-base-gift {
+        position: absolute;
+        top: -1px;
+        left: 10px;
+      }
+
+      .giftWrap-base-separator {
+        border-right: 1px solid #eaeaec;
+      }
+
+      .css-8bt89l {
+        margin-top: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 2px;
+        border-width: 0px;
+        background-color: transparent;
+        color: rgb(255, 63, 108);
+        padding: 0px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+
+      .css-8bt89l:hover {
+        text-decoration: underline;
+      }
+
+      .css-xjhrni {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* Mobile Responsive for Gifting */
+      @media screen and (max-width: 768px) {
+        .giftWrap-base-container {
+          border-radius: 0;
+          padding: 16px;
+        }
+
+        .giftWrap-base-content {
+          padding: 16px 16px 16px 56px;
+          font-size: 13px;
+          line-height: 18px;
+        }
+
+        .giftWrap-base-title {
+          font-size: 15px;
+          margin-bottom: 4px;
+        }
+
+        .giftWrap-base-gift {
+          left: 12px;
+          top: 2px;
+        }
+
+        .css-8bt89l {
+          margin-top: 12px;
+          font-size: 13px;
+        }
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-overlay.show {
+        display: flex;
+      }
+
+      .modal {
+        background: white;
+        border-radius: 8px;
+        width: 95%;
+        max-width: 900px;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+        transform: translateY(100vh);
+        transition: transform 0.3s ease-out;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-overlay.show .modal {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        padding: 20px 24px;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .modal-title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .modal-subtitle {
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+        margin-top: 4px;
+      }
+
+      .modal-close {
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: none;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-body {
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .modal-left {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .modal-right {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        overflow-y: auto;
+      }
+
+      .gift-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .form-group {
+        margin-bottom: 8px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 600;
+        color: #282c3f;
+        font-size: 14px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #d4d5d9;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: border-color 0.2s ease;
+        box-sizing: border-box;
+        font-family: inherit;
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff3f6c;
+      }
+
+      .char-count {
+        text-align: right;
+        font-size: 12px;
+        color: #696e79;
+        margin-top: 4px;
+      }
+
+      .gift-button {
+        width: 100%;
+        background: #ff3f6c;
+        color: white;
+        border: none;
+        padding: 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 8px;
+        transition: background-color 0.2s ease;
+      }
+
+      .gift-button:hover {
+        background: #e8365f;
+      }
+
+      .gift-image-container {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      /* .gift-image {
+        width: 70%;
+        height: auto;
+        border-radius: 8px;
+      } */
+
+      .how-it-works h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #282c3f;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding-right: 20px;
+      }
+
+      .giftWrapDetails-base-line {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: calc(100% - 190px);
+        border-top: 1px solid #979797;
+        transform: translateY(-50%);
+      }
+
+      .mobile-image {
+        display: none;
+      }
+
+      .desktop-image {
+        display: block;
+      }
+
+      .giftWrapDetails-base-content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .giftWrapDetails-base-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .imageBanner-base-container {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+      }
+
+      .image-base-imgResponsive {
+        display: block;
+        object-fit: contain;
+      }
+
+      .giftWrapDetails-base-info-container {
+        flex: 1;
+      }
+
+      .giftWrapDetails-base-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #282c3f;
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+
+      .giftWrapDetails-base-info {
+        font-size: 12px;
+        color: #696e79;
+        line-height: 1.3;
+      }
+
+      .modal-footer {
+        padding: 20px 24px;
+        border-top: 1px solid #e0e0e0;
+        background: #f8f8f8;
+      }
+
+      .note-text {
+        font-size: 12px;
+        color: #ff9800;
+        text-align: center;
+        margin: 0;
+      }
+
+      /* Donation Section */
+      .donation-section {
+        padding: 20px;
+      }
+
+      .donation-title {
+        color: #666;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .donation-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .donation-amounts {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .amount-btn {
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .amount-btn.selected {
+        border-color: #ff3f6c;
+        background: #fff5f5;
+        color: #ff3f6c;
+      }
+
+      .know-more {
+        color: #ff3f6c;
+        font-size: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Price Section */
+      .price-section {
+        padding: 20px;
+      }
+
+      .price-title {
+        color: #666;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .price-row.discount {
+        color: #4caf50;
+      }
+
+      .price-row.total {
+        font-weight: 600;
+        font-size: 16px;
+        padding-top: 12px;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 12px;
+      }
+
+      .coupon-link {
+        color: #ff3f6c;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .place-order-btn {
+        width: 100%;
+        background: #ff3f6c;
+        color: white;
+        border: none;
+        padding: 16px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 16px;
+        cursor: pointer;
+      }
+
+      /* Footer */
+      .footer,
+      .checkout-footer {
+        background: white;
+        border-top: 1px solid #e0e0e0;
+        padding: 20px 24px;
+        margin-top: 32px;
+      }
+
+      .footer-content,
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .footer-left,
+      .images {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .footer-left img,
+      .images img {
+        flex-shrink: 0;
+      }
+
+      .ssl-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .payment-icons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .payment-icon {
+        width: 32px;
+        height: 20px;
+        background: #f0f0f0;
+        border-radius: 4px;
+      }
+
+      .footer-right,
+      .contact-us {
+        font-size: 14px;
+        color: #666;
+        text-decoration: none;
+      }
+
+      .contact-us:hover {
+        color: #ff3f6c;
+      }
+
+      /* Mobile Footer Badges */
+      .mobile-footer-badges {
+        display: none;
+        justify-content: space-around;
+        padding: 20px;
+        background: white;
+        margin-bottom: 8px;
+      }
+
+      .badge {
+        text-align: center;
+        flex: 1;
+      }
+
+      .badge-icon {
+        width: 32px;
+        height: 32px;
+        background: #f0f0f0;
+        border-radius: 50%;
+        margin: 0 auto 8px;
+      }
+
+      .badge-text {
+        font-size: 10px;
+        color: #666;
+      }
+
+      /* Bottom Section (Mobile) */
+      .bottom-section {
+        display: none;
+        background: white;
+        padding: 16px;
+        position: sticky;
+        bottom: 0;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .terms-text {
+        font-size: 10px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      .items-selected {
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 12px;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .desktop-header {
+          display: none;
+        }
+
+        .mobile-header {
+          display: flex;
+        }
+
+        .container {
+          grid-template-columns: 1fr;
+          padding: 0;
+          gap: 8px;
+          max-width: 100%;
+        }
+
+        .left-column,
+        .right-column {
+          gap: 8px;
+        }
+
+        .section {
+          border-radius: 0;
+          box-shadow: none;
+          border-bottom: 8px solid #f5f5f5;
+          padding: 16px;
+        }
+
+        .section:last-child {
+          border-bottom: none;
+        }
+
+        .delivery-section {
+          display: none;
+        }
+
+        .offers-section {
+          border-left: 3px solid #ff3f6c;
+          padding-left: 16px;
+        }
+
+        .product-image {
+          width: 80px;
+          height: 100px;
+        }
+
+        .remove-btn {
+          width: 20px;
+          height: 20px;
+          font-size: 12px;
+        }
+
+        .brand-name {
+          font-size: 14px;
+        }
+
+        .product-name {
+          font-size: 14px;
+        }
+
+        .current-price {
+          font-size: 16px;
+        }
+
+        .loginNudge-base-mainContainer {
+          border-radius: 0;
+          box-shadow: none;
+          border-bottom: 8px solid #f5f5f5;
+          padding: 16px;
+          gap: 12px;
+        }
+
+        .loginNudge-base-messageIcon {
+          height: 40px !important;
+          width: 70px !important;
+        }
+
+        .loginNudge-base-messageContainer {
+          gap: 8px;
+        }
+
+        .loginNudge-base-message {
+          font-size: 13px;
+        }
+
+        .loginNudge-base-loginCTA {
+          font-size: 13px;
+        }
+
+        .recommendations {
+          display: block;
+          border-radius: 0;
+          box-shadow: none;
+          border-bottom: 8px solid #f5f5f5;
+          padding: 16px;
+        }
+
+        .rec-product {
+          min-width: 100px;
+        }
+
+        .rec-product-image {
+          width: 100px;
+          height: 120px;
+        }
+
+        .gifting-section {
+          border-radius: 0;
+          border-left: 3px solid #ff3f6c;
+          padding: 16px;
+          margin-bottom: 8px;
+        }
+
+        .mobile-footer-badges {
+          display: flex;
+        }
+
+        .bottom-section {
+          display: block;
+        }
+
+        .footer {
+          display: none;
+        }
+
+        .place-order-btn {
+          margin-top: 0;
+        }
+
+        /* Mobile footer responsiveness */
+        .footer-content,
+        .content {
+          flex-direction: column;
+          text-align: center;
+          gap: 12px;
+        }
+
+        .footer-left,
+        .images {
+          justify-content: center;
+          gap: 4px;
+        }
+
+        .footer-left img,
+        .images img {
+          width: 40px;
+          height: 25px;
+        }
+
+        /* Mobile modal responsiveness */
+        .modal {
+          width: 95%;
+          max-width: none;
+          margin: 20px;
+          height: calc(100vh - 40px);
+          max-height: none;
+        }
+
+        .modal-body {
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          gap: 16px;
+          overflow-y: auto;
+        }
+
+        .mobile-image {
+          display: block;
+          order: 1;
+          text-align: center;
+          margin-bottom: 0;
+        }
+
+        .desktop-image {
+          display: none;
+        }
+
+        .modal-left {
+          order: 2;
+          margin-bottom: 0;
+        }
+
+        .modal-right {
+          order: 3;
+          gap: 12px;
+          max-height: none;
+          overflow-y: visible;
+        }
+
+        .gift-image {
+          width: 100%;
+        }
+
+        .how-it-works h3 {
+          font-size: 14px;
+          margin-bottom: 12px;
+        }
+
+        .giftWrapDetails-base-line {
+          width: calc(100% - 170px);
+        }
+
+        .giftWrapDetails-base-row {
+          gap: 8px;
+        }
+
+        .giftWrapDetails-base-title {
+          font-size: 13px;
+        }
+
+        .giftWrapDetails-base-info {
+          font-size: 11px;
+        }
+
+        .imageBanner-base-container {
+          width: 36px;
+          height: 36px;
+        }
+
+        /* Mobile coupon styles */
+        .mobile-coupons .coupons-base-content {
+          padding-left: 36px;
+          padding-bottom: 12px;
+        }
+
+        .mobile-coupons .coupons-base-header {
+          margin-bottom: 12px;
+        }
+
+        .mobile-coupons .coupons-base-couponIcon {
+          position: absolute;
+          left: 0;
+          top: 7px;
+        }
+
+        /* Hide desktop-only elements on mobile */
+        .right-column .coupons-section,
+        .right-column .gifting-section,
+        .right-column .donation-section,
+        .right-column .price-section {
+          display: none;
+        }
+
+        /* Show mobile versions */
+        .mobile-coupons,
+        .mobile-price-section {
+          display: block;
+        }
+      }
+
+      /* Desktop-only styles */
+      @media (min-width: 769px) {
+        .mobile-coupons,
+        .mobile-price-section {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Desktop Header -->
+    <div class="desktop-header">
+      <div class="desktop-header-content">
+        <div class="logo">
+          <a class="linkClean" href="/">
+            <svg
+              id="logo"
+              style="position: absolute; width: 0; height: 0; overflow: hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 640 640"
+            >
+              <defs>
+                <filter
+                  x="-3.8%"
+                  y="-2.8%"
+                  width="107.7%"
+                  height="111.1%"
+                  filterUnits="objectBoundingBox"
+                  id="a"
+                >
+                  <feOffset
+                    dy="10"
+                    in="SourceAlpha"
+                    result="shadowOffsetOuter1"
+                  ></feOffset>
+                  <feGaussianBlur
+                    stdDeviation="5"
+                    in="shadowOffsetOuter1"
+                    result="shadowBlurOuter1"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
+                    in="shadowBlurOuter1"
+                  ></feColorMatrix>
+                </filter>
+                <path
+                  d="M499.178 195.54c5.828 16.006 14.447 39.657-.562-1.566-5.336-14.64-3.618-9.916-.393-1.053-14.807-40.373-36.1-84.274-58.53-120.637-24.04-38.975-45.588-61.116-60.983-69.195 0 0-7.932-5.624-19.532-.77l-.396.141c-14.996 5.47-33.715 25.286-55.633 58.902-14.538 22.292-28.937 48.334-41.764 75.39-14.042-29.557-30.051-58.123-45.687-81.29-15.87-23.516-39.493-54.78-61.304-54.78-1.663 0-3.31.174-4.895.513v.003c-9.717 1.784-20.027 8.995-32.359 22.649-10.125 11.209-21.155 26.278-32.78 44.784-23.513 37.429-45.83 83.134-61.23 125.404C6.765 238.986-.888 275.643.382 302.987c.881 18.986 6.664 43.19 28.725 53.275l3.093 1.299 2.867.945a42.678 42.678 0 0012.032 1.733h.002c17.686 0 35.05-10.567 51.603-31.403 16.203-20.394 31.744-50.845 46.196-90.516a622.213 622.213 0 009.405-27.965 627.225 627.225 0 009.395 27.918c26.077 71.57 55.065 112.058 86.161 120.338l.48.121c.602.153 1.336.339 2.16.501l.527.109c2.362.452 4.69.712 7.115.8l.285.01a30.71 30.71 0 003.203-.063c.471-.02.904-.048 1.381-.08l1.023-.105a35.83 35.83 0 001.159-.158c.5-.06 1.22-.15 2.073-.311.71-.13 1.424-.28 2.24-.473l.45-.112c.19-.044.379-.092.57-.143 31.237-8.052 60.344-48.563 86.512-120.41a610.7 610.7 0 008.928-26.38 605.593 605.593 0 008.928 26.35c14.432 39.653 29.962 70.099 46.156 90.494 16.547 20.837 33.906 31.404 51.592 31.406h.007c4.729 0 9.407-.785 13.92-2.335 11.15-2.948 20.065-10.173 25.812-20.94 14.201-26.586 9.078-74.145-15.203-141.352"
+                  id="b"
+                ></path>
+              </defs>
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(60 130)">
+                  <use fill="#000" filter="url(#a)" xlink:href="#b"></use>
+                  <use fill="#FFF" xlink:href="#b"></use>
+                </g>
+                <path
+                  d="M212.833 145.065c-26.297 3.973-84.645 97.719-116.018 183.823-33.34 91.572-25.359 135.799.835 145.413.018.02.037.02.037.02s.008 0 .036.02c26.263 9.458 60.834-19.288 94.201-110.87 9.022-24.79 16.733-51.485 22.741-77.44-3.163-70.55-2.157-140.89-1.832-140.966"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M212.834 145.065c21.775-4.676 74.573 74.706 108.915 156.41.626 19.203-8.524 173.233-7.884 173.426-23.151-6.162-50.176-39.282-76.482-111.484-9.01-24.771-16.753-51.453-22.717-77.386l-.481-2.096c-15.758-69.124-19.215-132.285-2.41-138.574 0 0 .006 0 .026-.01h.02a8.75 8.75 0 011.013-.285h.002z"
+                  fill="#FF912E"
+                ></path>
+                <path
+                  d="M330.794 474.52c-.514.166-1.024.322-1.532.47-.23.066-.451.104-.667.17-.5.116-1.018.23-1.559.326-.535.104-1.018.152-1.502.213-.399.072-.756.108-1.138.158-.418.028-.791.05-1.213.068a23.89 23.89 0 01-1.623.056c-.193 0-.373-.017-.555-.017a32.514 32.514 0 01-4.969-.556c-.075-.019-.172-.036-.261-.057-.608-.115-1.26-.286-1.91-.45-.64-.193-1.329-.393-1.996-.628l-.02-.01h-.028c-26.212-9.615-34.2-53.839-.833-145.42 3.29-9.078 6.92-18.233 10.762-27.368l.941-2.23c31.216-73.547 77.02-144.602 101.307-153.456 1.005 19.974.7 70.72 4.319 142.353-5.917 25.257-13.455 51.19-22.249 75.292-26.428 72.555-53.585 105.63-76.806 111.557.254-.074.509-.15.764-.228z"
+                  fill="#F25511"
+                ></path>
+                <path
+                  d="M427.832 286.062c-15.87-68.598-19.71-131.89-3.834-140.273 1.673-.59 3.198-.905 4.643-.917 1.224.096 2.475.382 3.795.853 27.474 9.686 82.893 99.962 113.207 183.107 33.34 91.574 25.38 135.815-.834 145.409 0 0-.02 0-.047.024h-.017c-26.26 9.478-60.833-19.269-94.166-110.849-8.81-24.103-16.346-50.017-22.262-75.274z"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M432.436 162.748c27.474 9.686 84.786 99.016 115.099 182.16 13.7 37.631 20.142 58.855 19.881 86.95 1.666-23.794-4.528-55.658-21.773-103.026-30.312-83.145-85.733-173.421-113.207-183.107-1.32-.471-2.571-.757-3.795-.854-1.445.013-2.97.327-4.643.918-24.532 8.945-71.019 82.296-102.25 156.633-34.34-81.706-87.138-162.033-108.915-157.356-26.296 3.972-84.646 97.716-116.018 183.822-17.243 47.358-23.433 80.158-21.766 103.95-.262-32.858 6.176-50.252 19.873-87.873 31.374-86.105 91.615-178.904 117.91-182.876 21.778-4.677 65.534 60.732 108.917 142.222 39.93-75.569 77.717-132.554 102.249-141.5 1.582-.56 3.032-.87 4.41-.91"
+                  fill="#821414"
+                ></path>
+              </g>
+            </svg>
+            <svg class="logo-inline"><use xlink:href="#logo"></use></svg>
+          </a>
+        </div>
+        <div class="progress-steps">
+          <div class="step active">
+            <span>BAG</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step inactive">
+            <span>ADDRESS</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step inactive">
+            <span>PAYMENT</span>
+          </div>
+        </div>
+        <div class="security-badge">
+          <img
+            src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"
+            class="secureIcon"
+            width="26"
+            height="28"
+          />
+          <span>100% SECURE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <div class="mobile-header-left">
+        <span class="back-arrow">←</span>
+        <span class="mobile-title">SHOPPING BAG</span>
+      </div>
+      <span class="step-indicator">STEP 1/3</span>
+    </div>
+
+    <div class="container">
+      <!-- Left Column -->
+      <div class="left-column">
+        <!-- Delivery Section (Desktop Only) -->
+        <div class="section delivery-section">
+          <span class="delivery-text">Check delivery time & services</span>
+          <button class="enter-pin-btn">ENTER PIN CODE</button>
+        </div>
+
+        <!-- Available Offers -->
+        <div class="section offers-section">
+          <div class="offers-title">
+            <div class="offers-icon"></div>
+            <span>Available Offers</span>
+          </div>
+          <div class="offer-text">
+            10% Instant Discount on BOBCARD Credit Cards & Credit Card EMI on a
+            min spend of ₹3,500. TCA
+          </div>
+          <button class="show-more">Show More ∨</button>
+        </div>
+
+        <!-- Product Items -->
+        <div class="section">
+          <!-- Levis T-shirt -->
+          <div class="product-card">
+            <div class="product-image">
+              <button class="remove-btn">×</button>
+            </div>
+            <div class="product-info">
+              <div class="brand-name">Levis</div>
+              <div class="product-name">
+                Men Soft Pure Cotton Round Neck Half Sleeve Tshirt
+              </div>
+              <div class="seller-info">
+                Sold by: MODENIK LIFESTYLE PRIVATE LIMITED
+              </div>
+
+              <div class="product-options">
+                <div class="option">
+                  <span>Size:</span>
+                  <select>
+                    <option>S</option>
+                  </select>
+                </div>
+                <div class="option">
+                  <span>Qty:</span>
+                  <select>
+                    <option>1</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="price-info">
+                <span class="current-price">₹389</span>
+                <span class="original-price">₹649</span>
+                <span class="discount">40% OFF</span>
+              </div>
+
+              <div class="return-info">
+                <div class="return-icon"></div>
+                <span>10 days return available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- U.S. Polo T-shirt -->
+          <div class="product-card">
+            <div class="product-image">
+              <button class="remove-btn">×</button>
+            </div>
+            <div class="product-info">
+              <div class="brand-name">U.S. Polo Assn.</div>
+              <div class="product-name">
+                Men Red & Navy Blue Striped Comfort-Fit Lounge T-Shirt
+              </div>
+              <div class="seller-info">Sold by: Supercomm Net</div>
+
+              <div class="product-options">
+                <div class="option">
+                  <span>Size:</span>
+                  <select>
+                    <option>XL</option>
+                  </select>
+                </div>
+                <div class="option">
+                  <span>Qty:</span>
+                  <select>
+                    <option>1</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="price-info">
+                <span class="current-price">₹559</span>
+                <span class="original-price">₹799</span>
+                <span class="discount">30% OFF</span>
+              </div>
+
+              <div class="return-info">
+                <div class="return-icon"></div>
+                <span>10 days return available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Login Section -->
+        <div class="loginNudge-base-mainContainer">
+          <div
+            class="imageBanner-base-container loginNudge-base-messageIcon"
+            style="background: none; height: 50px; width: 90px"
+          >
+            <picture class="image-base-imgResponsive" style="width: 100%"
+              ><source
+                srcset="
+                  https://constant.myntassets.com/checkout/assets/img/products-blurred.webp
+                "
+                type="image/webp" />
+              <img
+                src="https://constant.myntassets.com/checkout/assets/img/products-blurred.png"
+                class="image-base-imgResponsive"
+                alt="image"
+                fetchpriority="auto"
+                loading="eager"
+                style="height: 50px; width: 90px"
+            /></picture>
+          </div>
+          <div class="loginNudge-base-messageContainer">
+            <div class="loginNudge-base-message">
+              Login to see items from your existing bag and wishlist.
+            </div>
+            <a
+              href="/login?referer=/checkout/cart"
+              class="loginNudge-base-loginCTA"
+              >LOGIN NOW</a
+            >
+          </div>
+        </div>
+
+        <!-- You may also like (Mobile Only) -->
+        <div class="recommendations">
+          <div class="rec-title">
+            <div class="rec-icon"></div>
+            <span>You may also like:</span>
+          </div>
+
+          <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Shampoo</button>
+            <button class="category-btn">Lip Balm</button>
+            <button class="category-btn">Deodorant</button>
+            <button class="category-btn">Roll-Ons</button>
+          </div>
+
+          <div class="products-grid">
+            <div class="rec-product">
+              <div class="rec-product-image"></div>
+              <div class="rec-product-brand">Dove</div>
+              <div class="rec-product-name">Daily Hair Therapy Se...</div>
+              <div class="rec-product-price">
+                ₹444
+                <span style="text-decoration: line-through; color: #999"
+                  >₹590</span
+                >
+              </div>
+              <button class="add-to-bag">ADD TO BAG</button>
+            </div>
+
+            <div class="rec-product">
+              <div class="rec-product-image"></div>
+              <div class="rec-product-brand">Lakme</div>
+              <div class="rec-product-name">Sun Expert UV Lotion</div>
+              <div class="rec-product-price">
+                ₹325
+                <span style="text-decoration: line-through; color: #999"
+                  >₹405</span
+                >
+              </div>
+              <button class="add-to-bag">ADD TO BAG</button>
+            </div>
+
+            <div class="rec-product">
+              <div class="rec-product-image"></div>
+              <div class="rec-product-brand">Wild Stone</div>
+              <div class="rec-product-name">Men Edge EDP 100 ml</div>
+              <div class="rec-product-price">
+                ₹314
+                <span style="text-decoration: line-through; color: #999"
+                  >₹449</span
+                >
+              </div>
+              <button class="add-to-bag">ADD TO BAG</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Coupons Section -->
+        <div class="section mobile-coupons">
+          <div class="coupons-base-header">Coupons</div>
+          <div class="coupons-base-content">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              class="coupons-base-couponIcon"
+            >
+              <g
+                fill="none"
+                fill-rule="evenodd"
+                transform="rotate(45 6.086 5.293)"
+              >
+                <path
+                  stroke="#000"
+                  d="M17.5 10V1a1 1 0 0 0-1-1H5.495a1 1 0 0 0-.737.323l-4.136 4.5a1 1 0 0 0 0 1.354l4.136 4.5a1 1 0 0 0 .737.323H16.5a1 1 0 0 0 1-1z"
+                ></path>
+                <circle
+                  cx="5.35"
+                  cy="5.35"
+                  r="1.35"
+                  fill="#000"
+                  fill-rule="nonzero"
+                ></circle>
+              </g>
+            </svg>
+            <div class="coupons-base-label">Apply Coupons</div>
+            <button
+              font-size="body3"
+              font-weight="bold"
+              role="button"
+              class="css-15k6cs5"
+            >
+              <div class="css-xjhrni">APPLY</div>
+            </button>
+            <div class="coupons-base-couponMessage">
+              <a href="/login?referer=/checkout/cart" class="coupons-base-logIn"
+                >Login</a
+              ><span> to get upto ₹300 OFF on first order</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <!-- Coupons Section (Desktop) -->
+        <div class="">
+          <div class="coupons-base-header">Coupons</div>
+          <div class="coupons-base-content">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              class="coupons-base-couponIcon"
+            >
+              <g
+                fill="none"
+                fill-rule="evenodd"
+                transform="rotate(45 6.086 5.293)"
+              >
+                <path
+                  stroke="#000"
+                  d="M17.5 10V1a1 1 0 0 0-1-1H5.495a1 1 0 0 0-.737.323l-4.136 4.5a1 1 0 0 0 0 1.354l4.136 4.5a1 1 0 0 0 .737.323H16.5a1 1 0 0 0 1-1z"
+                ></path>
+                <circle
+                  cx="5.35"
+                  cy="5.35"
+                  r="1.35"
+                  fill="#000"
+                  fill-rule="nonzero"
+                ></circle>
+              </g>
+            </svg>
+            <div class="coupons-base-label">Apply Coupons</div>
+            <button
+              font-size="body3"
+              font-weight="bold"
+              role="button"
+              class="css-15k6cs5"
+            >
+              <div class="css-xjhrni">APPLY</div>
+            </button>
+            <div class="coupons-base-couponMessage">
+              <a href="/login?referer=/checkout/cart" class="coupons-base-logIn"
+                >Login</a
+              ><span> to get upto ₹300 OFF on first order</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gifting Section -->
+        <div class="giftWrap-base-container">
+          <div class="giftWrap-base-header">GIFTING &amp; PERSONALISATION</div>
+          <div class="giftWrap-base-content">
+            <div
+              class="imageBanner-base-container giftWrap-base-gift"
+              style="background: none; height: 99px; width: 39px"
+            >
+              <picture class="image-base-imgResponsive" style="width: 100%"
+                ><source
+                  srcset="
+                    https://constant.myntassets.com/checkout/assets/img/gift-big.webp
+                  "
+                  type="image/webp" />
+                <img
+                  src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
+                  class="image-base-imgResponsive"
+                  alt="image"
+                  fetchpriority="auto"
+                  loading="eager"
+                  style="height: 99px; width: 39px"
+              /></picture>
+            </div>
+            <div class="giftWrap-base-title">Buying for a loved one?</div>
+            <div>
+              <span
+                >Gift Packaging and personalised message on card, Only for
+                ₹35</span
+              >
+            </div>
+            <button
+              font-size="body3"
+              font-weight="bold"
+              role="button"
+              class="css-8bt89l"
+              onclick="openGiftModal()"
+            >
+              <div class="css-xjhrni">ADD GIFT PACKAGE</div>
+            </button>
+          </div>
+        </div>
+        <!-- Social Work Donation -->
+        <div class="section donation-section">
+          <div class="donation-title">
+            SUPPORT TRANSFORMATIVE SOCIAL WORK IN INDIA
+          </div>
+          <div class="donation-checkbox">
+            <input type="checkbox" id="donate" />
+            <label for="donate">Donate and make a difference</label>
+            <button class="know-more">Know More</button>
+          </div>
+          <div class="donation-amounts">
+            <button class="amount-btn">₹10</button>
+            <button class="amount-btn selected">₹20</button>
+            <button class="amount-btn">₹50</button>
+            <button class="amount-btn">₹100</button>
+          </div>
+        </div>
+
+        <!-- Price Details -->
+        <div class="section price-section">
+          <div class="price-title">PRICE DETAILS (2 Items)</div>
+          <div class="price-row">
+            <span>Total MRP</span>
+            <span>₹1,448</span>
+          </div>
+          <div class="price-row discount">
+            <span>Discount on MRP</span>
+            <span>-₹500</span>
+          </div>
+          <div class="price-row">
+            <span>Coupon Discount</span>
+            <a href="#" class="coupon-link">Apply Coupon</a>
+          </div>
+          <div class="price-row">
+            <span>Social Work Donation</span>
+            <span>₹20</span>
+          </div>
+          <div class="price-row">
+            <span
+              >Platform Fee <button class="know-more">Know More</button></span
+            >
+            <span>₹20</span>
+          </div>
+          <div class="price-row total">
+            <span>Total Amount</span>
+            <span>₹988</span>
+          </div>
+          <button class="place-order-btn">PLACE ORDER</button>
+        </div>
+      </div>
+
+      <!-- Mobile Donation Section -->
+      <div
+        class="section donation-section mobile-donation"
+        style="display: none"
+      >
+        <div class="donation-title">
+          SUPPORT TRANSFORMATIVE SOCIAL WORK IN INDIA
+        </div>
+        <div class="donation-checkbox">
+          <input type="checkbox" id="donate-mobile" />
+          <label for="donate-mobile">Donate and make a difference</label>
+          <button class="know-more">Know More</button>
+        </div>
+        <div class="donation-amounts">
+          <button class="amount-btn">₹10</button>
+          <button class="amount-btn selected">₹20</button>
+          <button class="amount-btn">₹50</button>
+          <button class="amount-btn">₹100</button>
+        </div>
+      </div>
+
+      <!-- Mobile Price Section -->
+      <div class="section mobile-price-section">
+        <div class="price-title">PRICE DETAILS (2 Items)</div>
+        <div class="price-row">
+          <span>Total MRP</span>
+          <span>₹1,448</span>
+        </div>
+        <div class="price-row discount">
+          <span>Discount on MRP</span>
+          <span>-₹500</span>
+        </div>
+        <div class="price-row">
+          <span>Social Work Donation</span>
+          <span>₹20</span>
+        </div>
+        <div class="price-row">
+          <span>Platform Fee <button class="know-more">Know More</button></span>
+          <span>₹20</span>
+        </div>
+        <div class="price-row total">
+          <span>Total Amount</span>
+          <span>₹988</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Footer Badges -->
+    <div class="mobile-footer-badges">
+      <div class="badge">
+        <div class="badge-icon"></div>
+        <div class="badge-text">Genuine Products</div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon"></div>
+        <div class="badge-text">Contactless Delivery</div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon"></div>
+        <div class="badge-text">Secure Payments</div>
+      </div>
+    </div>
+
+    <!-- Desktop Footer -->
+    <div class="footer checkout-footer">
+      <div class="footer-content content">
+        <div class="footer-left images">
+          <img
+            class="footer-bank-ssl"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
+            width="70"
+            height="37"
+          />
+          <img
+            class="footer-bank-visa"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-mc"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-ae"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-dc"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-nb"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-cod"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-rupay"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-paypal"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-bhim"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
+            width="60"
+            height="37"
+          />
+        </div>
+        <div class="footer-right">
+          <a href="/contactus" class="contact-us">
+            <span>Need Help ? Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Bottom Section -->
+    <div class="bottom-section">
+      <div class="terms-text">
+        By placing the order, you agree to Myntra's Terms of Use and Privacy
+        Policy
+      </div>
+      <div class="items-selected">2 items selected for order</div>
+      <button class="place-order-btn">PLACE ORDER</button>
+    </div>
+
+    <!-- Gift Modal -->
+    <div class="modal-overlay" id="giftModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title">Gift Packaging</div>
+            <div class="modal-subtitle">Make It Special</div>
+          </div>
+          <button class="modal-close" onclick="closeGiftModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="gift-image-container mobile-image">
+            <img
+              src="https://constant.myntassets.com/checkout/assets/img/giftwrap-1.webp"
+              alt="Gift"
+              class="gift-image"
+            />
+          </div>
+
+          <div class="modal-left">
+            <div class="form-group">
+              <label for="recipientName">Recipient Name</label>
+              <input
+                type="text"
+                id="recipientName"
+                placeholder="Enter recipient's name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="giftMessage">Message (Optional)</label>
+              <textarea
+                id="giftMessage"
+                rows="4"
+                placeholder="Add a personal message"
+                maxlength="200"
+              ></textarea>
+              <div class="char-count"><span id="charCount">0</span>/200</div>
+            </div>
+
+            <div class="form-group">
+              <label for="senderName">Sender Name</label>
+              <input
+                type="text"
+                id="senderName"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div
+              class="note-text"
+              style="margin: 16px 0; font-size: 12px; color: #ff9800"
+            >
+              Please Note: Gift packaging is not available for Pay on Delivery
+              orders.
+            </div>
+
+            <button class="gift-button">APPLY GIFT PACKAGING</button>
+          </div>
+
+          <div class="modal-right">
+            <div class="gift-image-container desktop-image">
+              <img
+                src="https://constant.myntassets.com/checkout/assets/img/giftwrap-1.webp"
+                alt="Gift"
+                class="gift-image"
+              />
+            </div>
+
+            <div class="how-it-works">
+              <h3>
+                How does it work?
+                <div class="giftWrapDetails-base-line"></div>
+              </h3>
+              <div class="giftWrapDetails-base-content">
+                <div class="giftWrapDetails-base-row">
+                  <div
+                    class="imageBanner-base-container giftWrapDetails-base-sprite"
+                    style="background: none; height: 50px; width: 50px"
+                  >
+                    <picture
+                      class="image-base-imgResponsive"
+                      style="width: 100%"
+                    >
+                      <source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/giftwrap-card.webp
+                        "
+                        type="image/webp"
+                      />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/giftwrap-card.png"
+                        class="image-base-imgResponsive"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                        style="height: 39px; width: 36px"
+                      />
+                    </picture>
+                  </div>
+                  <div class="giftWrapDetails-base-info-container">
+                    <div class="giftWrapDetails-base-title">
+                      Personalised card
+                    </div>
+                    <div class="giftWrapDetails-base-info">
+                      Your message will be printed on a card placed inside the
+                      package.
+                    </div>
+                  </div>
+                </div>
+                <div class="giftWrapDetails-base-row">
+                  <div
+                    class="imageBanner-base-container giftWrapDetails-base-sprite"
+                    style="background: none; height: 50px; width: 50px"
+                  >
+                    <picture
+                      class="image-base-imgResponsive"
+                      style="width: 100%"
+                    >
+                      <source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/giftwrap-invoice.webp
+                        "
+                        type="image/webp"
+                      />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/giftwrap-invoice.png"
+                        class="image-base-imgResponsive"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                        style="height: 42px; width: 33px"
+                      />
+                    </picture>
+                  </div>
+                  <div class="giftWrapDetails-base-info-container">
+                    <div class="giftWrapDetails-base-title">
+                      Invoice will be included
+                    </div>
+                    <div class="giftWrapDetails-base-info">
+                      The receiver will get an invoice showing the amount you
+                      pay or the discount applied.
+                    </div>
+                  </div>
+                </div>
+                <div class="giftWrapDetails-base-row">
+                  <div
+                    class="imageBanner-base-container giftWrapDetails-base-sprite"
+                    style="background: none; height: 50px; width: 50px"
+                  >
+                    <picture
+                      class="image-base-imgResponsive"
+                      style="width: 100%"
+                    >
+                      <source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/giftwrap-tag.webp
+                        "
+                        type="image/webp"
+                      />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/giftwrap-tag.png"
+                        class="image-base-imgResponsive"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                        style="height: 34px; width: 44px"
+                      />
+                    </picture>
+                  </div>
+                  <div class="giftWrapDetails-base-info-container">
+                    <div class="giftWrapDetails-base-title">
+                      Original product tags will be retained
+                    </div>
+                    <div class="giftWrapDetails-base-info">
+                      Original product tags with MRP will be left intact in-case
+                      you'd like to exchange for a different size.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Add to bag functionality
+      document.querySelectorAll(".add-to-bag").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.textContent = "ADDED";
+          this.style.background = "#4caf50";
+          this.style.color = "white";
+          this.style.borderColor = "#4caf50";
+          setTimeout(() => {
+            this.textContent = "ADD TO BAG";
+            this.style.background = "none";
+            this.style.color = "#ff3f6c";
+            this.style.borderColor = "#ff3f6c";
+          }, 2000);
+        });
+      });
+
+      // Donation amount selection
+      document.querySelectorAll(".amount-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          // Remove selected class from all buttons in the same section
+          const section = this.closest(".donation-section");
+          section
+            .querySelectorAll(".amount-btn")
+            .forEach((btn) => btn.classList.remove("selected"));
+          this.classList.add("selected");
+        });
+      });
+
+      // Category selection
+      document.querySelectorAll(".category-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+
+      // Remove product
+      document.querySelectorAll(".remove-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          if (confirm("Remove this item from your bag?")) {
+            this.closest(".product-card").remove();
+            updateItemCount();
+          }
+        });
+      });
+
+      // Update item count
+      function updateItemCount() {
+        const itemCount = document.querySelectorAll(".product-card").length;
+        const itemsSelectedElement = document.querySelector(".items-selected");
+        const priceTitleElements = document.querySelectorAll(".price-title");
+
+        if (itemsSelectedElement) {
+          itemsSelectedElement.textContent = `${itemCount} items selected for order`;
+        }
+
+        priceTitleElements.forEach((element) => {
+          element.textContent = `PRICE DETAILS (${itemCount} Items)`;
+        });
+      }
+
+      // Login button
+      document.querySelectorAll(".login-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          alert("Login functionality would be implemented here");
+        });
+      });
+
+      // Place order button
+      document.querySelectorAll(".place-order-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          alert("Proceeding to payment...");
+        });
+      });
+
+      // Pin code buttons
+      document
+        .querySelectorAll(".pin-code-btn, .enter-pin-btn")
+        .forEach((button) => {
+          button.addEventListener("click", function () {
+            const pincode = prompt("Enter your PIN code:");
+            if (pincode) {
+              alert(`Checking delivery options for ${pincode}...`);
+            }
+          });
+        });
+
+      // Show more offers
+      document.querySelectorAll(".show-more").forEach((button) => {
+        button.addEventListener("click", function () {
+          alert("More offers would be displayed here");
+        });
+      });
+
+      // Apply coupon
+      document.querySelectorAll(".apply-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const couponCode = prompt("Enter coupon code:");
+          if (couponCode) {
+            alert(`Applying coupon: ${couponCode}`);
+          }
+        });
+      });
+
+      // Gift package buttons
+      function openGiftModal() {
+        const modal = document.getElementById("giftModal");
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+
+        // Add animation class after a small delay to ensure display is set
+        setTimeout(() => {
+          modal.classList.add("show");
+        }, 10);
+      }
+
+      function closeGiftModal() {
+        const modal = document.getElementById("giftModal");
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+
+        // Hide modal after animation completes
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
+
+      // Character count for gift message
+      document.addEventListener("DOMContentLoaded", function () {
+        const giftMessageTextarea = document.getElementById("giftMessage");
+        const charCountSpan = document.getElementById("charCount");
+
+        if (giftMessageTextarea && charCountSpan) {
+          giftMessageTextarea.addEventListener("input", function () {
+            const currentLength = this.value.length;
+            charCountSpan.textContent = currentLength;
+
+            // Change color when approaching limit
+            if (currentLength > 180) {
+              charCountSpan.style.color = "#ff3f6c";
+            } else {
+              charCountSpan.style.color = "#696e79";
+            }
+          });
+        }
+      });
+
+      // Prevent body scroll when modal is open
+      window.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          document.getElementById("giftModal").classList.contains("show")
+        ) {
+          closeGiftModal();
+        }
+      });
+
+      // Close modal when clicking outside
+      document
+        .getElementById("giftModal")
+        ?.addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeGiftModal();
+          }
+        });
+
+      // Back arrow (mobile)
+      document
+        .querySelector(".back-arrow")
+        ?.addEventListener("click", function () {
+          if (confirm("Go back to shopping?")) {
+            window.history.back();
+          }
+        });
+
+      // Mobile responsive adjustments
+      function handleResize() {
+        const isMobile = window.innerWidth <= 768;
+        const giftingSections = document.querySelectorAll(".gifting-section");
+        const donationSections = document.querySelectorAll(".donation-section");
+
+        if (isMobile) {
+          // Show mobile versions of gifting and donation sections
+          giftingSections.forEach((section, index) => {
+            if (index === 0) {
+              // First one is in right column (desktop)
+              section.style.display = "none";
+            } else {
+              // Second one is mobile version
+              section.style.display = "block";
+            }
+          });
+
+          donationSections.forEach((section, index) => {
+            if (index === 0) {
+              // First one is in right column (desktop)
+              section.style.display = "none";
+            } else {
+              // Second one is mobile version
+              section.style.display = "block";
+            }
+          });
+        } else {
+          // Show desktop versions
+          giftingSections.forEach((section, index) => {
+            if (index === 0) {
+              // First one is in right column (desktop)
+              section.style.display = "block";
+            } else {
+              // Second one is mobile version
+              section.style.display = "none";
+            }
+          });
+
+          donationSections.forEach((section, index) => {
+            if (index === 0) {
+              // First one is in right column (desktop)
+              section.style.display = "block";
+            } else {
+              // Second one is mobile version
+              section.style.display = "none";
+            }
+          });
+        }
+      }
+
+      // Initial call and resize listener
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    </script>
+  </body>
+</html>

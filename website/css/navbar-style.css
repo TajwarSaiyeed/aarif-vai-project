@@ -29,7 +29,7 @@
 html,
 body {
     font-family: "Assistant", sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.5;
     color: #282c3f;
     background-color: #f5f5f5;
@@ -207,10 +207,11 @@ input::-moz-focus-inner {
     padding: 0;
 }
 
+/* 
 button:-moz-focusring,
 input:-moz-focusring {
     outline: 1px dotted ButtonText;
-}
+} */
 
 fieldset {
     border: 1px solid silver;

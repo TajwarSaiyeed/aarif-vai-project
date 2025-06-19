@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/cartv2.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="site-nav-container container">
+        <div class="myntra-logo">
+          <a class="linkClean" href="/">
+            <svg
+              id="logo"
+              style="position: absolute; width: 0; height: 0; overflow: hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 640 640"
+            >
+              <defs>
+                <filter
+                  x="-3.8%"
+                  y="-2.8%"
+                  width="107.7%"
+                  height="111.1%"
+                  filterUnits="objectBoundingBox"
+                  id="a"
+                >
+                  <feOffset
+                    dy="10"
+                    in="SourceAlpha"
+                    result="shadowOffsetOuter1"
+                  ></feOffset>
+                  <feGaussianBlur
+                    stdDeviation="5"
+                    in="shadowOffsetOuter1"
+                    result="shadowBlurOuter1"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
+                    in="shadowBlurOuter1"
+                  ></feColorMatrix>
+                </filter>
+                <path
+                  d="M499.178 195.54c5.828 16.006 14.447 39.657-.562-1.566-5.336-14.64-3.618-9.916-.393-1.053-14.807-40.373-36.1-84.274-58.53-120.637-24.04-38.975-45.588-61.116-60.983-69.195 0 0-7.932-5.624-19.532-.77l-.396.141c-14.996 5.47-33.715 25.286-55.633 58.902-14.538 22.292-28.937 48.334-41.764 75.39-14.042-29.557-30.051-58.123-45.687-81.29-15.87-23.516-39.493-54.78-61.304-54.78-1.663 0-3.31.174-4.895.513v.003c-9.717 1.784-20.027 8.995-32.359 22.649-10.125 11.209-21.155 26.278-32.78 44.784-23.513 37.429-45.83 83.134-61.23 125.404C6.765 238.986-.888 275.643.382 302.987c.881 18.986 6.664 43.19 28.725 53.275l3.093 1.299 2.867.945a42.678 42.678 0 0012.032 1.733h.002c17.686 0 35.05-10.567 51.603-31.403 16.203-20.394 31.744-50.845 46.196-90.516a622.213 622.213 0 009.405-27.965 627.225 627.225 0 009.395 27.918c26.077 71.57 55.065 112.058 86.161 120.338l.48.121c.602.153 1.336.339 2.16.501l.527.109c2.362.452 4.69.712 7.115.8l.285.01a30.71 30.71 0 003.203-.063c.471-.02.904-.048 1.381-.08l1.023-.105a35.83 35.83 0 001.159-.158c.5-.06 1.22-.15 2.073-.311.71-.13 1.424-.28 2.24-.473l.45-.112c.19-.044.379-.092.57-.143 31.237-8.052 60.344-48.563 86.512-120.41a610.7 610.7 0 008.928-26.38 605.593 605.593 0 008.928 26.35c14.432 39.653 29.962 70.099 46.156 90.494 16.547 20.837 33.906 31.404 51.592 31.406h.007c4.729 0 9.407-.785 13.92-2.335 11.15-2.948 20.065-10.173 25.812-20.94 14.201-26.586 9.078-74.145-15.203-141.352"
+                  id="b"
+                ></path>
+              </defs>
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(60 130)">
+                  <use fill="#000" filter="url(#a)" xlink:href="#b"></use>
+                  <use fill="#FFF" xlink:href="#b"></use>
+                </g>
+                <path
+                  d="M212.833 145.065c-26.297 3.973-84.645 97.719-116.018 183.823-33.34 91.572-25.359 135.799.835 145.413.018.02.037.02.037.02s.008 0 .036.02c26.263 9.458 60.834-19.288 94.201-110.87 9.022-24.79 16.733-51.485 22.741-77.44-3.163-70.55-2.157-140.89-1.832-140.966"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M212.834 145.065c21.775-4.676 74.573 74.706 108.915 156.41.626 19.203-8.524 173.233-7.884 173.426-23.151-6.162-50.176-39.282-76.482-111.484-9.01-24.771-16.753-51.453-22.717-77.386l-.481-2.096c-15.758-69.124-19.215-132.285-2.41-138.574 0 0 .006 0 .026-.01h.02a8.75 8.75 0 011.013-.285h.002z"
+                  fill="#FF912E"
+                ></path>
+                <path
+                  d="M330.794 474.52c-.514.166-1.024.322-1.532.47-.23.066-.451.104-.667.17-.5.116-1.018.23-1.559.326-.535.104-1.018.152-1.502.213-.399.072-.756.108-1.138.158-.418.028-.791.05-1.213.068a23.89 23.89 0 01-1.623.056c-.193 0-.373-.017-.555-.017a32.514 32.514 0 01-4.969-.556c-.075-.019-.172-.036-.261-.057-.608-.115-1.26-.286-1.91-.45-.64-.193-1.329-.393-1.996-.628l-.02-.01h-.028c-26.212-9.615-34.2-53.839-.833-145.42 3.29-9.078 6.92-18.233 10.762-27.368l.941-2.23c31.216-73.547 77.02-144.602 101.307-153.456 1.005 19.974.7 70.72 4.319 142.353-5.917 25.257-13.455 51.19-22.249 75.292-26.428 72.555-53.585 105.63-76.806 111.557.254-.074.509-.15.764-.228z"
+                  fill="#F25511"
+                ></path>
+                <path
+                  d="M427.832 286.062c-15.87-68.598-19.71-131.89-3.834-140.273 1.673-.59 3.198-.905 4.643-.917 1.224.096 2.475.382 3.795.853 27.474 9.686 82.893 99.962 113.207 183.107 33.34 91.574 25.38 135.815-.834 145.409 0 0-.02 0-.047.024h-.017c-26.26 9.478-60.833-19.269-94.166-110.849-8.81-24.103-16.346-50.017-22.262-75.274z"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M432.436 162.748c27.474 9.686 84.786 99.016 115.099 182.16 13.7 37.631 20.142 58.855 19.881 86.95 1.666-23.794-4.528-55.658-21.773-103.026-30.312-83.145-85.733-173.421-113.207-183.107-1.32-.471-2.571-.757-3.795-.854-1.445.013-2.97.327-4.643.918-24.532 8.945-71.019 82.296-102.25 156.633-34.34-81.706-87.138-162.033-108.915-157.356-26.296 3.972-84.646 97.716-116.018 183.822-17.243 47.358-23.433 80.158-21.766 103.95-.262-32.858 6.176-50.252 19.873-87.873 31.374-86.105 91.615-178.904 117.91-182.876 21.778-4.677 65.534 60.732 108.917 142.222 39.93-75.569 77.717-132.554 102.249-141.5 1.582-.56 3.032-.87 4.41-.91"
+                  fill="#821414"
+                ></path>
+              </g>
+            </svg>
+            <svg class="logo-inline"><use xlink:href="#logo"></use></svg>
+          </a>
+        </div>
+        <ol class="checkout-steps">
+          <li class="step step1 active">BAG</li>
+          <li class="divider"></li>
+          <li class="step step2">ADDRESS</li>
+          <li class="divider"></li>
+          <li class="step step3">PAYMENT</li>
+        </ol>
+        <div class="secureContainer">
+          <img
+            src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"
+            class="secureIcon"
+            width="26"
+            height="28"
+          />
+          <div class="secure">100% SECURE</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mountRoot">
+      <div>
+        <div>
+          <div>
+            <div class="desktop-base-cartLayout">
+              <div class="itemBlock-base-leftBlock">
+                <div>
+                  <div class="addressStripV2-base-desktopContainer">
+                    <div class="addressStripV2-base-highlight">
+                      Check delivery time &amp; services
+                    </div>
+                    <div
+                      class="addressStripV2-base-changeBtn addressStripV2-base-changeBtnDesktop"
+                    >
+                      ENTER PIN CODE
+                    </div>
+                  </div>
+                </div>
+                <div class="messageContainer-base-messageContainer">
+                  <div class="offersV2-base-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      class="offersV2-base-discountIcon"
+                    >
+                      <g fill="#000" fill-rule="evenodd">
+                        <path
+                          d="M15.292 10.687v.001c-.198.742.076 1.454.296 2.026l.045.12-.137.021c-.602.094-1.352.211-1.892.75-.538.54-.655 1.288-.748 1.89l-.022.138a22.096 22.096 0 0 1-.12-.045c-.443-.171-.946-.364-1.49-.364-.185 0-.366.023-.536.068-.728.194-1.198.78-1.577 1.249-.032.04-.07.088-.111.137l-.112-.138c-.378-.47-.848-1.054-1.575-1.248a2.092 2.092 0 0 0-.537-.068c-.543 0-1.046.193-1.49.364l-.12.045-.022-.138c-.093-.602-.21-1.35-.749-1.89-.539-.539-1.289-.656-1.891-.75l-.137-.022a15 15 0 0 1 .045-.118c.22-.573.494-1.286.296-2.027-.194-.728-.78-1.199-1.25-1.577L1.323 9l.137-.11c.47-.38 1.055-.85 1.249-1.577.198-.742-.076-1.455-.296-2.028l-.045-.118.137-.022c.602-.094 1.352-.211 1.891-.75.54-.539.656-1.289.75-1.891l.022-.137.119.045c.443.171.947.365 1.49.365.186 0 .367-.024.537-.07.727-.193 1.198-.778 1.576-1.248L9 1.322l.111.137c.379.47.85 1.055 1.576 1.249.17.045.352.069.537.069.544 0 1.047-.194 1.491-.365l.119-.045.022.137c.094.602.21 1.353.75 1.891.538.539 1.288.656 1.89.75l.138.022-.046.119c-.22.572-.494 1.285-.295 2.026.194.728.778 1.199 1.248 1.577.04.033.088.07.137.111l-.137.11c-.47.38-1.054.85-1.249 1.577M18 9c0-.744-1.459-1.286-1.642-1.972-.19-.71.797-1.907.437-2.529-.364-.63-1.898-.372-2.41-.884-.511-.511-.253-2.045-.883-2.41a.647.647 0 0 0-.33-.08c-.585 0-1.403.542-1.998.542a.778.778 0 0 1-.201-.025C10.286 1.46 9.743 0 9 0c-.744 0-1.286 1.459-1.972 1.642a.78.78 0 0 1-.2.025c-.596 0-1.414-.542-2-.542a.647.647 0 0 0-.33.08c-.63.365-.37 1.898-.883 2.41-.512.512-2.046.254-2.41.884-.36.62.627 1.819.437 2.529C1.46 7.714 0 8.256 0 9s1.459 1.286 1.642 1.972c.19.71-.797 1.908-.437 2.53.364.63 1.898.371 2.41.883.511.512.253 2.045.884 2.41.097.056.208.08.33.08.585 0 1.403-.542 1.998-.542a.78.78 0 0 1 .201.025C7.714 16.54 8.256 18 9 18s1.286-1.46 1.973-1.642a.774.774 0 0 1 .2-.025c.595 0 1.413.542 1.998.542a.647.647 0 0 0 .33-.08c.631-.365.373-1.898.884-2.41.512-.512 2.046-.254 2.41-.884.36-.62-.627-1.819-.437-2.529C16.54 10.286 18 9.744 18 9"
+                        ></path>
+                        <path
+                          d="M10.897 6.34l-4.553 4.562a.536.536 0 0 0 .76.758l4.552-4.562a.536.536 0 0 0-.76-.758M6.75 7.875a1.126 1.126 0 0 0 0-2.25 1.126 1.126 0 0 0 0 2.25M11.25 10.125a1.126 1.126 0 0 0 0 2.25 1.126 1.126 0 0 0 0-2.25"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div class="offersV2-base-title">Available Offers</div>
+                    <div id="offersContainer">
+                      <li class="offersV2-base-message">
+                        <span
+                          >10% Instant Discount on BOBCARD Credit Cards &amp;
+                          Credit Card EMI on a min spend of ₹3,500. TCA</span
+                        >
+                      </li>
+                      <li
+                        class="offersV2-base-message hidden-offer"
+                        style="display: none"
+                      >
+                        <span
+                          >5% Instant Discount on HDFC Bank Credit Cards &amp;
+                          Credit Card EMI on a min spend of ₹2,500. TCA</span
+                        >
+                      </li>
+                      <li
+                        class="offersV2-base-message hidden-offer"
+                        style="display: none"
+                      >
+                        <span
+                          >15% Cashback on Paytm Wallet payments above ₹1,000.
+                          TCA</span
+                        >
+                      </li>
+                      <li
+                        class="offersV2-base-message hidden-offer"
+                        style="display: none"
+                      >
+                        <span
+                          >Buy 2 Get 1 Free on selected beauty products.
+                          TCA</span
+                        >
+                      </li>
+                      <li
+                        class="offersV2-base-message hidden-offer"
+                        style="display: none"
+                      >
+                        <span
+                          >Free shipping on orders above ₹799. No coupon code
+                          required.</span
+                        >
+                      </li>
+                      <div
+                        class="offersV2-base-more"
+                        id="showMoreBtn"
+                        onclick="toggleOffers()"
+                      >
+                        <span id="toggleText">Show More</span
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="7"
+                          height="12"
+                          viewBox="0 0 7 12"
+                          class="offersV2-base-arrowIcon"
+                          id="arrowIcon"
+                          style="transform: rotate(90deg)"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.797 5.529a.824.824 0 0 0-.042-.036L1.19.193a.724.724 0 0 0-.986 0 .643.643 0 0 0 0 .94L5.316 6 .203 10.868a.643.643 0 0 0 0 .938.724.724 0 0 0 .986 0l5.566-5.299a.644.644 0 0 0 .041-.978"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="loginNudge-base-mainContainer">
+                  <div
+                    class="imageBanner-base-container loginNudge-base-messageIcon"
+                    style="background: none; height: 50px; width: 90px"
+                  >
+                    <picture
+                      class="image-base-imgResponsive"
+                      style="width: 100%"
+                      ><source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/products-blurred.webp
+                        "
+                        type="image/webp" />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/products-blurred.png"
+                        class="image-base-imgResponsive"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                        style="height: 50px; width: 90px"
+                    /></picture>
+                  </div>
+                  <div class="loginNudge-base-messageContainer">
+                    <div class="loginNudge-base-message">
+                      Login to see items from your existing bag and wishlist.
+                    </div>
+                    <a
+                      href="/login?referer=/checkout/cart"
+                      class="loginNudge-base-loginCTA"
+                      >LOGIN NOW</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="desktop-base-right">
+                <div>
+                  <div>
+                    <div>
+                      <div class="coupons-base-header">Coupons</div>
+                      <div class="coupons-base-content">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 18 18"
+                          class="coupons-base-couponIcon"
+                        >
+                          <g
+                            fill="none"
+                            fill-rule="evenodd"
+                            transform="rotate(45 6.086 5.293)"
+                          >
+                            <path
+                              stroke="#000"
+                              d="M17.5 10V1a1 1 0 0 0-1-1H5.495a1 1 0 0 0-.737.323l-4.136 4.5a1 1 0 0 0 0 1.354l4.136 4.5a1 1 0 0 0 .737.323H16.5a1 1 0 0 0 1-1z"
+                            ></path>
+                            <circle
+                              cx="5.35"
+                              cy="5.35"
+                              r="1.35"
+                              fill="#000"
+                              fill-rule="nonzero"
+                            ></circle>
+                          </g>
+                        </svg>
+                        <div class="coupons-base-label">Apply Coupons</div>
+                        <button
+                          font-size="body3"
+                          font-weight="bold"
+                          role="button"
+                          class="css-15k6cs5"
+                        >
+                          <div class="css-xjhrni">APPLY</div>
+                        </button>
+                        <div class="coupons-base-couponMessage">
+                          <a
+                            href="/login?referer=/checkout/cart"
+                            class="coupons-base-logIn"
+                            >Login</a
+                          ><span> to get upto ₹300 OFF on first order</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="giftWrap-base-container">
+                      <div class="giftWrap-base-header">
+                        GIFTING &amp; PERSONALISATION
+                      </div>
+                      <div class="giftWrap-base-content">
+                        <div
+                          class="imageBanner-base-container giftWrap-base-gift"
+                          style="background: none; height: 99px; width: 39px"
+                        >
+                          <picture
+                            class="image-base-imgResponsive"
+                            style="width: 100%"
+                            ><source
+                              srcset="
+                                https://constant.myntassets.com/checkout/assets/img/gift-big.webp
+                              "
+                              type="image/webp" />
+                            <img
+                              src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
+                              class="image-base-imgResponsive"
+                              alt="image"
+                              fetchpriority="auto"
+                              loading="eager"
+                              style="height: 99px; width: 39px"
+                          /></picture>
+                        </div>
+                        <div class="giftWrap-base-title">
+                          Buying for a loved one?
+                        </div>
+                        <div>
+                          <span
+                            >Gift Packaging and personalised message on card,
+                            Only for ₹35</span
+                          >
+                        </div>
+                        <button
+                          font-size="body3"
+                          font-weight="bold"
+                          role="button"
+                          class="css-8bt89l"
+                        >
+                          <div class="css-xjhrni">ADD GIFT PACKAGE</div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="donationStrip-base-desktopHeader">
+                      Support transformative social work in India
+                    </div>
+                    <div
+                      class="donationStrip-base-bodyContainer donationStrip-base-desktopBodyContainer"
+                    >
+                      <div class="donationStrip-base-titleContainer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          class="donationStrip-base-icon"
+                        >
+                          <path
+                            fill-rule="nonzero"
+                            d="M14.85 2.14v11.71a1 1 0 0 1-1 1H2.14a1 1 0 0 1-1-1V2.14a1 1 0 0 1 1-1h11.71a1 1 0 0 1 1 1zM14.222 0H1.778C.8 0 0 .8 0 1.778v12.444C0 15.2.8 16 1.778 16h12.444C15.2 16 16 15.2 16 14.222V1.778C16 .8 15.2 0 14.222 0z"
+                          ></path>
+                        </svg>
+                        Donate and make a difference
+                      </div>
+                      <div class="donationStrip-base-pillContainer">
+                        <div
+                          class="pillView-base-pillsContainer pillView-base-pillsDesktopContainer"
+                        >
+                          <div
+                            class="pillView-base-pill donationStrip-base-pill pillView-base-normalPill"
+                            data-key="10"
+                          >
+                            <div class="pillView-base-textStyle">₹10</div>
+                          </div>
+                          <div
+                            class="pillView-base-pill donationStrip-base-pill pillView-base-normalPill"
+                            data-key="20"
+                          >
+                            <div class="pillView-base-textStyle">₹20</div>
+                          </div>
+                          <div
+                            class="pillView-base-pill donationStrip-base-pill pillView-base-normalPill"
+                            data-key="50"
+                          >
+                            <div class="pillView-base-textStyle">₹50</div>
+                          </div>
+                          <div
+                            class="pillView-base-pill donationStrip-base-pill pillView-base-normalPill"
+                            data-key="100"
+                          >
+                            <div class="pillView-base-textStyle">₹100</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="donationStrip-base-desktopKnowMore">
+                        Know More
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="priceBlock-base-container">
+                  <div class="priceBlock-base-priceHeader">
+                    PRICE DETAILS (2 Items)
+                  </div>
+                  <div class="priceBreakUp-base-orderSummary" id="priceBlock">
+                    <div class="priceDetail-base-row">
+                      <span class=" ">Total MRP</span
+                      ><span class="priceDetail-base-value"
+                        ><span></span
+                        ><span> <span class="">₹</span>1,448</span></span
+                      >
+                    </div>
+                    <div class="priceDetail-base-row">
+                      <span class=" ">Discount on MRP</span
+                      ><span
+                        class="priceDetail-base-value priceDetail-base-discount"
+                        ><span>-</span
+                        ><span> <span class="">₹</span>500</span></span
+                      >
+                    </div>
+                    <div class="priceDetail-base-row">
+                      <span>Coupon Discount</span
+                      ><span
+                        class="priceDetail-base-value priceDetail-base-action"
+                        >Apply Coupon</span
+                      >
+                    </div>
+                    <div class="priceDetail-base-row">
+                      <span class=" "
+                        >Platform Fee<span class="priceDetail-base-knowMore"
+                          >Know More</span
+                        ></span
+                      ><span class="priceDetail-base-value"
+                        >₹<span class="">20</span></span
+                      >
+                    </div>
+                    <div class="priceDetail-base-total">
+                      <span class=" ">Total Amount</span
+                      ><span class="priceDetail-base-value"
+                        ><span></span
+                        ><span>
+                          <span class="priceDetail-base-redesignRupeeTotalIcon"
+                            >₹</span
+                          >968</span
+                        ></span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button
+                    width="100%"
+                    letterspacing="1px"
+                    font-weight="bold"
+                    role="button"
+                    class="css-ibwr57"
+                  >
+                    <div class="css-xjhrni">PLACE ORDER</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkout-footer">
+      <div class="content">
+        <div class="images">
+          <img
+            class="footer-bank-ssl"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
+            width="70"
+            height="37"
+          />
+          <img
+            class="footer-bank-visa"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-mc"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-ae"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-dc"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-nb"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-cod"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-rupay"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-paypal"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="footer-bank-bhim"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
+            width="60"
+            height="37"
+          />
+        </div>
+        <a href="/contactus" class="contact-us">
+          <span>Need Help ? Contact Us</span>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function toggleOffers() {
+        const hiddenOffers = document.querySelectorAll(".hidden-offer");
+        const toggleText = document.getElementById("toggleText");
+        const arrowIcon = document.getElementById("arrowIcon");
+
+        const isHidden = hiddenOffers[0].style.display === "none";
+
+        hiddenOffers.forEach((offer) => {
+          offer.style.display = isHidden ? "list-item" : "none";
+        });
+
+        toggleText.textContent = isHidden ? "Show Less" : "Show More";
+        arrowIcon.style.transform = isHidden
+          ? "rotate(-90deg)"
+          : "rotate(90deg)";
+      }
+
+      // Modal functions
+      function showRemoveModal() {
+        document.getElementById("removeModal").classList.remove("modal-hidden");
+        document.getElementById("removeModal").classList.add("modal-visible");
+      }
+
+      function showWishlistModal() {
+        document
+          .getElementById("wishlistModal")
+          .classList.remove("modal-hidden");
+        document.getElementById("wishlistModal").classList.add("modal-visible");
+      }
+
+      function hideModal(modalId) {
+        document.getElementById(modalId).classList.remove("modal-visible");
+        document.getElementById(modalId).classList.add("modal-hidden");
+      }
+
+      function confirmRemove() {
+        alert("Item removed from bag!");
+        hideModal("removeModal");
+      }
+
+      function moveToWishlistFromRemove() {
+        alert("Item moved to wishlist!");
+        hideModal("removeModal");
+      }
+
+      function confirmMoveToWishlist() {
+        alert("Item moved to wishlist!");
+        hideModal("wishlistModal");
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const removeModal = document.getElementById("removeModal");
+        const wishlistModal = document.getElementById("wishlistModal");
+
+        if (event.target === removeModal) {
+          hideModal("removeModal");
+        }
+        if (event.target === wishlistModal) {
+          hideModal("wishlistModal");
+        }
+      };
+    </script>
+  </body>
+</html>

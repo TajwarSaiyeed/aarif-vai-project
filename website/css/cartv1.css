@@ -1,0 +1,273 @@
+@font-face {
+    font-family: "Assistant";
+    src: url("https://constant.myntassets.com/www/fonts/Assistant-Regular.eot");
+    src: url("https://constant.myntassets.com/www/fonts/Assistant-Regular.eot?#iefix") format("embedded-opentype"),
+        url("https://constant.myntassets.com/www/fonts/Assistant-Regular.woff") format("woff"),
+        url("https://constant.myntassets.com/www/fonts/Assistant-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Assistant";
+    src: url("https://constant.myntassets.com/www/fonts/Assistant-Bold.eot");
+    src: url("https://constant.myntassets.com/www/fonts/Assistant-Bold.eot?#iefix") format("embedded-opentype"),
+        url("https://constant.myntassets.com/www/fonts/Assistant-Bold.woff") format("woff"),
+        url("https://constant.myntassets.com/www/fonts/Assistant-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Assistant", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #282c3f;
+}
+
+
+a {
+    color: #282c3f;
+    text-decoration: none;
+    outline: 0;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+
+.header {
+    border-bottom: 1px solid #f5f5f6;
+}
+
+
+.header .container {
+    line-height: 78px;
+}
+
+.site-nav-container {
+    background-color: #fff;
+    width: 100%;
+    min-height: 78px;
+    max-width: 92%;
+    margin: auto;
+}
+
+.header .myntra-logo {
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.logo-inline {
+    width: 54px;
+    height: 78px;
+    display: inline-block;
+    background-position: center;
+    background-size: contain;
+}
+
+.header .checkout-steps {
+    margin: 0 0 0 34%;
+    width: 40%;
+    color: #696b79;
+    padding: 0;
+    display: inline-block;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.header .checkout-steps .active {
+    color: #20bd99;
+    border-bottom: 2px solid #20bd99;
+}
+
+.header .checkout-steps .step {
+    display: inline-block;
+    letter-spacing: 3px;
+}
+
+.header .checkout-steps .divider {
+    display: inline-block;
+    border-top: 1px dashed #696b79;
+    height: 4px;
+    width: 10%;
+}
+
+
+.header .checkout-steps .step1 {
+    margin: 0 5px 0 0;
+}
+
+.header .checkout-steps .step2 {
+    margin: 0 5px 0 6px;
+}
+
+
+.header .checkout-steps .step3 {
+    margin: 0 0 0 7px;
+}
+
+
+.header .secureContainer {
+    float: right;
+    max-height: 78px;
+}
+
+.header .secureContainer .secureIcon {
+    margin: -7px 5px 0 0;
+}
+
+.header .secureContainer .secure {
+    float: right;
+    letter-spacing: 3px;
+    color: #535766;
+    margin: 0 20px 0 0;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .header .checkout-steps {
+        display: none;
+    }
+}
+
+.checkout-footer {
+    border-top: 1px solid #f5f5f6;
+    margin: 0 0 10px 0;
+}
+
+
+.checkout-footer .content {
+    max-width: 980px;
+    padding-top: 10px;
+    margin: auto;
+}
+
+.checkout-footer .images {
+    display: inline-block;
+}
+
+.checkout-footer .content .contact-us {
+    color: #282c3f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkout-footer .content .contact-us span {
+    float: right;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+
+#mountRoot {
+    clear: both;
+    min-height: 420px;
+}
+
+.desktop-base-emptyCart {
+    max-width: 650px;
+    margin: 24px auto;
+}
+
+
+.emptyCart-base-mainContainer {
+    min-height: 600px;
+    position: relative;
+    background-color: #fff;
+}
+
+
+.emptyCart-base-subContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: 400px;
+    text-align: center;
+}
+
+.emptyCart-base-emptyBagImage {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.imageBanner-base-container {
+    display: inline-block;
+}
+
+.emptyCart-base-emptyText {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.emptyCart-base-emptyDesc {
+    font-size: 14px;
+    color: #7e818c;
+}
+
+.emptyCart-base-addFromWishlist {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+
+
+.image-base-imgResponsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.emptyCart-base-addFromWishlist .emptyCart-base-wishlistButton {
+    background: #fff;
+    color: #ff3f6c;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #ff3f6c;
+    display: inline-block;
+}
+
+.button-base-textTransform {
+    text-transform: uppercase;
+}
+
+.button-base-button {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+    background: #ff3f6c;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    letter-spacing: 1px;
+}
