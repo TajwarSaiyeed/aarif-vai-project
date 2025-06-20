@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Add Lucide icons for Heart and Star -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="w-full relative overflow-hidden slider-container">
+      <!-- Image Container -->
+      <div
+        class="flex transition-transform duration-500 ease-in-out h-full"
+        id="slider"
+      >
+        <!-- Slides will be dynamically generated here -->
+      </div>
+
+      <!-- Dot Navigation -->
+      <div
+        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+        id="dots-container"
+      ></div>
+    </div>
+
+    <section class="w-full bg-gradient-to-b from-white to-blue-100 py-10">
+      <div class="section px-10 xl:px-0">
+        <h2
+          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 uppercase text-center text-gray-800 sm:text-left"
+        >
+          Select by Category
+        </h2>
+      </div>
+
+      <div class="relative mt-10">
+        <div class="overflow-x-auto scrollbar-hide">
+          <!-- Mobile: Full width with partial cards visible, Desktop: Normal padding -->
+          <div class="flex gap-2 space-x-4 pl-4 md:px-10" id="category-slider">
+            <!-- Category cards will be generated here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- new arrivals -->
+    <section class="py-10 bg-white">
+      <div class="section px-10 xl:px-0">
+        <h2
+          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
+        >
+          New Arrivals
+        </h2>
+
+        <!-- Product Grid - Desktop -->
+        <div
+          class="hidden md:grid grid-cols-4 lg:grid-cols-5 place-items-start gap-4"
+          id="products-grid-desktop"
+        >
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+      </div>
+
+      <!-- Product Slider - Mobile (Full Width) -->
+      <div class="md:hidden relative mt-10">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 pl-4 pr-4" id="products-slider-mobile">
+            <!-- Product cards will be generated here for mobile -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-10 bg-[#ff3f6c]">
+      <div class="section px-10 xl:px-0">
+        <h2
+          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left text-white"
+        >
+          Show By Notes
+        </h2>
+
+        <!-- Shop By Notes Grid - Desktop -->
+        <div
+          class="hidden md:grid grid-cols-4 lg:grid-cols-6 place-items-start gap-4"
+          id="shop-by-notes-grid-desktop"
+        >
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+      </div>
+
+      <!-- Shop By Notes Slider - Mobile (Full Width) -->
+      <div class="md:hidden relative mt-10">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 pl-4 pr-4" id="shop-by-notes-slider-mobile">
+            <!-- Product cards will be generated here for mobile -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-10 bg-white">
+      <div class="section px-10 xl:px-0">
+        <h2
+          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
+        >
+          Show By Notes
+        </h2>
+
+        <!-- Product Grid - Desktop -->
+        <div
+          class="hidden md:grid grid-cols-4 lg:grid-cols-5 place-items-start gap-4"
+          id="shop-by-notes-grid-desktop2"
+        >
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+      </div>
+
+      <!-- Product Slider - Mobile (Full Width) -->
+      <div class="md:hidden relative mt-10">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 pl-4 pr-4" id="shop-by-notes-slider-mobile2">
+            <!-- Product cards will be generated here for mobile -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
