@@ -138,18 +138,6 @@ function createProductCardHTML(item) {
                     />
                 </div>
 
-                <!-- Rating Badge -->
-                <div class="absolute -mt-7 ml-3 h-4.5 px-1.5 py-0.5 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-xs font-bold">
-                    <span class="text-xs font-bold">${item.rating}</span>
-                    <div class="w-2 h-2 mx-1 bg-green-500 rounded-sm flex items-center justify-center">
-                        <svg class="w-1.5 h-1.5 fill-white text-white" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                    <span class="text-gray-400 mx-1">|</span>
-                    <span class="text-xs font-bold ml-1">${item.ratingCount}</span>
-                </div>
-
                 <!-- Content -->
                 <div class="relative px-2">
                     <div class="py-2">
@@ -209,6 +197,274 @@ if (productsSliderMobile) {
   });
 }
 
+// Desktop product rendering
+const productsGridDesktop = document.querySelector("#products-grid-desktop");
+const productCountDesktop = document.querySelector("#product-count-desktop");
+const sortDesktop = document.querySelector("#sort-desktop");
+
+// Filter data structure
+const filterData = {
+  Bundles: ["Combo Pack", "Value Pack", "Gift Set", "Starter Kit"],
+  "Country of Origin": [
+    "All Countries",
+    "Bangladesh",
+    "Cambodia",
+    "China",
+    "Egypt",
+    "Guatemala",
+    "India",
+    "Indonesia",
+    "Italy",
+    "Malaysia",
+    "Sri Lanka",
+    "Turkey",
+    "Vietnam",
+  ],
+  Size: [
+    "3XS",
+    "XXS",
+    "XS",
+    "XS/S",
+    "S",
+    "S/M",
+    "M",
+    "M/L",
+    "L",
+    "L/XL",
+    "XL",
+    "XL/XXL",
+    "XXL",
+    "3XL",
+    "3XL/4XL",
+    "4XL",
+    "5XL",
+    "6XL",
+    "7XL",
+    "8XL",
+    "9XL",
+    "10XL",
+    "11XL",
+    "1-2Y",
+    "2-3Y",
+    "3-4Y",
+    "4-5Y",
+    "5-6Y",
+    "6-7Y",
+    "7-8Y",
+    "8-9Y",
+    "9-10Y",
+    "10-11Y",
+    "11-12Y",
+    "12-13Y",
+    "13-14Y",
+    "14-15Y",
+    "36",
+    "38",
+    "39",
+    "40",
+    "42",
+    "44",
+    "46",
+    "50",
+    "Onesize",
+    "Customise",
+  ],
+  "More Filters": [
+    "Collar",
+    "Fabrics",
+    "Fashion Trends",
+    "Features",
+    "Fit",
+    "Patterns",
+    "Occasions",
+    "Sleeve Length",
+  ],
+};
+
+let activeFilter = null;
+
+// Initialize filter categories
+function initializeFilters() {
+  const filterCategoriesContainer =
+    document.getElementById("filter-categories");
+
+  if (!filterCategoriesContainer) return;
+
+  filterCategoriesContainer.classList.add("pb-1");
+
+  // Create filter category buttons
+  Object.keys(filterData).forEach((filterName, index) => {
+    const filterButton = document.createElement("span");
+    filterButton.className = `text-sm text-gray-600 mr-4 px-3 py-2 rounded-full cursor-pointer flex items-center gap-1 transition-all duration-200 border-none hover:bg-gray-100`;
+    filterButton.setAttribute("data-filter", filterName);
+
+    filterButton.innerHTML = `
+      ${filterName}
+      <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6,9 12,15 18,9"></polyline>
+      </svg>
+    `;
+
+    // add active filter button bg to gray
+    if (activeFilter === filterName) {
+      filterButton.classList.remove("text-gray-600");
+      filterButton.classList.add("bg-gray-100", "text-gray-800");
+    }
+
+    // Add click event listener
+    filterButton.addEventListener("click", function () {
+      toggleFilter(filterName, this);
+    });
+
+    filterCategoriesContainer.appendChild(filterButton);
+  });
+}
+
+// Toggle filter functionality
+function toggleFilter(filterName, buttonElement) {
+  const subCategoriesContainer = document.getElementById(
+    "sub-categories-container"
+  );
+  const subCategoriesList = document.getElementById("sub-categories-list");
+  const allFilterButtons = document.querySelectorAll("[data-filter]");
+  const arrowIcon = buttonElement.querySelector(".arrow-icon polyline");
+
+  // If clicking the same filter, close it
+  if (activeFilter === filterName) {
+    // Close the filter
+    activeFilter = null;
+    subCategoriesContainer.classList.add("hidden");
+    arrowIcon.setAttribute("points", "6,9 12,15 18,9"); // Down arrow
+    // Remove active styling
+    buttonElement.classList.remove("bg-gray-100", "text-gray-800");
+    buttonElement.classList.add("text-gray-600");
+    return;
+  }
+
+  // Remove active class from all buttons
+  allFilterButtons.forEach((btn) => {
+    const arrow = btn.querySelector(".arrow-icon polyline");
+    arrow.setAttribute("points", "6,9 12,15 18,9"); // Down arrow
+    // Remove active styling from all buttons
+    btn.classList.remove("bg-gray-100", "text-gray-800");
+    btn.classList.add("text-gray-600");
+  });
+
+  // Set new active filter
+  activeFilter = filterName;
+  arrowIcon.setAttribute("points", "18,15 12,9 6,15"); // Up arrow
+
+  // Add active styling to current button
+  buttonElement.classList.remove("text-gray-600");
+  buttonElement.classList.add("bg-gray-100", "text-gray-800");
+
+  // Show sub-categories container
+  subCategoriesContainer.classList.remove("hidden");
+
+  // Clear previous sub-categories
+  subCategoriesList.innerHTML = "";
+
+  // Add new sub-categories
+  const subCategories = filterData[filterName];
+  subCategories.forEach((subCategory) => {
+    const subCategoryElement = document.createElement("label");
+    subCategoryElement.className =
+      "flex items-center cursor-pointer px-3 py-1  bg-white";
+
+    subCategoryElement.innerHTML = `
+      <input type="checkbox" value="${subCategory}" class="mr-2" />
+      <span class="text-sm text-gray-700">${subCategory}</span>
+    `;
+
+    // Add change event listener for checkboxes
+    const checkbox = subCategoryElement.querySelector("input");
+    checkbox.addEventListener("change", function () {
+      handleSubCategoryChange(filterName, subCategory, this.checked);
+    });
+
+    subCategoriesList.appendChild(subCategoryElement);
+  });
+}
+
+// Handle sub-category selection
+function handleSubCategoryChange(filterName, subCategory, isChecked) {
+  console.log(
+    `Filter: ${filterName}, Sub-category: ${subCategory}, Checked: ${isChecked}`
+  );
+
+  // Here you can add logic to filter products based on the selected sub-categories
+  // For example, you could maintain an array of active filters and update the product display
+
+  // Example: Apply filters to products
+  applyFilters();
+}
+
+// Apply filters to products (placeholder function)
+function applyFilters() {
+  const checkedFilters = {};
+
+  // Collect all checked filters
+  const checkboxes = document.querySelectorAll(
+    "#sub-categories-list input[type='checkbox']:checked"
+  );
+  checkboxes.forEach((checkbox) => {
+    const filterCategory = activeFilter; // You might want to track this differently for multiple categories
+    const value = checkbox.value;
+
+    if (!checkedFilters[filterCategory]) {
+      checkedFilters[filterCategory] = [];
+    }
+    checkedFilters[filterCategory].push(value);
+  });
+
+  console.log("Active filters:", checkedFilters);
+
+  // Here you would implement the actual filtering logic
+  // For now, we'll just log the filters
+}
+
+// Initialize the sort by dropdown functionality
+const sortByList = document.getElementById("sort-by-list");
+const sortByValue = document.getElementById("sort-by-value");
+
+if (sortByList) {
+  sortByList.addEventListener("click", (e) => {
+    if (e.target.tagName === "INPUT") {
+      sortByValue.textContent = e.target.parentElement.textContent.trim();
+      const sortType = e.target.value;
+      console.log("Selected sort (desktop):", sortType);
+      sortProducts(sortType, true);
+    }
+  });
+}
+
+function renderProductsDesktop(productsToRender) {
+  if (productsGridDesktop) {
+    productsGridDesktop.innerHTML = "";
+    productsToRender.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.innerHTML = createProductCardHTML(product);
+      productsGridDesktop.appendChild(productCard);
+    });
+  }
+  if (productCountDesktop) {
+    productCountDesktop.textContent = `- ${productsToRender.length} items`;
+  }
+}
+
+if (productsGridDesktop) {
+  renderProductsDesktop(products);
+  initializeFilters();
+}
+
+if (sortDesktop) {
+  sortDesktop.addEventListener("change", function () {
+    const sortType = this.value;
+    console.log("Selected sort (desktop):", sortType);
+    sortProducts(sortType, true);
+  });
+}
+
 // Modal functionality
 document.addEventListener("DOMContentLoaded", function () {
   const sortBtn = document.getElementById("sort-btn");
@@ -236,7 +492,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Selected sort:", sortType);
 
         // Apply sorting logic here
-        sortProducts(sortType);
+        sortProducts(sortType, false);
 
         // Close modal after selection
         setTimeout(() => {
@@ -410,7 +666,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.overflow = "";
   }
 
-  function sortProducts(sortType) {
+  function sortProducts(sortType, isDesktop = false) {
     let sortedProducts = [...products];
 
     switch (sortType) {
@@ -463,7 +719,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Re-render products with sorted order
-    renderProducts(sortedProducts);
+    if (isDesktop) {
+      renderProductsDesktop(sortedProducts);
+    } else {
+      renderProducts(sortedProducts);
+    }
   }
 
   function renderProducts(productsToRender) {

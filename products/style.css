@@ -22,7 +22,7 @@
 
 body {
     font-family: "Assistant", sans-serif;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa;    */
     margin: 0;
     padding: 0;
 }
@@ -205,4 +205,28 @@ input[type="checkbox"] {
     width: 16px;
     height: 16px;
     border-radius: 3px;
+}
+
+.myntraweb-sprite {
+    background: url(https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png);
+    background-size: 1404px 105px;
+    display: inline-block;
+}
+
+.sprites-downArrow {
+    background-position: -367px -1px;
+    width: 15px;
+    height: 10px;
+}
+
+.sprites-arrowDownBold {
+    background-position: -89px -85px;
+    width: 10px;
+    height: 6px;
+}
+
+.sprites-arrowUpBold {
+    background-position: -99px -85px;
+    width: 10px;
+    height: 6px;
 }
