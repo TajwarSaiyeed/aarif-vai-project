@@ -120,126 +120,6 @@ const products = [
     ratingCount: "800",
     href: "#",
   },
-  {
-    id: 1,
-    title: "Bella Vita Organic",
-    description: "Vitamin C Glow Face Wash",
-    image: "https://picsum.photos/300/400?random=10",
-    currentPrice: "₹299",
-    originalPrice: "₹399",
-    discountPercent: "25",
-    rating: "4.2",
-    ratingCount: "1.2k",
-    href: "#",
-  },
-  {
-    id: 2,
-    title: "Plum Green Tea",
-    description: "Pore Cleansing Gel Face Wash",
-    image: "https://picsum.photos/300/400?random=11",
-    currentPrice: "₹349",
-    originalPrice: "₹449",
-    discountPercent: "22",
-    rating: "4.5",
-    ratingCount: "890",
-    href: "#",
-  },
-  {
-    id: 3,
-    title: "Minimalist",
-    description: "2% Salicylic Acid Face Wash",
-    image: "https://picsum.photos/300/400?random=12",
-    currentPrice: "₹199",
-    originalPrice: "₹299",
-    discountPercent: "33",
-    rating: "4.3",
-    ratingCount: "654",
-    href: "#",
-  },
-  {
-    id: 4,
-    title: "Himalaya",
-    description: "Anti-Pimple Neem Face Wash",
-    image: "https://picsum.photos/300/400?random=13",
-    currentPrice: "₹175",
-    originalPrice: "₹225",
-    discountPercent: "22",
-    rating: "4.1",
-    ratingCount: "2.1k",
-    href: "#",
-  },
-  {
-    id: 5,
-    title: "L'Oreal Paris",
-    description: "Hyaluron Moisture Sealing",
-    image: "https://picsum.photos/300/400?random=14",
-    currentPrice: "₹549",
-    originalPrice: "₹699",
-    discountPercent: "21",
-    rating: "4.4",
-    ratingCount: "532",
-    href: "#",
-  },
-  {
-    id: 6,
-    title: "Olay Total Effects",
-    description: "Night Cream Anti-Aging",
-    image: "https://picsum.photos/300/400?random=15",
-    currentPrice: "₹899",
-    originalPrice: "₹1199",
-    discountPercent: "25",
-    rating: "4.6",
-    ratingCount: "1.5k",
-    href: "#",
-  },
-  {
-    id: 7,
-    title: "Deconstruct",
-    description: "Oil-Free Moisturizer",
-    image: "https://picsum.photos/300/400?random=16",
-    currentPrice: "₹425",
-    originalPrice: "₹549",
-    discountPercent: "23",
-    rating: "4.2",
-    ratingCount: "743",
-    href: "#",
-  },
-  {
-    id: 8,
-    title: "Pilgrim",
-    description: "Hair Growth Serum",
-    image: "https://picsum.photos/300/400?random=17",
-    currentPrice: "₹649",
-    originalPrice: "₹899",
-    discountPercent: "28",
-    rating: "4.3",
-    ratingCount: "967",
-    href: "#",
-  },
-  {
-    id: 9,
-    title: "The Man Company",
-    description: "Charcoal Face Wash",
-    image: "https://picsum.photos/300/400?random=18",
-    currentPrice: "₹399",
-    originalPrice: "₹499",
-    discountPercent: "20",
-    rating: "4.5",
-    ratingCount: "1.1k",
-    href: "#",
-  },
-  {
-    id: 10,
-    title: "Beardo",
-    description: "Activated Charcoal Face Wash",
-    image: "https://picsum.photos/300/400?random=19",
-    currentPrice: "₹299",
-    originalPrice: "₹399",
-    discountPercent: "25",
-    rating: "4.2",
-    ratingCount: "800",
-    href: "#",
-  },
 ];
 
 // Function to create product card HTML for desktop
@@ -550,10 +430,12 @@ const sortByValue = document.getElementById("sort-by-value");
 if (sortByList) {
   sortByList.addEventListener("click", (e) => {
     if (e.target.tagName === "INPUT") {
-      sortByValue.textContent = e.target.parentElement.textContent.trim();
-      const sortType = e.target.value;
-      console.log("Selected sort (desktop):", sortType);
-      sortProducts(sortType, true);
+      const selectedValue = e.target.value;
+      sortByValue.textContent = e.target.nextElementSibling
+        ? e.target.nextElementSibling.textContent
+        : e.target.parentElement.textContent.trim();
+      console.log("Selected sort:", selectedValue);
+      sortProducts(selectedValue, true);
     }
   });
 }
@@ -775,15 +657,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function openFilterModal() {
-    filterModal.classList.remove("translate-y-full");
+    filterModal.classList.remove("translate-y-neg-full");
     filterModal.classList.add("translate-y-0");
     document.body.style.overflow = "hidden";
   }
 
   function closeFilterModal() {
-    filterModal.classList.add("translate-y-full");
+    filterModal.classList.add("translate-y-neg-full");
     filterModal.classList.remove("translate-y-0");
     document.body.style.overflow = "";
+
+    // Reset filter modal to default state
+    resetFilterModal();
   }
 
   function sortProducts(sortType, isDesktop = false) {
@@ -803,6 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         break;
       case "latest":
+      case "new":
         // Sort by id (assuming higher id means newer)
         sortedProducts.sort((a, b) => b.id - a.id);
         break;
@@ -813,6 +699,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         break;
       case "price-high-low":
+      case "price_desc":
         // Sort by current price (higher first)
         sortedProducts.sort((a, b) => {
           const aPrice = parseInt(a.currentPrice.replace("₹", ""));
@@ -821,6 +708,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         break;
       case "price-low-high":
+      case "price_asc":
         // Sort by current price (lower first)
         sortedProducts.sort((a, b) => {
           const aPrice = parseInt(a.currentPrice.replace("₹", ""));
@@ -829,12 +717,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         break;
       case "rating":
+      case "customer_rating":
         // Sort by rating (higher first)
         sortedProducts.sort(
           (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
         );
         break;
+      case "recommended":
       default:
+        // Default sort (no change)
         break;
     }
 
@@ -855,21 +746,6 @@ document.addEventListener("DOMContentLoaded", function () {
         productsSliderMobile.appendChild(productCard);
       });
     }
-  }
-
-  function openFilterModal() {
-    filterModal.classList.remove("translate-y-neg-full");
-    filterModal.classList.add("translate-y-0");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeFilterModal() {
-    filterModal.classList.add("translate-y-neg-full");
-    filterModal.classList.remove("translate-y-0");
-    document.body.style.overflow = "";
-
-    // Reset filter modal to default state
-    resetFilterModal();
   }
 
   function resetFilterModal() {
