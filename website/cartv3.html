@@ -7,15 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="stylesheet" href="../global.css" />
-    <style>
-      .logo-inline {
-        width: 54px;
-        height: 45px;
-        display: inline-block;
-        background-position: center;
-        background-size: contain;
-      }
-    </style>
+    <link rel="stylesheet" href="cartv3.css" />
   </head>
   <body class="text-gray-800 font-sans">
     <!-- Desktop Header -->
@@ -134,7 +126,9 @@
       <!-- Left Column -->
       <div class="md:w-2/3 flex flex-col gap-4">
         <!-- Available Offers -->
-        <div class="bg-white md:rounded-sm p-5 border-gray-100 border">
+        <div
+          class="bg-white rounded-sm p-5 border-gray-100 border mx-10 md:mx-0 mt-1 md:mt-0"
+        >
           <div class="flex items-center gap-3 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +173,7 @@
           <button
             id="showMoreBtn"
             onclick="toggleOffers()"
-            class="text-pink-500 font-semibold bg-transparent border-none cursor-pointer flex items-center"
+            class="text-rose-500 font-semibold bg-transparent border-none cursor-pointer flex items-center"
           >
             <span id="toggleText">Show More</span>
             <svg
@@ -201,223 +195,64 @@
         </div>
 
         <!-- Product Items -->
-        <div id="productContainer" class="bg-white md:rounded-lg p-5 shadow">
+        <div id="productContainer" class="gap-1 flex flex-col px-10 md:px-0">
           <!-- Products will be dynamically inserted here -->
         </div>
+        <div
+          class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[1000]"
+          id="productSizeModal"
+        >
+          <div
+            class="bg-white w-full max-w-sm rounded-lg p-4 relative transform translate-y-full transition-transform duration-300 ease-out"
+            id="productSizeModalContent"
+          >
+            <!-- Close Button -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              data-testid="modal-close"
+              class="absolute top-3 right-3 fill-current text-gray-800 cursor-pointer"
+              data-modal-close="productSizeModal"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M9.031 8l6.756-6.756a.731.731 0 0 0 0-1.031.732.732 0 0 0-1.031 0L8 6.969 1.244.213a.732.732 0 0 0-1.031 0 .731.731 0 0 0 0 1.03L6.969 8 .213 14.756a.731.731 0 0 0 0 1.031.732.732 0 0 0 1.031 0L8 9.031l6.756 6.756a.732.732 0 0 0 1.031 0 .731.731 0 0 0 0-1.03L9.031 8z"
+              ></path>
+            </svg>
 
-        <script>
-          // Sample product data - replace with your actual data source
-          const products = [
-            {
-              id: 1,
-              brand: "Levis",
-              name: "Men Soft Pure Cotton Round Neck Half Sleeve Tshirt",
-              price: 389,
-              originalPrice: 649,
-              discount: 40,
-              size: "S",
-              quantity: 1,
-              returnDays: 10,
-              imageUrl: "", // Add actual image URL if available
-            },
-            {
-              id: 2,
-              brand: "U.S. Polo Assn.",
-              name: "Men Red & Navy Blue Striped Comfort-Fit Lounge T-Shirt",
-              price: 559,
-              originalPrice: 799,
-              discount: 30,
-              size: "XL",
-              quantity: 1,
-              returnDays: 10,
-              imageUrl: "", // Add actual image URL if available
-            },
+            <!-- Product Row (dynamic content goes here) -->
+            <div
+              id="productSizeModalProductInfo"
+              class="flex items-center gap-3 border-b border-gray-200 pb-3 mb-4"
+            >
+              <!-- This will be dynamically populated by JavaScript -->
+            </div>
 
-            {
-              id: 2,
-              brand: "U.S. Polo Assn.",
-              name: "Men Red & Navy Blue Striped Comfort-Fit Lounge T-Shirt",
-              price: 559,
-              originalPrice: 799,
-              discount: 30,
-              size: "XL",
-              quantity: 1,
-              returnDays: 10,
-              imageUrl: "", // Add actual image URL if available
-            },
-            {
-              id: 2,
-              brand: "U.S. Polo Assn.",
-              name: "Men Red & Navy Blue Striped Comfort-Fit Lounge T-Shirt",
-              price: 559,
-              originalPrice: 799,
-              discount: 30,
-              size: "XL",
-              quantity: 1,
-              returnDays: 10,
-              imageUrl: "", // Add actual image URL if available
-            },
-          ];
+            <!-- Size Selection -->
+            <div>
+              <div class="text-sm font-semibold mb-2">Select Size</div>
+              <div
+                id="sizeOptionsContainer"
+                class="grid grid-cols-4 md:grid-cols-5 gap-3 mb-4"
+              >
+                <!-- Size items will be populated here dynamically -->
+              </div>
+            </div>
 
-          // Function to generate product HTML
-          function createProductHTML(product, isLast = false) {
-            const borderClass = isLast ? "" : "border-b border-gray-200";
-
-            return `
-              <div class="flex gap-4 py-5 ${borderClass} product-card" data-product-id="${
-              product.id
-            }">
-          <div class="w-20 h-28 md:w-32 md:h-[150px] bg-gray-100 rounded-lg relative flex-shrink-0">
-            ${
-              product.imageUrl
-                ? `<img src="${product.imageUrl}" alt="${product.name}" class="w-full h-full object-cover rounded-lg">`
-                : ""
-            }
-            <button class="absolute -top-2 -right-2 w-5 h-5 md:w-6 md:h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center cursor-pointer text-xs md:text-sm remove-btn" onclick="removeProduct(${
-              product.id
-            })">
-              ×
+            <button
+              onclick="confirmSizeSelection()"
+              class="w-full py-3 mt-4 bg-rose-500 text-white font-bold rounded hover:bg-rose-600 transition-colors"
+            >
+              <div>DONE</div>
             </button>
           </div>
-          <div class="flex-1">
-            <div class="font-semibold text-sm md:text-base mb-2">${
-              product.brand
-            }</div>
-            <div class="text-gray-600 mb-2 leading-snug text-sm md:text-base">
-              ${product.name}
-            </div>
-
-            <div class="flex gap-6 mb-4">
-              <div class="flex items-center gap-2">
-                <span>Size:</span>
-                <select class="border border-gray-300 p-1 rounded bg-white" onchange="updateProductSize(${
-                  product.id
-                }, this.value)">
-            <option value="${product.size}" selected>${product.size}</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
-                </select>
-              </div>
-              <div class="flex items-center gap-2">
-                <span>Qty:</span>
-                <select class="border border-gray-300 p-1 rounded bg-white" onchange="updateProductQuantity(${
-                  product.id
-                }, this.value)">
-            ${Array.from({ length: 10 }, (_, i) => i + 1)
-              .map(
-                (num) =>
-                  `<option value="${num}" ${
-                    num === product.quantity ? "selected" : ""
-                  }>${num}</option>`
-              )
-              .join("")}
-                </select>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-semibold text-base md:text-lg">₹${
-                product.price
-              }</span>
-              <span class="line-through text-gray-500">₹${
-                product.originalPrice
-              }</span>
-              <span class="text-yellow-500 font-semibold">${
-                product.discount
-              }% OFF</span>
-            </div>
-
-            <div class="text-xs text-gray-600 flex items-center gap-2">
-              <div class="w-4 h-4 border border-gray-400 rounded-full"></div>
-              <span>${product.returnDays} days return available</span>
-            </div>
-          </div>
-              </div>
-            `;
-          }
-
-          // Function to render all products
-          function renderProducts() {
-            const container = document.getElementById("productContainer");
-            if (!container) return;
-
-            if (products.length === 0) {
-              container.innerHTML = `
-          <div class="text-center py-8 text-gray-500">
-            <p>Your bag is empty</p>
-            <a href="/" class="text-pink-500 font-semibold mt-2 inline-block">Continue Shopping</a>
-          </div>
-              `;
-              return;
-            }
-
-            const productsHTML = products
-              .map((product, index) =>
-                createProductHTML(product, index === products.length - 1)
-              )
-              .join("");
-
-            container.innerHTML = productsHTML;
-            updateItemCount();
-          }
-
-          // Function to remove product
-          function removeProduct(productId) {
-            if (confirm("Remove this item from your bag?")) {
-              const productIndex = products.findIndex(
-                (p) => p.id === productId
-              );
-              if (productIndex > -1) {
-                products.splice(productIndex, 1);
-                renderProducts();
-              }
-            }
-          }
-
-          // Function to update product size
-          function updateProductSize(productId, newSize) {
-            const product = products.find((p) => p.id === productId);
-            if (product) {
-              product.size = newSize;
-              console.log(`Updated product ${productId} size to ${newSize}`);
-            }
-          }
-
-          // Function to update product quantity
-          function updateProductQuantity(productId, newQuantity) {
-            const product = products.find((p) => p.id === productId);
-            if (product) {
-              product.quantity = parseInt(newQuantity);
-              console.log(
-                `Updated product ${productId} quantity to ${newQuantity}`
-              );
-              updateItemCount();
-            }
-          }
-
-          // Function to add new product
-          function addProduct(productData) {
-            const newProduct = {
-              id: Date.now(), // Simple ID generation
-              ...productData,
-            };
-            products.push(newProduct);
-            renderProducts();
-          }
-
-          // Initialize products on page load
-          document.addEventListener("DOMContentLoaded", function () {
-            renderProducts();
-          });
-        </script>
+        </div>
 
         <!-- Login Section -->
         <div
-          class="bg-white p-5 md:rounded-lg shadow flex items-center gap-4 mb-2"
+          class="bg-white p-5 rounded-lg shadow flex items-center gap-4 mb-2 mx-10 md:mx-0"
         >
           <div
             class="inline-block flex-shrink-0 flex items-center justify-center h-10 w-[70px] md:h-[50px] md:w-[90px]"
@@ -444,148 +279,33 @@
             </div>
             <a
               href="/login?referer=/checkout/cart"
-              class="text-pink-500 rounded font-semibold no-underline uppercase tracking-wider text-sm self-end cursor-pointer"
+              class="text-rose-500 rounded font-semibold no-underline uppercase tracking-wider text-sm self-end cursor-pointer"
               >LOGIN NOW</a
             >
           </div>
         </div>
 
         <!-- You may also like (Mobile Only) -->
-        <div class="md:hidden p-5 bg-white shadow">
-          <div class="font-semibold mb-4 flex items-center gap-3">
+        <div
+          class="md:hidden bg-white border-b border-gray-200 pt-2 pb-5 px-10 md:px-0"
+        >
+          <div class="font-semibold mb-4 flex items-center gap-3 text-gray-800">
             <div class="w-6 h-6 bg-gray-200 rounded"></div>
             <span>You may also like:</span>
           </div>
 
-          <div class="flex gap-3 mb-5 overflow-x-auto">
-            <button
-              class="py-2 px-4 border border-gray-300 bg-pink-500 text-white rounded-full text-sm whitespace-nowrap cursor-pointer category-btn active"
-            >
-              All
-            </button>
-            <button
-              class="py-2 px-4 border border-gray-300 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer category-btn"
-            >
-              Shampoo
-            </button>
-            <button
-              class="py-2 px-4 border border-gray-300 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer category-btn"
-            >
-              Lip Balm
-            </button>
-            <button
-              class="py-2 px-4 border border-gray-300 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer category-btn"
-            >
-              Deodorant
-            </button>
-            <button
-              class="py-2 px-4 border border-gray-300 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer category-btn"
-            >
-              Roll-Ons
-            </button>
+          <div
+            class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar"
+            id="mobileCategoryContainer"
+          >
+            <!-- Dynamic category buttons will be created by JavaScript -->
           </div>
 
-          <div class="flex gap-4 overflow-x-auto">
-            <div
-              class="min-w-[100px] md:min-w-[120px] text-center flex-shrink-0"
-            >
-              <div
-                class="w-[100px] h-[120px] md:w-[120px] md:h-[150px] bg-gray-100 rounded-lg mb-3"
-              ></div>
-              <div class="font-semibold mb-1">Dove</div>
-              <div class="text-xs text-gray-600 mb-2">
-                Daily Hair Therapy Se...
-              </div>
-              <div class="font-semibold mb-3">
-                ₹444
-                <span class="line-through text-gray-500">₹590</span>
-              </div>
-              <button
-                class="bg-transparent border border-pink-500 text-pink-500 py-1.5 px-3 rounded text-xs font-semibold cursor-pointer add-to-bag"
-              >
-                ADD TO BAG
-              </button>
-            </div>
-
-            <div
-              class="min-w-[100px] md:min-w-[120px] text-center flex-shrink-0"
-            >
-              <div
-                class="w-[100px] h-[120px] md:w-[120px] md:h-[150px] bg-gray-100 rounded-lg mb-3"
-              ></div>
-              <div class="font-semibold mb-1">Lakme</div>
-              <div class="text-xs text-gray-600 mb-2">Sun Expert UV Lotion</div>
-              <div class="font-semibold mb-3">
-                ₹325
-                <span class="line-through text-gray-500">₹405</span>
-              </div>
-              <button
-                class="bg-transparent border border-pink-500 text-pink-500 py-1.5 px-3 rounded text-xs font-semibold cursor-pointer add-to-bag"
-              >
-                ADD TO BAG
-              </button>
-            </div>
-
-            <div
-              class="min-w-[100px] md:min-w-[120px] text-center flex-shrink-0"
-            >
-              <div
-                class="w-[100px] h-[120px] md:w-[120px] md:h-[150px] bg-gray-100 rounded-lg mb-3"
-              ></div>
-              <div class="font-semibold mb-1">Wild Stone</div>
-              <div class="text-xs text-gray-600 mb-2">Men Edge EDP 100 ml</div>
-              <div class="font-semibold mb-3">
-                ₹314
-                <span class="line-through text-gray-500">₹449</span>
-              </div>
-              <button
-                class="bg-transparent border border-pink-500 text-pink-500 py-1.5 px-3 rounded text-xs font-semibold cursor-pointer add-to-bag"
-              >
-                ADD TO BAG
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Coupons Section -->
-        <div class="bg-white p-5 md:hidden">
-          <div class="text-xs font-bold text-gray-600 uppercase mb-3">
-            Coupons
-          </div>
-          <div class="pb-3 relative border-b border-gray-100 pl-9">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              class="absolute left-0 top-1.5"
-            >
-              <g
-                fill="none"
-                fill-rule="evenodd"
-                transform="rotate(45 6.086 5.293)"
-              >
-                <path
-                  d="M17.5 10V1a1 1 0 0 0-1-1H5.495a1 1 0 0 0-.737.323l-4.136 4.5a1 1 0 0 0 0 1.354l4.136 4.5a1 1 0 0 0 .737.323H16.5a1 1 0 0 0 1-1z"
-                ></path>
-                <circle fill-rule="nonzero"></circle>
-              </g>
-            </svg>
-            <div class="font-bold text-sm leading-4 py-2">Apply Coupons</div>
-            <button
-              class="py-1 px-4 text-xs absolute top-0 right-0 font-bold rounded-sm bg-white text-pink-500 border-pink-500 border cursor-pointer"
-            >
-              <div class="box-border flex items-center justify-center">
-                APPLY
-              </div>
-            </button>
-            <div class="inline-block text-sm mt-2.5">
-              <a
-                href="/login?referer=/checkout/cart"
-                class="text-pink-500 font-bold cursor-pointer"
-                >Login</a
-              ><span> to get upto ₹300 OFF on first order</span>
-            </div>
+          <div
+            class="flex gap-4 overflow-x-auto hide-scrollbar"
+            id="mobileProductsContainer"
+          >
+            <!-- Dynamic product cards will be created by JavaScript -->
           </div>
         </div>
       </div>
@@ -596,32 +316,46 @@
       <!-- Right Column -->
       <div class="md:w-1/3 flex flex-col gap-2">
         <!-- Coupons Section (Desktop) -->
-        <div class="">
+        <div class="bg-white border-b border-gray-200 pb-2 px-10 md:px-0">
           <div class="text-xs font-bold text-gray-600 uppercase mb-3">
             Coupons
           </div>
-          <div class="pb-3 relative border-b border-gray-100 pl-9">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              class="absolute left-0 top-1.5"
-            >
-              <g transform="rotate(45 6.086 5.293)"></g>
-            </svg>
-            <div class="font-bold text-sm leading-4 py-2">Apply Coupons</div>
+          <div
+            class="font-bold text-sm flex items-center justify-between p-2 relative"
+          >
+            <div class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-tag-icon lucide-tag"
+              >
+                <path
+                  d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
+                />
+                <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>
+              <span> Apply Coupons </span>
+            </div>
             <button
-              class="py-1 px-4 text-xs absolute top-0 right-0 font-bold rounded-sm bg-white text-pink-500 border-pink-500 border cursor-pointer"
+              class="py-1 px-4 text-xs font-bold rounded-sm bg-white text-rose-500 border-rose-500 border cursor-pointer"
             >
               <div class="box-border flex items-center justify-center">
                 APPLY
               </div>
             </button>
+          </div>
+          <div class="pb-3 relative pl-9">
             <div class="inline-block text-sm mt-2.5">
               <a
                 href="/login?referer=/checkout/cart"
-                class="text-pink-500 font-bold cursor-pointer"
+                class="text-rose-500 font-bold cursor-pointer"
                 >Login</a
               ><span> to get upto ₹300 OFF on first order</span>
             </div>
@@ -629,7 +363,7 @@
         </div>
 
         <!-- Gifting Section -->
-        <div class="bg-white border-b border-gray-200 py-5">
+        <div class="bg-white border-b border-gray-200 pt-2 pb-5 px-10 md:px-0">
           <div class="text-xs font-bold text-gray-600 uppercase mb-3">
             GIFTING & PERSONALISATION
           </div>
@@ -638,7 +372,7 @@
           >
             <div
               class="inline-block flex-shrink-0 absolute top-[-1px] left-2.5"
-              style="background: none; height: 99px; width: 39px"
+              style="background: none; height: 100px; width: 39px"
             >
               <picture class="block max-w-full h-auto" style="width: 100%">
                 <source
@@ -653,7 +387,7 @@
                   alt="image"
                   fetchpriority="auto"
                   loading="eager"
-                  style="height: 99px; width: 39px"
+                  style="height: 100px; width: 39px"
                 />
               </picture>
             </div>
@@ -665,7 +399,7 @@
               >
             </div>
             <button
-              class="mt-2 text-xs font-bold rounded-sm bg-transparent text-pink-500 p-0 cursor-pointer border-none outline-none hover:underline"
+              class="mt-2 text-xs font-bold rounded-sm bg-transparent text-rose-500 p-0 cursor-pointer border-none outline-none hover:underline"
               onclick="openGiftModal()"
             >
               <div class="text-xs font-bold uppercase">ADD GIFT PACKAGE</div>
@@ -674,7 +408,7 @@
         </div>
 
         <!-- Social Work Donation -->
-        <div class="bg-white border-b border-gray-200 py-5">
+        <div class="bg-white border-b border-gray-200 pt-2 pb-3 px-10 md:px-0">
           <div class="text-gray-600 text-xs font-semibold mb-4 uppercase">
             SUPPORT TRANSFORMATIVE SOCIAL WORK IN INDIA
           </div>
@@ -682,7 +416,7 @@
             <input
               type="checkbox"
               id="donate"
-              class="w-4 h-4 bg-gray-100 border-gray-300 rounded cursor-pointer relative appearance-none checked:after:content-['✓'] checked:after:absolute checked:after:top-0 checked:after:left-0 checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-white checked:after:text-xs checked:after:bg-pink-500 checked:after:rounded"
+              class="w-4 h-4 bg-gray-100 border-gray-300 rounded cursor-pointer relative appearance-none checked:after:content-['✓'] checked:after:absolute checked:after:top-0 checked:after:left-0 checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-white checked:after:text-xs checked:after:bg-rose-500 checked:after:rounded"
             />
             <label for="donate">Donate and make a difference</label>
           </div>
@@ -693,7 +427,7 @@
               ₹10
             </button>
             <button
-              class="py-2 px-4 border border-pink-500 bg-pink-50 text-pink-500 rounded-full cursor-pointer amount-btn selected"
+              class="py-2 px-4 border border-rose-500 bg-rose-50 text-rose-500 rounded-full cursor-pointer amount-btn selected"
             >
               ₹20
             </button>
@@ -710,7 +444,7 @@
           </div>
 
           <button
-            class="text-pink-500 text-sm font-bold bg-transparent border-none cursor-pointer"
+            class="text-rose-500 text-sm font-bold bg-transparent border-none cursor-pointer"
             onclick="openSocialWorkModal()"
           >
             Know More
@@ -722,6 +456,7 @@
             id="socialWorkModal"
           >
             <div
+              id="socialWorkModalContent"
               class="modal bg-white rounded-t-lg w-full max-w-md p-6 relative transform translate-y-full transition-transform duration-300 ease-out"
             >
               <div class="flex items-center justify-between mb-4">
@@ -750,7 +485,7 @@
                 </p>
               </div>
               <button
-                class="w-full bg-pink-500 text-white border-none py-3 rounded text-sm font-semibold mt-4 cursor-pointer"
+                class="w-full bg-rose-500 text-white border-none py-3 rounded text-sm font-semibold mt-4 cursor-pointer"
                 onclick="closeSocialWorkModal()"
               >
                 UNDERSTOOD
@@ -760,7 +495,7 @@
         </div>
 
         <!-- Price Details -->
-        <div class="bg-white">
+        <div class="bg-white px-10 md:px-0 pt-2">
           <div
             class="text-gray-600 text-xs font-semibold mb-4 uppercase price-title"
           >
@@ -776,7 +511,7 @@
           </div>
           <div class="flex justify-between mb-3">
             <span>Coupon Discount</span>
-            <a href="#" class="text-pink-500 no-underline text-sm"
+            <a href="#" class="text-rose-500 no-underline text-sm"
               >Apply Coupon</a
             >
           </div>
@@ -788,7 +523,7 @@
             <span
               >Platform Fee
               <button
-                class="text-pink-500 text-xs bg-transparent border-none cursor-pointer"
+                class="text-rose-500 text-xs bg-transparent border-none cursor-pointer"
               >
                 Know More
               </button></span
@@ -802,7 +537,7 @@
             <span>₹988</span>
           </div>
           <button
-            class="w-full bg-pink-500 text-white border-none py-4 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn"
+            class="w-full bg-rose-500 text-white border-none py-4 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn hidden md:block"
           >
             PLACE ORDER
           </button>
@@ -810,18 +545,28 @@
       </div>
     </div>
     <!-- Mobile Footer Badges -->
-    <div class="md:hidden flex justify-around p-5 bg-white mb-2">
-      <div class="text-center flex-1">
-        <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-2"></div>
-        <div class="text-xs text-gray-600">Genuine Products</div>
+    <div class="md:hidden flex justify-center mt-5 bg-slate-50">
+      <img
+        src="https://assets.myntassets.com/f_webp,dpr_2,q_60,c_limit,fl_progressive/assets/images/retaillabs/2020/6/24/11940eed-9b55-4171-9e59-dfb273b3f5961592993834502-1--1-.png"
+        alt="Badges"
+        class="w-full max-w-lg"
+      />
+    </div>
+
+    <div
+      class="max-w-6xl mx-auto p-4 md:p-6 flex-col gap-6 bg-gray-50 hidden md:flex"
+    >
+      <div class="flex flex-col gap-4">
+        <h3 class="text-lg font-semibold text-gray-800">You May Also Like :</h3>
+        <div class="flex gap-4 flex-wrap" id="youMayAlsoLikeContainer">
+          <!-- Dynamic buttons will be created by JavaScript -->
+        </div>
       </div>
-      <div class="text-center flex-1">
-        <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-2"></div>
-        <div class="text-xs text-gray-600">Contactless Delivery</div>
-      </div>
-      <div class="text-center flex-1">
-        <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-2"></div>
-        <div class="text-xs text-gray-600">Secure Payments</div>
+      <div
+        id="products-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
+        <!-- Product cards will be injected here -->
       </div>
     </div>
 
@@ -892,7 +637,7 @@
             height="37"
           />
         </div>
-        <div class="text-sm text-gray-600 no-underline hover:text-pink-500">
+        <div class="text-sm text-gray-600 no-underline hover:text-rose-500">
           <a href="/contactus" class="">
             <span>Need Help ? Contact Us</span>
           </a>
@@ -909,7 +654,7 @@
         Policy
       </div>
       <button
-        class="w-full bg-pink-500 text-white border-none py-4 rounded text-base font-semibold cursor-pointer place-order-btn"
+        class="w-full bg-rose-500 text-white border-none py-4 rounded text-base font-semibold cursor-pointer place-order-btn"
       >
         PLACE ORDER
       </button>
@@ -921,6 +666,7 @@
       id="giftModal"
     >
       <div
+        id="giftModalContent"
         class="modal bg-white rounded-lg w-[95%] max-w-4xl h-[600px] overflow-hidden relative transform translate-y-full transition-transform duration-300 ease-out flex flex-col"
       >
         <div
@@ -961,7 +707,7 @@
                 type="text"
                 id="recipientName"
                 placeholder="Enter recipient's name"
-                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out focus:outline-none focus:border-pink-500"
+                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out focus:outline-none focus:border-rose-500"
               />
             </div>
 
@@ -976,7 +722,7 @@
                 rows="4"
                 placeholder="Add a personal message"
                 maxlength="200"
-                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out font-sans focus:outline-none focus:border-pink-500 resize-none"
+                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out font-sans focus:outline-none focus:border-rose-500 resize-none"
               ></textarea>
               <div class="text-right text-xs text-gray-500 mt-1">
                 <span id="charCount">0</span>/200
@@ -993,7 +739,7 @@
                 type="text"
                 id="senderName"
                 placeholder="Enter your name"
-                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out focus:outline-none focus:border-pink-500"
+                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out focus:outline-none focus:border-rose-500"
               />
             </div>
 
@@ -1003,7 +749,7 @@
             </div>
 
             <button
-              class="w-full bg-pink-500 text-white border-none p-4 rounded text-sm font-semibold cursor-pointer uppercase tracking-wide mt-2 transition-colors ease-in-out hover:bg-pink-600"
+              class="w-full bg-rose-500 text-white border-none p-4 rounded text-sm font-semibold cursor-pointer uppercase tracking-wide mt-2 transition-colors ease-in-out hover:bg-rose-600"
             >
               APPLY GIFT PACKAGING
             </button>
@@ -1131,269 +877,6 @@
       </div>
     </div>
 
-    <script>
-      // Add to bag functionality
-      document.querySelectorAll(".add-to-bag").forEach((button) => {
-        button.addEventListener("click", function () {
-          this.textContent = "ADDED";
-          this.classList.add("bg-green-500", "text-white", "border-green-500");
-          this.classList.remove(
-            "bg-transparent",
-            "text-pink-500",
-            "border-pink-500"
-          );
-          setTimeout(() => {
-            this.textContent = "ADD TO BAG";
-            this.classList.remove(
-              "bg-green-500",
-              "text-white",
-              "border-green-500"
-            );
-            this.classList.add(
-              "bg-transparent",
-              "text-pink-500",
-              "border-pink-500"
-            );
-          }, 2000);
-        });
-      });
-
-      // Donation amount selection
-      document.querySelectorAll(".amount-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          // Remove selected class from all buttons in the same section
-          const section = this.closest(".donation-section");
-          section
-            .querySelectorAll(".amount-btn")
-            .forEach((btn) =>
-              btn.classList.remove(
-                "selected",
-                "bg-pink-50",
-                "text-pink-500",
-                "border-pink-500"
-              )
-            );
-          this.classList.add(
-            "selected",
-            "bg-pink-50",
-            "text-pink-500",
-            "border-pink-500"
-          );
-        });
-      });
-
-      // Category selection
-      document.querySelectorAll(".category-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          document
-            .querySelectorAll(".category-btn")
-            .forEach((btn) =>
-              btn.classList.remove("active", "bg-pink-500", "text-white")
-            );
-          this.classList.add("active", "bg-pink-500", "text-white");
-        });
-      });
-
-      // Remove product
-      document.querySelectorAll(".remove-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          if (confirm("Remove this item from your bag?")) {
-            this.closest(".product-card").remove();
-            updateItemCount();
-          }
-        });
-      });
-
-      // Update item count
-      function updateItemCount() {
-        const itemCount = document.querySelectorAll(".product-card").length;
-        const itemsSelectedElement = document.querySelector(".items-selected");
-        const priceTitleElements = document.querySelectorAll(".price-title");
-
-        if (itemsSelectedElement) {
-          itemsSelectedElement.textContent = `${itemCount} items selected for order`;
-        }
-
-        priceTitleElements.forEach((element) => {
-          element.textContent = `PRICE DETAILS (${itemCount} Items)`;
-        });
-      }
-
-      // Login button
-      document.querySelectorAll(".login-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          alert("Login functionality would be implemented here");
-        });
-      });
-
-      // Place order button
-      document.querySelectorAll(".place-order-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          alert("Proceeding to payment...");
-        });
-      });
-
-      // Pin code buttons
-      document
-        .querySelectorAll(".pin-code-btn, .enter-pin-btn")
-        .forEach((button) => {
-          button.addEventListener("click", function () {
-            const pincode = prompt("Enter your PIN code:");
-            if (pincode) {
-              alert(`Checking delivery options for ${pincode}...`);
-            }
-          });
-        });
-
-      // Show more offers
-      document.querySelectorAll(".show-more").forEach((button) => {
-        button.addEventListener("click", function () {
-          alert("More offers would be displayed here");
-        });
-      });
-
-      // Apply coupon
-      document.querySelectorAll(".apply-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          const couponCode = prompt("Enter coupon code:");
-          if (couponCode) {
-            alert(`Applying coupon: ${couponCode}`);
-          }
-        });
-      });
-
-      // Gift package buttons
-      function openGiftModal() {
-        const modal = document.getElementById("giftModal");
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-
-        // Add animation class after a small delay to ensure display is set
-        setTimeout(() => {
-          modal.querySelector(".modal").classList.remove("translate-y-full");
-        }, 10);
-      }
-
-      function closeGiftModal() {
-        const modal = document.getElementById("giftModal");
-        modal.querySelector(".modal").classList.add("translate-y-full");
-        document.body.style.overflow = "auto";
-
-        // Hide modal after animation completes
-        setTimeout(() => {
-          modal.classList.add("hidden");
-          modal.classList.remove("flex");
-        }, 300);
-      }
-
-      // Character count for gift message
-      document.addEventListener("DOMContentLoaded", function () {
-        const giftMessageTextarea = document.getElementById("giftMessage");
-        const charCountSpan = document.getElementById("charCount");
-
-        if (giftMessageTextarea && charCountSpan) {
-          giftMessageTextarea.addEventListener("input", function () {
-            const currentLength = this.value.length;
-            charCountSpan.textContent = currentLength;
-
-            // Change color when approaching limit
-            if (currentLength > 180) {
-              charCountSpan.style.color = "#ff3f6c";
-            } else {
-              charCountSpan.style.color = "#696e79";
-            }
-          });
-        }
-      });
-
-      // Prevent body scroll when modal is open
-      window.addEventListener("keydown", function (e) {
-        if (
-          e.key === "Escape" &&
-          !document.getElementById("giftModal").classList.contains("hidden")
-        ) {
-          closeGiftModal();
-        }
-      });
-
-      // Close modal when clicking outside
-      document
-        .getElementById("giftModal")
-        ?.addEventListener("click", function (e) {
-          if (e.target === this) {
-            closeGiftModal();
-          }
-        });
-
-      // Back arrow (mobile)
-      document
-        .querySelector(".back-arrow")
-        ?.addEventListener("click", function () {
-          if (confirm("Go back to shopping?")) {
-            window.history.back();
-          }
-        });
-
-      function toggleOffers() {
-        const hiddenOffers = document.querySelectorAll(".hidden-offer");
-        const toggleText = document.getElementById("toggleText");
-        const arrowIcon = document.getElementById("arrowIcon");
-
-        const isHidden = hiddenOffers[0].classList.contains("hidden");
-
-        hiddenOffers.forEach((offer) => {
-          offer.classList.toggle("hidden");
-        });
-
-        toggleText.textContent = isHidden ? "Show Less" : "Show More";
-        arrowIcon.style.transform = isHidden
-          ? "rotate(180deg)"
-          : "rotate(0deg)";
-      }
-
-      function openSocialWorkModal() {
-        const modal = document.getElementById("socialWorkModal");
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-
-        setTimeout(() => {
-          modal.querySelector(".modal").classList.remove("translate-y-full");
-        }, 10);
-      }
-
-      function closeSocialWorkModal() {
-        const modal = document.getElementById("socialWorkModal");
-        modal.querySelector(".modal").classList.add("translate-y-full");
-        document.body.style.overflow = "auto";
-
-        setTimeout(() => {
-          modal.classList.add("hidden");
-          modal.classList.remove("flex");
-        }, 300);
-      }
-
-      // Close modal when clicking outside
-      document
-        .getElementById("socialWorkModal")
-        ?.addEventListener("click", function (e) {
-          if (e.target === this) {
-            closeSocialWorkModal();
-          }
-        });
-
-      // Close modal with Escape key
-      window.addEventListener("keydown", function (e) {
-        if (
-          e.key === "Escape" &&
-          !document
-            .getElementById("socialWorkModal")
-            .classList.contains("hidden")
-        ) {
-          closeSocialWorkModal();
-        }
-      });
-    </script>
+    <script src="cartv3.js"></script>
   </body>
 </html>

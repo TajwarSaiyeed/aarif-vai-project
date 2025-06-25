@@ -3,12 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/cartv1.css" />
+    <title>Myntra - Shopping Bag</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="cartv3.css" />
   </head>
-  <body>
-    <div class="header">
-      <div class="site-nav-container container">
+  <body class="text-gray-800 font-sans">
+    <!-- Desktop Header -->
+    <div
+      class="hidden md:block bg-white p-4 border-b sticky top-0 z-50 border-b border-gray-200"
+    >
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
         <div class="myntra-logo">
           <a class="linkClean" href="/">
             <svg
@@ -77,140 +83,167 @@
             <svg class="logo-inline"><use xlink:href="#logo"></use></svg>
           </a>
         </div>
-        <ol class="checkout-steps">
-          <li class="step step1 active">BAG</li>
-          <li class="divider"></li>
-          <li class="step step2">ADDRESS</li>
-          <li class="divider"></li>
-          <li class="step step3">PAYMENT</li>
-        </ol>
-        <div class="secureContainer">
+        <div class="flex items-center gap-8 text-sm">
+          <div class="flex items-center gap-2 text-teal-500 font-semibold">
+            <span>BAG</span>
+          </div>
+          <div class="w-16 h-px bg-gray-300"></div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <span>ADDRESS</span>
+          </div>
+          <div class="w-16 h-px bg-gray-300"></div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <span>PAYMENT</span>
+          </div>
+        </div>
+        <div
+          class="flex items-center gap-2 text-teal-500 text-sm font-semibold"
+        >
           <img
             src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"
-            class="secureIcon"
+            class=""
             width="26"
             height="28"
           />
-          <div class="secure">100% SECURE</div>
+          <span>100% SECURE</span>
         </div>
       </div>
     </div>
 
-    <div id="mountRoot">
-      <div id="appContent">
-        <div class="page">
-          <div>
-            <div class="desktop-base-emptyCart">
-              <div class="emptyCart-base-mainContainer">
-                <div class="emptyCart-base-subContainer undefined">
-                  <div
-                    class="imageBanner-base-container emptyCart-base-emptyBagImage"
-                    style="background: none; height: 165px; width: 146px"
-                  >
-                    <picture
-                      class="image-base-imgResponsive"
-                      style="width: 100%"
-                      ><source
-                        srcset="
-                          https://constant.myntassets.com/checkout/assets/img/empty-bag.webp
-                        "
-                        type="image/webp" />
-                      <img
-                        src="https://constant.myntassets.com/checkout/assets/img/empty-bag.png"
-                        class="image-base-imgResponsive"
-                        alt="image"
-                        fetchpriority="auto"
-                        loading="eager"
-                        style="height: 165px; width: 146px"
-                    /></picture>
-                  </div>
-                  <div class="emptyCart-base-emptyText">
-                    Hey, it feels so light!
-                  </div>
-                  <div class="emptyCart-base-emptyDesc">
-                    There is nothing in your bag. Let's add some items.
-                  </div>
-                  <div class="emptyCart-base-addFromWishlist">
-                    <a
-                      href="/website/cartv2.html"
-                      class="button-base-button emptyCart-base-wishlistButton button-base-textTransform"
-                    >
-                      ADD ITEMS FROM WISHLIST
-                    </a>
-                  </div>
-                </div>
+    <!-- Mobile Header -->
+    <div
+      class="md:hidden bg-white p-3 flex items-center justify-between border-b sticky top-0 z-50"
+    >
+      <div class="flex items-center gap-3">
+        <span class="text-xl text-gray-800 cursor-pointer">←</span>
+        <span class="text-base font-semibold text-gray-800">SHOPPING BAG</span>
+      </div>
+      <span class="text-xs text-gray-500">STEP 1/3</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="min-h-[420px] clear-both">
+      <div class="max-w-[650px] mx-auto pt-6">
+        <div class="min-h-[600px] relative bg-white">
+          <div class="absolute inset-0 m-auto h-[400px] text-center">
+            <!-- Empty Bag Image -->
+            <div class="inline-block mb-2.5 mt-2.5">
+              <div
+                class="inline-block"
+                style="background: none; height: 165px; width: 146px"
+              >
+                <picture class="block w-full">
+                  <source
+                    srcset="
+                      https://constant.myntassets.com/checkout/assets/img/empty-bag.webp
+                    "
+                    type="image/webp"
+                  />
+                  <img
+                    src="https://constant.myntassets.com/checkout/assets/img/empty-bag.png"
+                    class="block max-w-full h-auto"
+                    alt="Empty bag"
+                    fetchpriority="auto"
+                    loading="eager"
+                    style="height: 165px; width: 146px"
+                  />
+                </picture>
               </div>
+            </div>
+
+            <!-- Empty Text -->
+            <div class="text-center text-xl font-bold mb-0.5">
+              Hey, it feels so light!
+            </div>
+
+            <!-- Empty Description -->
+            <div class="text-sm text-gray-500 mb-6">
+              There is nothing in your bag. Let's add some items.
+            </div>
+
+            <!-- Add Items Button -->
+            <div class="text-center text-sm">
+              <a
+                href="/website/cartv2.html"
+                class="inline-block bg-white text-pink-500 font-bold cursor-pointer border border-pink-500 py-2.5 px-2.5 text-center rounded-sm tracking-wider uppercase hover:bg-pink-50 transition-colors"
+              >
+                ADD ITEMS FROM WISHLIST
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="checkout-footer">
-      <div class="content">
-        <div class="images">
+    <!-- Footer -->
+    <div class="border-t border-gray-200 mt-0 mb-2.5">
+      <div class="max-w-[980px] pt-2.5 mx-auto">
+        <div class="inline-block">
           <img
-            class="footer-bank-ssl"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
             width="70"
             height="37"
           />
           <img
-            class="footer-bank-visa"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-mc"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-ae"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-dc"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-nb"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-cod"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-rupay"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-paypal"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
             width="60"
             height="37"
           />
           <img
-            class="footer-bank-bhim"
+            class="inline-block"
             src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
             width="60"
             height="37"
           />
         </div>
-        <a href="/contactus" class="contact-us">
+        <a
+          href="/contactus"
+          class="text-gray-800 no-underline font-semibold float-right text-sm py-2.5"
+        >
           <span>Need Help ? Contact Us</span>
         </a>
       </div>
