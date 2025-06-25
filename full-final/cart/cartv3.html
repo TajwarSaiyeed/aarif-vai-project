@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myntra - Shopping Bag</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="cartv3.css" />
+  </head>
+  <body class="text-gray-800 font-sans">
+    <!-- Desktop Header -->
+    <div
+      class="hidden md:block bg-white p-4 border-b sticky top-0 z-50 border-b border-gray-200"
+    >
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <div class="myntra-logo">
+          <a class="linkClean" href="/">
+            <svg
+              id="logo"
+              style="position: absolute; width: 0; height: 0; overflow: hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 640 640"
+            >
+              <defs>
+                <filter
+                  x="-3.8%"
+                  y="-2.8%"
+                  width="107.7%"
+                  height="111.1%"
+                  filterUnits="objectBoundingBox"
+                  id="a"
+                >
+                  <feOffset
+                    dy="10"
+                    in="SourceAlpha"
+                    result="shadowOffsetOuter1"
+                  ></feOffset>
+                  <feGaussianBlur
+                    stdDeviation="5"
+                    in="shadowOffsetOuter1"
+                    result="shadowBlurOuter1"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
+                    in="shadowBlurOuter1"
+                  ></feColorMatrix>
+                </filter>
+                <path
+                  d="M499.178 195.54c5.828 16.006 14.447 39.657-.562-1.566-5.336-14.64-3.618-9.916-.393-1.053-14.807-40.373-36.1-84.274-58.53-120.637-24.04-38.975-45.588-61.116-60.983-69.195 0 0-7.932-5.624-19.532-.77l-.396.141c-14.996 5.47-33.715 25.286-55.633 58.902-14.538 22.292-28.937 48.334-41.764 75.39-14.042-29.557-30.051-58.123-45.687-81.29-15.87-23.516-39.493-54.78-61.304-54.78-1.663 0-3.31.174-4.895.513v.003c-9.717 1.784-20.027 8.995-32.359 22.649-10.125 11.209-21.155 26.278-32.78 44.784-23.513 37.429-45.83 83.134-61.23 125.404C6.765 238.986-.888 275.643.382 302.987c.881 18.986 6.664 43.19 28.725 53.275l3.093 1.299 2.867.945a42.678 42.678 0 0012.032 1.733h.002c17.686 0 35.05-10.567 51.603-31.403 16.203-20.394 31.744-50.845 46.196-90.516a622.213 622.213 0 009.405-27.965 627.225 627.225 0 009.395 27.918c26.077 71.57 55.065 112.058 86.161 120.338l.48.121c.602.153 1.336.339 2.16.501l.527.109c2.362.452 4.69.712 7.115.8l.285.01a30.71 30.71 0 003.203-.063c.471-.02.904-.048 1.381-.08l1.023-.105a35.83 35.83 0 001.159-.158c.5-.06 1.22-.15 2.073-.311.71-.13 1.424-.28 2.24-.473l.45-.112c.19-.044.379-.092.57-.143 31.237-8.052 60.344-48.563 86.512-120.41a610.7 610.7 0 008.928-26.38 605.593 605.593 0 008.928 26.35c14.432 39.653 29.962 70.099 46.156 90.494 16.547 20.837 33.906 31.404 51.592 31.406h.007c4.729 0 9.407-.785 13.92-2.335 11.15-2.948 20.065-10.173 25.812-20.94 14.201-26.586 9.078-74.145-15.203-141.352"
+                  id="b"
+                ></path>
+              </defs>
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(60 130)">
+                  <use fill="#000" filter="url(#a)" xlink:href="#b"></use>
+                  <use fill="#FFF" xlink:href="#b"></use>
+                </g>
+                <path
+                  d="M212.833 145.065c-26.297 3.973-84.645 97.719-116.018 183.823-33.34 91.572-25.359 135.799.835 145.413.018.02.037.02.037.02s.008 0 .036.02c26.263 9.458 60.834-19.288 94.201-110.87 9.022-24.79 16.733-51.485 22.741-77.44-3.163-70.55-2.157-140.89-1.832-140.966"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M212.834 145.065c21.775-4.676 74.573 74.706 108.915 156.41.626 19.203-8.524 173.233-7.884 173.426-23.151-6.162-50.176-39.282-76.482-111.484-9.01-24.771-16.753-51.453-22.717-77.386l-.481-2.096c-15.758-69.124-19.215-132.285-2.41-138.574 0 0 .006 0 .026-.01h.02a8.75 8.75 0 011.013-.285h.002z"
+                  fill="#FF912E"
+                ></path>
+                <path
+                  d="M330.794 474.52c-.514.166-1.024.322-1.532.47-.23.066-.451.104-.667.17-.5.116-1.018.23-1.559.326-.535.104-1.018.152-1.502.213-.399.072-.756.108-1.138.158-.418.028-.791.05-1.213.068a23.89 23.89 0 01-1.623.056c-.193 0-.373-.017-.555-.017a32.514 32.514 0 01-4.969-.556c-.075-.019-.172-.036-.261-.057-.608-.115-1.26-.286-1.91-.45-.64-.193-1.329-.393-1.996-.628l-.02-.01h-.028c-26.212-9.615-34.2-53.839-.833-145.42 3.29-9.078 6.92-18.233 10.762-27.368l.941-2.23c31.216-73.547 77.02-144.602 101.307-153.456 1.005 19.974.7 70.72 4.319 142.353-5.917 25.257-13.455 51.19-22.249 75.292-26.428 72.555-53.585 105.63-76.806 111.557.254-.074.509-.15.764-.228z"
+                  fill="#F25511"
+                ></path>
+                <path
+                  d="M427.832 286.062c-15.87-68.598-19.71-131.89-3.834-140.273 1.673-.59 3.198-.905 4.643-.917 1.224.096 2.475.382 3.795.853 27.474 9.686 82.893 99.962 113.207 183.107 33.34 91.574 25.38 135.815-.834 145.409 0 0-.02 0-.047.024h-.017c-26.26 9.478-60.833-19.269-94.166-110.849-8.81-24.103-16.346-50.017-22.262-75.274z"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M432.436 162.748c27.474 9.686 84.786 99.016 115.099 182.16 13.7 37.631 20.142 58.855 19.881 86.95 1.666-23.794-4.528-55.658-21.773-103.026-30.312-83.145-85.733-173.421-113.207-183.107-1.32-.471-2.571-.757-3.795-.854-1.445.013-2.97.327-4.643.918-24.532 8.945-71.019 82.296-102.25 156.633-34.34-81.706-87.138-162.033-108.915-157.356-26.296 3.972-84.646 97.716-116.018 183.822-17.243 47.358-23.433 80.158-21.766 103.95-.262-32.858 6.176-50.252 19.873-87.873 31.374-86.105 91.615-178.904 117.91-182.876 21.778-4.677 65.534 60.732 108.917 142.222 39.93-75.569 77.717-132.554 102.249-141.5 1.582-.56 3.032-.87 4.41-.91"
+                  fill="#821414"
+                ></path>
+              </g>
+            </svg>
+            <svg class="logo-inline"><use xlink:href="#logo"></use></svg>
+          </a>
+        </div>
+        <div class="flex items-center gap-8 text-sm">
+          <div class="flex items-center gap-2 text-teal-500 font-semibold">
+            <span>BAG</span>
+          </div>
+          <div class="w-16 h-px bg-gray-300"></div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <span>ADDRESS</span>
+          </div>
+          <div class="w-16 h-px bg-gray-300"></div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <span>PAYMENT</span>
+          </div>
+        </div>
+        <div
+          class="flex items-center gap-2 text-teal-500 text-sm font-semibold"
+        >
+          <img
+            src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"
+            class=""
+            width="26"
+            height="28"
+          />
+          <span>100% SECURE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <div
+      class="md:hidden bg-white p-3 flex items-center justify-between border-b sticky top-0 z-50"
+    >
+      <div class="flex items-center gap-3">
+        <span class="text-xl text-gray-800 cursor-pointer">←</span>
+        <span class="text-base font-semibold text-gray-800">SHOPPING BAG</span>
+      </div>
+      <span class="text-xs text-gray-500">STEP 1/3</span>
+    </div>
+    <div
+      class="max-w-6xl mx-auto p-0 md:p-6 flex flex-col md:flex-row gap-0 md:gap-6"
+    >
+      <!-- Left Column -->
+      <div class="md:w-2/3 flex flex-col gap-4">
+        <!-- Available Offers -->
+        <div
+          class="bg-white rounded-sm p-5 border-gray-100 border mx-10 md:mx-0 mt-1 md:mt-0"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              class="text-gray-800"
+            >
+              <g fill="currentColor" fill-rule="evenodd">
+                <path
+                  d="M15.292 10.687v.001c-.198.742.076 1.454.296 2.026l.045.12-.137.021c-.602.094-1.352.211-1.892.75-.538.54-.655 1.288-.748 1.89l-.022.138a22.096 22.096 0 0 1-.12-.045c-.443-.171-.946-.364-1.49-.364-.185 0-.366.023-.536.068-.728.194-1.198.78-1.577 1.249-.032.04-.07.088-.111.137l-.112-.138c-.378-.47-.848-1.054-1.575-1.248a2.092 2.092 0 0 0-.537-.068c-.543 0-1.046.193-1.49.364l-.12.045-.022-.138c-.093-.602-.21-1.35-.749-1.89-.539-.539-1.289-.656-1.891-.75l-.137-.022a15 15 0 0 1 .045-.118c.22-.573.494-1.286.296-2.027-.194-.728-.78-1.199-1.25-1.577L1.323 9l.137-.11c.47-.38 1.055-.85 1.249-1.577.198-.742-.076-1.455-.296-2.028l-.045-.118.137-.022c.602-.094 1.352-.211 1.891-.75.54-.539.656-1.289.75-1.891l.022-.137.119.045c.443.171.947.365 1.49.365.186 0 .367-.024.537-.07.727-.193 1.198-.778 1.576-1.248L9 1.322l.111.137c.379.47.85 1.055 1.576 1.249.17.045.352.069.537.069.544 0 1.047-.194 1.491-.365l.119-.045.022.137c.094.602.21 1.353.75 1.891.538.539 1.288.656 1.89.75l.138.022-.046.119c-.22.572-.494 1.285-.295 2.026.194.728.778 1.199 1.248 1.577.04.033.088.07.137.111l-.137.11c-.47.38-1.054.85-1.249 1.577M18 9c0-.744-1.459-1.286-1.642-1.972-.19-.71.797-1.907.437-2.529-.364-.63-1.898-.372-2.41-.884-.511-.511-.253-2.045-.883-2.41a.647.647 0 0 0-.33-.08c-.585 0-1.403.542-1.998.542a.778.778 0 0 1-.201-.025C10.286 1.46 9.743 0 9 0c-.744 0-1.286 1.459-1.972 1.642a.78.78 0 0 1-.2.025c-.596 0-1.414-.542-2-.542a.647.647 0 0 0-.33.08c-.63.365-.37 1.898-.883 2.41-.512.512-2.046.254-2.41.884-.36.62.627 1.819.437 2.529C1.46 7.714 0 8.256 0 9s1.459 1.286 1.642 1.972c.19.71-.797 1.908-.437 2.53.364.63 1.898.371 2.41.883.511.512.253 2.045.884 2.41.097.056.208.08.33.08.585 0 1.403-.542 1.998-.542a.78.78 0 0 1 .201.025C7.714 16.54 8.256 18 9 18s1.286-1.46 1.973-1.642a.774.774 0 0 1 .2-.025c.595 0 1.413.542 1.998.542a.647.647 0 0 0 .33-.08c.631-.365.373-1.898.884-2.41.512-.512 2.046-.254 2.41-.884.36-.62-.627-1.819-.437-2.529C16.54 10.286 18 9.744 18 9"
+                ></path>
+                <path
+                  d="M10.897 6.34l-4.553 4.562a.536.536 0 0 0 .76.758l4.552-4.562a.536.536 0 0 0-.76-.758M6.75 7.875a1.126 1.126 0 0 0 0-2.25 1.126 1.126 0 0 0 0 2.25M11.25 10.125a1.126 1.126 0 0 0 0 2.25 1.126 1.126 0 0 0 0-2.25"
+                ></path>
+              </g>
+            </svg>
+            <span class="font-semibold">Available Offers</span>
+          </div>
+          <ul
+            id="offersContainer"
+            class="list-disc list-inside text-gray-600 space-y-2 mb-3"
+          >
+            <li>
+              10% Instant Discount on BOBCARD Credit Cards &amp; Credit Card EMI
+              on a min spend of ₹3,500. TCA
+            </li>
+            <li class="hidden-offer hidden">
+              5% Instant Discount on HDFC Bank Credit Cards &amp; Credit Card
+              EMI on a min spend of ₹2,500. TCA
+            </li>
+            <li class="hidden-offer hidden">
+              15% Cashback on Paytm Wallet payments above ₹1,000. TCA
+            </li>
+            <li class="hidden-offer hidden">
+              Buy 2 Get 1 Free on selected beauty products. TCA
+            </li>
+            <li class="hidden-offer hidden">
+              Free shipping on orders above ₹799. No coupon code required.
+            </li>
+          </ul>
+          <button
+            id="showMoreBtn"
+            onclick="toggleOffers()"
+            class="text-rose-500 font-semibold bg-transparent border-none cursor-pointer flex items-center"
+          >
+            <span id="toggleText">Show More</span>
+            <svg
+              id="arrowIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevron-down transition-transform duration-300"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Product Items -->
+        <div id="productContainer" class="gap-1 flex flex-col px-10 md:px-0">
+          <!-- Products will be dynamically inserted here -->
+        </div>
+        <div
+          class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[1000]"
+          id="productSizeModal"
+        >
+          <div
+            class="bg-white w-full max-w-sm rounded-lg p-4 relative transform translate-y-full transition-transform duration-300 ease-out"
+            id="productSizeModalContent"
+          >
+            <!-- Close Button -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              data-testid="modal-close"
+              class="absolute top-3 right-3 fill-current text-gray-800 cursor-pointer"
+              data-modal-close="productSizeModal"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M9.031 8l6.756-6.756a.731.731 0 0 0 0-1.031.732.732 0 0 0-1.031 0L8 6.969 1.244.213a.732.732 0 0 0-1.031 0 .731.731 0 0 0 0 1.03L6.969 8 .213 14.756a.731.731 0 0 0 0 1.031.732.732 0 0 0 1.031 0L8 9.031l6.756 6.756a.732.732 0 0 0 1.031 0 .731.731 0 0 0 0-1.03L9.031 8z"
+              ></path>
+            </svg>
+
+            <!-- Product Row (dynamic content goes here) -->
+            <div
+              id="productSizeModalProductInfo"
+              class="flex items-center gap-3 border-b border-gray-200 pb-3 mb-4"
+            >
+              <!-- This will be dynamically populated by JavaScript -->
+            </div>
+
+            <!-- Size Selection -->
+            <div>
+              <div class="text-sm font-semibold mb-2">Select Size</div>
+              <div
+                id="sizeOptionsContainer"
+                class="grid grid-cols-4 md:grid-cols-5 gap-3 mb-4"
+              >
+                <!-- Size items will be populated here dynamically -->
+              </div>
+            </div>
+
+            <button
+              onclick="confirmSizeSelection()"
+              class="w-full py-3 mt-4 bg-rose-500 text-white font-bold rounded hover:bg-rose-600 transition-colors"
+            >
+              <div>DONE</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Login Section -->
+        <div
+          class="bg-white p-5 rounded-lg shadow flex items-center gap-4 mb-2 mx-10 md:mx-0"
+        >
+          <div
+            class="inline-block flex-shrink-0 flex items-center justify-center h-10 w-[70px] md:h-[50px] md:w-[90px]"
+          >
+            <picture class="block max-w-full h-auto" style="width: 100%">
+              <source
+                srcset="
+                  https://constant.myntassets.com/checkout/assets/img/products-blurred.webp
+                "
+                type="image/webp"
+              />
+              <img
+                src="https://constant.myntassets.com/checkout/assets/img/products-blurred.png"
+                class="block max-w-full h-auto"
+                alt="image"
+                fetchpriority="auto"
+                loading="eager"
+              />
+            </picture>
+          </div>
+          <div class="flex-1 flex justify-between items-end gap-2">
+            <div class="text-gray-800 text-sm leading-snug">
+              Login to see items from your existing bag and wishlist.
+            </div>
+            <a
+              href="/login?referer=/checkout/cart"
+              class="text-rose-500 rounded font-semibold no-underline uppercase tracking-wider text-sm self-end cursor-pointer"
+              >LOGIN NOW</a
+            >
+          </div>
+        </div>
+
+        <!-- You may also like (Mobile Only) -->
+        <div
+          class="md:hidden bg-white border-b border-gray-200 pt-2 pb-5 px-10 md:px-0"
+        >
+          <div class="font-semibold mb-4 flex items-center gap-3 text-gray-800">
+            <div class="w-6 h-6 bg-gray-200 rounded"></div>
+            <span>You may also like:</span>
+          </div>
+
+          <div
+            class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar"
+            id="mobileCategoryContainer"
+          >
+            <!-- Dynamic category buttons will be created by JavaScript -->
+          </div>
+
+          <div
+            class="flex gap-4 overflow-x-auto hide-scrollbar"
+            id="mobileProductsContainer"
+          >
+            <!-- Dynamic product cards will be created by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="hidden md:block border-l border-gray-200 mx-2"></div>
+
+      <!-- Right Column -->
+      <div class="md:w-1/3 flex flex-col gap-2">
+        <!-- Coupons Section (Desktop) -->
+        <div class="bg-white border-b border-gray-200 pb-2 px-10 md:px-0">
+          <div class="text-xs font-bold text-gray-600 uppercase mb-3">
+            Coupons
+          </div>
+          <div
+            class="font-bold text-sm flex items-center justify-between p-2 relative"
+          >
+            <div class="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-tag-icon lucide-tag"
+              >
+                <path
+                  d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
+                />
+                <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>
+              <span> Apply Coupons </span>
+            </div>
+            <button
+              class="py-1 px-4 text-xs font-bold rounded-sm bg-white text-rose-500 border-rose-500 border cursor-pointer"
+            >
+              <div class="box-border flex items-center justify-center">
+                APPLY
+              </div>
+            </button>
+          </div>
+          <div class="pb-3 relative pl-9">
+            <div class="inline-block text-sm mt-2.5">
+              <a
+                href="/login?referer=/checkout/cart"
+                class="text-rose-500 font-bold cursor-pointer"
+                >Login</a
+              ><span> to get upto ₹300 OFF on first order</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gifting Section -->
+        <div class="bg-white border-b border-gray-200 pt-2 pb-5 px-10 md:px-0">
+          <div class="text-xs font-bold text-gray-600 uppercase mb-3">
+            GIFTING & PERSONALISATION
+          </div>
+          <div
+            class="bg-[#fff1ec] p-3 pl-16 text-xs relative rounded leading-4"
+          >
+            <div
+              class="inline-block flex-shrink-0 absolute top-[-1px] left-2.5"
+              style="background: none; height: 100px; width: 39px"
+            >
+              <picture class="block max-w-full h-auto" style="width: 100%">
+                <source
+                  srcset="
+                    https://constant.myntassets.com/checkout/assets/img/gift-big.webp
+                  "
+                  type="image/webp"
+                />
+                <img
+                  src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
+                  class="image-base-imgResponsive"
+                  alt="image"
+                  fetchpriority="auto"
+                  loading="eager"
+                  style="height: 100px; width: 39px"
+                />
+              </picture>
+            </div>
+            <div class="text-sm font-bold mb-px">Buying for a loved one?</div>
+            <div>
+              <span
+                >Gift Packaging and personalised message on card, Only for
+                ₹35</span
+              >
+            </div>
+            <button
+              class="mt-2 text-xs font-bold rounded-sm bg-transparent text-rose-500 p-0 cursor-pointer border-none outline-none hover:underline"
+              onclick="openGiftModal()"
+            >
+              <div class="text-xs font-bold uppercase">ADD GIFT PACKAGE</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Social Work Donation -->
+        <div class="bg-white border-b border-gray-200 pt-2 pb-3 px-10 md:px-0">
+          <div class="text-gray-600 text-xs font-semibold mb-4 uppercase">
+            SUPPORT TRANSFORMATIVE SOCIAL WORK IN INDIA
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <input
+              type="checkbox"
+              id="donate"
+              class="w-4 h-4 bg-gray-100 border-gray-300 rounded cursor-pointer relative appearance-none checked:after:content-['✓'] checked:after:absolute checked:after:top-0 checked:after:left-0 checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-white checked:after:text-xs checked:after:bg-rose-500 checked:after:rounded"
+            />
+            <label for="donate">Donate and make a difference</label>
+          </div>
+          <div class="flex gap-3 mb-3">
+            <button
+              class="py-2 px-4 border border-gray-300 bg-white rounded-full cursor-pointer amount-btn"
+            >
+              ₹10
+            </button>
+            <button
+              class="py-2 px-4 border border-rose-500 bg-rose-50 text-rose-500 rounded-full cursor-pointer amount-btn selected"
+            >
+              ₹20
+            </button>
+            <button
+              class="py-2 px-4 border border-gray-300 bg-white rounded-full cursor-pointer amount-btn"
+            >
+              ₹50
+            </button>
+            <button
+              class="py-2 px-4 border border-gray-300 bg-white rounded-full cursor-pointer amount-btn"
+            >
+              ₹100
+            </button>
+          </div>
+
+          <button
+            class="text-rose-500 text-sm font-bold bg-transparent border-none cursor-pointer"
+            onclick="openSocialWorkModal()"
+          >
+            Know More
+          </button>
+
+          <!-- Social Work Modal -->
+          <div
+            class="fixed inset-0 bg-black/30 bg-opacity-50 hidden items-end justify-center z-[1000]"
+            id="socialWorkModal"
+          >
+            <div
+              id="socialWorkModalContent"
+              class="modal bg-white rounded-t-lg w-full max-w-md p-6 relative transform translate-y-full transition-transform duration-300 ease-out"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">
+                  Social Work Donation
+                </h3>
+                <button
+                  class="w-8 h-8 border-none bg-transparent text-xl cursor-pointer flex items-center justify-center"
+                  onclick="closeSocialWorkModal()"
+                >
+                  ×
+                </button>
+              </div>
+              <div class="text-sm text-gray-600 leading-relaxed">
+                <p class="mb-3">
+                  Your donation will support transformative social work
+                  initiatives across India, helping communities in need.
+                </p>
+                <p class="mb-3">
+                  These funds are used for education, healthcare, and community
+                  development programs that make a real difference.
+                </p>
+                <p>
+                  Thank you for choosing to contribute to meaningful social
+                  change.
+                </p>
+              </div>
+              <button
+                class="w-full bg-rose-500 text-white border-none py-3 rounded text-sm font-semibold mt-4 cursor-pointer"
+                onclick="closeSocialWorkModal()"
+              >
+                UNDERSTOOD
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Details -->
+        <div class="bg-white px-10 md:px-0 pt-2">
+          <div
+            class="text-gray-600 text-xs font-semibold mb-4 uppercase price-title"
+          >
+            PRICE DETAILS (2 Items)
+          </div>
+          <div class="flex justify-between mb-3">
+            <span>Total MRP</span>
+            <span>₹1,448</span>
+          </div>
+          <div class="flex justify-between mb-3 text-green-600">
+            <span>Discount on MRP</span>
+            <span>-₹500</span>
+          </div>
+          <div class="flex justify-between mb-3">
+            <span>Coupon Discount</span>
+            <a href="#" class="text-rose-500 no-underline text-sm"
+              >Apply Coupon</a
+            >
+          </div>
+          <div class="flex justify-between mb-3">
+            <span>Social Work Donation</span>
+            <span>₹20</span>
+          </div>
+          <div class="flex justify-between mb-3">
+            <span
+              >Platform Fee
+              <button
+                class="text-rose-500 text-xs bg-transparent border-none cursor-pointer"
+              >
+                Know More
+              </button></span
+            >
+            <span>₹20</span>
+          </div>
+          <div
+            class="font-semibold text-base pt-3 border-t border-gray-200 mt-3 flex justify-between"
+          >
+            <span>Total Amount</span>
+            <span>₹988</span>
+          </div>
+          <button
+            class="w-full bg-rose-500 text-white border-none py-4 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn hidden md:block"
+          >
+            PLACE ORDER
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Footer Badges -->
+    <div class="md:hidden flex justify-center mt-5 bg-slate-50">
+      <img
+        src="https://assets.myntassets.com/f_webp,dpr_2,q_60,c_limit,fl_progressive/assets/images/retaillabs/2020/6/24/11940eed-9b55-4171-9e59-dfb273b3f5961592993834502-1--1-.png"
+        alt="Badges"
+        class="w-full max-w-lg"
+      />
+    </div>
+
+    <div
+      class="max-w-6xl mx-auto p-4 md:p-6 flex-col gap-6 bg-gray-50 hidden md:flex"
+    >
+      <div class="flex flex-col gap-4">
+        <h3 class="text-lg font-semibold text-gray-800">You May Also Like :</h3>
+        <div class="flex gap-4 flex-wrap" id="youMayAlsoLikeContainer">
+          <!-- Dynamic buttons will be created by JavaScript -->
+        </div>
+      </div>
+      <div
+        id="products-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
+        <!-- Product cards will be injected here -->
+      </div>
+    </div>
+
+    <!-- Desktop Footer -->
+    <div class="hidden md:block bg-white border-t border-gray-200 p-5 mt-8">
+      <div
+        class="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-4"
+      >
+        <div class="flex items-center gap-2 flex-wrap">
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png"
+            width="70"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png"
+            width="60"
+            height="37"
+          />
+          <img
+            class="flex-shrink-0"
+            src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png"
+            width="60"
+            height="37"
+          />
+        </div>
+        <div class="text-sm text-gray-600 no-underline hover:text-rose-500">
+          <a href="/contactus" class="">
+            <span>Need Help ? Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Bottom Section -->
+    <div
+      class="md:hidden bg-white p-4 sticky bottom-0 border-t border-gray-200"
+    >
+      <div class="text-xs text-gray-600 text-center mb-2">
+        By placing the order, you agree to Myntra's Terms of Use and Privacy
+        Policy
+      </div>
+      <button
+        class="w-full bg-rose-500 text-white border-none py-4 rounded text-base font-semibold cursor-pointer place-order-btn"
+      >
+        PLACE ORDER
+      </button>
+    </div>
+
+    <!-- Gift Modal -->
+    <div
+      class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[1000]"
+      id="giftModal"
+    >
+      <div
+        id="giftModalContent"
+        class="modal bg-white rounded-lg w-[95%] max-w-4xl h-[600px] overflow-hidden relative transform translate-y-full transition-transform duration-300 ease-out flex flex-col"
+      >
+        <div
+          class="px-5 py-4 border-b border-gray-200 flex items-center justify-between"
+        >
+          <div>
+            <div class="text-lg font-semibold">Gift Packaging</div>
+            <div class="text-2xl font-bold text-gray-800 mt-1">
+              Make It Special
+            </div>
+          </div>
+          <button
+            class="w-8 h-8 border-none bg-transparent text-xl cursor-pointer flex items-center justify-center"
+            onclick="closeGiftModal()"
+          >
+            ×
+          </button>
+        </div>
+        <div
+          class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 overflow-hidden"
+        >
+          <div class="text-center mb-6 md:hidden">
+            <img
+              src="https://constant.myntassets.com/checkout/assets/img/giftwrap-1.webp"
+              alt="Gift"
+              class="w-full h-52 object-cover rounded-lg"
+            />
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <div class="mb-2">
+              <label
+                for="recipientName"
+                class="block mb-1 font-semibold text-gray-800 text-sm"
+                >Recipient Name</label
+              >
+              <input
+                type="text"
+                id="recipientName"
+                placeholder="Enter recipient's name"
+                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out focus:outline-none focus:border-rose-500"
+              />
+            </div>
+
+            <div class="mb-2">
+              <label
+                for="giftMessage"
+                class="block mb-1 font-semibold text-gray-800 text-sm"
+                >Message (Optional)</label
+              >
+              <textarea
+                id="giftMessage"
+                rows="4"
+                placeholder="Add a personal message"
+                maxlength="200"
+                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out font-sans focus:outline-none focus:border-rose-500 resize-none"
+              ></textarea>
+              <div class="text-right text-xs text-gray-500 mt-1">
+                <span id="charCount">0</span>/200
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label
+                for="senderName"
+                class="block mb-1 font-semibold text-gray-800 text-sm"
+                >Sender Name</label
+              >
+              <input
+                type="text"
+                id="senderName"
+                placeholder="Enter your name"
+                class="w-full p-3 border border-gray-300 rounded text-sm transition-colors ease-in-out focus:outline-none focus:border-rose-500"
+              />
+            </div>
+
+            <div class="text-xs text-yellow-500 text-center my-2">
+              Please Note: Gift packaging is not available for Pay on Delivery
+              orders.
+            </div>
+
+            <button
+              class="w-full bg-rose-500 text-white border-none p-4 rounded text-sm font-semibold cursor-pointer uppercase tracking-wide mt-2 transition-colors ease-in-out hover:bg-rose-600"
+            >
+              APPLY GIFT PACKAGING
+            </button>
+          </div>
+
+          <div class="hidden md:flex flex-col gap-4 overflow-y-auto">
+            <div class="text-center mb-6">
+              <img
+                src="https://constant.myntassets.com/checkout/assets/img/giftwrap-1.webp"
+                alt="Gift"
+                class="w-full h-52 object-cover rounded-lg"
+              />
+            </div>
+
+            <div class="">
+              <h3
+                class="text-base font-semibold text-gray-800 mb-4 uppercase tracking-wide relative pr-5"
+              >
+                How does it work?
+                <div
+                  class="absolute top-1/2 right-0 w-[calc(100%-190px)] border-t border-gray-500 transform -translate-y-1/2"
+                ></div>
+              </h3>
+              <div class="flex flex-col gap-3">
+                <div class="flex items-start gap-3">
+                  <div
+                    class="flex-shrink-0 flex items-center justify-center w-11 h-11"
+                  >
+                    <picture class="block object-contain">
+                      <source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/giftwrap-card.webp
+                        "
+                        type="image/webp"
+                      />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/giftwrap-card.png"
+                        class="block object-contain"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                      />
+                    </picture>
+                  </div>
+                  <div class="flex-1">
+                    <div
+                      class="text-sm font-semibold text-gray-800 mb-1 leading-tight"
+                    >
+                      Personalised card
+                    </div>
+                    <div class="text-xs text-gray-500 leading-tight">
+                      Your message will be printed on a card placed inside the
+                      package.
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div
+                    class="flex-shrink-0 flex items-center justify-center w-11 h-11"
+                  >
+                    <picture class="block object-contain">
+                      <source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/giftwrap-invoice.webp
+                        "
+                        type="image/webp"
+                      />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/giftwrap-invoice.png"
+                        class="block object-contain"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                      />
+                    </picture>
+                  </div>
+                  <div class="flex-1">
+                    <div
+                      class="text-sm font-semibold text-gray-800 mb-1 leading-tight"
+                    >
+                      Invoice will be included
+                    </div>
+                    <div class="text-xs text-gray-500 leading-tight">
+                      The receiver will get an invoice showing the amount you
+                      pay or the discount applied.
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div
+                    class="flex-shrink-0 flex items-center justify-center w-11 h-11"
+                  >
+                    <picture class="block object-contain">
+                      <source
+                        srcset="
+                          https://constant.myntassets.com/checkout/assets/img/giftwrap-tag.webp
+                        "
+                        type="image/webp"
+                      />
+                      <img
+                        src="https://constant.myntassets.com/checkout/assets/img/giftwrap-tag.png"
+                        class="block object-contain"
+                        alt="image"
+                        fetchpriority="auto"
+                        loading="eager"
+                      />
+                    </picture>
+                  </div>
+                  <div class="flex-1">
+                    <div
+                      class="text-sm font-semibold text-gray-800 mb-1 leading-tight"
+                    >
+                      Original product tags will be retained
+                    </div>
+                    <div class="text-xs text-gray-500 leading-tight">
+                      Original product tags with MRP will be left intact in-case
+                      you'd like to exchange for a different size.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="cartv3.js"></script>
+  </body>
+</html>
