@@ -167,10 +167,367 @@
         display: inline-block;
         margin-top: 4px;
       }
+
+      /* ----------------------------------------------- */
+      /* NEW CSS FOR SIZE CHART SIDEBAR START */
+      /* ----------------------------------------------- */
+      .myntra-pink-text {
+        color: #ff3f6c;
+      }
+      .myntra-pink-bg {
+        background-color: #ff3f6c;
+      }
+      .myntra-pink-bg:hover {
+        background-color: #f72a5a;
+      }
+      .myntra-border-gray {
+        border-color: #eaeaec;
+      }
+      .myntra-light-gray-bg {
+        background-color: #eaeaec;
+      }
+      .PriceInfo-price {
+        color: #282c3f;
+      }
+      .PriceInfo-mrp {
+        color: #94969f;
+        text-decoration: line-through;
+      }
+      .PriceInfo-discount {
+        color: #f26a10;
+      }
+      .sizeChartWeb-text-color {
+        color: #696b79;
+      }
+      .sizeChartWeb-green-text {
+        color: #03a685;
+      }
+
+      /* General styling for sizes chart from snippet */
+      .sizeChartWeb-header {
+        padding: 12px 16px;
+        border-bottom: 1px solid #eaeaec;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .sizeChartWeb-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: #525252;
+      }
+      .sizeChartWeb-productInfo {
+        margin-left: 12px;
+      }
+      .sizeChartWeb-sizechart-image {
+        width: 90px;
+        height: auto;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+      .sizeChartWeb-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: #535766;
+        margin-bottom: 4px;
+      }
+      .sizeChartWeb-subtitle {
+        font-size: 13px;
+        color: #8e949d;
+        margin-bottom: 4px;
+      }
+      .PriceInfo-price strong {
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .PriceInfo-mrp,
+      .PriceInfo-discount {
+        font-size: 13px;
+      }
+
+      /* Tabs styling from snippet */
+      .sizeChartWeb-tabContainer {
+        display: flex;
+      }
+      .sizeChartWeb-sizeChartTab,
+      .sizeChartWeb-measureTab {
+        flex: 1;
+        padding: 16px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s ease-in-out;
+        color: #525252;
+      }
+      .sizeChartWeb-tabSelected {
+        border-color: #ff3f6c;
+        color: #ff3f6c;
+        font-weight: 700;
+      }
+
+      /* Unit toggle (in/cm) styling */
+      .scaleAndUnits-inchCmToggle {
+        display: flex;
+        border-radius: 9999px;
+        overflow: hidden;
+        background-color: #eaeaec;
+        width: fit-content;
+        margin-left: auto;
+        margin-bottom: 1rem;
+      }
+      .scaleAndUnits-metric {
+        padding: 8px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #525252;
+        transition: all 0.2s ease-in-out;
+      }
+      .scaleAndUnits-selected {
+        background-color: #ff3f6c;
+        color: white !important;
+      }
+
+      /* Table styling */
+      .sizeChartWeb-tableNew {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .sizeChartWeb-newRow {
+        border-bottom: 1px solid #eaeaec;
+        display: table-row;
+      }
+      .sizeChartWeb-newCell {
+        padding: 10px 4px;
+        text-align: left;
+        font-size: 14px;
+        color: #525252;
+        display: table-cell; /* Important for radio alignment */
+        vertical-align: middle;
+        position: relative; /* For radio alignment */
+      }
+      .sizeChartWeb-cell-title {
+        font-weight: 700;
+        color: #282c3f;
+        padding-bottom: 16px;
+      }
+
+      /* Custom Radio Button Styles based on common-customRadio */
+      .common-customRadio {
+        position: relative;
+        display: block; /* Important: makes label block-level to occupy full cell height */
+        height: 100%;
+        cursor: pointer;
+        width: 100%;
+        user-select: none;
+        padding-left: 20px; /* Space for custom radio */
+        box-sizing: border-box; /* Include padding in width calculation */
+        align-items: center;
+        display: flex; /* For vertical alignment within cell */
+      }
+      .common-customRadio input {
+        /* Hide original radio input */
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      .common-radioIndicator {
+        /* The visual custom radio button */
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 16px;
+        width: 16px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease-in-out;
+      }
+      .common-customRadio input:checked ~ .common-radioIndicator {
+        border-color: #ff3f6c;
+      }
+      .common-radioIndicator:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 4px;
+        top: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ff3f6c;
+        transform: scale(0);
+        transition: transform 0.2s ease-in-out;
+      }
+      .common-customRadio input:checked ~ .common-radioIndicator:after {
+        display: block;
+        transform: scale(1);
+      }
+      .common-customRadio:hover input ~ .common-radioIndicator {
+        border-color: #ff3f6c; /* Subtle hover effect on indicator */
+      }
+
+      /* Selected table row highlighting */
+      .sizeChartWeb-newRow.selected {
+        background-color: #fff1ec;
+      } /* Myntra's light pink hover/selected background */
+      /* Ensure radio button container within cell stretches vertically */
+      .sizeChartWeb-newCell > label.common-customRadio {
+        height: 100%;
+      }
+
+      /* Bottom sticky actions */
+      .sizeChartWeb-size-chart-cta {
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 10;
+        padding: 16px 20px;
+        border-top: 1px solid #eaeaec;
+        display: flex;
+        gap: 16px;
+      }
+      .pdp-button {
+        flex: 1;
+        padding: 12px 0;
+        text-align: center;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .pdp-add-to-bag {
+        background-color: #ff3f6c;
+        color: white;
+        transition: background-color 0.2s ease;
+      }
+      .pdp-add-to-bag:hover {
+        background-color: #f72a5a;
+      }
+      .pdp-add-to-wishlist {
+        border: 1px solid #eaeaec;
+        background-color: white;
+        color: #282c3f;
+        transition: border-color 0.2s ease;
+      }
+      .pdp-add-to-wishlist:hover {
+        border-color: #525252;
+      }
+      /* Using Font Awesome for bag/heart icons instead of sprites */
+      .pdp-whiteBag,
+      .pdp-notWishlistedIcon {
+        font-size: 18px;
+      }
+
+      /* Other details and image in 'How to measure' tab */
+      .sizeChartWeb-info {
+        padding: 16px 0;
+      }
+      .scaleAndUnits-unitText {
+        font-size: 12px;
+        color: #8e949d;
+        margin-top: 20px;
+      }
+      .sizeChartWeb-measure-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #525252;
+        margin-bottom: 12px;
+      }
+      .sizeChartWeb-image-size-chart {
+        width: 100%;
+        height: auto;
+        max-width: 350px;
+        display: block;
+        margin: 0 auto;
+      } /* Ensure it's centered and responsive */
+
+      /* Divider */
+      .sizeChartWeb-divider {
+        height: 1px;
+        background-color: #eaeaec;
+        margin: 20px 0;
+      }
+
+      /* Seller info */
+      .sizeChartWeb-sellerInfo {
+        font-size: 14px;
+        color: #525252;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .sizeChartWeb-sellerLink {
+        font-weight: 500;
+        color: #03a685;
+        cursor: pointer;
+      } /* Green like original */
+
+      /* Overlay backdrop */
+      .size-chart-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .size-chart-backdrop.open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Main sidebar panel */
+      .sizeChartWeb-content {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 450px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column; /* Allows content and footer to flex */
+      }
+      .sizeChartWeb-content.open {
+        transform: translateX(0);
+      }
+      .sizeChartWeb-main-content {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 0 16px;
+      }
     </style>
   </head>
   <body class="font-sans text-gray-800 antialiased">
-    <!-- Toast Message for "Added to bag" -->
     <div
       id="toast"
       class="fixed top-20 right-8 bg-black bg-opacity-75 text-white px-4 py-2 rounded-md shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-out flex items-center space-x-2 hidden"
@@ -198,7 +555,7 @@
     </nav>
     <!-- Main Content Area -->
     <main
-      class="max-w-[1850px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row gap-6"
+      class="max-w-[1850px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row gap-6 relative"
     >
       <!-- Left Column: Product Images -->
 
@@ -969,37 +1326,137 @@
             View all 2218 reviews
           </button>
         </div>
-
-        <!-- Trust Badges (desktop position, mobile position is inside main content) -->
-        <!-- <div
-          class="flex justify-around items-center py-4 border-t border-gray-200 text-center hidden md:flex"
-        >
-          <div class="flex flex-col items-center">
-            <img
-              src="https://assets.myntassets.com/assets/images/2023/1/17/ba517594-ce2c-47fc-b586-7a8e77c5c2491674021235316-ribbon.png"
-              alt="Genuine"
-              class="h-10 w-10 mb-1"
-            />
-            <span class="text-xs text-gray-600">Genuine Products</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <img
-              src="https://assets.myntassets.com/assets/images/2023/1/17/04e17e82-e3e1-4566-a36c-94b159f8c66a1674021235334-7-step.png"
-              alt="Quality Check"
-              class="h-10 w-10 mb-1"
-            />
-            <span class="text-xs text-gray-600">7 Step Quality Check</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <img
-              src="https://constant.myntassets.com/web/assets/img/a35f2963-c7ff-43f1-b952-ce373d31704e1674021235325-secure-payments.png"
-              alt="Secure Payments"
-              class="h-10 w-10 mb-1"
-            />
-            <span class="text-xs text-gray-600">Secure Payments</span>
-          </div>
-        </div> -->
       </section>
+
+      <div id="size-chart-backdrop" class="size-chart-backdrop"></div>
+
+      <div id="size-chart-sidebar" class="sizeChartWeb-content hidden">
+        <div class="sizeChartWeb-header">
+          <button
+            class="sizeChartWeb-close sizeChartWeb-button"
+            id="close-sidebar-btn"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+          <img
+            draggable="false"
+            class="sizeChartWeb-sizechart-image"
+            src="https://assets.myntassets.com/h_500,q_20,w_350/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg"
+          />
+          <div class="sizeChartWeb-productInfo">
+            <div class="sizeChartWeb-title">Campus Sutra</div>
+            <div class="sizeChartWeb-subtitle">
+              Campus Sutra Men Self Design Polo Collar Cotton T-shirt
+            </div>
+            <div style="font-size: 16px">
+              <span class="PriceInfo-price" tabindex="0"
+                ><strong>₹ 662</strong></span
+              >
+              <span class="PriceInfo-mrp"><s>₹ 1699</s></span>
+              <span class="PriceInfo-discount">(61% OFF)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-grow flex flex-col hide-scrollbar">
+          <div class="sizeChartWeb-tabContainer">
+            <div
+              class="sizeChartWeb-sizeChartTab sizeChartWeb-tabSelected"
+              id="size-chart-tab-btn"
+            >
+              Size Chart
+            </div>
+            <div class="sizeChartWeb-measureTab" id="how-to-measure-tab-btn">
+              How to measure
+            </div>
+          </div>
+
+          <div class="flex-grow p-4 md:p-6 overflow-y-auto hide-scrollbar">
+            <div id="size-chart-content-tab" class="sizeChartWeb-info">
+              <div class="scaleAndUnits-inchCmToggle">
+                <button
+                  id="unit-in-btn"
+                  class="scaleAndUnits-metric scaleAndUnits-selected"
+                >
+                  in
+                </button>
+                <button id="unit-cm-btn" class="scaleAndUnits-metric">
+                  cm
+                </button>
+              </div>
+
+              <table class="sizeChartWeb-tableNew">
+                <thead>
+                  <tr class="sizeChartWeb-newRow">
+                    <th class="sizeChartWeb-newCell"></th>
+                    <th class="sizeChartWeb-newCell sizeChartWeb-cell-title">
+                      Size
+                    </th>
+                    <th class="sizeChartWeb-newCell sizeChartWeb-cell-title">
+                      <span id="chest-col-header">Chest (in)</span>
+                    </th>
+                    <th class="sizeChartWeb-newCell sizeChartWeb-cell-title">
+                      <span id="front-length-col-header"
+                        >Front Length (in)</span
+                      >
+                    </th>
+                    <th class="sizeChartWeb-newCell sizeChartWeb-cell-title">
+                      <span id="across-shoulder-col-header"
+                        >Across Shoulder (in)</span
+                      >
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="size-chart-tbody">
+                  <!-- Table rows will be populated by JavaScript -->
+                </tbody>
+              </table>
+              <p class="scaleAndUnits-unitText">
+                * Garment Measurements in
+                <span id="garment-unit-note">Inches</span>
+              </p>
+
+              <div class="sizeChartWeb-divider"></div>
+
+              <div class="sizeChartWeb-sellerInfo">
+                <div>
+                  Seller:
+                  <span class="sizeChartWeb-sellerLink"
+                    >Flashstar Commerce</span
+                  >
+                </div>
+              </div>
+              <div class="sizeChartWeb-divider"></div>
+            </div>
+
+            <div id="how-to-measure-content-tab" class="hidden">
+              <div class="sizeChartWeb-measure-title">
+                How to measure yourself
+              </div>
+              <img
+                draggable="false"
+                class="sizeChartWeb-image-size-chart"
+                src="https://assets.myntassets.com/assets/images/sizechart/2016/12/14/11481690842463-Tshirts_men.png"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Footer for Add to Bag / Wishlist -->
+        <div class="sizeChartWeb-size-chart-cta">
+          <div class="pdp-add-to-bag pdp-button">
+            <i class="fas fa-shopping-bag pdp-whiteBag"></i>
+            <span>ADD TO BAG</span>
+          </div>
+          <div class="pdp-add-to-wishlist pdp-button">
+            <i class="far fa-heart pdp-notWishlistedIcon"></i>
+            <span>WISHLIST</span>
+          </div>
+        </div>
+      </div>
+      <!-- ----------------------------------------------- -->
+      <!-- SIZE CHART SIDEBAR INJECTION END -->
+      <!-- ----------------------------------------------- -->
     </main>
 
     <!-- Sticky Mobile Footer (Add to Bag / Wishlist) -->
@@ -1024,7 +1481,8 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // DOM Elements
+        // DOM Elements from existing product page script
+        // No changes to this section from your provided HTML
         const mainCarouselImages =
           document.querySelectorAll(".main-carousel-img"); // Images in the mobile carousel
         const desktopThumbnails = document.querySelectorAll(".thumbnail-img"); // Thumbnails for desktop view
@@ -1052,7 +1510,8 @@
         const closeFitLengthModalBtn = document.getElementById(
           "close-fit-length-modal"
         );
-        const readMoreBtns = document.querySelectorAll(".read-more-btn");
+        // Original HTML reviewContent does not have `readMoreBtns` variable definition, this might be leftover or intended for a separate readMore toggle that wasn't provided. Removing its usage for safety if not used elsewhere.
+        // const readMoreBtns = document.querySelectorAll(".read-more-btn");
         const likeButtons = document.querySelectorAll(".like-btn");
         const dislikeButtons = document.querySelectorAll(".dislike-btn");
 
@@ -1071,7 +1530,7 @@
             }
             // For mobile, if desktop view's thumbnail changes, reset mobile carousel to first image
             currentIndex = 0;
-            updateCarousel();
+            // updateCarousel(); // This function does not exist in the provided HTML, assuming it's meant for a carousel that's not fully provided.
           });
         });
 
@@ -1084,9 +1543,10 @@
         sizeButtons.forEach((button) => {
           button.addEventListener("click", () => {
             sizeButtons.forEach((btn) => {
-              btn.classList.remove("border-myntra-pink", "text-myntra-pink"); // Remove active styles
+              // Note: using explicit hex color for border and text based on myntra-pink definition.
+              btn.classList.remove("border-[#ff3f6c]", "text-[#ff3f6c]"); // Remove active styles
             });
-            button.classList.add("border-myntra-pink", "text-myntra-pink"); // Add active styles
+            button.classList.add("border-[#ff3f6c]", "text-[#ff3f6c]"); // Add active styles
             selectedSize = button.dataset.size;
             chestSizeSpan.textContent = button.dataset.chest;
             garmentMeasurement.classList.remove("hidden");
@@ -1120,20 +1580,19 @@
             );
           }
 
-          // Show toast message
           toast.classList.remove("hidden");
           setTimeout(() => {
             toast.classList.remove("translate-x-full");
             toast.classList.add("translate-x-0");
-          }, 100); // Small delay for animation to start
+          }, 100);
 
           setTimeout(() => {
             toast.classList.remove("translate-x-0");
             toast.classList.add("translate-x-full");
             setTimeout(() => {
               toast.classList.add("hidden");
-            }, 300); // Match transition duration
-          }, 3000); // Hide after 3 seconds
+            }, 300);
+          }, 3000);
         }
 
         if (addToBagDesktopBtn)
@@ -1206,8 +1665,7 @@
             const countSpan = button.querySelector(".like-count");
             let currentCount = parseInt(countSpan.textContent);
             countSpan.textContent = currentCount + 1;
-            // Optional: add active state/color change for visual feedback
-            button.classList.add("text-myntra-pink"); // Example: highlight if liked
+            button.classList.add("text-[#ff3f6c]");
           });
         });
 
@@ -1216,7 +1674,7 @@
             const countSpan = button.querySelector(".dislike-count");
             let currentCount = parseInt(countSpan.textContent);
             countSpan.textContent = currentCount + 1;
-            button.classList.add("text-gray-500"); // Example: show subtle change
+            button.classList.add("text-gray-500");
           });
         });
 
@@ -1224,19 +1682,21 @@
         const mobileStickyFooter = document.getElementById(
           "mobile-sticky-footer"
         );
-        const deliveryOptionsSection = document.getElementById(
-          "delivery-options-section"
-        ); // Section to observe for showing/hiding sticky footer
+        // Original page doesn't have deliveryOptionsSection with this ID. Assuming this refers to product-details-section for now or an appropriate top element.
+        // For robustness, I'll link it to a section likely to be near the bottom where the sticky footer might appear.
+        const observedStickySection = document.getElementById(
+          "ratings-reviews-section"
+        ); // Using an existing large section from your provided HTML
 
-        if (mobileStickyFooter && deliveryOptionsSection) {
+        if (mobileStickyFooter && observedStickySection) {
           const observer = new IntersectionObserver(
             ([entry]) => {
               if (window.innerWidth < 768) {
                 // Only apply for mobile
-                // If the observed section (delivery options) is fully out of view (scrolled past), show sticky footer
+                // If the observed section is mostly out of view (scrolled past), show sticky footer
                 if (
                   !entry.isIntersecting &&
-                  window.scrollY > deliveryOptionsSection.offsetTop
+                  window.scrollY > observedStickySection.offsetTop
                 ) {
                   mobileStickyFooter.classList.add("show");
                 } else {
@@ -1247,15 +1707,15 @@
                 mobileStickyFooter.classList.remove("show"); // Ensure hidden on desktop
               }
             },
-            { threshold: 0 }
-          ); // Trigger as soon as any part of the section enters/leaves view
+            { threshold: 0 } // Trigger as soon as any part of the section enters/leaves view
+          );
 
-          observer.observe(deliveryOptionsSection);
+          observer.observe(observedStickySection);
 
           // Initial check on page load if already scrolled past the section on mobile
           if (
             window.innerWidth < 768 &&
-            window.scrollY > deliveryOptionsSection.offsetTop
+            window.scrollY > observedStickySection.offsetTop
           ) {
             mobileStickyFooter.classList.add("show");
           }
@@ -1265,18 +1725,22 @@
             if (window.innerWidth >= 768) {
               mobileStickyFooter.classList.remove("show");
             } else {
-              if (window.scrollY > deliveryOptionsSection.offsetTop) {
+              if (window.scrollY > observedStickySection.offsetTop) {
                 mobileStickyFooter.classList.add("show");
               }
             }
           });
         }
 
-        // --- Mobile Image Carousel ---
+        // --- Mobile Image Carousel Placeholder (No actual carousel JS provided in initial code) ---
+        // These elements and functions were part of my prior responsive product page generation,
+        // but not directly relevant to *this* user-provided index.html and its image display grid.
+        // I'll keep them as placeholders commented out to acknowledge they existed in prior context.
+        /*
         const imageTrack = document.getElementById("image-track");
         const carouselImages = imageTrack.querySelectorAll(
           ".main-carousel-img.md\\:hidden"
-        ); // Only mobile specific images
+        );
         const prevMobileBtn = document.getElementById("prev-image-mobile");
         const nextMobileBtn = document.getElementById("next-image-mobile");
         const carouselDotsContainer = document.getElementById("carousel-dots");
@@ -1373,6 +1837,195 @@
             updateDesktopImageFromNav();
           });
         }
+        */
+
+        // -----------------------------------------------
+        // NEW JAVASCRIPT FOR SIZE CHART SIDEBAR INJECTION START
+        // -----------------------------------------------
+        const sizeChartLink = document.getElementById("size-chart-link"); // This is the trigger from the existing page
+        const sizeChartSidebar = document.getElementById("size-chart-sidebar");
+        const sizeChartBackdrop = document.getElementById(
+          "size-chart-backdrop"
+        );
+        const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+
+        const sizeChartTabBtn = document.getElementById("size-chart-tab-btn");
+        const howToMeasureTabBtn = document.getElementById(
+          "how-to-measure-tab-btn"
+        );
+        const sizeChartContentTab = document.getElementById(
+          "size-chart-content-tab"
+        );
+        const howToMeasureContentTab = document.getElementById(
+          "how-to-measure-content-tab"
+        );
+
+        const sizeChartTbody = document.getElementById("size-chart-tbody");
+        const unitInBtn = document.getElementById("unit-in-btn");
+        const unitCmBtn = document.getElementById("unit-cm-btn");
+        const garmentUnitNote = document.getElementById("garment-unit-note");
+        const chestColHeader = document.getElementById("chest-col-header");
+        const frontLengthColHeader = document.getElementById(
+          "front-length-col-header"
+        );
+        const acrossShoulderColHeader = document.getElementById(
+          "across-shoulder-col-header"
+        );
+
+        let currentUnit = "in"; // 'in' for inches, 'cm' for centimeters
+
+        const sizes = [
+          { size: "S", chest: 38.0, frontLength: 27.0, acrossShoulder: 17.5 },
+          { size: "M", chest: 40.0, frontLength: 28.0, acrossShoulder: 18.0 },
+          { size: "L", chest: 42.0, frontLength: 29.0, acrossShoulder: 18.5 },
+          { size: "XL", chest: 44.0, frontLength: 30.0, acrossShoulder: 19.0 },
+        ];
+
+        const convertToCm = (val) => (val * 2.54).toFixed(1);
+
+        // Function to populate size chart table
+        function populateSizeChart(unit) {
+          sizeChartTbody.innerHTML = ""; // Clear existing rows
+          const isCm = unit === "cm";
+          garmentUnitNote.textContent = isCm ? "Centimeters" : "Inches";
+          chestColHeader.textContent = `Chest (${unit})`;
+          frontLengthColHeader.textContent = `Front Length (${unit})`;
+          acrossShoulderColHeader.textContent = `Across Shoulder (${unit})`;
+
+          sizes.forEach((row) => {
+            const tr = document.createElement("tr");
+            const isSelected = row.size === "L"; // Example: default select 'L' as shown in video
+            if (isSelected) {
+              tr.classList.add("sizeChartWeb-newRow", "selected");
+            } else {
+              tr.classList.add("sizeChartWeb-newRow");
+            }
+
+            const chest = isCm ? convertToCm(row.chest) : row.chest;
+            const frontLength = isCm
+              ? convertToCm(row.frontLength)
+              : row.frontLength;
+            const acrossShoulder = isCm
+              ? convertToCm(row.acrossShoulder)
+              : row.acrossShoulder;
+
+            tr.innerHTML = `
+                    <td class="sizeChartWeb-newCell common-customRadio common-newCustomRadio">
+                        <label class="common-customRadio common-newCustomRadio">
+                            <input type="radio" name="sizeSelection" class="undefined undefined" value="${
+                              row.size
+                            }" ${isSelected ? "checked" : ""}>
+                            <div class="common-radioIndicator sizeChartWeb-radioIndicator common-radioIndicatorNew sizeChartWeb-radioIndicatorNew"></div>
+                        </label>
+                    </td>
+                    <td class="sizeChartWeb-newCell ">${row.size}</td>
+                    <td class="sizeChartWeb-newCell ">${chest}</td>
+                    <td class="sizeChartWeb-newCell ">${frontLength}</td>
+                    <td class="sizeChartWeb-newCell ">${acrossShoulder}</td>
+                `;
+            sizeChartTbody.appendChild(tr);
+
+            // Add event listener to radio button to highlight row
+            const radioInput = tr.querySelector('input[type="radio"]');
+            if (radioInput) {
+              radioInput.addEventListener("change", () => {
+                document
+                  .querySelectorAll(".sizeChartWeb-newRow")
+                  .forEach((r) => r.classList.remove("selected"));
+                if (radioInput.checked) {
+                  tr.classList.add("selected");
+                }
+              });
+            }
+          });
+        }
+
+        // Open Sidebar via the "SIZE CHART" link on the main product page
+        if (sizeChartLink) {
+          sizeChartLink.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            sizeChartSidebar.classList.remove("hidden"); // Make display:flex or display:block initially
+            setTimeout(() => {
+              // Allow reflow before starting transition
+              sizeChartSidebar.classList.add("open");
+              sizeChartBackdrop.classList.add("open");
+              document.body.classList.add("overflow-hidden"); // Prevent scrolling of background content
+            }, 10);
+            populateSizeChart(currentUnit); // Populate table when opening
+          });
+        }
+
+        // Close Sidebar
+        const closeSidebar = () => {
+          sizeChartSidebar.classList.remove("open");
+          sizeChartBackdrop.classList.remove("open");
+          sizeChartSidebar.addEventListener(
+            "transitionend",
+            () => {
+              sizeChartSidebar.classList.add("hidden"); // Hide after transition
+              document.body.classList.remove("overflow-hidden");
+            },
+            { once: true }
+          );
+        };
+
+        if (closeSidebarBtn)
+          closeSidebarBtn.addEventListener("click", closeSidebar);
+        if (sizeChartBackdrop)
+          sizeChartBackdrop.addEventListener("click", closeSidebar); // Close when clicking outside
+
+        // Tab Switching Logic
+        if (sizeChartTabBtn) {
+          sizeChartTabBtn.addEventListener("click", () => {
+            sizeChartTabBtn.classList.add("sizeChartWeb-tabSelected");
+            if (howToMeasureTabBtn)
+              howToMeasureTabBtn.classList.remove("sizeChartWeb-tabSelected");
+
+            if (sizeChartContentTab)
+              sizeChartContentTab.classList.remove("hidden");
+            if (howToMeasureContentTab)
+              howToMeasureContentTab.classList.add("hidden");
+          });
+        }
+
+        if (howToMeasureTabBtn) {
+          howToMeasureTabBtn.addEventListener("click", () => {
+            howToMeasureTabBtn.classList.add("sizeChartWeb-tabSelected");
+            if (sizeChartTabBtn)
+              sizeChartTabBtn.classList.remove("sizeChartWeb-tabSelected");
+
+            if (howToMeasureContentTab)
+              howToMeasureContentTab.classList.remove("hidden");
+            if (sizeChartContentTab)
+              sizeChartContentTab.classList.add("hidden");
+          });
+        }
+
+        // Unit Toggle Logic (in/cm)
+        if (unitInBtn) {
+          unitInBtn.addEventListener("click", () => {
+            currentUnit = "in";
+            unitInBtn.classList.add("scaleAndUnits-selected");
+            if (unitCmBtn) unitCmBtn.classList.remove("scaleAndUnits-selected");
+            populateSizeChart(currentUnit);
+          });
+        }
+
+        if (unitCmBtn) {
+          unitCmBtn.addEventListener("click", () => {
+            currentUnit = "cm";
+            unitCmBtn.classList.add("scaleAndUnits-selected");
+            if (unitInBtn) unitInBtn.classList.remove("scaleAndUnits-selected");
+            populateSizeChart(currentUnit);
+          });
+        }
+
+        // Initial population of the size chart table (only runs once if popup is hidden by default)
+        // This ensures data is ready if user opens popup.
+        populateSizeChart(currentUnit);
+        // -----------------------------------------------
+        // NEW JAVASCRIPT FOR SIZE CHART SIDEBAR INJECTION END
+        // -----------------------------------------------
       });
     </script>
   </body>
