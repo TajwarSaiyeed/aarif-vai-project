@@ -269,82 +269,52 @@ const products = [
 // Function to create product card HTML for desktop
 function createProductCardHTML(item) {
   return `
-    <div class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 ">
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-            <div class="relative overflow-hidden">
-                <!-- Product Image -->
-                <div class="relative w-full h-64 bg-pink-50">
-                    <img
-                        src="${item.image}"
-                        alt="${item.title} ${item.description}"
-                        class="w-full h-full object-cover object-top transition-opacity duration-300"
-                        loading="lazy"
-                    />
-                </div>
-
-                <!-- Rating Badge -->
-                <div class="absolute -mt-7 ml-3 h-4.5 px-1.5 py-0.5 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-xs font-bold">
-                    <span class="text-xs font-bold">${item.rating}</span>
-                    <div class="w-2 h-2 mx-1 bg-green-500 rounded-sm flex items-center justify-center">
-                        <svg class="w-1.5 h-1.5 fill-white text-white" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                    <span class="text-gray-400 mx-1">|</span>
-                    <span class="text-xs font-bold ml-1">${item.ratingCount}</span>
-                </div>
-
-                <!-- Content -->
-                <div class="relative px-2">
-                    <div class="py-2">
-                        <!-- Brand Title -->
-                        <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                            ${item.title}
-                        </h3>
-
-                        <!-- Description -->
-                        <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
-                            ${item.description}
-                        </h4>
-
-                        <!-- Price Container -->
-                        <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                            <!-- Current Price -->
-                            <span class="font-semibold text-gray-800 text-sm">
-                                <span class="relative -left-0.5">${item.currentPrice}</span>
-                            </span>
-
-                            <!-- Original Price -->
-                            <span class="text-sm">
-                                <span class="opacity-40 text-gray-800 line-through text-xs">
-                                    <span>${item.originalPrice}</span>
-                                </span>
-                            </span>
-
-                            <!-- Discount -->
-                            <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
-                                <span>(${item.discountPercent}% OFF)</span>
-                            </span>
-                        </div>
-
-                        <!-- Placeholder for additional info tag -->
-                        <div class="text-orange-600 text-xs font-bold min-h-4 text-left ml-2"></div>
-                    </div>
-
-                    <!-- Wishlist Icon -->
-                    <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800">
-                        <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-        <!-- Add to Bag Link -->
-        <div class="p-2">
-            <a href="#" class="block uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors">Add to Bag</a>
+    <div
+      class="bg-white w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+    >
+      <div class="w-full h-[250px] relative">
+        <img
+          class="w-full h-full object-fit"
+          src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+          alt=""
+        />
+        <div
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
+        >
+          <button
+            class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
+          >
+            <span class="myntraweb-sprite sprites-notWishlisted"></span>
+            Wishlist
+          </button>
         </div>
+
+        <div
+          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
+        >
+          <span
+            class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
+          ></span>
+          <p
+            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
+          >
+            View Similar
+          </p>
+        </div>
+      </div>
+
+      <div class="p-2">
+        <h1 class="text-base font-bold text-black">Levis</h1>
+        <h2 class="text-sm block text-gray-500 group-hover:hidden">
+          Solid Lounge T-shirt
+        </h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
+        <p class="space-x-2">
+          <span class="font-bold">Rs. 389</span>
+          <del class="text-sm text-gray-500">Rs. 649 </del>
+          <span class="text-xs text-[#ff905a]">(40% OFF)</span>
+        </p>
+      </div>
     </div>
 `;
 }
@@ -352,74 +322,52 @@ function createProductCardHTML(item) {
 // Function to create product card HTML for mobile slider
 function createMobileProductCardHTML(item) {
   return `
-    <div class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 mobile-product-card">
-      <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-        <div class="relative overflow-hidden">
-          <!-- Product Image -->
-          <div class="relative w-full h-48 bg-pink-50">
-            <img
-              src="${item.image}"
-              alt="${item.title} ${item.description}"
-              class="w-full h-full object-cover object-top transition-opacity duration-300"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Rating Badge -->
-          <div class="absolute -mt-6 ml-2 h-4 px-1 py-0.5 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-xs font-bold">
-            <span class="text-xs font-bold">${item.rating}</span>
-            <div class="w-2 h-2 mx-1 bg-green-500 rounded-sm flex items-center justify-center">
-              <svg class="w-1.5 h-1.5 fill-white text-white" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-            </div>
-            <span class="text-gray-400 mx-0.5">|</span>
-            <span class="text-xs font-bold">${item.ratingCount}</span>
-          </div>
-
-          <!-- Content -->
-          <div class="relative px-1">
-            <div class="py-2">
-              <!-- Brand Title -->
-              <h3 class="text-left pl-1 font-bold text-gray-800 text-xs leading-tight whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                ${item.title}
-              </h3>
-
-              <!-- Description -->
-              <h4 class="text-left pl-1 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-xs font-normal text-gray-800 h-3">
-                ${item.description}
-              </h4>
-
-              <!-- Price Container -->
-              <div class="mt-0 pl-1 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                <!-- Current Price -->
-                <span class="font-semibold text-gray-800 text-sm">
-                  ${item.currentPrice}
-                </span>
-
-                <!-- Original Price -->
-                <span class="text-sm">
-                  <span class="opacity-40 text-gray-800 line-through text-xs ml-1">
-                    ${item.originalPrice}
-                  </span>
-                </span>
-
-                <!-- Discount -->
-                <div class="text-orange-400 font-bold text-xs">
-                  (${item.discountPercent}% OFF)
-                </div>
-              </div>
-            </div>
-
-            <!-- Wishlist Icon -->
-            <div class="absolute bottom-8 right-1 top-0.5 pt-1 h-8 text-gray-800">
-              <svg class="w-5 h-5 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-              </svg>
-            </div>
-          </div>
+    <div
+      class="bg-white w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+    >
+      <div class="w-full h-[250px] relative">
+        <img
+          class="w-full h-full object-fit"
+          src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+          alt=""
+        />
+        <div
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
+        >
+          <button
+            class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
+          >
+            <span class="myntraweb-sprite sprites-notWishlisted"></span>
+            Wishlist
+          </button>
         </div>
-      </a>
+
+        <div
+          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
+        >
+          <span
+            class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
+          ></span>
+          <p
+            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
+          >
+            View Similar
+          </p>
+        </div>
+      </div>
+
+      <div class="p-2">
+        <h1 class="text-base font-bold text-black">Levis</h1>
+        <h2 class="text-sm block text-gray-500 group-hover:hidden">
+          Solid Lounge T-shirt
+        </h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
+        <p class="space-x-2">
+          <span class="font-bold">Rs. 389</span>
+          <del class="text-sm text-gray-500">Rs. 649 </del>
+          <span class="text-xs text-[#ff905a]">(40% OFF)</span>
+        </p>
+      </div>
     </div>
   `;
 }
@@ -518,7 +466,7 @@ const shopByNotesProducts = [
 // Function to create shop by notes product card HTML
 function createShopByNotesProductCardHTML(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 ">
+    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200">
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden">
                 <!-- Product Image -->

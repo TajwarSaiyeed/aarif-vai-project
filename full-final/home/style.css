@@ -77,7 +77,7 @@ body {
 /* Product card mobile slider styles */
 .mobile-product-card {
     /* Mobile: Show 2.2 cards (2 full + part of next) */
-    width: calc((100vw - 200px) / 2.2);
+    width: 150px;
     min-width: calc((100vw - 200px) / 2.2);
     flex-shrink: 0;
 }
@@ -86,4 +86,22 @@ body {
 #products-slider-mobile {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+}
+
+.myntraweb-sprite {
+    background: url("https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png");
+    background-size: 1404px 105px;
+    display: inline-block;
+}
+
+.sprites-notWishlisted {
+    width: 17px;
+    height: 22px;
+    background-position: -315px -186px;
+}
+
+.sprites-similarProductsIcon {
+    background-position: -142px -58px;
+    width: 24px;
+    height: 20px;
 }

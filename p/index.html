@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../global.css" />
+
+    <style>
+      .myntraweb-sprite {
+        background: url("https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png");
+        background-size: 1404px 105px;
+        display: inline-block;
+      }
+
+      .sprites-notWishlisted {
+        width: 17px;
+        height: 22px;
+        background-position: -315px -186px;
+      }
+
+      .sprites-similarProductsIcon {
+        background-position: -142px -58px;
+        width: 24px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body class="flex justify-center items-center min-h-screen">
+    <div
+      class="bg-white w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+    >
+      <div class="w-full h-[250px] relative">
+        <img
+          class="w-full h-full object-fit"
+          src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+          alt=""
+        />
+        <div
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
+        >
+          <button
+            class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
+          >
+            <span class="myntraweb-sprite sprites-notWishlisted"></span>
+            Wishlist
+          </button>
+        </div>
+
+        <div
+          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
+        >
+          <span
+            class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
+          ></span>
+          <p
+            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap"
+          >
+            View Similar
+          </p>
+        </div>
+      </div>
+
+      <div class="p-2">
+        <h1 class="text-base font-bold text-black">Levis</h1>
+        <h2 class="text-sm block text-gray-500 group-hover:hidden">
+          Solid Lounge T-shirt
+        </h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
+        <p class="space-x-2">
+          <span class="font-bold">Rs. 389</span>
+          <del class="text-sm text-gray-500">Rs. 649 </del>
+          <span class="text-xs text-[#ff905a]">(40% OFF)</span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
