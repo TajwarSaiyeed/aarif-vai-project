@@ -206,3 +206,13 @@ input[type="checkbox"] {
     height: 16px;
     border-radius: 3px;
 }
+
+.custom-checkbox:checked+.checkbox-box::after {
+    content: "✔";
+    color: white;
+    font-size: 0.75rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}

@@ -283,6 +283,62 @@ const filterData = {
 
 let activeFilter = null;
 
+// Color filter data
+const colors = [
+  { name: "Black", count: 74582, hex: "#000000" },
+  { name: "Blue", count: 72287, hex: "#0000FF" },
+  { name: "White", count: 62793, hex: "#FFFFFF" },
+  { name: "Green", count: 43371, hex: "#008000" },
+  { name: "Navy Blue", count: 40978, hex: "#000080" },
+  { name: "Grey", count: 37444, hex: "#808080" },
+  { name: "Beige", count: 21535, hex: "#F5F5DC" },
+  { name: "Red", count: 19176, hex: "#FF0000" },
+  { name: "Brown", count: 17602, hex: "#A52A2A" },
+  { name: "Maroon", count: 17432, hex: "#800000" },
+  { name: "Pink", count: 17177, hex: "#FFC0CB" },
+  { name: "Yellow", count: 16211, hex: "#FFFF00" },
+  { name: "Olive", count: 15744, hex: "#808000" },
+  { name: "Purple", count: 9390, hex: "#800080" },
+  { name: "Orange", count: 8330, hex: "#FFA500" },
+  { name: "Off White", count: 7063, hex: "#F8F8FF" },
+  { name: "Teal", count: 6700, hex: "#008080" },
+  { name: "Mustard", count: 6673, hex: "#FFDB58" },
+  { name: "Peach", count: 6345, hex: "#FFDAB9" },
+  { name: "Cream", count: 6239, hex: "#FFFDD0" },
+  { name: "Multi", count: 5178, hex: "#00000000" },
+  { name: "Rust", count: 4052, hex: "#B7410E" },
+  { name: "Lavender", count: 3600, hex: "#E6E6FA" },
+  { name: "Sea Green", count: 3366, hex: "#2E8B57" },
+  { name: "Turquoise Blue", count: 3356, hex: "#00FFFF" },
+  { name: "Charcoal", count: 3325, hex: "#36454F" },
+  { name: "Burgundy", count: 2598, hex: "#800020" },
+  { name: "Khaki", count: 2573, hex: "#F0E68C" },
+  { name: "Grey Melange", count: 2047, hex: "#00000000" },
+  { name: "Mauve", count: 1790, hex: "#E0B0FF" },
+  { name: "Coral", count: 1140, hex: "#FF7F50" },
+  { name: "Coffee Brown", count: 1054, hex: "#6F4E37" },
+  { name: "Lime Green", count: 1032, hex: "#32CD32" },
+  { name: "Gold", count: 732, hex: "#FFD700" },
+  { name: "Taupe", count: 583, hex: "#483C32" },
+  { name: "Tan", count: 508, hex: "#D2B48C" },
+  { name: "Violet", count: 438, hex: "#EE82EE" },
+  { name: "Rose", count: 421, hex: "#FF007F" },
+  { name: "Camel Brown", count: 388, hex: "#C19A6B" },
+  { name: "Silver", count: 363, hex: "#C0C0C0" },
+  { name: "Magenta", count: 293, hex: "#FF00FF" },
+  { name: "Fluorescent Green", count: 249, hex: "#39FF14" },
+  { name: "Nude", count: 119, hex: "#E0DAD4" },
+  { name: "Steel", count: 110, hex: "#4682B4" },
+  { name: "Assorted", count: 105, hex: "#ffffff00" },
+  { name: "Copper", count: 77, hex: "#B87333" },
+  { name: "Rose Gold", count: 46, hex: "#B76E79" },
+  { name: "Bronze", count: 44, hex: "#CD7F32" },
+  { name: "Metallic", count: 43, hex: "#e0d0c5" },
+  { name: "Champagne", count: 11, hex: "#F7E7CE" },
+  { name: "Skin", count: 5, hex: "#FFDDC4" },
+  { name: "Transparent", count: 1, hex: "#eeeeee" },
+];
+
 // Initialize filter categories
 function initializeFilters() {
   const filterCategoriesContainer =
@@ -457,6 +513,7 @@ function renderProductsDesktop(productsToRender) {
 if (productsGridDesktop) {
   renderProductsDesktop(products);
   initializeFilters();
+  initializeColorFilters(); // Initialize color filters
 }
 
 if (sortDesktop) {
@@ -774,3 +831,67 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+// Initialize color filters
+function initializeColorFilters() {
+  const colorFilterContainer = document.getElementById("color-filter-list");
+
+  if (!colorFilterContainer) return;
+
+  // Clear existing content
+  colorFilterContainer.innerHTML = "";
+
+  colors.forEach((color) => {
+    const listItem = document.createElement("li");
+    const label = document.createElement("label");
+    label.className = "inline-flex items-center cursor-pointer gap-2 relative";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "custom-checkbox hidden peer";
+    checkbox.value = color.name.toLowerCase().replace(/\s+/g, "-");
+
+    const checkboxBox = document.createElement("div");
+    checkboxBox.className =
+      "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+    // Color display circle (only if hex color exists)
+    if (color.hex) {
+      const colorDisplay = document.createElement("div");
+      colorDisplay.className = "w-4 h-4 rounded-full border border-gray-200";
+      colorDisplay.style.backgroundColor = color.hex;
+      label.appendChild(checkbox);
+      label.appendChild(checkboxBox);
+      label.appendChild(colorDisplay);
+    } else {
+      // For colors without hex (Multi, Grey Melange, etc.)
+      label.appendChild(checkbox);
+      label.appendChild(checkboxBox);
+    }
+
+    const colorName = document.createElement("span");
+    colorName.className = "text-sm text-gray-800 font-medium";
+    colorName.textContent = color.name;
+
+    const colorCount = document.createElement("span");
+    colorCount.className = "text-sm text-gray-400 ml-auto";
+    colorCount.textContent = `(${color.count.toLocaleString()})`;
+
+    label.appendChild(colorName);
+    label.appendChild(colorCount);
+    listItem.appendChild(label);
+    colorFilterContainer.appendChild(listItem);
+
+    // Add event listener for color filter
+    checkbox.addEventListener("change", function () {
+      handleColorFilterChange(color.name, this.checked);
+    });
+  });
+}
+
+// Handle color filter changes
+function handleColorFilterChange(colorName, isChecked) {
+  console.log(`Color filter: ${colorName}, Checked: ${isChecked}`);
+  // Add your color filtering logic here
+  applyFilters();
+}
