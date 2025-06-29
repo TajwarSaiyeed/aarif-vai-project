@@ -88,11 +88,6 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-.myntraweb-sprite {
-    background: url("https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png");
-    background-size: 1404px 105px;
-    display: inline-block;
-}
 
 .sprites-notWishlisted {
     width: 17px;
