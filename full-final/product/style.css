@@ -26,11 +26,6 @@
          Roboto, Helvetica, Arial, sans-serif;
  }
 
- .myntraweb-sprite {
-     background: url("https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png");
-     background-size: 1404px 105px;
-     display: inline-block;
- }
 
  /* Custom styles for Myntra-like branding */
  .myntra-pink {

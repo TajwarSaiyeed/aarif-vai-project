@@ -15,208 +15,217 @@
       class="bg-white z-10 fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
     >
       <!-- Desktop Navbar (visible on xl screens and up) -->
-      <div class="hidden xl:flex items-center justify-between px-4 py-4 gap-4">
-        <div class="float-left h-inherit ml-[4%]">
-          <a href="#" class="inline-block align-middle p-0 m-0 cursor-pointer">
-            <span class="myntraweb-sprite sprites-headerLogo"></span>
-          </a>
-        </div>
-
-        <!-- Navigation items will be dynamically inserted here by JavaScript -->
-        <div id="main-navigation" class="flex relative"></div>
-
-        <!-- search -->
-        <div class="max-w-[400px] w-full float-right leading-0 relative">
-          <a href="#" class="absolute top-1/2 -translate-y-1/2 pl-2 ml-1">
-            <span
-              class="myntraweb-sprite sprites-search inline-block scale-75"
-            ></span>
-          </a>
-          <input
-            type="text"
-            placeholder="Search for products, brands and more"
-            class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded-r bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
-          />
-        </div>
-
-        <!-- actions -->
-        <div class="float-right flex leading-0 h-[40px] mr-[30px] ml-[10px]">
-          <!-- Profile Dropdown -->
-          <div class="relative h-[60px] mx-5 group">
-            <div class="flex px-3 relative h-[40px]">
-              <span
-                class="myntraweb-sprite sprites-headerUser mt-[10px] absolute bottom-[13px] left-[5px] block"
-              ></span>
-              <span
-                class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
-                >Profile</span
-              >
-            </div>
-            <!-- Dropdown Menu -->
-            <div
-              class="invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[250px] -left-[137.5px] top-[62px] absolute py-[25px] px-4 z-[9] shadow-lg transition-all duration-200 bg-white text-[#3e4152] border border-[#f5f5f6] -mt-[2px]"
+      <div
+        class="hidden xl:flex items-center justify-between py-4 gap-4 max-w-[1320px] mx-auto"
+      >
+        <div class="flex items-center w-full">
+          <div class="float-left h-inherit ml-[4%] mr-6">
+            <a
+              href="#"
+              class="inline-block align-middle p-0 m-0 cursor-pointer"
             >
-              <!-- Arrow -->
+              <span class="myntraweb-sprite sprites-headerLogo"></span>
+            </a>
+          </div>
+
+          <!-- Navigation items will be dynamically inserted here by JavaScript -->
+          <div id="main-navigation" class="flex relative"></div>
+        </div>
+
+        <div class="flex items-center justify-between gap-5 w-full">
+          <!-- search -->
+          <div class="max-w-[400px] w-full leading-0 relative">
+            <a href="#" class="absolute top-1/2 -translate-y-1/2 mt-1 p-2">
+              <span
+                class="myntraweb-sprite sprites-search inline-block scale-75"
+              ></span>
+            </a>
+            <input
+              type="text"
+              placeholder="Search for products, brands and more"
+              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded-r bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
+            />
+          </div>
+
+          <!-- actions -->
+          <div class="flex leading-0 h-[40px] ml-[50px]">
+            <!-- Profile Dropdown -->
+            <div class="relative h-[60px] mx-5 group">
+              <div class="flex px-3 relative h-[40px]">
+                <span
+                  class="myntraweb-sprite sprites-headerUser mt-[10px] absolute bottom-[13px] left-[5px] block"
+                ></span>
+                <span
+                  class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
+                  >Profile</span
+                >
+              </div>
+              <!-- Dropdown Menu -->
               <div
-                class="block -top-[5px] absolute w-[58px] border-b-4 border-[#f16565] left-[124px]"
-              ></div>
-              <!-- Content -->
-              <div class="block">
-                <div class="block pb-[2px]">
-                  <div
-                    class="font-bold h-5 text-sm w-full whitespace-nowrap overflow-hidden text-ellipsis leading-[10px]"
-                  >
-                    Welcome
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[250px] -left-[137.5px] top-[62px] absolute py-[25px] px-4 z-[9] shadow-lg transition-all duration-200 bg-white text-[#3e4152] border border-[#f5f5f6] -mt-[2px]"
+              >
+                <!-- Arrow -->
+                <div
+                  class="block -top-[5px] absolute w-[58px] border-b-4 border-[#f16565] left-[124px]"
+                ></div>
+                <!-- Content -->
+                <div class="block">
+                  <div class="block pb-[2px]">
+                    <div
+                      class="font-bold h-5 text-sm w-full whitespace-nowrap overflow-hidden text-ellipsis leading-[10px]"
+                    >
+                      Welcome
+                    </div>
+                    <div
+                      class="h-[14px] text-[#282c3f] text-sm w-full whitespace-nowrap leading-[10px]"
+                    >
+                      To access account and manage orders
+                    </div>
                   </div>
-                  <div
-                    class="h-[14px] text-[#282c3f] text-sm w-full whitespace-nowrap leading-[10px]"
-                  >
-                    To access account and manage orders
-                  </div>
-                </div>
-                <div>
-                  <div class="inline-block w-full py-[10px] border-t-0">
-                    <a
-                      data-refreshPage="true"
-                      href="/website/login.html"
-                      data-track="login"
-                      class="inline-block py-2 px-4 border border-[#eaeaec] rounded-sm text-center uppercase text-sm text-[#ff3f6c] font-bold hover:border-[#ff3f6c]"
-                      >login / Signup</a
+                  <div>
+                    <div class="inline-block w-full py-[10px] border-t-0">
+                      <a
+                        data-refreshPage="true"
+                        href="/website/login.html"
+                        data-track="login"
+                        class="inline-block py-2 px-4 border border-[#eaeaec] rounded-sm text-center uppercase text-sm text-[#ff3f6c] font-bold hover:border-[#ff3f6c]"
+                        >login / Signup</a
+                      >
+                    </div>
+                    <div
+                      class="flex flex-col w-full py-[10px] space-y-2 border-t border-[#eaeaec]"
                     >
-                  </div>
-                  <div
-                    class="flex flex-col w-full py-[10px] space-y-2 border-t border-[#eaeaec]"
-                  >
-                    <a
-                      href="#"
-                      data-track="orders"
-                      class="font-normal text-sm text-[#3e4152]"
+                      <a
+                        href="#"
+                        data-track="orders"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Orders
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="wishlist"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Wishlist
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="giftcards"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Gift Cards
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="contactus"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Contact Us
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="myntrainsider"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Myntra Insider
+                          <span
+                            class="inline-block p-px py-0 bg-[#ff3f6c] border border-[#ff3f6c] text-white font-black ml-[10px] -mt-[6px] -mb-[10px] text-[10px] skew-x-[-10deg] rounded-sm"
+                          >
+                            New
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                    <div
+                      class="flex flex-col w-full py-[10px] space-y-2 border-t border-[#eaeaec]"
                     >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Orders
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="wishlist"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Wishlist
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="giftcards"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Gift Cards
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="contactus"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Contact Us
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="myntrainsider"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Myntra Insider
-                        <span
-                          class="inline-block p-px py-0 bg-[#ff3f6c] border border-[#ff3f6c] text-white font-black ml-[10px] -mt-[6px] -mb-[10px] text-[10px] skew-x-[-10deg] rounded-sm"
-                        >
-                          New
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-                  <div
-                    class="flex flex-col w-full py-[10px] space-y-2 border-t border-[#eaeaec]"
-                  >
-                    <a
-                      href="#"
-                      data-track="myntracredit"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Myntra Credit
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="coupons"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Coupons
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="savedcards"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Saved Cards
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="savedvpa"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Saved VPA
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      data-track="savedaddresses"
-                      class="font-normal text-sm text-[#3e4152]"
-                    >
-                      <div class="m-0 cursor-pointer hover:font-bold">
-                        Saved Addresses
-                      </div>
-                    </a>
+                      <a
+                        href="#"
+                        data-track="myntracredit"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Myntra Credit
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="coupons"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Coupons
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="savedcards"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Saved Cards
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="savedvpa"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Saved VPA
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="savedaddresses"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Saved Addresses
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- Wishlist -->
+            <a href="#" class="flex no-underline relative mx-[55px] ml-[10px]">
+              <span
+                class="myntraweb-sprite sprites-headerWishlist mt-2 absolute bottom-[14px] left-[13px]"
+              ></span>
+              <span
+                class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
+                >Wishlist</span
+              >
+            </a>
+
+            <!-- Cart -->
+            <a href="#" class="flex no-underline relative mr-[50px] ml-[15px]">
+              <span
+                class="myntraweb-sprite sprites-headerBag mt-2 absolute bottom-[14px] -left-[1px]"
+              ></span>
+              <span
+                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
+                >0</span
+              >
+              <span
+                class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
+                >Bag</span
+              >
+            </a>
           </div>
-
-          <!-- Wishlist -->
-          <a href="#" class="flex no-underline relative mx-[55px] ml-[10px]">
-            <span
-              class="myntraweb-sprite sprites-headerWishlist mt-2 absolute bottom-[14px] left-[13px]"
-            ></span>
-            <span
-              class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
-              >Wishlist</span
-            >
-          </a>
-
-          <!-- Cart -->
-          <a href="#" class="flex no-underline relative mr-[50px] ml-[15px]">
-            <span
-              class="myntraweb-sprite sprites-headerBag mt-2 absolute bottom-[14px] -left-[1px]"
-            ></span>
-            <span
-              class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
-              >0</span
-            >
-            <span
-              class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
-              >Bag</span
-            >
-          </a>
         </div>
       </div>
 
