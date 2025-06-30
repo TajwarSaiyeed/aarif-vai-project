@@ -7,8 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Products</title>
   </head>
   <body>
@@ -407,7 +407,7 @@
             </div>
 
             <!-- Price Filter -->
-            <div class="mb-6 border-b border-gray-200 pb-4">
+            <!-- <div class="mb-6 border-b border-gray-200 pb-4">
               <h3 class="font-bold mb-2 uppercase">Price</h3>
               <ul class="space-y-1">
                 <li>
@@ -429,6 +429,53 @@
                   >
                 </li>
               </ul>
+            </div> -->
+
+            <div
+              class="mb-6 border-b border-gray-200 pb-4 w-full max-w-md pr-4"
+            >
+              <label
+                class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
+                >PRICE</label
+              >
+              <div class="relative h-1">
+                <!-- Base track -->
+                <div
+                  class="absolute top-1/2 transform -translate-y-1/2 w-full h-[1.5px] bg-gray-300 rounded"
+                ></div>
+
+                <!-- Highlighted range -->
+                <div
+                  id="rangeTrack"
+                  class="absolute top-1/2 transform -translate-y-1/2 h-[1.5px] bg-[#ff3f6c] rounded"
+                ></div>
+
+                <!-- Range Inputs -->
+                <input
+                  type="range"
+                  id="minRange"
+                  min="100"
+                  max="10100"
+                  step="100"
+                  value="100"
+                />
+                <input
+                  type="range"
+                  id="maxRange"
+                  min="100"
+                  max="10100"
+                  step="100"
+                  value="10100"
+                />
+              </div>
+
+              <!-- Output Display -->
+              <div
+                id="priceOutput"
+                class="mt-4 text-[12px] font-bold text-gray-800"
+              >
+                ₹100 - ₹10,100+
+              </div>
             </div>
 
             <!-- Color Filter -->
@@ -597,7 +644,7 @@
             </div>
             <div
               id="products-grid-desktop"
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 pl-4"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center"
             >
               <!-- Product cards will be injected here -->
             </div>
@@ -716,7 +763,11 @@
             </button>
           </li>
           <li>
-            <button class="flex items-center gap-2" data-sort="price-high-low">
+            <button
+              class="flex items-center gap-2"
+              data-sort="
+            -high-low"
+            >
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <g fill="none" fill-rule="evenodd">
                   <path d="M0 0h24v24H0z" opacity="0.05"></path>
