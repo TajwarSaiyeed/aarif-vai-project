@@ -882,3 +882,32 @@ function handleColorFilterChange(colorName, isChecked) {
   // Add your color filtering logic here
   applyFilters();
 }
+
+const minRange = document.getElementById("minRange");
+const maxRange = document.getElementById("maxRange");
+const rangeTrack = document.getElementById("rangeTrack");
+const output = document.getElementById("priceOutput");
+
+function updateSlider() {
+  let min = parseInt(minRange.value);
+  let max = parseInt(maxRange.value);
+
+  if (min > max - 100) {
+    min = max - 100;
+    minRange.value = min;
+  }
+
+  const rangeWidth = maxRange.max - minRange.min;
+  const left = ((min - minRange.min) / rangeWidth) * 100;
+  const right = ((max - minRange.min) / rangeWidth) * 100;
+
+  rangeTrack.style.left = `${left}%`;
+  rangeTrack.style.right = `${100 - right}%`;
+
+  output.textContent = `₹${min} - ₹${max === 10100 ? "10,100+" : max}`;
+}
+
+minRange.addEventListener("input", updateSlider);
+maxRange.addEventListener("input", updateSlider);
+
+updateSlider();
