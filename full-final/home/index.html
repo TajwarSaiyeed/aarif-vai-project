@@ -11,15 +11,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header
-      class="bg-white z-10 fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
-    >
+    <header class="bg-white z-10 fixed top-0 right-0 left-0 shadow-md">
       <!-- Desktop Navbar (visible on xl screens and up) -->
       <div
-        class="hidden xl:flex items-center justify-between py-4 gap-4 max-w-[1320px] mx-auto"
+        class="hidden xl:flex items-center justify-between py-[18px] gap-4 pl-8"
       >
         <div class="flex items-center w-full">
-          <div class="float-left h-inherit ml-[4%] mr-6">
+          <div class="float-left h-inherit mt-1 ml-[3.5%] mr-6">
             <a
               href="#"
               class="inline-block align-middle p-0 m-0 cursor-pointer"
@@ -32,10 +30,10 @@
           <div id="main-navigation" class="flex relative"></div>
         </div>
 
-        <div class="flex items-center justify-between gap-5 w-full">
+        <div class="flex items-center justify-end w-full">
           <!-- search -->
-          <div class="max-w-[400px] w-full leading-0 relative">
-            <a href="#" class="absolute top-1/2 -translate-y-1/2 mt-1 p-2">
+          <div class="max-w-[340px] w-full leading-0 relative">
+            <a href="#" class="absolute top-1/2 -translate-y-1/2 p-2 rounded-l">
               <span
                 class="myntraweb-sprite sprites-search inline-block scale-75"
               ></span>
@@ -43,7 +41,7 @@
             <input
               type="text"
               placeholder="Search for products, brands and more"
-              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded-r bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
+              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
             />
           </div>
 
@@ -217,8 +215,8 @@
                 class="myntraweb-sprite sprites-headerBag mt-2 absolute bottom-[14px] -left-[1px]"
               ></span>
               <span
-                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
-                >0</span
+                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#ff3f6c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold visible"
+                >2</span
               >
               <span
                 class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
@@ -231,7 +229,7 @@
 
       <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="xl:hidden flex items-center justify-between px-4 py-3 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
+        class="xl:hidden flex items-center justify-between px-4 py-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
         <!-- Hamburger Icon -->
         <button id="mobile-menu-button" class="p-2">
@@ -399,7 +397,7 @@
     </section>
 
     <section class="py-10 bg-[#ff3f6c]">
-      <div class="section px-10 xl:px-0">
+      <div class="section px-10 xl:pr-10 xl:px-0">
         <h2
           class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left text-white"
         >
@@ -408,7 +406,7 @@
 
         <!-- Shop By Notes Grid - Desktop -->
         <div
-          class="hidden md:grid grid-cols-4 lg:grid-cols-6 place-items-start gap-4"
+          class="hidden xl:grid grid-cols-4 lg:grid-cols-6 place-items-start gap-10"
           id="shop-by-notes-grid-desktop"
         >
           <!-- Product cards will be generated here for desktop -->
@@ -416,9 +414,9 @@
       </div>
 
       <!-- Shop By Notes Slider - Mobile (Full Width) -->
-      <div class="md:hidden relative mt-10">
+      <div class="xl:hidden relative mt-10">
         <div class="overflow-x-auto scrollbar-hide">
-          <div class="flex gap-4 pl-4 pr-4" id="shop-by-notes-slider-mobile">
+          <div class="flex gap-4 pl-10 mr-10" id="shop-by-notes-slider-mobile">
             <!-- Product cards will be generated here for mobile -->
           </div>
         </div>
@@ -426,7 +424,7 @@
     </section>
 
     <section class="py-10 bg-white">
-      <div class="section px-10 xl:px-0">
+      <div class="section px-10 xl:pr-10 xl:px-0">
         <h2
           class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
         >
@@ -435,17 +433,31 @@
 
         <!-- Product Grid - Desktop -->
         <div
-          class="hidden md:grid grid-cols-4 lg:grid-cols-5 place-items-start gap-4"
+          class="hidden xl:grid grid-cols-4 lg:grid-cols-6 place-items-start gap-4 mb-5"
           id="shop-by-notes-grid-desktop2"
+        >
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+        <!-- Product Grid - Desktop -->
+        <div
+          class="hidden xl:grid grid-cols-4 lg:grid-cols-6 place-items-start gap-4"
+          id="shop-by-notes-grid-desktop3"
         >
           <!-- Product cards will be generated here for desktop -->
         </div>
       </div>
 
       <!-- Product Slider - Mobile (Full Width) -->
-      <div class="md:hidden relative mt-10">
+      <div class="xl:hidden relative mt-10">
         <div class="overflow-x-auto scrollbar-hide">
-          <div class="flex gap-4 pl-4 pr-4" id="shop-by-notes-slider-mobile2">
+          <div class="flex gap-4 pl-10 mr-10" id="shop-by-notes-slider-mobile2">
+            <!-- Product cards will be generated here for mobile -->
+          </div>
+        </div>
+      </div>
+      <div class="xl:hidden relative mt-5">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 pl-10 mr-10" id="shop-by-notes-slider-mobile3">
             <!-- Product cards will be generated here for mobile -->
           </div>
         </div>

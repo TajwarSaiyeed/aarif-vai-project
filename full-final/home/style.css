@@ -77,7 +77,7 @@ body {
 /* Product card mobile slider styles */
 .mobile-product-card {
     /* Mobile: Show 2.2 cards (2 full + part of next) */
-    width: 150px;
+    width: 210px;
     min-width: calc((100vw - 200px) / 2.2);
     flex-shrink: 0;
 }

@@ -971,7 +971,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hoverBar.classList.add(
         "absolute",
         "left-0",
-        "-bottom-1",
+        "-bottom-[1px]",
         "z-[3]",
         "w-full",
         "h-1",

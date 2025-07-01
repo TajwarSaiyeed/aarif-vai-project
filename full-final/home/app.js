@@ -466,11 +466,11 @@ const shopByNotesProducts = [
 // Function to create shop by notes product card HTML
 function createShopByNotesProductCardHTML(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200">
+    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200 max-w-[190px] w-full">
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden">
                 <!-- Product Image -->
-                <div class="relative w-full h-52 bg-pink-50">
+                <div class="relative w-[210px] h-52 bg-pink-50">
                     <img
                         src="${item.image}"
                         alt="${item.title}"
@@ -502,9 +502,9 @@ function createShopByNotesProductCardHTML(item) {
 // Function to create product card HTML for mobile slider
 function createMobileShopByNotesProductCardHTML(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 mobile-product-card">
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-            <div class="relative overflow-hidden">
+    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 w-[190px]">
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
+            <div class="relative overflow-hidden w-full">
                 <!-- Product Image -->
                 <div class="relative w-full h-48 bg-pink-50">
                     <img
@@ -553,6 +553,14 @@ if (shopByNotesSliderMobile) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
+    if (
+      product ===
+      shopByNotesProducts.slice(0, 6)[
+        shopByNotesProducts.slice(0, 6).length - 1
+      ]
+    ) {
+      productCard.classList.add("pr-10");
+    }
     shopByNotesSliderMobile.appendChild(productCard);
   });
 }
@@ -561,7 +569,7 @@ const shopByNotesGridDesktop2 = document.querySelector(
   "#shop-by-notes-grid-desktop2"
 );
 if (shopByNotesGridDesktop2) {
-  shopByNotesProducts.forEach((product) => {
+  shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
     shopByNotesGridDesktop2.appendChild(productCard);
@@ -572,9 +580,47 @@ const shopByNotesSliderMobile2 = document.querySelector(
   "#shop-by-notes-slider-mobile2"
 );
 if (shopByNotesSliderMobile2) {
-  shopByNotesProducts.forEach((product) => {
+  shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
+    if (
+      product ===
+      shopByNotesProducts.slice(0, 6)[
+        shopByNotesProducts.slice(0, 6).length - 1
+      ]
+    ) {
+      productCard.classList.add("pr-10");
+    }
     shopByNotesSliderMobile2.appendChild(productCard);
+  });
+}
+
+const shopByNotesGridDesktop3 = document.querySelector(
+  "#shop-by-notes-grid-desktop3"
+);
+if (shopByNotesGridDesktop3) {
+  shopByNotesProducts.slice(0, 6).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createShopByNotesProductCardHTML(product);
+    shopByNotesGridDesktop3.appendChild(productCard);
+  });
+}
+
+const shopByNotesSliderMobile3 = document.querySelector(
+  "#shop-by-notes-slider-mobile3"
+);
+if (shopByNotesSliderMobile3) {
+  shopByNotesProducts.slice(0, 6).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
+    if (
+      product ===
+      shopByNotesProducts.slice(0, 6)[
+        shopByNotesProducts.slice(0, 6).length - 1
+      ]
+    ) {
+      productCard.classList.add("pr-10");
+    }
+    shopByNotesSliderMobile3.appendChild(productCard);
   });
 }
