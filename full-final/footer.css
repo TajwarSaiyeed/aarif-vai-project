@@ -1,0 +1,485 @@
+.common-a {
+    color: #696b79;
+    display: block;
+    font-size: 15px;
+    text-decoration: none;
+    padding-bottom: 5px;
+    cursor: pointer;
+    line-height: normal;
+}
+
+.gInfoTitle {
+    font-size: 12px !important;
+}
+
+.web-footerMount {
+    z-index: 5;
+    padding: 20px 20px 30px;
+    background: #f5f5f6;
+    max-height: none;
+    /* Show content by default */
+    overflow: visible;
+    /* Content visible by default */
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* Remove the expanded state classes - content shows by default */
+.web-footerMount.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.icon {
+    padding: 15px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.web-footerMount .icon {
+    font-size: 27px;
+    color: #535766;
+}
+
+.popularLinks,
+.usefulLinks {
+    color: #696b79;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.popularLinks>h4,
+.usefulLinks>h4 {
+    font-size: 15px;
+    color: #282c3f;
+    padding: 10px 0;
+    font-weight: 700;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.popularLinks>a,
+.usefulLinks>a {
+    text-decoration: none;
+    color: #3e4152;
+    font-size: 13px;
+    text-align: left;
+    line-height: 1.7;
+}
+
+.popularLinks>a:after,
+.usefulLinks>a:after {
+    content: "|";
+    color: #3e4152;
+    margin: 10px 5px;
+}
+
+.popularLinks>a:last-child:after,
+.usefulLinks>a:last-child:after {
+    content: "";
+}
+
+.popularLinks {
+    margin: -40px 0 30px;
+}
+
+.oShopping {
+    display: block;
+    font-size: 15px !important;
+    color: #282c3f !important;
+    font-weight: 700;
+    text-align: left;
+}
+
+.oShopping:after {
+    content: " " !important;
+}
+
+.socialLinks {
+    color: #696b79;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.socialLinks h4 {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #282c3f;
+    font-weight: 700;
+}
+
+.myntraweb-footer-sprite {
+    background: url(https://constant.myntassets.com/pwa/assets/img/11486103069298-footerSprite.png);
+    background-size: 706px 49px;
+    display: inline-block;
+}
+
+.facebook,
+.instagram,
+.twitter,
+.youtube {
+    margin: 0 25px 0 0;
+}
+
+.facebook {
+    background-position: -2023px 0;
+    width: 20px;
+    height: 21px;
+}
+
+.twitter {
+    background-position: -2045px 0;
+    width: 23px;
+    height: 21px;
+}
+
+.instagram {
+    background-position: -1392px 0;
+    width: 21px;
+    height: 20px;
+}
+
+.youtube {
+    background-position: -1361px 0;
+    width: 31px;
+    height: 20px;
+}
+
+.copyright {
+    color: #94969f;
+    font-size: 9px;
+    margin: 20px 0 0;
+}
+
+.gyanContainer {
+    color: #94969f;
+    font-size: 14px;
+    border-top: 1px solid #eaeaec;
+    margin: 15px 0 0;
+    padding: 20px 0 0;
+    line-height: 1.7;
+}
+
+.gyanContainer h1,
+.gyanContainer h2,
+.gyanContainer h3 {
+    font-size: 14px;
+}
+
+.gyanContainer p {
+    margin: 10px 0;
+}
+
+.gyanContainer li {
+    list-style-type: decimal;
+    margin: 1em 0;
+}
+
+.gyanContainer strong {
+    color: #535766 !important;
+}
+
+.gyanContainer a {
+    color: #696b79;
+}
+
+.gyanContainer a:hover {
+    text-decoration: underline;
+}
+
+.seoContainer {
+    padding: 20px;
+    color: #94969f;
+    font-size: 13px;
+    margin: 0 -20px;
+    border-top: 1px solid #eaeaec;
+}
+
+.seoContainer .title {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #94969f;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.rotate-up {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.descContainer {
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 20px 0;
+    color: #94969f;
+}
+
+.descContainer p:first-child {
+    margin-top: 0;
+}
+
+.descContainer p {
+    margin-bottom: 20px;
+}
+
+.descContainer strong {
+    color: #282c3f;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.descContainer a {
+    font-weight: 700;
+    color: #7e818c;
+}
+
+.toggleRead {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    color: #118beb;
+}
+
+.footer-header {
+    color: #3e4152;
+    padding: 10px 18px;
+    cursor: pointer;
+    background: #fff;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.footer-header:hover {
+    background: #f8f8f8;
+}
+
+.footer-header .title {
+    line-height: 24px;
+    font-size: 13px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 85%;
+}
+
+.pull-up {
+    padding-bottom: 90px;
+}
+
+.remove-footer {
+    height: 0;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.footer-arrow {
+    margin-top: 2px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer-arrow.rotated {
+    /* This makes the arrow point down (0deg) when added */
+    transform: rotate(0deg) !important;
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.popularLinks,
+.usefulLinks {
+    color: #696b79;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.lcContainer {
+    margin: 30px 0;
+    padding: 20px 0 0;
+    border-top: 1px solid #eaeaec;
+    font-size: 15px;
+    font-style: normal;
+}
+
+.lcHeader {
+    font-weight: 700;
+    color: #282c3f;
+    margin: 10px 0;
+}
+
+.lcAddress {
+    color: #94969f;
+}
+
+.lcInfoContainer {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100%;
+    line-height: 1.7;
+}
+
+.lcAddress {
+    width: 70%;
+    display: inline-block;
+}
+
+.lcLegalInfo {
+    width: 30%;
+    display: inline-block;
+    color: #94969f;
+}
+
+.lcLegalInfo p {
+    margin: 0;
+}
+
+.highlightText {
+    color: #526cd0;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .lcContainer {
+        margin: 20px 0;
+        padding: 0;
+    }
+
+    .lcInfoContainer {
+        margin: 0;
+        display: block;
+    }
+
+    .lcAddress,
+    .lcLegalInfo {
+        width: 100%;
+        display: block;
+    }
+
+    .lcLegalInfo {
+        margin-top: 20px;
+    }
+}
+
+.priceContainer {
+    font-size: 11px;
+    background: #f5f5f6;
+}
+
+.priceContainer td:last-child {
+    white-space: nowrap;
+}
+
+.priceContainer>h4 {
+    font-size: 15px;
+    color: #282c3f;
+    padding: 10px 0;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.priceContainer table {
+    border-collapse: collapse;
+}
+
+.priceContainer td,
+th {
+    text-align: left;
+    vertical-align: top;
+    padding-right: 10px;
+}
+
+.gyanContainer li {
+    list-style-type: decimal;
+    margin: 1em 0;
+}
+
+/* Mobile Footer Expansion Styles */
+/* .web-footerMount styles moved up as they apply to the content inside the wrapper */
+
+/* Overlay for main content when footer is expanded */
+.content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.content-overlay.active {
+    opacity: 0;
+    visibility: visible;
+}
+
+/* Mobile footer positioning and visibility */
+#footer-container {
+    position: fixed;
+    /* Sticky at bottom by default */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    z-index: 10;
+    transform: translateY(calc(100% - 45px));
+    /* Show only the header button */
+    transition: all 0.3s ease-in-out;
+}
+
+/* When expanded but still sticky (user hasn't reached bottom) */
+#footer-container.expanded.sticky {
+    transform: translateY(calc(100% - 45px));
+    /* Keep button visible and sticky */
+}
+
+/* When expanded and positioned after main content (user reached bottom) */
+#footer-container.expanded.positioned {
+    position: relative;
+    transform: translateY(0);
+    z-index: 1;
+    bottom: auto;
+}
+
+.footer-content-wrapper {
+    overflow-y: auto;
+    display: none;
+    /* Hide content by default (collapsed) */
+    height: auto;
+}
+
+/* When expanded, show the content */
+.footer-content-wrapper.expanded {
+    display: block;
+}
+
+/* Ensure body doesn't scroll when the footer is expanded */
+body.no-scroll {
+    overflow: hidden;
+}
