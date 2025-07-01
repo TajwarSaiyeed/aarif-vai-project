@@ -261,11 +261,6 @@
 
         <!-- Icons on the right -->
         <div class="flex items-center space-x-4">
-          <button id="mobile-search-button" class="p-2">
-            <span
-              class="myntraweb-sprite sprites-search inline-block scale-75"
-            ></span>
-          </button>
           <a href="#" class="relative p-2">
             <span class="myntraweb-sprite sprites-headerUser"></span>
           </a>
@@ -278,10 +273,8 @@
           </a>
         </div>
 
-        <!-- Mobile Search Input (initially hidden) -->
         <div
-          id="mobile-search-bar"
-          class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200 hidden"
+          class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200"
         >
           <div class="relative flex items-center">
             <input
@@ -329,8 +322,22 @@
             </svg>
           </button>
         </div>
+        <img
+          src="https://assets.myntassets.com/f_webp,dpr_1.5,q_40,w_400,c_limit,fl_progressive/assets/images/2023/1/25/08139431-49b4-4895-8f06-3d864e4640fd1674670210709-offer-banner-300-1080x496-code-_-MYNTRA300.jpg"
+          alt="Offer Banner"
+          class="w-full"
+        />
         <!-- Sidebar Navigation Links -->
         <nav id="sidebar-navigation-content" class="py-4"></nav>
+
+        <!-- Image for app download -->
+        <a href="#">
+          <img
+            src="https://assets.myntassets.com/assets/images/retaillabs/2022/12/30/856cb741-8473-4d5e-b6e3-a52b3d98c99e1672386455977-PWA---App-Download-banner.png"
+            alt="Download the App"
+            class="w-full"
+          />
+        </a>
       </div>
     </div>
 
@@ -412,6 +419,37 @@
       </div>
     </section>
 
+    <!-- style you bedroom -->
+    <section class="bg-white">
+      <div class="h-[150px] relative">
+        <img
+          src="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_600,c_limit,fl_progressive/w_541,q_60,,dpr_2,fl_progressive/assets/images/2025/JUNE/30/eQxfDsdB_97c75ec148ee42d493ee6fa9600eaa11.jpg"
+          alt="Style Your Bedroom"
+          class="w-full h-full object-cover absolute inset-0"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-transparent to-white"
+        ></div>
+      </div>
+      <section class="section py-20">
+        <div
+          class="hidden xl:grid grid-cols-4 lg:grid-cols-5 place-items-center gap-10"
+          id="style-your-badroom-desktop"
+        >
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+
+        <div class="xl:hidden relative mt-10">
+          <div class="overflow-x-auto scrollbar-hide">
+            <div class="flex gap-4 pl-10 mr-10" id="style-your-badroom-mobile">
+              <!-- Product cards will be generated here for mobile -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- show by notes -->
     <section class="py-10 bg-[#ff3f6c]">
       <div class="section px-10 xl:pr-5 xl:px-0">
         <h2
@@ -439,7 +477,7 @@
       </div>
     </section>
 
-    <section class="py-10 bg-white">
+    <section class="py-10 bg-white pb-16">
       <div class="section px-10 xl:px-0">
         <h2
           class="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
@@ -1988,7 +2026,7 @@
     </div>
 
     <script src="app.js"></script>
-    <script src="../nav.js"></script>
+    <script src="nav-home.js"></script>
     <script src="../footer.js"></script>
   </body>
 </html>

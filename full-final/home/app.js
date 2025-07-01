@@ -578,14 +578,104 @@ function createMobileShopByNotesProductCardHTML(item) {
   `;
 }
 
+function createStyleYourBadroomDesktopProductCardHTML(item) {
+  return `
+    <div class="relative text-center transition-shadow duration-300 overflow-hidden bg-white max-w-[190px] w-full">
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+            <div class="relative overflow-hidden">
+                <!-- Product Image -->
+                <div class="relative rounded-full h-40 w-40">
+                    <img
+                        src="${item.image}"
+                        alt="${item.title}"
+                        class="w-full h-full object-cover object-top transition-opacity duration-300 rounded-full"
+                        loading="lazy"
+                    />
+                </div>
+
+                <!-- Content -->
+                <div class="relative">
+                    <div class="py-2">
+                        <!-- Brand Title -->
+                        <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
+                            ${item.title}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+    </div>
+`;
+}
+
+function createStyleYourBadroomMobileProductCardHTML(item) {
+  return `
+    <div class="relative text-center transition-shadow duration-300 overflow-hidden bg-white max-w-[190px] w-full">
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+            <div class="relative overflow-hidden">
+                <!-- Product Image -->
+                <div class="relative rounded-full h-40 w-40">
+                    <img
+                        src="${item.image}"
+                        alt="${item.title}"
+                        class="w-full h-full object-cover object-top transition-opacity duration-300 rounded-full"
+                        loading="lazy"
+                    />
+                </div>
+
+                <!-- Content -->
+                <div class="relative">
+                    <div class="py-2">
+                        <!-- Brand Title -->
+                        <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
+                            ${item.title}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+    </div>
+`;
+}
+
 const shopByNotesGridDesktop = document.querySelector(
   "#shop-by-notes-grid-desktop"
 );
+const styleYourBadroomDesktop = document.querySelector(
+  "#style-your-badroom-desktop"
+);
+const styleYourBadroomMobile = document.querySelector(
+  "#style-your-badroom-mobile"
+);
+
 if (shopByNotesGridDesktop) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
     shopByNotesGridDesktop.appendChild(productCard);
+  });
+}
+
+if (styleYourBadroomDesktop) {
+  shopByNotesProducts.slice(0, 10).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML =
+      createStyleYourBadroomDesktopProductCardHTML(product);
+    styleYourBadroomDesktop.appendChild(productCard);
+  });
+}
+
+if (styleYourBadroomMobile) {
+  shopByNotesProducts.forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML =
+      createStyleYourBadroomMobileProductCardHTML(product);
+    if (product === shopByNotesProducts[shopByNotesProducts.length - 1]) {
+      productCard.classList.add("pr-10");
+    }
+    styleYourBadroomMobile.appendChild(productCard);
   });
 }
 
