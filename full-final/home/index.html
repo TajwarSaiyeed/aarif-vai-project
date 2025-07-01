@@ -372,24 +372,39 @@
     <section class="py-10 bg-white">
       <div class="section px-10 xl:px-0">
         <h2
-          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
+          class="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
         >
           New Arrivals
         </h2>
 
         <!-- Product Grid - Desktop -->
         <div
-          class="hidden md:grid grid-cols-3 lg:grid-cols-4 place-items-start gap-4"
+          class="hidden xl:grid grid-cols-3 lg:grid-cols-6 place-items-start gap-4 w-full"
           id="products-grid-desktop"
+        >
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+        <div class="my-4"></div>
+        <div
+          class="hidden xl:grid grid-cols-3 lg:grid-cols-6 place-items-start gap-4 w-full"
+          id="products-grid-desktop1"
         >
           <!-- Product cards will be generated here for desktop -->
         </div>
       </div>
 
       <!-- Product Slider - Mobile (Full Width) -->
-      <div class="md:hidden relative mt-10">
+      <div class="xl:hidden relative">
         <div class="overflow-x-auto scrollbar-hide">
-          <div class="flex gap-4 pl-4 pr-4 py-5" id="products-slider-mobile">
+          <div class="flex gap-4 pl-10 mr-10 pb-5" id="products-slider-mobile">
+            <!-- Product cards will be generated here for mobile -->
+          </div>
+        </div>
+      </div>
+
+      <div class="xl:hidden relative">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 pl-10 mr-10 pb-5" id="products-slider-mobile1">
             <!-- Product cards will be generated here for mobile -->
           </div>
         </div>
@@ -397,9 +412,9 @@
     </section>
 
     <section class="py-10 bg-[#ff3f6c]">
-      <div class="section px-10 xl:pr-10 xl:px-0">
+      <div class="section px-10 xl:pr-5 xl:px-0">
         <h2
-          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left text-white"
+          class="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left text-white"
         >
           Show By Notes
         </h2>
@@ -424,9 +439,9 @@
     </section>
 
     <section class="py-10 bg-white">
-      <div class="section px-10 xl:pr-10 xl:px-0">
+      <div class="section px-10 xl:px-0">
         <h2
-          class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
+          class="text-xl sm:text-2xl lg:text-3xl font-bold mb-8 uppercase text-center text-gray-800 sm:text-left"
         >
           Show By Notes
         </h2>
@@ -464,7 +479,7 @@
       </div>
     </section>
 
-    <div style="position: relative" class="hidden xl:block">
+    <div style="position: relative" class="">
       <div>
         <div
           style="

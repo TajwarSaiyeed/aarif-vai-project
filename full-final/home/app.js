@@ -270,11 +270,11 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white max-w-[210px] w-full min-h-[330px] group hover:shadow-md overflow-hidden"
     >
-      <div class="w-full h-[250px] relative">
+      <div class="w-full h-[200px] relative">
         <img
-          class="w-full h-full object-fit"
+          class="w-full h-full object-center"
           src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
           alt=""
         />
@@ -296,7 +296,7 @@ function createProductCardHTML(item) {
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
           ></span>
           <p
-            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
+            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-[25px] font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm"
           >
             View Similar
           </p>
@@ -314,6 +314,11 @@ function createProductCardHTML(item) {
           <del class="text-sm text-gray-500">Rs. 649 </del>
           <span class="text-xs text-[#ff905a]">(40% OFF)</span>
         </p>
+      </div>
+
+      <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+      <div class="p-1">
+          <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
       </div>
     </div>
 `;
@@ -323,16 +328,16 @@ function createProductCardHTML(item) {
 function createMobileProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-[180px] max-h-[350px] group shadow-md overflow-hidden"
     >
-      <div class="w-full h-[250px] relative">
+      <div class="w-full h-[200px] relative">
         <img
-          class="w-full h-full object-fit"
+          class="w-full h-full object-center"
           src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
           alt=""
         />
         <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden  group-hover:xl:block"
         >
           <button
             class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
@@ -343,7 +348,7 @@ function createMobileProductCardHTML(item) {
         </div>
 
         <div
-          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
+          class="w-[40px] h-[40px] hidden group-hover:xl:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
         >
           <span
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
@@ -356,37 +361,75 @@ function createMobileProductCardHTML(item) {
         </div>
       </div>
 
-      <div class="p-2">
+      
+
+      <div class="p-2 relative">
         <h1 class="text-base font-bold text-black">Levis</h1>
-        <h2 class="text-sm block text-gray-500 group-hover:hidden">
+        <h2 class="text-sm block text-gray-500">
           Solid Lounge T-shirt
         </h2>
-        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
         <p class="space-x-2">
           <span class="font-bold">Rs. 389</span>
           <del class="text-sm text-gray-500">Rs. 649 </del>
           <span class="text-xs text-[#ff905a]">(40% OFF)</span>
         </p>
-      </div>
+
+      <!-- Wishlist Icon -->
+        <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
+            <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+        </div>
+        </div>
+        <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+        <div class="p-1">
+            <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
+          </div>
+
     </div>
   `;
 }
 
 const productsGridDesktop = document.querySelector("#products-grid-desktop");
+const productsGridDesktop1 = document.querySelector("#products-grid-desktop1");
 if (productsGridDesktop) {
-  products.forEach((product) => {
+  products.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createProductCardHTML(product);
     productsGridDesktop.appendChild(productCard);
   });
 }
+if (productsGridDesktop1) {
+  products.slice(0, 6).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createProductCardHTML(product);
+    productsGridDesktop1.appendChild(productCard);
+  });
+}
 
 const productsSliderMobile = document.querySelector("#products-slider-mobile");
+const productsSliderMobile1 = document.querySelector(
+  "#products-slider-mobile1"
+);
+
 if (productsSliderMobile) {
-  products.forEach((product) => {
+  products.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createMobileProductCardHTML(product);
+    if (product === products.slice(0, 6)[products.slice(0, 6).length - 1]) {
+      productCard.classList.add("pr-10");
+    }
     productsSliderMobile.appendChild(productCard);
+  });
+}
+if (productsSliderMobile1) {
+  products.slice(0, 6).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createMobileProductCardHTML(product);
+    if (product === products.slice(0, 6)[products.slice(0, 6).length - 1]) {
+      productCard.classList.add("pr-10");
+    }
+    productsSliderMobile1.appendChild(productCard);
   });
 }
 
