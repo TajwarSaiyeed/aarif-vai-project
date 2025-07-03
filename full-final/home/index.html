@@ -277,11 +277,17 @@
           class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200"
         >
           <div class="relative flex items-center">
-            <input
-              type="text"
-              placeholder="Search for products, brands and more"
-              class="block w-full text-sm h-10 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-md bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
-            />
+            <div class="relative w-full">
+              <input
+                type="text"
+                class="block w-full text-sm h-10 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
+              />
+              <span
+                id="typewriter-search"
+                class="absolute left-10 top-1/2 -translate-y-1/2 text-[#696e79] text-sm"
+                style="white-space: pre"
+              ></span>
+            </div>
             <span
               class="myntraweb-sprite sprites-search absolute left-3 top-1/2 -translate-y-1/2 scale-75"
             ></span>
@@ -296,9 +302,7 @@
       class="fixed inset-0 bg-black/50 z-50 transform -translate-x-full transition-transform duration-300 xl:hidden"
     >
       <!-- Sidebar Content Area -->
-      <div
-        class="bg-white h-full w-[calc(100vw-60px)] shadow-lg overflow-y-auto relative"
-      >
+      <div class="bg-white h-full w-[50%] shadow-lg overflow-y-auto relative">
         <!-- Sidebar Header -->
         <div
           class="flex items-center justify-between p-4 border-b border-gray-200"
