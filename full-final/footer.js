@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".footer-content-wrapper"
   );
   const footerArrow = document.getElementById("footerArrow");
-  const contentOverlay = document.getElementById("contentOverlay");
+  const contentOverlay = document.getElementById("contentOverlayFooter");
 
   let isExpanded = false; // Start collapsed
 

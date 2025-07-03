@@ -1375,7 +1375,7 @@
       </div>
     </div>
 
-    <div class="content-overlay" id="contentOverlay"></div>
+    <div class="content-overlay" id="contentOverlayFooter"></div>
 
     <div id="footer-container" class="block xl:hidden">
       <div class="footer-header clearfix" id="footerToggle">
@@ -2028,5 +2028,45 @@
     <script src="app.js"></script>
     <script src="nav-home.js"></script>
     <script src="../footer.js"></script>
+    <!-- Sidebar container for product view similar -->
+    <div
+      id="product-view-similar-sidebar"
+      class="fixed top-0 right-0 h-full w-[400px] max-w-full bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300"
+      style="display: none"
+    >
+      <div
+        class="flex items-center justify-between p-4 border-b border-gray-200"
+      >
+        <div class="font-bold text-lg text-[#282c3f]">
+          View Similar Products
+        </div>
+        <button id="close-product-sidebar" class="p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div
+        id="product-similar-content"
+        class="p-4 overflow-y-auto flex flex-col space-y-2 h-[calc(100%-64px)]"
+      >
+        <!-- Similar products will be loaded here -->
+      </div>
+    </div>
+    <div
+      id="product-sidebar-overlay"
+      class="fixed inset-0 bg-black/40 z-[99] hidden"
+    ></div>
   </body>
 </html>

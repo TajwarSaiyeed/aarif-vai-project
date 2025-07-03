@@ -290,7 +290,9 @@ function createProductCardHTML(item) {
         </div>
 
         <div
-          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
+          class="view-similar-btn w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden outline-none border-none cursor-pointer"
+          data-similar-content="<div><b>Similar products for ${item.title}</b><br>${item.description}</div>"
+          title="View Similar"
         >
           <span
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
@@ -757,3 +759,79 @@ if (shopByNotesSliderMobile3) {
     shopByNotesSliderMobile3.appendChild(productCard);
   });
 }
+
+// --- Product Sidebar Logic ---
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.getElementById("product-view-similar-sidebar");
+  const overlay = document.getElementById("product-sidebar-overlay");
+  const sidebarContent = document.getElementById("product-similar-content");
+  const closeBtn = document.getElementById("close-product-sidebar");
+
+  function openProductSidebar(productData) {
+    sidebar.classList.remove("translate-x-full");
+    sidebar.style.display = "block";
+    overlay.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+    if (productData) {
+      products.map((item) => {
+        const productCard = document.createElement("div");
+        productCard.innerHTML = `
+          <div
+            class="bg-white max-w-[210px] w-full min-h-[330px] group hover:shadow-md overflow-hidden"
+          >
+            <div class="w-full h-[200px] relative">
+              <img
+                class="w-full h-full object-center"
+                src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt=""
+              />
+            </div>
+
+            <div class="p-2">
+              <h1 class="text-base font-bold text-black">Levis</h1>
+              <h2 class="text-sm block text-gray-500">
+                Solid Lounge T-shirt
+              </h2>
+              <p class="space-x-2">
+                <span class="font-bold">Rs. 389</span>
+                <del class="text-sm text-gray-500">Rs. 649 </del>
+                <span class="text-xs text-[#ff905a]">(40% OFF)</span>
+              </p>
+            </div>
+
+            <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+            <div class="p-1">
+                <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
+            </div>
+          </div>
+        `;
+        sidebarContent.appendChild(productCard);
+      });
+    } else {
+      sidebarContent.innerHTML = `
+      <div class="text-gray-500 text-center mt-10">
+          No similar products loaded.
+        </div>
+      `;
+    }
+  }
+
+  function closeSidebar() {
+    sidebar.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      sidebar.style.display = "none";
+    }, 300);
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
+  if (overlay) overlay.addEventListener("click", closeSidebar);
+
+  document.body.addEventListener("click", function (e) {
+    const btn = e.target.closest(".view-similar-btn");
+    if (btn) {
+      openProductSidebar(btn.getAttribute("data-similar-content") || null);
+    }
+  });
+});
