@@ -301,3 +301,11 @@ input[type='range']::-moz-range-thumb {
     pointer-events: auto;
     box-shadow: 0 0 0 2px #ff3e6c;
 }
+
+input[type="radio"].accent-\[\#ff3e6c\]:checked {
+    accent-color: #ff3e6c;
+}
+
+input[type="radio"].accent-\[\#ff3e6c\] {
+    accent-color: #ff3e6c;
+}

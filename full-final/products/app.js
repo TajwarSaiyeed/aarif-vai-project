@@ -918,3 +918,32 @@ minRange.addEventListener("input", updateSlider);
 maxRange.addEventListener("input", updateSlider);
 
 updateSlider();
+
+const discountRanges = [
+  { label: "10% and above", value: 10 },
+  { label: "20% and above", value: 20 },
+  { label: "30% and above", value: 30 },
+  { label: "40% and above", value: 40 },
+  { label: "50% and above", value: 50 },
+  { label: "60% and above", value: 60 },
+  { label: "70% and above", value: 70 },
+];
+
+function initializeDiscountRangeFilter() {
+  const discountFilterContainer = document.getElementById(
+    "discount-range-list"
+  );
+  if (!discountFilterContainer) return;
+  discountFilterContainer.innerHTML = "";
+  discountRanges.forEach((range, idx) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <label class="flex items-center cursor-pointer text-[14px]">
+        <input type="radio" name="discount" value="${range.value}" class="mr-2 accent-[#ff3e6c]" />
+        ${range.label}
+      </label>
+    `;
+    discountFilterContainer.appendChild(li);
+  });
+}
+initializeDiscountRangeFilter();
