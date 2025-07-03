@@ -337,8 +337,8 @@
     </div>
 
     <div class="hidden md:block mt-20 max-w-[1685px] mx-auto">
-      <div class="mx-auto px-5 py-8">
-        <div class="flex justify-between items-center mb-4">
+      <div class="mx-auto py-8">
+        <div class="flex justify-between items-center mb-4 px-4">
           <div>
             <ul class="flex items-center text-sm text-gray-500">
               <li><a href="#" class="hover:text-gray-800">Home</a></li>
@@ -361,114 +361,155 @@
 
         <div class="flex">
           <!-- Filters -->
-          <div class="w-[250px] border-r border-gray-200">
-            <h2 class="text-lg font-bold mb-4 border-b border-gray-200 py-2">
+          <div class="w-[250px]">
+            <h2 class="text-lg font-bold border-b border-gray-200 py-2 px-5">
               FILTERS
             </h2>
-
-            <!-- Brand Filter -->
-            <div class="mb-6 border-b border-gray-200 pb-4">
-              <h3 class="font-bold mb-2 uppercase">Brand</h3>
-              <ul class="space-y-1">
-                <li>
-                  <label class="flex items-center"
-                    ><input type="checkbox" class="mr-2" /> HIGHLANDER
-                    <span class="text-gray-400 ml-1 text-xs"
-                      >(7046)</span
-                    ></label
-                  >
-                </li>
-                <li>
-                  <label class="flex items-center"
-                    ><input type="checkbox" class="mr-2" /> Van Heusen
-                    <span class="text-gray-400 ml-1 text-xs"
-                      >(5363)</span
-                    ></label
-                  >
-                </li>
-                <li>
-                  <label class="flex items-center"
-                    ><input type="checkbox" class="mr-2" /> Roadster
-                    <span class="text-gray-400 ml-1 text-xs"
-                      >(4824)</span
-                    ></label
-                  >
-                </li>
-                <li>
-                  <label class="flex items-center"
-                    ><input type="checkbox" class="mr-2" /> Louis Philippe
-                    <span class="text-gray-400 ml-1 text-xs"
-                      >(4359)</span
-                    ></label
-                  >
-                </li>
-              </ul>
-              <button class="text-pink-500 font-bold mt-2">+ 1037 more</button>
-            </div>
-
-            <div
-              class="mb-6 border-b border-gray-200 pb-4 w-full max-w-md pr-4"
-            >
-              <label
-                class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
-                >PRICE</label
-              >
-              <div class="relative h-1">
-                <!-- Base track -->
-                <div
-                  class="absolute top-1/2 transform -translate-y-1/2 w-full h-[1.5px] bg-gray-300 rounded"
-                ></div>
-
-                <!-- Highlighted range -->
-                <div
-                  id="rangeTrack"
-                  class="absolute top-1/2 transform -translate-y-1/2 h-[1.5px] bg-[#ff3f6c] rounded"
-                ></div>
-
-                <!-- Range Inputs -->
-                <input
-                  type="range"
-                  id="minRange"
-                  min="100"
-                  max="10100"
-                  step="100"
-                  value="100"
-                />
-                <input
-                  type="range"
-                  id="maxRange"
-                  min="100"
-                  max="10100"
-                  step="100"
-                  value="10100"
-                />
+            <div class="border-r border-gray-200 py-4">
+              <!-- Brand Filter -->
+              <div class="mb-6 border-b border-gray-200 pb-4 px-5">
+                <h3 class="font-bold mb-2 uppercase">Categories</h3>
+                <ul class="space-y-1">
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> HIGHLANDER
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(7046)</span
+                      ></label
+                    >
+                  </li>
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> Van Heusen
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(5363)</span
+                      ></label
+                    >
+                  </li>
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> Roadster
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(4824)</span
+                      ></label
+                    >
+                  </li>
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> Louis Philippe
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(4359)</span
+                      ></label
+                    >
+                  </li>
+                </ul>
+              </div>
+              <!-- Brand Filter -->
+              <div class="mb-6 border-b border-gray-200 pb-4 px-5">
+                <h3 class="font-bold mb-2 uppercase">Brand</h3>
+                <ul class="space-y-1">
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> HIGHLANDER
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(7046)</span
+                      ></label
+                    >
+                  </li>
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> Van Heusen
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(5363)</span
+                      ></label
+                    >
+                  </li>
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> Roadster
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(4824)</span
+                      ></label
+                    >
+                  </li>
+                  <li>
+                    <label class="flex items-center"
+                      ><input type="checkbox" class="mr-2" /> Louis Philippe
+                      <span class="text-gray-400 ml-1 text-xs"
+                        >(4359)</span
+                      ></label
+                    >
+                  </li>
+                </ul>
+                <button class="text-pink-500 font-bold mt-2">
+                  + 1037 more
+                </button>
               </div>
 
-              <!-- Output Display -->
               <div
-                id="priceOutput"
-                class="mt-4 text-[12px] font-bold text-gray-800"
+                class="mb-6 border-b border-gray-200 pb-4 w-full max-w-md px-4"
               >
-                ₹100 - ₹10,100+
+                <label
+                  class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
+                  >PRICE</label
+                >
+                <div class="relative h-1">
+                  <!-- Base track -->
+                  <div
+                    class="absolute top-1/2 transform -translate-y-1/2 w-full h-[1.5px] bg-gray-300 rounded"
+                  ></div>
+
+                  <!-- Highlighted range -->
+                  <div
+                    id="rangeTrack"
+                    class="absolute top-1/2 transform -translate-y-1/2 h-[1.5px] bg-[#ff3f6c] rounded"
+                  ></div>
+
+                  <!-- Range Inputs -->
+                  <input
+                    type="range"
+                    id="minRange"
+                    min="100"
+                    max="10100"
+                    step="100"
+                    value="100"
+                  />
+                  <input
+                    type="range"
+                    id="maxRange"
+                    min="100"
+                    max="10100"
+                    step="100"
+                    value="10100"
+                  />
+                </div>
+
+                <!-- Output Display -->
+                <div
+                  id="priceOutput"
+                  class="mt-4 text-[12px] font-bold text-gray-800"
+                >
+                  ₹100 - ₹10,100+
+                </div>
               </div>
-            </div>
 
-            <!-- Color Filter -->
-            <div class="mb-6 border-b border-gray-200 pb-4">
-              <h3 class="font-bold mb-2 uppercase">Color</h3>
-              <ul id="color-filter-list" class="space-y-1">
-                <!-- Color options will be dynamically inserted here -->
-              </ul>
-            </div>
+              <!-- Color Filter -->
+              <div class="mb-6 border-b border-gray-200 pb-4 px-5">
+                <h3 class="font-bold mb-2 uppercase">Color</h3>
+                <ul id="color-filter-list" class="space-y-1">
+                  <!-- Color options will be dynamically inserted here -->
+                </ul>
+              </div>
 
-            <!-- Discount Range -->
-            <div>
-              <h3
-                class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
-              >
-                Discount Range
-              </h3>
-              <ul id="discount-range-list" class="space-y-1"></ul>
+              <!-- Discount Range -->
+              <div class="px-5">
+                <h3
+                  class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
+                >
+                  Discount Range
+                </h3>
+                <ul id="discount-range-list" class="space-y-1"></ul>
+              </div>
             </div>
           </div>
 
