@@ -126,7 +126,7 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white max-w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-[250px] relative">
         <img
@@ -493,7 +493,14 @@ if (sortByList) {
 function renderProductsDesktop(productsToRender) {
   if (productsGridDesktop) {
     productsGridDesktop.innerHTML = "";
-    productsToRender.forEach((product) => {
+    [
+      ...productsToRender,
+      ...productsToRender,
+      ...productsToRender,
+      ...productsToRender,
+      ...productsToRender,
+      ...productsToRender,
+    ].forEach((product) => {
       const productCard = document.createElement("div");
       productCard.innerHTML = createProductCardHTML(product);
       productsGridDesktop.appendChild(productCard);
@@ -947,3 +954,113 @@ function initializeDiscountRangeFilter() {
   });
 }
 initializeDiscountRangeFilter();
+
+const categories = [
+  { name: "Tshirts", count: 226936 },
+  { name: "Shirts", count: 206432 },
+  { name: "Kurtas", count: 38091 },
+  { name: "Sweatshirts", count: 32040 },
+  { name: "Jackets", count: 22999 },
+  { name: "Sweaters", count: 12032 },
+  { name: "Blazers", count: 6334 },
+  { name: "Tunics", count: 1 },
+];
+
+function initializeCategoryFilter() {
+  const categoryList = document.getElementById("category-list");
+  if (!categoryList) return;
+
+  categoryList.innerHTML = "";
+  categories.forEach((category) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("m-0");
+    const label = document.createElement("label");
+    label.className = "inline-flex items-center cursor-pointer gap-2 relative";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "custom-checkbox hidden peer";
+    checkbox.value = category.name.toLowerCase().replace(/\s+/g, "-");
+
+    const checkboxBox = document.createElement("div");
+    checkboxBox.className =
+      "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+    label.appendChild(checkbox);
+    label.appendChild(checkboxBox);
+
+    const categoryName = document.createElement("span");
+    categoryName.className = "text-sm text-gray-800 font-medium";
+    categoryName.textContent = category.name;
+
+    const categoryCount = document.createElement("span");
+    categoryCount.className = "text-sm text-gray-400 ml-auto";
+    categoryCount.textContent = `(${category.count.toLocaleString()})`;
+
+    label.appendChild(categoryName);
+    label.appendChild(categoryCount);
+    listItem.appendChild(label);
+    categoryList.appendChild(listItem);
+
+    checkbox.addEventListener("change", function () {
+      applyFilters();
+    });
+  });
+}
+
+initializeCategoryFilter();
+
+const brands = [
+  { name: "Roadster", count: 16256 },
+  { name: "WOOSTRO", count: 10836 },
+  { name: "HIGHLANDER", count: 10571 },
+  { name: "U.S. Polo Assn.", count: 6586 },
+  { name: "Mast & Harbour", count: 6443 },
+  { name: "Campus Sutra", count: 6195 },
+  { name: "Allen Solly", count: 6177 },
+  { name: "Greylongg", count: 6163 },
+];
+
+function initializeBrandFilter() {
+  const brandList = document.getElementById("brand-list");
+  if (!brandList) return;
+
+  brandList.innerHTML = "";
+  brands.forEach((brand) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("m-0");
+    const label = document.createElement("label");
+    label.className = "inline-flex items-center cursor-pointer gap-2 relative";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "custom-checkbox hidden peer";
+    checkbox.value = brand.name.toLowerCase().replace(/\s+/g, "-");
+
+    const checkboxBox = document.createElement("div");
+    checkboxBox.className =
+      "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+    label.appendChild(checkbox);
+    label.appendChild(checkboxBox);
+
+    const brandName = document.createElement("span");
+    brandName.className = "text-sm text-gray-800 font-medium";
+    brandName.textContent = brand.name;
+
+    const brandCount = document.createElement("span");
+    brandCount.className = "text-sm text-gray-400 ml-auto";
+    brandCount.textContent = `(${brand.count.toLocaleString()})`;
+
+    label.appendChild(brandName);
+    label.appendChild(brandCount);
+    listItem.appendChild(label);
+    brandList.appendChild(listItem);
+
+    checkbox.addEventListener("change", function () {
+      applyFilters();
+    });
+  });
+}
+
+initializeBrandFilter();

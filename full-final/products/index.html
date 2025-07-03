@@ -362,85 +362,29 @@
         <div class="flex">
           <!-- Filters -->
           <div class="w-[250px]">
-            <h2 class="text-lg font-bold border-b border-gray-200 py-2 px-5">
+            <h2
+              class="text-base font-bold border-b border-gray-200 py-2.5 px-5"
+            >
               FILTERS
             </h2>
             <div class="border-r border-gray-200 py-4">
-              <!-- Brand Filter -->
+              <!-- Categories Filter -->
               <div class="mb-6 border-b border-gray-200 pb-4 px-5">
-                <h3 class="font-bold mb-2 uppercase">Categories</h3>
-                <ul class="space-y-1">
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> HIGHLANDER
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(7046)</span
-                      ></label
-                    >
-                  </li>
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> Van Heusen
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(5363)</span
-                      ></label
-                    >
-                  </li>
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> Roadster
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(4824)</span
-                      ></label
-                    >
-                  </li>
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> Louis Philippe
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(4359)</span
-                      ></label
-                    >
-                  </li>
-                </ul>
+                <h3
+                  class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
+                >
+                  Categories
+                </h3>
+                <ul id="category-list" class="space-y-1"></ul>
               </div>
               <!-- Brand Filter -->
               <div class="mb-6 border-b border-gray-200 pb-4 px-5">
-                <h3 class="font-bold mb-2 uppercase">Brand</h3>
-                <ul class="space-y-1">
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> HIGHLANDER
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(7046)</span
-                      ></label
-                    >
-                  </li>
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> Van Heusen
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(5363)</span
-                      ></label
-                    >
-                  </li>
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> Roadster
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(4824)</span
-                      ></label
-                    >
-                  </li>
-                  <li>
-                    <label class="flex items-center"
-                      ><input type="checkbox" class="mr-2" /> Louis Philippe
-                      <span class="text-gray-400 ml-1 text-xs"
-                        >(4359)</span
-                      ></label
-                    >
-                  </li>
-                </ul>
+                <h3
+                  class="block text-[14px] uppercase font-semibold text-gray-800 mb-4"
+                >
+                  Brands
+                </h3>
+                <ul id="brand-list"></ul>
                 <button class="text-pink-500 font-bold mt-2">
                   + 1037 more
                 </button>
@@ -645,7 +589,7 @@
             </div>
             <div
               id="products-grid-desktop"
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 place-items-center gap-y-4"
             >
               <!-- Product cards will be injected here -->
             </div>
