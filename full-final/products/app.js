@@ -412,9 +412,9 @@ function createProductCardHTML(item) {
         <h2 class="text-sm hidden text-gray-500 group-hover:block">Size: ${item.sizes.join(
           ", "
         )}</h2>
-        <p class="space-x-2">
+        <p class="space-x-2 text-[14px]">
           <span class="font-bold">Rs. ${item.currentPrice}</span>
-          <del class="text-sm text-gray-500">Rs. ${item.originalPrice}</del>
+          <del class="text-gray-500">Rs. ${item.originalPrice}</del>
           <span class="text-xs text-[#ff905a]">(${
             item.discountPercent
           }% OFF)</span>
