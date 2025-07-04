@@ -17,6 +17,9 @@ const products = [
     color: "White",
     brand: "Bella Vita Organic",
     category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 2,
@@ -32,6 +35,9 @@ const products = [
     color: "Green",
     brand: "Plum",
     category: "Face Wash",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
   },
   {
     id: 3,
@@ -47,6 +53,9 @@ const products = [
     color: "White",
     brand: "Minimalist",
     category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 4,
@@ -62,6 +71,9 @@ const products = [
     color: "Green",
     brand: "Himalaya",
     category: "Face Wash",
+    sizes: ["50ml", "100ml", "200ml"],
+    bundleType: "Value Pack",
+    countryOfOrigin: "India",
   },
   {
     id: 5,
@@ -77,6 +89,9 @@ const products = [
     color: "Blue",
     brand: "L'Oreal Paris",
     category: "Moisturizer",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "France",
   },
   {
     id: 6,
@@ -92,6 +107,9 @@ const products = [
     color: "White",
     brand: "Olay",
     category: "Night Cream",
+    sizes: ["50ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "USA",
   },
   {
     id: 7,
@@ -107,6 +125,9 @@ const products = [
     color: "White",
     brand: "Deconstruct",
     category: "Moisturizer",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 8,
@@ -122,6 +143,9 @@ const products = [
     color: "Brown",
     brand: "Pilgrim",
     category: "Hair Serum",
+    sizes: ["50ml"],
+    bundleType: "Starter Kit",
+    countryOfOrigin: "India",
   },
   {
     id: 9,
@@ -137,6 +161,9 @@ const products = [
     color: "Black",
     brand: "The Man Company",
     category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
   },
   {
     id: 10,
@@ -152,6 +179,9 @@ const products = [
     color: "Black",
     brand: "Beardo",
     category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 11,
@@ -167,6 +197,9 @@ const products = [
     color: "Pink",
     brand: "Dot & Key",
     category: "Moisturizer",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 12,
@@ -182,6 +215,9 @@ const products = [
     color: "Brown",
     brand: "Mamaearth",
     category: "Hair Oil",
+    sizes: ["200ml"],
+    bundleType: "Value Pack",
+    countryOfOrigin: "India",
   },
   {
     id: 13,
@@ -197,6 +233,9 @@ const products = [
     color: "Brown",
     brand: "WOW Skin Science",
     category: "Shampoo",
+    sizes: ["200ml", "500ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 14,
@@ -212,6 +251,9 @@ const products = [
     color: "Brown",
     brand: "Mcaffeine",
     category: "Body Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 15,
@@ -227,6 +269,9 @@ const products = [
     color: "Orange",
     brand: "Biotique",
     category: "Face Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
   {
     id: 16,
@@ -242,6 +287,9 @@ const products = [
     color: "Blue",
     brand: "Neutrogena",
     category: "Moisturizer",
+    sizes: ["50ml"],
+    bundleType: "Single",
+    countryOfOrigin: "USA",
   },
   {
     id: 17,
@@ -257,6 +305,9 @@ const products = [
     color: "Green",
     brand: "The Body Shop",
     category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "UK",
   },
   {
     id: 18,
@@ -272,6 +323,9 @@ const products = [
     color: "Yellow",
     brand: "Forest Essentials",
     category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "India",
   },
   {
     id: 19,
@@ -287,6 +341,9 @@ const products = [
     color: "White",
     brand: "Mamaearth",
     category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
   },
   {
     id: 20,
@@ -302,6 +359,9 @@ const products = [
     color: "Yellow",
     brand: "WOW Skin Science",
     category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
   },
 ];
 
@@ -309,16 +369,16 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white max-w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white max-w-[210px] w-full max-h-[330px] group hover:shadow-xl overflow-hidden"
     >
-      <div class="w-full h-[250px] relative">
+      <div class="w-full h-[200px] relative">
         <img
           class="w-full h-full object-fit"
           src="${item.image}"
           alt=""
         />
         <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-10"
         >
           <button
             class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
@@ -329,38 +389,38 @@ function createProductCardHTML(item) {
         </div>
 
         <div
-          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
+          class="w-[40px] h-[40px] hidden group-hover:xl:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 overflow-hidden"
         >
           <span
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
           ></span>
           <p
-            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
+            class="ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base uppercase"
           >
             View Similar
           </p>
         </div>
       </div>
 
-      <div class="p-2">
+      <div class="p-2 relative">
         <h1 class="text-base font-bold text-black">${item.brand}</h1>
-        <h2 class="text-sm block text-gray-500 group-hover:hidden">
+        <h2 class="text-sm block text-gray-500 group-hover:xl:hidden">
           ${item.title}
         </h2>
-        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:xl:block">Size : S</h2>
         <p class="space-x-2">
           <span class="font-bold">Rs. ${item.currentPrice}</span>
           <del class="text-sm text-gray-500">Rs. ${item.originalPrice}</del>
           <span class="text-xs text-[#ff905a]">(${item.discountPercent}% OFF)</span>
         </p>
+        <!-- Wishlist Icon -->
+        <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
+          <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
       </div>
 
-      <!-- Wishlist Icon -->
-      <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800">
-        <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </div>
     </div>
   `;
 }
@@ -563,28 +623,36 @@ function applyFilters() {
     );
   }
 
-  // Apply size filter (Note: Product data needs size information)
+  // Apply size filter
   if (globalFilters.sizes.length > 0) {
-    // Placeholder: Add size data to products array to enable this
-    // filteredProducts = filteredProducts.filter(product =>
-    //   globalFilters.sizes.some(size => product.sizes?.includes(size))
-    // );
+    filteredProducts = filteredProducts.filter((product) =>
+      globalFilters.sizes.some((size) =>
+        product.sizes
+          .map((s) => s.toLowerCase().replace(/\s+/g, "-"))
+          .includes(size)
+      )
+    );
   }
 
   // Apply bundle filter
   if (globalFilters.bundles.length > 0) {
-    // Placeholder: Add bundle data to products array to enable this
-    // filteredProducts = filteredProducts.filter(product =>
-    //   globalFilters.bundles.includes(product.bundleType)
-    // );
+    filteredProducts = filteredProducts.filter((product) =>
+      globalFilters.bundles.includes(
+        product.bundleType.toLowerCase().replace(/\s+/g, "-")
+      )
+    );
   }
 
   // Apply country of origin filter
-  if (globalFilters.countryOfOrigin.length > 0) {
-    // Placeholder: Add country data to products array to enable this
-    // filteredProducts = filteredProducts.filter(product =>
-    //   globalFilters.countryOfOrigin.includes(product.countryOfOrigin)
-    // );
+  if (
+    globalFilters.countryOfOrigin.length > 0 &&
+    !globalFilters.countryOfOrigin.includes("all-countries")
+  ) {
+    filteredProducts = filteredProducts.filter((product) =>
+      globalFilters.countryOfOrigin.includes(
+        product.countryOfOrigin.toLowerCase().replace(/\s+/g, "-")
+      )
+    );
   }
 
   // Apply more filters
@@ -666,7 +734,6 @@ function toggleFilter(filterName, buttonElement) {
 
   const subCategories = filterData[filterName];
   subCategories.forEach((subCategory) => {
-    const listItem = document.createElement("li"); // Fixed: Define listItem here
     const label = document.createElement("label");
     label.className = "inline-flex items-center cursor-pointer gap-2 relative";
 
@@ -687,8 +754,7 @@ function toggleFilter(filterName, buttonElement) {
     subCategoryName.textContent = subCategory;
 
     label.appendChild(subCategoryName);
-    listItem.appendChild(label);
-    subCategoriesList.appendChild(listItem);
+    subCategoriesList.appendChild(label);
 
     checkbox.addEventListener("change", function () {
       handleSubCategoryChange(filterName, subCategory, this.checked);

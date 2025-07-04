@@ -200,6 +200,7 @@ if (categorySlider) {
 }
 
 // New Arrivals Products Data
+
 const products = [
   {
     id: 1,
@@ -212,6 +213,9 @@ const products = [
     rating: "4.2",
     ratingCount: "1.2k",
     href: "#",
+    color: "White",
+    brand: "Bella Vita Organic",
+    category: "Face Wash",
   },
   {
     id: 2,
@@ -224,6 +228,9 @@ const products = [
     rating: "4.5",
     ratingCount: "890",
     href: "#",
+    color: "Green",
+    brand: "Plum",
+    category: "Face Wash",
   },
   {
     id: 3,
@@ -236,6 +243,9 @@ const products = [
     rating: "4.3",
     ratingCount: "654",
     href: "#",
+    color: "White",
+    brand: "Minimalist",
+    category: "Face Wash",
   },
   {
     id: 4,
@@ -248,6 +258,9 @@ const products = [
     rating: "4.1",
     ratingCount: "2.1k",
     href: "#",
+    color: "Green",
+    brand: "Himalaya",
+    category: "Face Wash",
   },
   {
     id: 5,
@@ -260,6 +273,9 @@ const products = [
     rating: "4.4",
     ratingCount: "532",
     href: "#",
+    color: "Blue",
+    brand: "L'Oreal Paris",
+    category: "Moisturizer",
   },
   {
     id: 6,
@@ -272,6 +288,9 @@ const products = [
     rating: "4.6",
     ratingCount: "1.5k",
     href: "#",
+    color: "White",
+    brand: "Olay",
+    category: "Night Cream",
   },
   {
     id: 7,
@@ -284,6 +303,9 @@ const products = [
     rating: "4.2",
     ratingCount: "743",
     href: "#",
+    color: "White",
+    brand: "Deconstruct",
+    category: "Moisturizer",
   },
   {
     id: 8,
@@ -296,6 +318,9 @@ const products = [
     rating: "4.3",
     ratingCount: "967",
     href: "#",
+    color: "Brown",
+    brand: "Pilgrim",
+    category: "Hair Serum",
   },
   {
     id: 9,
@@ -308,6 +333,9 @@ const products = [
     rating: "4.5",
     ratingCount: "1.1k",
     href: "#",
+    color: "Black",
+    brand: "The Man Company",
+    category: "Face Wash",
   },
   {
     id: 10,
@@ -320,6 +348,159 @@ const products = [
     rating: "4.2",
     ratingCount: "800",
     href: "#",
+    color: "Black",
+    brand: "Beardo",
+    category: "Face Wash",
+  },
+  {
+    id: 11,
+    title: "Dot & Key",
+    description: "Watermelon Superglow Moisturizer",
+    image: "https://picsum.photos/300/400?random=20",
+    currentPrice: "₹595",
+    originalPrice: "₹795",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.8k",
+    href: "#",
+    color: "Pink",
+    brand: "Dot & Key",
+    category: "Moisturizer",
+  },
+  {
+    id: 12,
+    title: "Mamaearth",
+    description: "Onion Hair Oil for Hair Growth",
+    image: "https://picsum.photos/300/400?random=21",
+    currentPrice: "₹389",
+    originalPrice: "₹499",
+    discountPercent: "22",
+    rating: "4.0",
+    ratingCount: "3.5k",
+    href: "#",
+    color: "Brown",
+    brand: "Mamaearth",
+    category: "Hair Oil",
+  },
+  {
+    id: 13,
+    title: "WOW Skin Science",
+    description: "Apple Cider Vinegar Shampoo",
+    image: "https://picsum.photos/300/400?random=22",
+    currentPrice: "₹375",
+    originalPrice: "₹499",
+    discountPercent: "25",
+    rating: "4.1",
+    ratingCount: "2.7k",
+    href: "#",
+    color: "Brown",
+    brand: "WOW Skin Science",
+    category: "Shampoo",
+  },
+  {
+    id: 14,
+    title: "Mcaffeine",
+    description: "Naked & Raw Coffee Body Scrub",
+    image: "https://picsum.photos/300/400?random=23",
+    currentPrice: "₹399",
+    originalPrice: "₹599",
+    discountPercent: "33",
+    rating: "4.4",
+    ratingCount: "980",
+    href: "#",
+    color: "Brown",
+    brand: "Mcaffeine",
+    category: "Body Scrub",
+  },
+  {
+    id: 15,
+    title: "Biotique",
+    description: "Bio Papaya Tan Removal Scrub",
+    image: "https://picsum.photos/300/400?random=24",
+    currentPrice: "₹180",
+    originalPrice: "₹250",
+    discountPercent: "28",
+    rating: "4.0",
+    ratingCount: "1.9k",
+    href: "#",
+    color: "Orange",
+    brand: "Biotique",
+    category: "Face Scrub",
+  },
+  {
+    id: 16,
+    title: "Neutrogena",
+    description: "Hydro Boost Water Gel",
+    image: "https://picsum.photos/300/400?random=25",
+    currentPrice: "₹849",
+    originalPrice: "₹950",
+    discountPercent: "11",
+    rating: "4.5",
+    ratingCount: "2.2k",
+    href: "#",
+    color: "Blue",
+    brand: "Neutrogena",
+    category: "Moisturizer",
+  },
+  {
+    id: 17,
+    title: "The Body Shop",
+    description: "Tea Tree Skin Clearing Face Wash",
+    image: "https://picsum.photos/300/400?random=26",
+    currentPrice: "₹645",
+    originalPrice: "₹745",
+    discountPercent: "13",
+    rating: "4.6",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Green",
+    brand: "The Body Shop",
+    category: "Face Wash",
+  },
+  {
+    id: 18,
+    title: "Forest Essentials",
+    description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+    image: "https://picsum.photos/300/400?random=27",
+    currentPrice: "₹1250",
+    originalPrice: "₹1450",
+    discountPercent: "14",
+    rating: "4.7",
+    ratingCount: "900",
+    href: "#",
+    color: "Yellow",
+    brand: "Forest Essentials",
+    category: "Face Wash",
+  },
+  {
+    id: 19,
+    title: "Mamaearth",
+    description: "Vitamin C Face Wash",
+    image: "https://picsum.photos/300/400?random=28",
+    currentPrice: "₹249",
+    originalPrice: "₹349",
+    discountPercent: "29",
+    rating: "4.2",
+    ratingCount: "2.5k",
+    href: "#",
+    color: "White",
+    brand: "Mamaearth",
+    category: "Face Wash",
+  },
+  {
+    id: 20,
+    title: "WOW Skin Rectified",
+    description: "Ubtan Face Wash",
+    image: "https://picsum.photos/300/400?random=29",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.3k",
+    href: "#",
+    color: "Yellow",
+    brand: "WOW Skin Science",
+    category: "Face Wash",
   },
 ];
 
@@ -332,7 +513,7 @@ function createProductCardHTML(item) {
       <div class="w-full h-[200px] relative">
         <img
           class="w-full h-full object-center"
-          src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+          src="${item.image}"
           alt=""
         />
         <div
@@ -355,7 +536,7 @@ function createProductCardHTML(item) {
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
           ></span>
           <p
-            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-[25px] font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm"
+            class="uppercase ml-10 -mt-[25px] font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm"
           >
             View Similar
           </p>
@@ -392,7 +573,7 @@ function createMobileProductCardHTML(item) {
       <div class="w-full h-[200px] relative">
         <img
           class="w-full h-full object-center"
-          src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+          src="${item.image}"
           alt=""
         />
         <div
