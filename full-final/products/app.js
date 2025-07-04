@@ -1,6 +1,8 @@
 const productsGridDesktop = document.getElementById("products-grid-desktop");
 const productsSliderMobile = document.getElementById("products-slider-mobile");
 const productCountDesktop = document.getElementById("product-count-desktop");
+const selectedFiltersContainer = document.getElementById("selected-filters");
+const clearFiltersBtnDesktop = document.getElementById("clear-btn");
 
 const products = [
   {
@@ -369,16 +371,16 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white max-w-[210px] w-full max-h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white max-w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
     >
-      <div class="w-full h-[200px] relative">
+      <div class="w-full h-[250px] relative">
         <img
           class="w-full h-full object-fit"
           src="${item.image}"
           alt=""
         />
         <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-10"
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
         >
           <button
             class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
@@ -389,38 +391,42 @@ function createProductCardHTML(item) {
         </div>
 
         <div
-          class="w-[40px] h-[40px] hidden group-hover:xl:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 overflow-hidden"
+          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
         >
           <span
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
           ></span>
           <p
-            class="ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base uppercase"
+            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
           >
             View Similar
           </p>
         </div>
       </div>
 
-      <div class="p-2 relative">
+      <div class="p-2">
         <h1 class="text-base font-bold text-black">${item.brand}</h1>
-        <h2 class="text-sm block text-gray-500 group-hover:xl:hidden">
+        <h2 class="text-sm block text-gray-500 group-hover:hidden">
           ${item.title}
         </h2>
-        <h2 class="text-sm hidden text-gray-500 group-hover:xl:block">Size : S</h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size: ${item.sizes.join(
+          ", "
+        )}</h2>
         <p class="space-x-2">
           <span class="font-bold">Rs. ${item.currentPrice}</span>
           <del class="text-sm text-gray-500">Rs. ${item.originalPrice}</del>
-          <span class="text-xs text-[#ff905a]">(${item.discountPercent}% OFF)</span>
+          <span class="text-xs text-[#ff905a]">(${
+            item.discountPercent
+          }% OFF)</span>
         </p>
-        <!-- Wishlist Icon -->
-        <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
-          <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
-        </div>
       </div>
 
+      <!-- Wishlist Icon -->
+      <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800">
+        <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
     </div>
   `;
 }
@@ -446,7 +452,6 @@ let activeFilter = null;
 const filterData = {
   Bundles: ["Combo Pack", "Value Pack", "Gift Set", "Starter Kit"],
   "Country of Origin": [
-    "All Countries",
     "Bangladesh",
     "Cambodia",
     "China",
@@ -542,6 +547,8 @@ function render(filteredProducts = products) {
   if (productsSliderMobile) {
     renderProducts(sortedProducts);
   }
+
+  updateSelectedFilters();
 }
 
 function renderProductsDesktop(productsToRender) {
@@ -567,6 +574,232 @@ function renderProducts(productsToRender) {
       productsSliderMobile.appendChild(productCard);
     });
   }
+}
+
+// Function to check if any filters are active
+function hasActiveFilters() {
+  return (
+    globalFilters.colors.length > 0 ||
+    globalFilters.categories.length > 0 ||
+    globalFilters.brands.length > 0 ||
+    globalFilters.sizes.length > 0 ||
+    globalFilters.bundles.length > 0 ||
+    globalFilters.countryOfOrigin.length > 0 ||
+    globalFilters.moreFilters.length > 0 ||
+    globalFilters.discount !== null ||
+    globalFilters.customerRating !== null ||
+    globalFilters.priceRange.min !== 0 ||
+    globalFilters.priceRange.max !== 10100
+  );
+}
+
+// Function to update selected filters display
+function updateSelectedFilters() {
+  if (!selectedFiltersContainer) return;
+
+  selectedFiltersContainer.innerHTML = "";
+
+  // Helper function to create a filter tag
+  function createFilterTag(filterType, value, displayText) {
+    const tag = document.createElement("button");
+    tag.className =
+      "px-2 py-1 rounded-full border border-gray-400 hover:border-gray-800 flex items-center rounded-full text-xs gap-1";
+
+    tag.innerHTML = `
+       <span>${displayText}</span>
+       <span
+         class="myntraweb-sprite filter-summary-removeIcon sprites-remove scale-60"
+         data-filter-type="${filterType}" data-filter-value="${value}"
+       ></span>
+    `;
+    tag.addEventListener("click", () => removeFilter(filterType, value));
+    selectedFiltersContainer.appendChild(tag);
+  }
+
+  // Add color filters
+  globalFilters.colors.forEach((color) => {
+    const displayText =
+      colors.find((c) => c.name.toLowerCase().replace(/\s+/g, "-") === color)
+        ?.name || color;
+    createFilterTag("colors", color, displayText);
+  });
+
+  // Add category filters
+  globalFilters.categories.forEach((category) => {
+    const displayText =
+      categories.find(
+        (c) => c.name.toLowerCase().replace(/\s+/g, "-") === category
+      )?.name || category;
+    createFilterTag("categories", category, displayText);
+  });
+
+  // Add brand filters
+  globalFilters.brands.forEach((brand) => {
+    const displayText =
+      brands.find((b) => b.name.toLowerCase().replace(/\s+/g, "-") === brand)
+        ?.name || brand;
+    createFilterTag("brands", brand, displayText);
+  });
+
+  // Add size filters
+  globalFilters.sizes.forEach((size) => {
+    const displayText =
+      filterData.Size.find(
+        (s) => s.toLowerCase().replace(/\s+/g, "-") === size
+      ) || size;
+    createFilterTag("sizes", size, displayText);
+  });
+
+  // Add bundle filters
+  globalFilters.bundles.forEach((bundle) => {
+    const displayText =
+      filterData.Bundles.find(
+        (b) => b.toLowerCase().replace(/\s+/g, "-") === bundle
+      ) || bundle;
+    createFilterTag("bundles", bundle, displayText);
+  });
+
+  // Add country of origin filters
+  globalFilters.countryOfOrigin.forEach((country) => {
+    if (country !== "all-countries") {
+      const displayText =
+        filterData["Country of Origin"].find(
+          (c) => c.toLowerCase().replace(/\s+/g, "-") === country
+        ) || country;
+      createFilterTag("countryOfOrigin", country, displayText);
+    }
+  });
+
+  // Add more filters
+  globalFilters.moreFilters.forEach((filter) => {
+    const displayText =
+      filterData["More Filters"].find(
+        (f) => f.toLowerCase().replace(/\s+/g, "-") === filter
+      ) || filter;
+    createFilterTag("moreFilters", filter, displayText);
+  });
+
+  // Add discount filter
+  if (globalFilters.discount !== null) {
+    const displayText =
+      discountRanges.find((d) => d.value === globalFilters.discount)?.label ||
+      `${globalFilters.discount}% and above`;
+    createFilterTag("discount", globalFilters.discount, displayText);
+  }
+
+  // Add customer rating filter
+  if (globalFilters.customerRating !== null) {
+    const displayText =
+      customerRatings.find((r) => r.value === globalFilters.customerRating)
+        ?.label || `${globalFilters.customerRating}★ & above`;
+    createFilterTag(
+      "customerRating",
+      globalFilters.customerRating,
+      displayText
+    );
+  }
+
+  // Add price range filter
+  if (
+    globalFilters.priceRange.min !== 0 ||
+    globalFilters.priceRange.max !== 10100
+  ) {
+    const displayText = `₹${globalFilters.priceRange.min} - ₹${
+      globalFilters.priceRange.max === 10100
+        ? "10,100+"
+        : globalFilters.priceRange.max
+    }`;
+    createFilterTag(
+      "priceRange",
+      `${globalFilters.priceRange.min}-${globalFilters.priceRange.max}`,
+      displayText
+    );
+  }
+
+  // Show/hide clear filters button
+  if (clearFiltersBtnDesktop) {
+    clearFiltersBtnDesktop.classList.toggle("hidden", !hasActiveFilters());
+  }
+}
+
+// Function to remove a specific filter
+function removeFilter(filterType, filterValue) {
+  if (filterType === "colors") {
+    globalFilters.colors = globalFilters.colors.filter(
+      (c) => c !== filterValue
+    );
+    const checkbox = document.querySelector(
+      `#color-filter-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "categories") {
+    globalFilters.categories = globalFilters.categories.filter(
+      (c) => c !== filterValue
+    );
+    const checkbox = document.querySelector(
+      `#category-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "brands") {
+    globalFilters.brands = globalFilters.brands.filter(
+      (b) => b !== filterValue
+    );
+    const checkbox = document.querySelector(
+      `#brand-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "sizes") {
+    globalFilters.sizes = globalFilters.sizes.filter((s) => s !== filterValue);
+    const checkbox = document.querySelector(
+      `#sub-categories-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "bundles") {
+    globalFilters.bundles = globalFilters.bundles.filter(
+      (b) => b !== filterValue
+    );
+    const checkbox = document.querySelector(
+      `#sub-categories-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "countryOfOrigin") {
+    globalFilters.countryOfOrigin = globalFilters.countryOfOrigin.filter(
+      (c) => c !== filterValue
+    );
+    const checkbox = document.querySelector(
+      `#sub-categories-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "moreFilters") {
+    globalFilters.moreFilters = globalFilters.moreFilters.filter(
+      (f) => f !== filterValue
+    );
+    const checkbox = document.querySelector(
+      `#sub-categories-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "discount") {
+    globalFilters.discount = null;
+    const radio = document.querySelector(
+      `#discount-range-list input[value="${filterValue}"]`
+    );
+    if (radio) radio.checked = false;
+  } else if (filterType === "customerRating") {
+    globalFilters.customerRating = null;
+    const checkbox = document.querySelector(
+      `#customer-rating-list input[value="${filterValue}"]`
+    );
+    if (checkbox) checkbox.checked = false;
+  } else if (filterType === "priceRange") {
+    globalFilters.priceRange = { min: 0, max: 10100 };
+    if (minRange && maxRange) {
+      minRange.value = minRange.min;
+      maxRange.value = maxRange.max;
+      updateSlider();
+    }
+  }
+
+  applyFilters();
 }
 
 // Modified applyFilters function
@@ -655,12 +888,9 @@ function applyFilters() {
     );
   }
 
-  // Apply more filters
+  // Apply more filters (still a placeholder as no product data supports these)
   if (globalFilters.moreFilters.length > 0) {
     // Placeholder: Add more filter data to products array to enable this
-    // filteredProducts = filteredProducts.filter(product =>
-    //   globalFilters.moreFilters.some(filter => product.filters?.includes(filter))
-    // );
   }
 
   render(filteredProducts);
@@ -1253,6 +1483,42 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         const allCheckboxes = filterModal.querySelectorAll(
+          'input[type="checkbox"]'
+        );
+        allCheckboxes.forEach((checkbox) => (checkbox.checked = false));
+
+        const discountRadios = document.querySelectorAll(
+          'input[name="discount"]'
+        );
+        discountRadios.forEach((radio) => (radio.checked = false));
+
+        if (minRange && maxRange) {
+          minRange.value = minRange.min;
+          maxRange.value = maxRange.max;
+          updateSlider();
+        }
+
+        resetFilterModal();
+        applyFilters();
+      });
+    }
+
+    if (clearFiltersBtnDesktop) {
+      clearFiltersBtnDesktop.addEventListener("click", function () {
+        globalFilters = {
+          colors: [],
+          categories: [],
+          brands: [],
+          priceRange: { min: 0, max: 10100 },
+          discount: null,
+          sizes: [],
+          customerRating: null,
+          bundles: [],
+          countryOfOrigin: [],
+          moreFilters: [],
+        };
+
+        const allCheckboxes = document.querySelectorAll(
           'input[type="checkbox"]'
         );
         allCheckboxes.forEach((checkbox) => (checkbox.checked = false));
