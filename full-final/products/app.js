@@ -380,7 +380,7 @@ function createProductCardHTML(item) {
           alt=""
         />
         <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
+          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block z-[10]"
         >
           <button
             class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
@@ -397,14 +397,14 @@ function createProductCardHTML(item) {
             class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
           ></span>
           <p
-            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
+            class="uppercase ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
           >
             View Similar
           </p>
         </div>
       </div>
 
-      <div class="p-2">
+      <div class="p-2 relative">
         <h1 class="text-base font-bold text-black">${item.brand}</h1>
         <h2 class="text-sm block text-gray-500 group-hover:hidden">
           ${item.title}
@@ -419,14 +419,14 @@ function createProductCardHTML(item) {
             item.discountPercent
           }% OFF)</span>
         </p>
+        <!-- Wishlist Icon -->
+        <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
+          <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
       </div>
 
-      <!-- Wishlist Icon -->
-      <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800">
-        <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </div>
     </div>
   `;
 }
