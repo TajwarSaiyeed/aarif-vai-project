@@ -345,12 +345,12 @@ function initializeFilters() {
   // Create filter category buttons
   Object.keys(filterData).forEach((filterName, index) => {
     const filterButton = document.createElement("span");
-    filterButton.className = `text-sm text-gray-600 mr-4 px-3 py-2 rounded-full cursor-pointer flex items-center gap-1 transition-all duration-200 border-none hover:bg-gray-100`;
+    filterButton.className = `text-[14px] text-gray-600 mr-4 px-2 py-1 rounded-full cursor-pointer flex items-center gap-1 transition-all duration-200 border-none hover:bg-gray-100`;
     filterButton.setAttribute("data-filter", filterName);
 
     filterButton.innerHTML = `
       ${filterName}
-      <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CACBD0" stroke-width="2">
         <polyline points="6,9 12,15 18,9"></polyline>
       </svg>
     `;
@@ -416,23 +416,51 @@ function toggleFilter(filterName, buttonElement) {
 
   // Add new sub-categories
   const subCategories = filterData[filterName];
-  subCategories.forEach((subCategory) => {
-    const subCategoryElement = document.createElement("label");
-    subCategoryElement.className =
-      "flex items-center cursor-pointer px-3 py-1  bg-white";
+  // subCategories.forEach((subCategory) => {
+  //   const subCategoryElement = document.createElement("label");
+  //   subCategoryElement.className = "flex items-center cursor-pointer px-3 py-1";
 
-    subCategoryElement.innerHTML = `
-      <input type="checkbox" value="${subCategory}" class="mr-2" />
-      <span class="text-sm text-gray-700">${subCategory}</span>
-    `;
+  //   subCategoryElement.innerHTML = `
+  //     <input type="checkbox" value="${subCategory}" class="mr-2" />
+  //     <span class="text-sm text-gray-700">${subCategory}</span>
+  //   `;
+
+  //   // Add change event listener for checkboxes
+  //   const checkbox = subCategoryElement.querySelector("input");
+  //   checkbox.addEventListener("change", function () {
+  //     handleSubCategoryChange(filterName, subCategory, this.checked);
+  //   });
+
+  //   subCategoriesList.appendChild(subCategoryElement);
+  // });
+
+  subCategories.forEach((subCategory) => {
+    const label = document.createElement("label");
+    label.className = "inline-flex items-center cursor-pointer gap-2 relative";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "custom-checkbox hidden peer";
+    checkbox.value = subCategory;
+
+    const checkboxBox = document.createElement("div");
+    checkboxBox.className =
+      "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+    label.appendChild(checkbox);
+    label.appendChild(checkboxBox);
+
+    const subCategoryName = document.createElement("span");
+    subCategoryName.className = "text-sm text-gray-700 font-medium";
+    subCategoryName.textContent = subCategory;
+
+    label.appendChild(subCategoryName);
+    subCategoriesList.appendChild(label);
 
     // Add change event listener for checkboxes
-    const checkbox = subCategoryElement.querySelector("input");
     checkbox.addEventListener("change", function () {
       handleSubCategoryChange(filterName, subCategory, this.checked);
     });
-
-    subCategoriesList.appendChild(subCategoryElement);
   });
 }
 
