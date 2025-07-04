@@ -1,4 +1,7 @@
-// New Arrivals Products Data
+const productsGridDesktop = document.getElementById("products-grid-desktop");
+const productsSliderMobile = document.getElementById("products-slider-mobile");
+const productCountDesktop = document.getElementById("product-count-desktop");
+
 const products = [
   {
     id: 1,
@@ -11,6 +14,9 @@ const products = [
     rating: "4.2",
     ratingCount: "1.2k",
     href: "#",
+    color: "White",
+    brand: "Bella Vita Organic",
+    category: "Face Wash",
   },
   {
     id: 2,
@@ -23,6 +29,9 @@ const products = [
     rating: "4.5",
     ratingCount: "890",
     href: "#",
+    color: "Green",
+    brand: "Plum",
+    category: "Face Wash",
   },
   {
     id: 3,
@@ -35,6 +44,9 @@ const products = [
     rating: "4.3",
     ratingCount: "654",
     href: "#",
+    color: "White",
+    brand: "Minimalist",
+    category: "Face Wash",
   },
   {
     id: 4,
@@ -47,6 +59,9 @@ const products = [
     rating: "4.1",
     ratingCount: "2.1k",
     href: "#",
+    color: "Green",
+    brand: "Himalaya",
+    category: "Face Wash",
   },
   {
     id: 5,
@@ -59,6 +74,9 @@ const products = [
     rating: "4.4",
     ratingCount: "532",
     href: "#",
+    color: "Blue",
+    brand: "L'Oreal Paris",
+    category: "Moisturizer",
   },
   {
     id: 6,
@@ -71,6 +89,9 @@ const products = [
     rating: "4.6",
     ratingCount: "1.5k",
     href: "#",
+    color: "White",
+    brand: "Olay",
+    category: "Night Cream",
   },
   {
     id: 7,
@@ -83,6 +104,9 @@ const products = [
     rating: "4.2",
     ratingCount: "743",
     href: "#",
+    color: "White",
+    brand: "Deconstruct",
+    category: "Moisturizer",
   },
   {
     id: 8,
@@ -95,6 +119,9 @@ const products = [
     rating: "4.3",
     ratingCount: "967",
     href: "#",
+    color: "Brown",
+    brand: "Pilgrim",
+    category: "Hair Serum",
   },
   {
     id: 9,
@@ -107,6 +134,9 @@ const products = [
     rating: "4.5",
     ratingCount: "1.1k",
     href: "#",
+    color: "Black",
+    brand: "The Man Company",
+    category: "Face Wash",
   },
   {
     id: 10,
@@ -119,6 +149,159 @@ const products = [
     rating: "4.2",
     ratingCount: "800",
     href: "#",
+    color: "Black",
+    brand: "Beardo",
+    category: "Face Wash",
+  },
+  {
+    id: 11,
+    title: "Dot & Key",
+    description: "Watermelon Superglow Moisturizer",
+    image: "https://picsum.photos/300/400?random=20",
+    currentPrice: "₹595",
+    originalPrice: "₹795",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.8k",
+    href: "#",
+    color: "Pink",
+    brand: "Dot & Key",
+    category: "Moisturizer",
+  },
+  {
+    id: 12,
+    title: "Mamaearth",
+    description: "Onion Hair Oil for Hair Growth",
+    image: "https://picsum.photos/300/400?random=21",
+    currentPrice: "₹389",
+    originalPrice: "₹499",
+    discountPercent: "22",
+    rating: "4.0",
+    ratingCount: "3.5k",
+    href: "#",
+    color: "Brown",
+    brand: "Mamaearth",
+    category: "Hair Oil",
+  },
+  {
+    id: 13,
+    title: "WOW Skin Science",
+    description: "Apple Cider Vinegar Shampoo",
+    image: "https://picsum.photos/300/400?random=22",
+    currentPrice: "₹375",
+    originalPrice: "₹499",
+    discountPercent: "25",
+    rating: "4.1",
+    ratingCount: "2.7k",
+    href: "#",
+    color: "Brown",
+    brand: "WOW Skin Science",
+    category: "Shampoo",
+  },
+  {
+    id: 14,
+    title: "Mcaffeine",
+    description: "Naked & Raw Coffee Body Scrub",
+    image: "https://picsum.photos/300/400?random=23",
+    currentPrice: "₹399",
+    originalPrice: "₹599",
+    discountPercent: "33",
+    rating: "4.4",
+    ratingCount: "980",
+    href: "#",
+    color: "Brown",
+    brand: "Mcaffeine",
+    category: "Body Scrub",
+  },
+  {
+    id: 15,
+    title: "Biotique",
+    description: "Bio Papaya Tan Removal Scrub",
+    image: "https://picsum.photos/300/400?random=24",
+    currentPrice: "₹180",
+    originalPrice: "₹250",
+    discountPercent: "28",
+    rating: "4.0",
+    ratingCount: "1.9k",
+    href: "#",
+    color: "Orange",
+    brand: "Biotique",
+    category: "Face Scrub",
+  },
+  {
+    id: 16,
+    title: "Neutrogena",
+    description: "Hydro Boost Water Gel",
+    image: "https://picsum.photos/300/400?random=25",
+    currentPrice: "₹849",
+    originalPrice: "₹950",
+    discountPercent: "11",
+    rating: "4.5",
+    ratingCount: "2.2k",
+    href: "#",
+    color: "Blue",
+    brand: "Neutrogena",
+    category: "Moisturizer",
+  },
+  {
+    id: 17,
+    title: "The Body Shop",
+    description: "Tea Tree Skin Clearing Face Wash",
+    image: "https://picsum.photos/300/400?random=26",
+    currentPrice: "₹645",
+    originalPrice: "₹745",
+    discountPercent: "13",
+    rating: "4.6",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Green",
+    brand: "The Body Shop",
+    category: "Face Wash",
+  },
+  {
+    id: 18,
+    title: "Forest Essentials",
+    description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+    image: "https://picsum.photos/300/400?random=27",
+    currentPrice: "₹1250",
+    originalPrice: "₹1450",
+    discountPercent: "14",
+    rating: "4.7",
+    ratingCount: "900",
+    href: "#",
+    color: "Yellow",
+    brand: "Forest Essentials",
+    category: "Face Wash",
+  },
+  {
+    id: 19,
+    title: "Mamaearth",
+    description: "Vitamin C Face Wash",
+    image: "https://picsum.photos/300/400?random=28",
+    currentPrice: "₹249",
+    originalPrice: "₹349",
+    discountPercent: "29",
+    rating: "4.2",
+    ratingCount: "2.5k",
+    href: "#",
+    color: "White",
+    brand: "Mamaearth",
+    category: "Face Wash",
+  },
+  {
+    id: 20,
+    title: "WOW Skin Rectified",
+    description: "Ubtan Face Wash",
+    image: "https://picsum.photos/300/400?random=29",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.3k",
+    href: "#",
+    color: "Yellow",
+    brand: "WOW Skin Science",
+    category: "Face Wash",
   },
 ];
 
@@ -131,7 +314,7 @@ function createProductCardHTML(item) {
       <div class="w-full h-[250px] relative">
         <img
           class="w-full h-full object-fit"
-          src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+          src="${item.image}"
           alt=""
         />
         <div
@@ -160,41 +343,44 @@ function createProductCardHTML(item) {
       </div>
 
       <div class="p-2">
-        <h1 class="text-base font-bold text-black">Levis</h1>
+        <h1 class="text-base font-bold text-black">${item.brand}</h1>
         <h2 class="text-sm block text-gray-500 group-hover:hidden">
-          Solid Lounge T-shirt
+          ${item.title}
         </h2>
         <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
         <p class="space-x-2">
-          <span class="font-bold">Rs. 389</span>
-          <del class="text-sm text-gray-500">Rs. 649 </del>
-          <span class="text-xs text-[#ff905a]">(40% OFF)</span>
+          <span class="font-bold">Rs. ${item.currentPrice}</span>
+          <del class="text-sm text-gray-500">Rs. ${item.originalPrice}</del>
+          <span class="text-xs text-[#ff905a]">(${item.discountPercent}% OFF)</span>
         </p>
       </div>
 
       <!-- Wishlist Icon -->
-                    <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800">
-                        <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                        </svg>
-                    </div>
+      <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800">
+        <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
     </div>
-`;
+  `;
 }
 
-const productsSliderMobile = document.querySelector("#products-slider-mobile");
-if (productsSliderMobile) {
-  products.forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.innerHTML = createProductCardHTML(product);
-    productsSliderMobile.appendChild(productCard);
-  });
-}
+// Global filter state
+let globalFilters = {
+  colors: [],
+  categories: [],
+  brands: [],
+  priceRange: { min: 0, max: 10100 },
+  discount: null,
+  sizes: [],
+  customerRating: null,
+  bundles: [],
+  countryOfOrigin: [],
+  moreFilters: [],
+};
 
-// Desktop product rendering
-const productsGridDesktop = document.querySelector("#products-grid-desktop");
-const productCountDesktop = document.querySelector("#product-count-desktop");
-const sortDesktop = document.querySelector("#sort-desktop");
+let currentSortType = "recommended";
+let activeFilter = null;
 
 // Filter data structure
 const filterData = {
@@ -214,55 +400,7 @@ const filterData = {
     "Turkey",
     "Vietnam",
   ],
-  Size: [
-    "3XS",
-    "XXS",
-    "XS",
-    "XS/S",
-    "S",
-    "S/M",
-    "M",
-    "M/L",
-    "L",
-    "L/XL",
-    "XL",
-    "XL/XXL",
-    "XXL",
-    "3XL",
-    "3XL/4XL",
-    "4XL",
-    "5XL",
-    "6XL",
-    "7XL",
-    "8XL",
-    "9XL",
-    "10XL",
-    "11XL",
-    "1-2Y",
-    "2-3Y",
-    "3-4Y",
-    "4-5Y",
-    "5-6Y",
-    "6-7Y",
-    "7-8Y",
-    "8-9Y",
-    "9-10Y",
-    "10-11Y",
-    "11-12Y",
-    "12-13Y",
-    "13-14Y",
-    "14-15Y",
-    "36",
-    "38",
-    "39",
-    "40",
-    "42",
-    "44",
-    "46",
-    "50",
-    "Onesize",
-    "Customise",
-  ],
+  Size: ["50ml", "100ml", "200ml", "500ml"],
   "More Filters": [
     "Collar",
     "Fabrics",
@@ -274,8 +412,6 @@ const filterData = {
     "Sleeve Length",
   ],
 };
-
-let activeFilter = null;
 
 // Color filter data
 const colors = [
@@ -333,6 +469,135 @@ const colors = [
   { name: "Transparent", count: 1, hex: "#eeeeee" },
 ];
 
+// Main render function
+function render(filteredProducts = products) {
+  const sortedProducts = sortProducts(filteredProducts, currentSortType);
+
+  // Render for desktop
+  if (productsGridDesktop) {
+    renderProductsDesktop(sortedProducts);
+  }
+
+  // Render for mobile
+  if (productsSliderMobile) {
+    renderProducts(sortedProducts);
+  }
+}
+
+function renderProductsDesktop(productsToRender) {
+  if (productsGridDesktop) {
+    productsGridDesktop.innerHTML = "";
+    productsToRender.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.innerHTML = createProductCardHTML(product);
+      productsGridDesktop.appendChild(productCard);
+    });
+  }
+  if (productCountDesktop) {
+    productCountDesktop.textContent = `- ${productsToRender.length} items`;
+  }
+}
+
+function renderProducts(productsToRender) {
+  if (productsSliderMobile) {
+    productsSliderMobile.innerHTML = "";
+    productsToRender.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.innerHTML = createProductCardHTML(product);
+      productsSliderMobile.appendChild(productCard);
+    });
+  }
+}
+
+// Modified applyFilters function
+function applyFilters() {
+  let filteredProducts = [...products];
+
+  // Apply color filter
+  if (globalFilters.colors.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      globalFilters.colors.includes(
+        product.color.toLowerCase().replace(/\s+/g, "-")
+      )
+    );
+  }
+
+  // Apply category filter
+  if (globalFilters.categories.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      globalFilters.categories.includes(
+        product.category.toLowerCase().replace(/\s+/g, "-")
+      )
+    );
+  }
+
+  // Apply brand filter
+  if (globalFilters.brands.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      globalFilters.brands.includes(
+        product.brand.toLowerCase().replace(/\s+/g, "-")
+      )
+    );
+  }
+
+  // Apply price range filter
+  filteredProducts = filteredProducts.filter((product) => {
+    const price = parseInt(product.currentPrice.replace("₹", ""));
+    return (
+      price >= globalFilters.priceRange.min &&
+      price <= globalFilters.priceRange.max
+    );
+  });
+
+  // Apply discount filter
+  if (globalFilters.discount) {
+    filteredProducts = filteredProducts.filter(
+      (product) => parseInt(product.discountPercent) >= globalFilters.discount
+    );
+  }
+
+  // Apply customer rating filter
+  if (globalFilters.customerRating) {
+    filteredProducts = filteredProducts.filter(
+      (product) => parseFloat(product.rating) >= globalFilters.customerRating
+    );
+  }
+
+  // Apply size filter (Note: Product data needs size information)
+  if (globalFilters.sizes.length > 0) {
+    // Placeholder: Add size data to products array to enable this
+    // filteredProducts = filteredProducts.filter(product =>
+    //   globalFilters.sizes.some(size => product.sizes?.includes(size))
+    // );
+  }
+
+  // Apply bundle filter
+  if (globalFilters.bundles.length > 0) {
+    // Placeholder: Add bundle data to products array to enable this
+    // filteredProducts = filteredProducts.filter(product =>
+    //   globalFilters.bundles.includes(product.bundleType)
+    // );
+  }
+
+  // Apply country of origin filter
+  if (globalFilters.countryOfOrigin.length > 0) {
+    // Placeholder: Add country data to products array to enable this
+    // filteredProducts = filteredProducts.filter(product =>
+    //   globalFilters.countryOfOrigin.includes(product.countryOfOrigin)
+    // );
+  }
+
+  // Apply more filters
+  if (globalFilters.moreFilters.length > 0) {
+    // Placeholder: Add more filter data to products array to enable this
+    // filteredProducts = filteredProducts.filter(product =>
+    //   globalFilters.moreFilters.some(filter => product.filters?.includes(filter))
+    // );
+  }
+
+  render(filteredProducts);
+}
+
 // Initialize filter categories
 function initializeFilters() {
   const filterCategoriesContainer =
@@ -342,8 +607,7 @@ function initializeFilters() {
 
   filterCategoriesContainer.classList.add("pb-1");
 
-  // Create filter category buttons
-  Object.keys(filterData).forEach((filterName, index) => {
+  Object.keys(filterData).forEach((filterName) => {
     const filterButton = document.createElement("span");
     filterButton.className = `text-[14px] text-gray-600 mr-4 px-2 py-1 rounded-full cursor-pointer flex items-center gap-1 transition-all duration-200 border-none hover:bg-gray-100`;
     filterButton.setAttribute("data-filter", filterName);
@@ -355,13 +619,11 @@ function initializeFilters() {
       </svg>
     `;
 
-    // add active filter button bg to gray
     if (activeFilter === filterName) {
       filterButton.classList.remove("text-gray-600");
       filterButton.classList.add("bg-gray-100", "text-gray-800");
     }
 
-    // Add click event listener
     filterButton.addEventListener("click", function () {
       toggleFilter(filterName, this);
     });
@@ -379,69 +641,39 @@ function toggleFilter(filterName, buttonElement) {
   const allFilterButtons = document.querySelectorAll("[data-filter]");
   const arrowIcon = buttonElement.querySelector(".arrow-icon polyline");
 
-  // If clicking the same filter, close it
   if (activeFilter === filterName) {
-    // Close the filter
     activeFilter = null;
     subCategoriesContainer.classList.add("hidden");
-    arrowIcon.setAttribute("points", "6,9 12,15 18,9"); // Down arrow
-    // Remove active styling
+    arrowIcon.setAttribute("points", "6,9 12,15 18,9");
     buttonElement.classList.remove("bg-gray-100", "text-gray-800");
     buttonElement.classList.add("text-gray-600");
     return;
   }
 
-  // Remove active class from all buttons
   allFilterButtons.forEach((btn) => {
     const arrow = btn.querySelector(".arrow-icon polyline");
-    arrow.setAttribute("points", "6,9 12,15 18,9"); // Down arrow
-    // Remove active styling from all buttons
+    arrow.setAttribute("points", "6,9 12,15 18,9");
     btn.classList.remove("bg-gray-100", "text-gray-800");
     btn.classList.add("text-gray-600");
   });
 
-  // Set new active filter
   activeFilter = filterName;
-  arrowIcon.setAttribute("points", "18,15 12,9 6,15"); // Up arrow
-
-  // Add active styling to current button
+  arrowIcon.setAttribute("points", "18,15 12,9 6,15");
   buttonElement.classList.remove("text-gray-600");
   buttonElement.classList.add("bg-gray-100", "text-gray-800");
-
-  // Show sub-categories container
   subCategoriesContainer.classList.remove("hidden");
-
-  // Clear previous sub-categories
   subCategoriesList.innerHTML = "";
 
-  // Add new sub-categories
   const subCategories = filterData[filterName];
-  // subCategories.forEach((subCategory) => {
-  //   const subCategoryElement = document.createElement("label");
-  //   subCategoryElement.className = "flex items-center cursor-pointer px-3 py-1";
-
-  //   subCategoryElement.innerHTML = `
-  //     <input type="checkbox" value="${subCategory}" class="mr-2" />
-  //     <span class="text-sm text-gray-700">${subCategory}</span>
-  //   `;
-
-  //   // Add change event listener for checkboxes
-  //   const checkbox = subCategoryElement.querySelector("input");
-  //   checkbox.addEventListener("change", function () {
-  //     handleSubCategoryChange(filterName, subCategory, this.checked);
-  //   });
-
-  //   subCategoriesList.appendChild(subCategoryElement);
-  // });
-
   subCategories.forEach((subCategory) => {
+    const listItem = document.createElement("li"); // Fixed: Define listItem here
     const label = document.createElement("label");
     label.className = "inline-flex items-center cursor-pointer gap-2 relative";
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "custom-checkbox hidden peer";
-    checkbox.value = subCategory;
+    checkbox.value = subCategory.toLowerCase().replace(/\s+/g, "-");
 
     const checkboxBox = document.createElement("div");
     checkboxBox.className =
@@ -458,7 +690,6 @@ function toggleFilter(filterName, buttonElement) {
     listItem.appendChild(label);
     subCategoriesList.appendChild(listItem);
 
-    // Add change event listener for checkboxes
     checkbox.addEventListener("change", function () {
       handleSubCategoryChange(filterName, subCategory, this.checked);
     });
@@ -467,400 +698,53 @@ function toggleFilter(filterName, buttonElement) {
 
 // Handle sub-category selection
 function handleSubCategoryChange(filterName, subCategory, isChecked) {
-  console.log(
-    `Filter: ${filterName}, Sub-category: ${subCategory}, Checked: ${isChecked}`
-  );
+  const normalizedSubCategory = subCategory.toLowerCase().replace(/\s+/g, "-");
+  let filterKey;
 
-  // Here you can add logic to filter products based on the selected sub-categories
-  // For example, you could maintain an array of active filters and update the product display
+  switch (filterName) {
+    case "Size":
+      filterKey = "sizes";
+      break;
+    case "Bundles":
+      filterKey = "bundles";
+      break;
+    case "Country of Origin":
+      filterKey = "countryOfOrigin";
+      break;
+    case "More Filters":
+      filterKey = "moreFilters";
+      break;
+    default:
+      return;
+  }
 
-  // Example: Apply filters to products
+  if (isChecked) {
+    if (!globalFilters[filterKey].includes(normalizedSubCategory)) {
+      globalFilters[filterKey].push(normalizedSubCategory);
+    }
+  } else {
+    globalFilters[filterKey] = globalFilters[filterKey].filter(
+      (c) => c !== normalizedSubCategory
+    );
+  }
+
   applyFilters();
 }
 
-// Apply filters to products (placeholder function)
-function applyFilters() {
-  const checkedFilters = {};
-
-  // Collect all checked filters
-  const checkboxes = document.querySelectorAll(
-    "#sub-categories-list input[type='checkbox']:checked"
-  );
-  checkboxes.forEach((checkbox) => {
-    const filterCategory = activeFilter; // You might want to track this differently for multiple categories
-    const value = checkbox.value;
-
-    if (!checkedFilters[filterCategory]) {
-      checkedFilters[filterCategory] = [];
+// Handle color filter changes
+function handleColorFilterChange(colorName, isChecked) {
+  const normalizedColor = colorName.toLowerCase().replace(/\s+/g, "-");
+  if (isChecked) {
+    if (!globalFilters.colors.includes(normalizedColor)) {
+      globalFilters.colors.push(normalizedColor);
     }
-    checkedFilters[filterCategory].push(value);
-  });
-
-  console.log("Active filters:", checkedFilters);
-
-  // Here you would implement the actual filtering logic
-  // For now, we'll just log the filters
+  } else {
+    globalFilters.colors = globalFilters.colors.filter(
+      (c) => c !== normalizedColor
+    );
+  }
+  applyFilters();
 }
-
-// Initialize the sort by dropdown functionality
-const sortByList = document.getElementById("sort-by-list");
-const sortByValue = document.getElementById("sort-by-value");
-
-if (sortByList) {
-  sortByList.addEventListener("click", (e) => {
-    if (e.target.tagName === "INPUT") {
-      const selectedValue = e.target.value;
-      sortByValue.textContent = e.target.nextElementSibling
-        ? e.target.nextElementSibling.textContent
-        : e.target.parentElement.textContent.trim();
-      console.log("Selected sort:", selectedValue);
-      sortProducts(selectedValue, true);
-    }
-  });
-}
-
-function renderProductsDesktop(productsToRender) {
-  if (productsGridDesktop) {
-    productsGridDesktop.innerHTML = "";
-    [
-      ...productsToRender,
-      ...productsToRender,
-      ...productsToRender,
-      ...productsToRender,
-      ...productsToRender,
-      ...productsToRender,
-    ].forEach((product) => {
-      const productCard = document.createElement("div");
-      productCard.innerHTML = createProductCardHTML(product);
-      productsGridDesktop.appendChild(productCard);
-    });
-  }
-  if (productCountDesktop) {
-    productCountDesktop.textContent = `- ${productsToRender.length} items`;
-  }
-}
-
-if (productsGridDesktop) {
-  renderProductsDesktop(products);
-  initializeFilters();
-  initializeColorFilters(); // Initialize color filters
-}
-
-if (sortDesktop) {
-  sortDesktop.addEventListener("change", function () {
-    const sortType = this.value;
-    console.log("Selected sort (desktop):", sortType);
-    sortProducts(sortType, true);
-  });
-}
-
-// Modal functionality
-document.addEventListener("DOMContentLoaded", function () {
-  const sortBtn = document.getElementById("sort-btn");
-  const filterBtn = document.getElementById("filter-btn");
-  const sortOverlay = document.getElementById("sort-overlay");
-  const sortOverlayBg = document.getElementById("sort-overlay-bg");
-  const filterModal = document.getElementById("filter-modal");
-
-  // Sort modal functionality
-  if (sortBtn && sortOverlay && sortOverlayBg) {
-    sortBtn.addEventListener("click", function () {
-      openSortModal();
-    });
-
-    // Close sort modal on background click
-    sortOverlayBg.addEventListener("click", function () {
-      closeSortModal();
-    });
-
-    // Sort option selection
-    const sortButtons = document.querySelectorAll("[data-sort]");
-    sortButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        const sortType = this.getAttribute("data-sort");
-        console.log("Selected sort:", sortType);
-
-        // Apply sorting logic here
-        sortProducts(sortType, false);
-
-        // Close modal after selection
-        setTimeout(() => {
-          closeSortModal();
-        }, 300);
-      });
-    });
-  } // Filter modal functionality
-  if (filterBtn && filterModal) {
-    const filterCloseBtn = document.getElementById("filter-close-btn");
-    const filterCategoryItems = document.querySelectorAll(
-      ".filter-category-item"
-    );
-    const filterOptionGroups = document.querySelectorAll(
-      ".filter-option-group"
-    );
-    const defaultFilterMessage = document.getElementById(
-      "default-filter-message"
-    );
-    const clearFiltersBtn = document.getElementById("clear-filters-btn");
-    const applyFiltersBtn = document.getElementById("apply-filters-btn");
-
-    filterBtn.addEventListener("click", function () {
-      openFilterModal();
-    });
-
-    // Close button functionality
-    if (filterCloseBtn) {
-      filterCloseBtn.addEventListener("click", function () {
-        closeFilterModal();
-      });
-    }
-
-    // Clear filters functionality
-    if (clearFiltersBtn) {
-      clearFiltersBtn.addEventListener("click", function () {
-        // Uncheck all checkboxes
-        const allCheckboxes = filterModal.querySelectorAll(
-          'input[type="checkbox"]'
-        );
-        allCheckboxes.forEach((checkbox) => {
-          checkbox.checked = false;
-        });
-
-        // Reset to default state
-        resetFilterModal();
-      });
-    }
-
-    // Apply filters functionality
-    if (applyFiltersBtn) {
-      applyFiltersBtn.addEventListener("click", function () {
-        // Here you can add logic to apply the selected filters
-        console.log("Applying filters...");
-
-        // Get all checked filters
-        const checkedFilters = [];
-        const allCheckboxes = filterModal.querySelectorAll(
-          'input[type="checkbox"]:checked'
-        );
-        allCheckboxes.forEach((checkbox) => {
-          const label = checkbox.nextElementSibling;
-          const category = checkbox
-            .closest(".filter-option-group")
-            .getAttribute("data-options");
-          checkedFilters.push({
-            category: category,
-            value: label.textContent.trim(),
-          });
-        });
-
-        console.log("Selected filters:", checkedFilters);
-
-        // Close modal after applying
-        closeFilterModal();
-
-        // You can add your filter logic here
-        // For example: applyProductFilters(checkedFilters);
-      });
-    }
-
-    filterBtn.addEventListener("click", function () {
-      openFilterModal();
-    });
-
-    // Close button functionality
-    if (filterCloseBtn) {
-      filterCloseBtn.addEventListener("click", function () {
-        closeFilterModal();
-      });
-    }
-
-    // Category selection functionality
-    filterCategoryItems.forEach((item) => {
-      item.addEventListener("click", function () {
-        const category = this.getAttribute("data-category");
-
-        // Remove active class from all category items
-        filterCategoryItems.forEach((categoryItem) => {
-          categoryItem.classList.remove("active");
-        });
-
-        // Add active class to clicked item
-        this.classList.add("active");
-
-        // Hide all option groups
-        filterOptionGroups.forEach((group) => {
-          group.classList.add("hidden");
-        });
-
-        // Hide default message
-        if (defaultFilterMessage) {
-          defaultFilterMessage.classList.add("hidden");
-        }
-
-        // Show the selected category's options
-        const targetGroup = document.querySelector(
-          `[data-options="${category}"]`
-        );
-        if (targetGroup) {
-          targetGroup.classList.remove("hidden");
-        }
-      });
-    });
-
-    // Close filter modal on background click (optional)
-    filterModal.addEventListener("click", function (e) {
-      if (e.target === filterModal) {
-        closeFilterModal();
-      }
-    });
-
-    // Close on escape key
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        if (!filterModal.classList.contains("translate-y-neg-full")) {
-          closeFilterModal();
-        }
-        if (!sortOverlay.classList.contains("translate-y-full")) {
-          closeSortModal();
-        }
-      }
-    });
-  }
-
-  function openSortModal() {
-    sortOverlayBg.classList.remove("pointer-events-none");
-    sortOverlayBg.classList.add("opacity-50");
-    sortOverlay.classList.remove("translate-y-full");
-    sortOverlay.classList.add("translate-y-0");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeSortModal() {
-    sortOverlayBg.classList.add("pointer-events-none");
-    sortOverlayBg.classList.remove("opacity-50");
-    sortOverlay.classList.add("translate-y-full");
-    sortOverlay.classList.remove("translate-y-0");
-    document.body.style.overflow = "";
-  }
-
-  function openFilterModal() {
-    filterModal.classList.remove("translate-y-neg-full");
-    filterModal.classList.add("translate-y-0");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeFilterModal() {
-    filterModal.classList.add("translate-y-neg-full");
-    filterModal.classList.remove("translate-y-0");
-    document.body.style.overflow = "";
-
-    // Reset filter modal to default state
-    resetFilterModal();
-  }
-
-  function sortProducts(sortType, isDesktop = false) {
-    let sortedProducts = [...products];
-
-    switch (sortType) {
-      case "popularity":
-        // Sort by rating count (higher first)
-        sortedProducts.sort((a, b) => {
-          const aCount =
-            parseFloat(a.ratingCount.replace("k", "")) *
-            (a.ratingCount.includes("k") ? 1000 : 1);
-          const bCount =
-            parseFloat(b.ratingCount.replace("k", "")) *
-            (b.ratingCount.includes("k") ? 1000 : 1);
-          return bCount - aCount;
-        });
-        break;
-      case "latest":
-      case "new":
-        // Sort by id (assuming higher id means newer)
-        sortedProducts.sort((a, b) => b.id - a.id);
-        break;
-      case "discount":
-        // Sort by discount percentage (higher first)
-        sortedProducts.sort(
-          (a, b) => parseInt(b.discountPercent) - parseInt(a.discountPercent)
-        );
-        break;
-      case "price-high-low":
-      case "price_desc":
-        // Sort by current price (higher first)
-        sortedProducts.sort((a, b) => {
-          const aPrice = parseInt(a.currentPrice.replace("₹", ""));
-          const bPrice = parseInt(b.currentPrice.replace("₹", ""));
-          return bPrice - aPrice;
-        });
-        break;
-      case "price-low-high":
-      case "price_asc":
-        // Sort by current price (lower first)
-        sortedProducts.sort((a, b) => {
-          const aPrice = parseInt(a.currentPrice.replace("₹", ""));
-          const bPrice = parseInt(b.currentPrice.replace("₹", ""));
-          return aPrice - bPrice;
-        });
-        break;
-      case "rating":
-      case "customer_rating":
-        // Sort by rating (higher first)
-        sortedProducts.sort(
-          (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
-        );
-        break;
-      case "recommended":
-      default:
-        // Default sort (no change)
-        break;
-    }
-
-    // Re-render products with sorted order
-    if (isDesktop) {
-      renderProductsDesktop(sortedProducts);
-    } else {
-      renderProducts(sortedProducts);
-    }
-  }
-
-  function renderProducts(productsToRender) {
-    if (productsSliderMobile) {
-      productsSliderMobile.innerHTML = "";
-      productsToRender.forEach((product) => {
-        const productCard = document.createElement("div");
-        productCard.innerHTML = createProductCardHTML(product);
-        productsSliderMobile.appendChild(productCard);
-      });
-    }
-  }
-
-  function resetFilterModal() {
-    // Remove active class from all category items
-    const filterCategoryItems = document.querySelectorAll(
-      ".filter-category-item"
-    );
-    filterCategoryItems.forEach((item) => {
-      item.classList.remove("active");
-    });
-
-    // Hide all option groups
-    const filterOptionGroups = document.querySelectorAll(
-      ".filter-option-group"
-    );
-    filterOptionGroups.forEach((group) => {
-      group.classList.add("hidden");
-    });
-
-    // Show default message
-    const defaultFilterMessage = document.getElementById(
-      "default-filter-message"
-    );
-    if (defaultFilterMessage) {
-      defaultFilterMessage.classList.remove("hidden");
-    }
-  }
-});
 
 // Initialize color filters
 function initializeColorFilters() {
@@ -868,7 +752,6 @@ function initializeColorFilters() {
 
   if (!colorFilterContainer) return;
 
-  // Clear existing content
   colorFilterContainer.innerHTML = "";
 
   colors.forEach((color) => {
@@ -885,7 +768,6 @@ function initializeColorFilters() {
     checkboxBox.className =
       "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
 
-    // Color display circle (only if hex color exists)
     if (color.hex) {
       const colorDisplay = document.createElement("div");
       colorDisplay.className = "w-4 h-4 rounded-full border border-gray-200";
@@ -894,7 +776,6 @@ function initializeColorFilters() {
       label.appendChild(checkboxBox);
       label.appendChild(colorDisplay);
     } else {
-      // For colors without hex (Multi, Grey Melange, etc.)
       label.appendChild(checkbox);
       label.appendChild(checkboxBox);
     }
@@ -912,20 +793,94 @@ function initializeColorFilters() {
     listItem.appendChild(label);
     colorFilterContainer.appendChild(listItem);
 
-    // Add event listener for color filter
     checkbox.addEventListener("change", function () {
       handleColorFilterChange(color.name, this.checked);
     });
   });
 }
 
-// Handle color filter changes
-function handleColorFilterChange(colorName, isChecked) {
-  console.log(`Color filter: ${colorName}, Checked: ${isChecked}`);
-  // Add your color filtering logic here
-  applyFilters();
+// Sort products
+function sortProducts(productsToSort, sortType) {
+  currentSortType = sortType;
+  let sortedProducts = [...productsToSort];
+
+  switch (sortType) {
+    case "popularity":
+      sortedProducts.sort((a, b) => {
+        const aCount =
+          parseFloat(a.ratingCount.replace("k", "")) *
+          (a.ratingCount.includes("k") ? 1000 : 1);
+        const bCount =
+          parseFloat(b.ratingCount.replace("k", "")) *
+          (b.ratingCount.includes("k") ? 1000 : 1);
+        return bCount - aCount;
+      });
+      break;
+    case "latest":
+    case "new":
+      sortedProducts.sort((a, b) => b.id - a.id);
+      break;
+    case "discount":
+      sortedProducts.sort(
+        (a, b) => parseInt(b.discountPercent) - parseInt(a.discountPercent)
+      );
+      break;
+    case "price-high-low":
+    case "price_desc":
+      sortedProducts.sort((a, b) => {
+        const aPrice = parseInt(a.currentPrice.replace("₹", ""));
+        const bPrice = parseInt(b.currentPrice.replace("₹", ""));
+        return bPrice - aPrice;
+      });
+      break;
+    case "price-low-high":
+    case "price_asc":
+      sortedProducts.sort((a, b) => {
+        const aPrice = parseInt(a.currentPrice.replace("₹", ""));
+        const bPrice = parseInt(b.currentPrice.replace("₹", ""));
+        return aPrice - bPrice;
+      });
+      break;
+    case "rating":
+    case "customer_rating":
+      sortedProducts.sort(
+        (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
+      );
+      break;
+    case "recommended":
+    default:
+      break;
+  }
+
+  return sortedProducts;
 }
 
+// Initialize the sort by dropdown functionality
+const sortByList = document.getElementById("sort-by-list");
+const sortByValue = document.getElementById("sort-by-value");
+
+if (sortByList) {
+  sortByList.addEventListener("change", (e) => {
+    if (e.target.tagName === "INPUT" && e.target.type === "radio") {
+      const selectedValue = e.target.value;
+      let labelText = e.target.parentElement.textContent.trim();
+      sortByValue.textContent = labelText;
+      currentSortType = selectedValue;
+      applyFilters();
+    }
+  });
+  sortByList.addEventListener("click", (e) => {
+    if (e.target.tagName === "INPUT" && e.target.type === "radio") {
+      const selectedValue = e.target.value;
+      let labelText = e.target.parentElement.textContent.trim();
+      sortByValue.textContent = labelText;
+      currentSortType = selectedValue;
+      applyFilters();
+    }
+  });
+}
+
+// Price range slider
 const minRange = document.getElementById("minRange");
 const maxRange = document.getElementById("maxRange");
 const rangeTrack = document.getElementById("rangeTrack");
@@ -948,21 +903,22 @@ function updateSlider() {
   rangeTrack.style.right = `${100 - right}%`;
 
   output.textContent = `₹${min} - ₹${max === 10100 ? "10,100+" : max}`;
+  globalFilters.priceRange = { min, max };
+  applyFilters();
 }
 
-minRange.addEventListener("input", updateSlider);
-maxRange.addEventListener("input", updateSlider);
+if (minRange && maxRange) {
+  minRange.addEventListener("input", updateSlider);
+  maxRange.addEventListener("input", updateSlider);
+  updateSlider();
+}
 
-updateSlider();
-
+// Discount filter
 const discountRanges = [
   { label: "10% and above", value: 10 },
   { label: "20% and above", value: 20 },
   { label: "30% and above", value: 30 },
   { label: "40% and above", value: 40 },
-  { label: "50% and above", value: 50 },
-  { label: "60% and above", value: 60 },
-  { label: "70% and above", value: 70 },
 ];
 
 function initializeDiscountRangeFilter() {
@@ -971,7 +927,7 @@ function initializeDiscountRangeFilter() {
   );
   if (!discountFilterContainer) return;
   discountFilterContainer.innerHTML = "";
-  discountRanges.forEach((range, idx) => {
+  discountRanges.forEach((range) => {
     const li = document.createElement("li");
     li.innerHTML = `
       <label class="flex items-center cursor-pointer text-[14px]">
@@ -980,19 +936,24 @@ function initializeDiscountRangeFilter() {
       </label>
     `;
     discountFilterContainer.appendChild(li);
+
+    li.querySelector("input").addEventListener("change", function () {
+      globalFilters.discount = this.checked ? parseInt(this.value) : null;
+      applyFilters();
+    });
   });
 }
-initializeDiscountRangeFilter();
 
+// Category filter
 const categories = [
-  { name: "Tshirts", count: 226936 },
-  { name: "Shirts", count: 206432 },
-  { name: "Kurtas", count: 38091 },
-  { name: "Sweatshirts", count: 32040 },
-  { name: "Jackets", count: 22999 },
-  { name: "Sweaters", count: 12032 },
-  { name: "Blazers", count: 6334 },
-  { name: "Tunics", count: 1 },
+  { name: "Face Wash", count: 8 },
+  { name: "Moisturizer", count: 4 },
+  { name: "Hair Serum", count: 1 },
+  { name: "Hair Oil", count: 1 },
+  { name: "Shampoo", count: 1 },
+  { name: "Body Scrub", count: 1 },
+  { name: "Face Scrub", count: 1 },
+  { name: "Night Cream", count: 1 },
 ];
 
 function initializeCategoryFilter() {
@@ -1032,22 +993,41 @@ function initializeCategoryFilter() {
     categoryList.appendChild(listItem);
 
     checkbox.addEventListener("change", function () {
+      const normalizedCategory = this.value;
+      if (this.checked) {
+        if (!globalFilters.categories.includes(normalizedCategory)) {
+          globalFilters.categories.push(normalizedCategory);
+        }
+      } else {
+        globalFilters.categories = globalFilters.categories.filter(
+          (c) => c !== normalizedCategory
+        );
+      }
       applyFilters();
     });
   });
 }
 
-initializeCategoryFilter();
-
+// Brand filter
 const brands = [
-  { name: "Roadster", count: 16256 },
-  { name: "WOOSTRO", count: 10836 },
-  { name: "HIGHLANDER", count: 10571 },
-  { name: "U.S. Polo Assn.", count: 6586 },
-  { name: "Mast & Harbour", count: 6443 },
-  { name: "Campus Sutra", count: 6195 },
-  { name: "Allen Solly", count: 6177 },
-  { name: "Greylongg", count: 6163 },
+  { name: "Bella Vita Organic", count: 1 },
+  { name: "Plum", count: 1 },
+  { name: "Minimalist", count: 1 },
+  { name: "Himalaya", count: 1 },
+  { name: "L'Oreal Paris", count: 1 },
+  { name: "Olay", count: 1 },
+  { name: "Deconstruct", count: 1 },
+  { name: "Pilgrim", count: 1 },
+  { name: "The Man Company", count: 1 },
+  { name: "Beardo", count: 1 },
+  { name: "Dot & Key", count: 1 },
+  { name: "Mamaearth", count: 2 },
+  { name: "WOW Skin Science", count: 2 },
+  { name: "Mcaffeine", count: 1 },
+  { name: "Biotique", count: 1 },
+  { name: "Neutrogena", count: 1 },
+  { name: "The Body Shop", count: 1 },
+  { name: "Forest Essentials", count: 1 },
 ];
 
 function initializeBrandFilter() {
@@ -1087,9 +1067,242 @@ function initializeBrandFilter() {
     brandList.appendChild(listItem);
 
     checkbox.addEventListener("change", function () {
+      const normalizedBrand = this.value;
+      if (this.checked) {
+        if (!globalFilters.brands.includes(normalizedBrand)) {
+          globalFilters.brands.push(normalizedBrand);
+        }
+      } else {
+        globalFilters.brands = globalFilters.brands.filter(
+          (b) => b !== normalizedBrand
+        );
+      }
       applyFilters();
     });
   });
 }
 
-initializeBrandFilter();
+// Customer rating filter
+const customerRatings = [
+  { label: "4★ & above", value: 4 },
+  { label: "3★ & above", value: 3 },
+  { label: "2★ & above", value: 2 },
+];
+
+function initializeCustomerRatingFilter() {
+  const ratingList = document.getElementById("customer-rating-list");
+  if (!ratingList) return;
+
+  ratingList.innerHTML = "";
+  customerRatings.forEach((rating) => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("m-0");
+    const label = document.createElement("label");
+    label.className = "inline-flex items-center cursor-pointer gap-2 relative";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "custom-checkbox hidden peer";
+    checkbox.value = rating.value;
+
+    const checkboxBox = document.createElement("div");
+    checkboxBox.className =
+      "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+    label.appendChild(checkbox);
+    label.appendChild(checkboxBox);
+
+    const ratingName = document.createElement("span");
+    ratingName.className = "text-sm text-gray-800 font-medium";
+    ratingName.textContent = rating.label;
+
+    label.appendChild(ratingName);
+    listItem.appendChild(label);
+    ratingList.appendChild(listItem);
+
+    checkbox.addEventListener("change", function () {
+      globalFilters.customerRating = this.checked ? parseInt(this.value) : null;
+      applyFilters();
+    });
+  });
+}
+
+// Modal functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const sortBtn = document.getElementById("sort-btn");
+  const filterBtn = document.getElementById("filter-btn");
+  const sortOverlay = document.getElementById("sort-overlay");
+  const sortOverlayBg = document.getElementById("sort-overlay-bg");
+  const filterModal = document.getElementById("filter-modal");
+  const filterCloseBtn = document.getElementById("filter-close-btn");
+  const filterCategoryItems = document.querySelectorAll(
+    ".filter-category-item"
+  );
+  const filterOptionGroups = document.querySelectorAll(".filter-option-group");
+  const defaultFilterMessage = document.getElementById(
+    "default-filter-message"
+  );
+  const clearFiltersBtn = document.getElementById("clear-filters-btn");
+  const applyFiltersBtn = document.getElementById("apply-filters-btn");
+
+  // Sort modal functionality
+  if (sortBtn && sortOverlay && sortOverlayBg) {
+    sortBtn.addEventListener("click", openSortModal);
+
+    sortOverlayBg.addEventListener("click", closeSortModal);
+
+    const sortButtons = document.querySelectorAll("[data-sort]");
+    sortButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const sortType = this.getAttribute("data-sort");
+        currentSortType = sortType;
+        sortByValue.textContent = this.textContent.trim();
+        applyFilters();
+        setTimeout(closeSortModal, 300);
+      });
+    });
+  }
+
+  // Filter modal functionality
+  if (filterBtn && filterModal) {
+    filterBtn.addEventListener("click", openFilterModal);
+
+    if (filterCloseBtn) {
+      filterCloseBtn.addEventListener("click", closeFilterModal);
+    }
+
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener("click", function () {
+        globalFilters = {
+          colors: [],
+          categories: [],
+          brands: [],
+          priceRange: { min: 0, max: 10100 },
+          discount: null,
+          sizes: [],
+          customerRating: null,
+          bundles: [],
+          countryOfOrigin: [],
+          moreFilters: [],
+        };
+
+        const allCheckboxes = filterModal.querySelectorAll(
+          'input[type="checkbox"]'
+        );
+        allCheckboxes.forEach((checkbox) => (checkbox.checked = false));
+
+        const discountRadios = document.querySelectorAll(
+          'input[name="discount"]'
+        );
+        discountRadios.forEach((radio) => (radio.checked = false));
+
+        if (minRange && maxRange) {
+          minRange.value = minRange.min;
+          maxRange.value = maxRange.max;
+          updateSlider();
+        }
+
+        resetFilterModal();
+        applyFilters();
+      });
+    }
+
+    if (applyFiltersBtn) {
+      applyFiltersBtn.addEventListener("click", function () {
+        applyFilters();
+        closeFilterModal();
+      });
+    }
+
+    filterCategoryItems.forEach((item) => {
+      item.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+        filterCategoryItems.forEach((categoryItem) => {
+          categoryItem.classList.remove("active");
+        });
+        this.classList.add("active");
+        filterOptionGroups.forEach((group) => {
+          group.classList.add("hidden");
+        });
+        if (defaultFilterMessage) {
+          defaultFilterMessage.classList.add("hidden");
+        }
+        const targetGroup = document.querySelector(
+          `[data-options="${category}"]`
+        );
+        if (targetGroup) {
+          targetGroup.classList.remove("hidden");
+        }
+      });
+    });
+
+    filterModal.addEventListener("click", function (e) {
+      if (e.target === filterModal) {
+        closeFilterModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        if (!filterModal.classList.contains("translate-y-neg-full")) {
+          closeFilterModal();
+        }
+        if (!sortOverlay.classList.contains("translate-y-full")) {
+          closeSortModal();
+        }
+      }
+    });
+  }
+
+  function openSortModal() {
+    sortOverlayBg.classList.remove("pointer-events-none");
+    sortOverlayBg.classList.add("opacity-50");
+    sortOverlay.classList.remove("translate-y-full");
+    sortOverlay.classList.add("translate-y-0");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeSortModal() {
+    sortOverlayBg.classList.add("pointer-events-none");
+    sortOverlayBg.classList.remove("opacity-50");
+    sortOverlay.classList.add("translate-y-full");
+    sortOverlay.classList.remove("translate-y-0");
+    document.body.style.overflow = "";
+  }
+
+  function openFilterModal() {
+    filterModal.classList.remove("translate-y-neg-full");
+    filterModal.classList.add("translate-y-0");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeFilterModal() {
+    filterModal.classList.add("translate-y-neg-full");
+    filterModal.classList.remove("translate-y-0");
+    document.body.style.overflow = "";
+    resetFilterModal();
+  }
+
+  function resetFilterModal() {
+    filterCategoryItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+    filterOptionGroups.forEach((group) => {
+      group.classList.add("hidden");
+    });
+    if (defaultFilterMessage) {
+      defaultFilterMessage.classList.remove("hidden");
+    }
+  }
+
+  // Initialize all filters
+  initializeFilters();
+  initializeColorFilters();
+  initializeDiscountRangeFilter();
+  initializeCategoryFilter();
+  initializeBrandFilter();
+  initializeCustomerRatingFilter();
+
+  // Initial render
+  render();
+});
