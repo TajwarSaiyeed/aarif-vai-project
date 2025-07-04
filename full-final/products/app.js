@@ -436,7 +436,7 @@ let globalFilters = {
   colors: [],
   categories: [],
   brands: [],
-  priceRange: { min: 0, max: 10100 },
+  priceRange: { min: 100, max: 10100 },
   discount: null,
   sizes: [],
   customerRating: null,
@@ -588,7 +588,7 @@ function hasActiveFilters() {
     globalFilters.moreFilters.length > 0 ||
     globalFilters.discount !== null ||
     globalFilters.customerRating !== null ||
-    globalFilters.priceRange.min !== 0 ||
+    globalFilters.priceRange.min !== 100 ||
     globalFilters.priceRange.max !== 10100
   );
 }
@@ -701,7 +701,7 @@ function updateSelectedFilters() {
 
   // Add price range filter
   if (
-    globalFilters.priceRange.min !== 0 ||
+    globalFilters.priceRange.min !== 100 ||
     globalFilters.priceRange.max !== 10100
   ) {
     const displayText = `₹${globalFilters.priceRange.min} - ₹${
@@ -791,7 +791,7 @@ function removeFilter(filterType, filterValue) {
     );
     if (checkbox) checkbox.checked = false;
   } else if (filterType === "priceRange") {
-    globalFilters.priceRange = { min: 0, max: 10100 };
+    globalFilters.priceRange = { min: 100, max: 10100 };
     if (minRange && maxRange) {
       minRange.value = minRange.min;
       maxRange.value = maxRange.max;

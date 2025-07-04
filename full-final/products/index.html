@@ -366,7 +366,9 @@
               class="flex justify-between items-center px-4 w-full border-b border-gray-200 py-[15px]"
             >
               <h2 class="text-base font-bold">FILTERS</h2>
-              <span id="clear-btn" class="uppercase font-bold text-[#ff3f6c]"
+              <span
+                id="clear-btn"
+                class="uppercase font-bold text-[#ff3f6c] cursor-pointer"
                 >clear all</span
               >
             </div>
@@ -594,7 +596,10 @@
                 </div>
 
                 <!-- selected filters will show here (e.g. categories, brands, colors, discount range, sub category) -->
-                <div class="pt-4 mb-5" id="selected-filters"></div>
+                <div
+                  class="pt-4 mb-5 flex flex-wrap gap-2"
+                  id="selected-filters"
+                ></div>
               </div>
             </div>
             <div
@@ -1153,7 +1158,7 @@
           >
             <div class="flex gap-3">
               <button
-                class="flex-1 border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                class="flex-1 border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors cursor-pointer"
                 id="clear-filters-btn"
               >
                 Clear All
