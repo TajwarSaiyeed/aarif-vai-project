@@ -455,7 +455,8 @@ function toggleFilter(filterName, buttonElement) {
     subCategoryName.textContent = subCategory;
 
     label.appendChild(subCategoryName);
-    subCategoriesList.appendChild(label);
+    listItem.appendChild(label);
+    subCategoriesList.appendChild(listItem);
 
     // Add change event listener for checkboxes
     checkbox.addEventListener("change", function () {
