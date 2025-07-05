@@ -142,16 +142,6 @@ const categories = [
     image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
   },
   {
-    title: "Category 4",
-    subtitle: "Subtitle for Category 4",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
-  },
-  {
-    title: "Category 5",
-    subtitle: "Subtitle for Category 5",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
-  },
-  {
     title: "Category 6",
     subtitle: "Subtitle for Category 6",
     image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
@@ -196,6 +186,15 @@ if (categorySlider) {
     const categoryCard = document.createElement("div");
     categoryCard.innerHTML = createCategoryCardHTML(category);
     categorySlider.appendChild(categoryCard);
+  });
+}
+
+const categorySliderMobile = document.querySelector("#category-slider-mobile");
+if (categorySliderMobile) {
+  categories.forEach((category) => {
+    const categoryCard = document.createElement("div");
+    categoryCard.innerHTML = createCategoryCardHTML(category);
+    categorySliderMobile.appendChild(categoryCard);
   });
 }
 

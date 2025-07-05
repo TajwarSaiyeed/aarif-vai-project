@@ -362,13 +362,18 @@
         >
           Select by Category
         </h2>
-      </div>
 
-      <div class="relative mt-10">
+        <div
+          class="hidden xl:grid grid-cols-3 lg:grid-cols-6 place-items-start gap-4 w-full mt-10"
+          id="category-slider"
+        >
+          <!-- Category slider will be generated here for desktop -->
+        </div>
+      </div>
+      <div class="xl:hidden relative">
         <div class="overflow-x-auto scrollbar-hide">
-          <!-- Mobile: Full width with partial cards visible, Desktop: Normal padding -->
-          <div class="flex gap-2 space-x-4 pl-4 md:px-10" id="category-slider">
-            <!-- Category cards will be generated here -->
+          <div class="flex gap-4 pl-5 pb-5" id="category-slider-mobile">
+            <!-- Category slider will be generated here for mobile -->
           </div>
         </div>
       </div>
@@ -2120,7 +2125,7 @@
     <!-- Sidebar container for product view similar -->
     <div
       id="product-view-similar-sidebar"
-      class="fixed top-0 right-0 h-full w-[400px] max-w-full bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300"
+      class="fixed top-0 right-0 h-full w-[500px] max-w-full bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300"
       style="display: none"
     >
       <div
@@ -2148,7 +2153,7 @@
       </div>
       <div
         id="product-similar-content"
-        class="p-4 overflow-y-auto flex flex-col space-y-2 h-[calc(100%-64px)]"
+        class="p-4 overflow-y-auto h-[calc(100%-64px)] grid grid-cols-2 gap-x-2"
       >
         <!-- Similar products will be loaded here -->
       </div>
