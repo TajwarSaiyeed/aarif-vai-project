@@ -1286,35 +1286,3 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileSidebarOverlay.classList.remove("open");
   });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  const footerItems = document.querySelectorAll(".mobile-footer-item");
-  footerItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      // Remove selected class and underline from all
-      footerItems.forEach((i) => {
-        i.classList.remove("selected");
-        const underline = i.querySelector(".footer-underline");
-        if (underline) underline.remove();
-        const label = i.querySelector(".footer-label");
-        if (label) label.style.color = "";
-      });
-      // Add selected class and underline to clicked
-      this.classList.add("selected");
-      const label = this.querySelector(".footer-label");
-      if (label) label.style.color = "#ff3f6c";
-      // Add underline
-      if (!this.querySelector(".footer-underline")) {
-        const underline = document.createElement("div");
-        underline.className =
-          "footer-underline absolute -inset-1 bg-[#ff3f6c] h-1";
-        this.appendChild(underline);
-      }
-    });
-  });
-  // Set initial selected color
-  const selected = document.querySelector(
-    ".mobile-footer-item.selected .footer-label"
-  );
-  if (selected) selected.style.color = "#ff3f6c";
-});

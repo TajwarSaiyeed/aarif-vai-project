@@ -516,12 +516,12 @@
       </div>
     </section>
 
-    <!-- <div
+    <div
       class="fixed bottom-0 right-0 left-0 bg-white h-[56px] flex items-center justify-between z-[30] font-bold border-t border-gray-200"
-      id="mobile-footer"
+      id="mobile-footer-nav"
     >
       <div
-        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item selected"
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item selected"
         data-footer="home"
       >
         <svg
@@ -548,7 +548,7 @@
         <div class="footer-underline absolute -inset-1 bg-[#ff3f6c] h-1"></div>
       </div>
       <div
-        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item"
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item"
         data-footer="under999"
       >
         <svg
@@ -568,7 +568,7 @@
         <span class="footer-label text-sm font-thin">Under ₹999</span>
       </div>
       <div
-        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item"
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item"
         data-footer="beauty"
       >
         <svg
@@ -588,7 +588,7 @@
         <span class="footer-label text-sm font-thin"> Beauty </span>
       </div>
       <div
-        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item"
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item"
         data-footer="profile"
       >
         <svg
@@ -607,7 +607,7 @@
         </svg>
         <span class="footer-label text-sm font-thin"> Profile </span>
       </div>
-    </div> -->
+    </div>
 
     <!-- This is the desktop footer, hidden on smaller screens (xl:hidden) -->
     <div
@@ -1467,7 +1467,7 @@
     </div>
 
     <div class="content-overlay" id="contentOverlayFooter"></div>
-
+    <!-- mobile footer -->
     <div id="footer-container" class="block xl:hidden">
       <div class="footer-header clearfix py-2 px-1" id="footerToggle">
         <p class="title">More about Online Shopping at Myntra</p>
@@ -2116,6 +2116,7 @@
 
     <script src="app.js"></script>
     <script src="nav-home.js"></script>
+    <script src="../mobile-footer.js"></script>
     <!-- Sidebar container for product view similar -->
     <div
       id="product-view-similar-sidebar"
