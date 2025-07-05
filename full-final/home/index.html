@@ -517,9 +517,96 @@
     </section>
 
     <div
-      class="fixed bottom-0 right-0 left-0 bg-red-500 h-[80px] flex items-center justify-center z-[30] font-bold"
+      class="fixed bottom-0 right-0 left-0 bg-white h-[56px] flex items-center justify-between z-[30] font-bold border-t border-gray-200"
+      id="mobile-footer"
     >
-      TODO: Mobile actions will show here
+      <div
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item selected"
+        data-footer="home"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-figma-icon lucide-figma"
+        >
+          <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
+          <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />
+          <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" />
+          <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" />
+          <path
+            d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"
+          />
+        </svg>
+        <span class="footer-label text-sm font-thin"> Home </span>
+        <div class="footer-underline absolute -inset-1 bg-[#ff3f6c] h-1"></div>
+      </div>
+      <div
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item"
+        data-footer="under999"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user-icon lucide-user stroke-[#ff3f6c]"
+        >
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span class="footer-label text-sm font-thin">Under ₹999</span>
+      </div>
+      <div
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item"
+        data-footer="beauty"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user-icon lucide-user stroke-[#ff3f6c]"
+        >
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span class="footer-label text-sm font-thin"> Beauty </span>
+      </div>
+      <div
+        class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-item"
+        data-footer="profile"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user-icon lucide-user stroke-[#ff3f6c]"
+        >
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span class="footer-label text-sm font-thin"> Profile </span>
+      </div>
     </div>
 
     <!-- This is the desktop footer, hidden on smaller screens (xl:hidden) -->
