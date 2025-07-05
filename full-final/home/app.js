@@ -507,37 +507,22 @@ const products = [
 // Function to create product card HTML for desktop
 function createProductCardHTML(item) {
   return `
-    <div
-      class="bg-white max-w-[210px] w-full min-h-[330px] group hover:shadow-md overflow-hidden"
-    >
+    <div class="bg-white max-w-[210px] w-full max-h-[330px] group hover:shadow-md overflow-hidden">
       <div class="w-full h-[200px] relative">
-        <img
-          class="w-full h-full object-center"
-          src="${item.image}"
-          alt=""
-        />
-        <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block"
-        >
-          <button
-            class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
-          >
-            <span class="myntraweb-sprite sprites-notWishlisted"></span>
+        <img class="w-full h-full object-center" src="${item.image}" alt="" />
+        <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block">
+          <button class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
             Wishlist
           </button>
         </div>
 
-        <div
-          class="view-similar-btn w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden outline-none border-none cursor-pointer"
-          data-similar-content="<div><b>Similar products for ${item.title}</b><br>${item.description}</div>"
-          title="View Similar"
-        >
-          <span
-            class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
-          ></span>
-          <p
-            class="uppercase ml-10 -mt-[25px] font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm"
-          >
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-similar-content="<div><b>Similar products for ${item.title}</b><br>${item.description}</div>" title="View Similar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm">
             View Similar
           </p>
         </div>
@@ -558,7 +543,7 @@ function createProductCardHTML(item) {
 
       <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
       <div class="p-1">
-          <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
+        <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
       </div>
     </div>
 `;
