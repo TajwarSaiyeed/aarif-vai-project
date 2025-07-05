@@ -1112,8 +1112,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       accordionHeader.innerHTML = `
               <span>${navItem.name}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down transform transition-transform duration-300">
-                <path d="m6 9 6 6 6-6"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right transition-transform duration-300 ease-in-out">
+                <path d="m9 18 6-6-6-6"/> 
               </svg>
             `;
       accordionItem.appendChild(accordionHeader);
@@ -1151,7 +1151,7 @@ document.addEventListener("DOMContentLoaded", () => {
               itemLink.href = item.href;
               itemLink.classList.add(
                 "hover:font-bold",
-                `hover:text-[${navItem.color}]` // Dynamic color for mobile sub-item hover
+                `hover:text-[${navItem.color}]`
               );
               itemLink.textContent = item.text;
               li.appendChild(itemLink);
@@ -1159,7 +1159,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             innerContent.appendChild(ul);
           } else {
-            // If no items, still add some bottom margin for spacing
             sectionHeading.classList.add("mb-4");
           }
         });
@@ -1179,7 +1178,7 @@ document.addEventListener("DOMContentLoaded", () => {
               openContent.classList.remove("accordion-open");
               openContent.previousElementSibling
                 .querySelector("svg")
-                .classList.remove("rotate-180");
+                .classList.remove("rotate-90");
             }
           });
 
@@ -1188,12 +1187,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isOpen) {
           accordionContent.style.maxHeight = null;
           accordionContent.classList.remove("accordion-open");
-          accordionHeader.querySelector("svg").classList.remove("rotate-180");
+          accordionHeader.querySelector("svg").classList.remove("rotate-90");
         } else {
           accordionContent.style.maxHeight =
             accordionContent.scrollHeight + "px";
           accordionContent.classList.add("accordion-open");
-          accordionHeader.querySelector("svg").classList.add("rotate-180");
+          accordionHeader.querySelector("svg").classList.add("rotate-90");
         }
       });
     });
