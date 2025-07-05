@@ -121,3 +121,49 @@ body {
     width: 24px;
     height: 20px;
 }
+
+/* style.css */
+#mobile-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+    display: none;
+    pointer-events: auto;
+}
+
+#mobile-sidebar-overlay.open {
+    opacity: 1;
+    display: block;
+}
+
+#mobile-sidebar {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+    width: calc(100% - 80px);
+}
+
+#mobile-sidebar.open {
+    transform: translateX(0);
+}
+
+#mobile-sidebar .content {
+    background-color: white;
+    height: 100%;
+    width: 80%;
+    padding: 16px;
+}
+
+@media (min-width: 1280px) {
+
+    /* xl breakpoint */
+    #mobile-sidebar,
+    #mobile-sidebar-overlay {
+        display: none;
+    }
+}

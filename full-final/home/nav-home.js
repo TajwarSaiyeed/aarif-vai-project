@@ -933,10 +933,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileSidebar = document.getElementById("mobile-sidebar");
   const closeSidebarButton = document.getElementById("close-sidebar-button");
+  const mobileSidebarOverlay = document.getElementById(
+    "mobile-sidebar-overlay"
+  );
   const sidebarNavigationContent = document.getElementById(
     "sidebar-navigation-content"
   );
-  const mobileSearchBar = document.getElementById("mobile-search-bar");
 
   // Function to build desktop navigation (Mega Menu)
   function buildDesktopNavigation() {
@@ -1105,7 +1107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "font-bold",
         "text-[#282c3f]",
         "uppercase",
-        "text-base",
+        "text-sm",
         "focus:outline-none"
       );
       accordionHeader.innerHTML = `
@@ -1267,18 +1269,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Mobile Specific Event Listeners ---
 
   // Mobile sidebar toggle functionality
+
   mobileMenuButton.addEventListener("click", () => {
-    mobileSidebar.classList.remove("-translate-x-full");
+    console.log("Mobile menu button clicked");
+    mobileSidebar.classList.add("open");
+    mobileSidebarOverlay.classList.add("open");
   });
 
+  // Close sidebar and overlay
   closeSidebarButton.addEventListener("click", () => {
-    mobileSidebar.classList.add("-translate-x-full");
+    mobileSidebar.classList.remove("open");
+    mobileSidebarOverlay.classList.remove("open");
   });
 
-  // Close sidebar when clicking outside (on the overlay)
-  mobileSidebar.addEventListener("click", (e) => {
-    if (e.target === mobileSidebar) {
-      mobileSidebar.classList.add("-translate-x-full");
-    }
+  // Close sidebar when clicking on the overlay
+  mobileSidebarOverlay.addEventListener("click", () => {
+    console.log("Overlay clicked");
+    mobileSidebar.classList.remove("open");
+    mobileSidebarOverlay.classList.remove("open");
   });
 });
