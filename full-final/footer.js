@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       contentOverlay.classList.add("active");
     } else {
       // When collapsing: make footer sticky at bottom and hide content
-      footerContainer.style.position = "fixed";
+      footerContainer.style.position = "relative";
       footerContainer.style.bottom = "0";
       footerContainer.style.transform = "translateY(calc(100% - 45px))";
       footerContainer.classList.remove("expanded");

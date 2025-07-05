@@ -1270,7 +1270,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mobile sidebar toggle functionality
 
   mobileMenuButton.addEventListener("click", () => {
-    console.log("Mobile menu button clicked");
     mobileSidebar.classList.add("open");
     mobileSidebarOverlay.classList.add("open");
   });
@@ -1283,7 +1282,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Close sidebar when clicking on the overlay
   mobileSidebarOverlay.addEventListener("click", () => {
-    console.log("Overlay clicked");
     mobileSidebar.classList.remove("open");
     mobileSidebarOverlay.classList.remove("open");
   });

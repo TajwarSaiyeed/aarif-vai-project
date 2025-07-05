@@ -516,7 +516,7 @@
       </div>
     </section>
 
-    <div
+    <!-- <div
       class="fixed bottom-0 right-0 left-0 bg-white h-[56px] flex items-center justify-between z-[30] font-bold border-t border-gray-200"
       id="mobile-footer"
     >
@@ -607,7 +607,7 @@
         </svg>
         <span class="footer-label text-sm font-thin"> Profile </span>
       </div>
-    </div>
+    </div> -->
 
     <!-- This is the desktop footer, hidden on smaller screens (xl:hidden) -->
     <div
@@ -1469,23 +1469,21 @@
     <div class="content-overlay" id="contentOverlayFooter"></div>
 
     <div id="footer-container" class="block xl:hidden">
-      <div class="footer-header clearfix" id="footerToggle">
-        <p class="title pull-left">More about Online Shopping at Myntra</p>
+      <div class="footer-header clearfix py-2 px-1" id="footerToggle">
+        <p class="title">More about Online Shopping at Myntra</p>
         <svg
+          xmlns="http://www.w3.org/2000/svg"
           width="18"
           height="18"
           viewBox="0 0 24 24"
-          class="pull-right footer-arrow"
-          id="footerArrow"
-          style="transform: rotate(180deg)"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-down-icon lucide-chevron-down"
         >
-          <g fill="none" fill-rule="evenodd">
-            <path d="M0 0h24v24H0z" opacity="0.05"></path>
-            <path
-              fill="#282C3F"
-              d="M12.55 15.768a.786.786 0 00.041-.048l6.183-6.36a.815.815 0 000-1.128.761.761 0 00-1.095 0l-5.68 5.844-5.678-5.844a.761.761 0 00-1.095 0 .816.816 0 000 1.127l6.182 6.361A.761.761 0 0012 16a.76.76 0 00.55-.232"
-            ></path>
-          </g>
+          <path d="m6 9 6 6 6-6" />
         </svg>
       </div>
 
@@ -2118,7 +2116,6 @@
 
     <script src="app.js"></script>
     <script src="nav-home.js"></script>
-    <script src="../footer.js"></script>
     <!-- Sidebar container for product view similar -->
     <div
       id="product-view-similar-sidebar"
