@@ -32,10 +32,10 @@
     >
       <!-- Desktop Navbar (visible on xl screens and up) -->
       <div
-        class="hidden xl:flex items-center justify-between py-4 gap-4 max-w-[1320px] mx-auto"
+        class="hidden xl:flex items-center justify-between py-[18px] gap-4 px-8"
       >
         <div class="flex items-center w-full">
-          <div class="float-left h-inherit ml-[4%] mr-6">
+          <div class="float-left h-inherit mt-1 ml-[3.5%] mr-6">
             <a
               href="#"
               class="inline-block align-middle p-0 m-0 cursor-pointer"
@@ -48,10 +48,10 @@
           <div id="main-navigation" class="flex relative"></div>
         </div>
 
-        <div class="flex items-center justify-between gap-5 w-full">
+        <div class="flex items-center justify-end w-full">
           <!-- search -->
-          <div class="max-w-[400px] w-full leading-0 relative">
-            <a href="#" class="absolute top-1/2 -translate-y-1/2 mt-1 p-2">
+          <div class="max-w-[540px] w-full leading-0 relative">
+            <a href="#" class="absolute top-1/2 -translate-y-1/2 p-2 rounded-l">
               <span
                 class="myntraweb-sprite sprites-search inline-block scale-75"
               ></span>
@@ -59,7 +59,7 @@
             <input
               type="text"
               placeholder="Search for products, brands and more"
-              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded-r bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
+              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
             />
           </div>
 
@@ -233,8 +233,8 @@
                 class="myntraweb-sprite sprites-headerBag mt-2 absolute bottom-[14px] -left-[1px]"
               ></span>
               <span
-                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
-                >0</span
+                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#ff3f6c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold visible"
+                >2</span
               >
               <span
                 class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
@@ -270,24 +270,115 @@
         </button>
 
         <!-- Logo -->
-        <div class="flex-shrink-0 mr-auto ml-4">
-          <a href="#" class="inline-block align-middle p-0 m-0 cursor-pointer">
-            <span class="myntraweb-sprite sprites-headerLogo"></span>
+        <div class="flex-shrink-0 mr-auto">
+          <a class="linkClean" href="/">
+            <svg
+              id="logo"
+              style="position: absolute; width: 0; height: 0; overflow: hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 540 540"
+            >
+              <defs>
+                <filter
+                  x="-3.8%"
+                  y="-2.8%"
+                  width="107.7%"
+                  height="111.1%"
+                  filterUnits="objectBoundingBox"
+                  id="a"
+                >
+                  <feOffset
+                    dy="10"
+                    in="SourceAlpha"
+                    result="shadowOffsetOuter1"
+                  ></feOffset>
+                  <feGaussianBlur
+                    stdDeviation="5"
+                    in="shadowOffsetOuter1"
+                    result="shadowBlurOuter1"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
+                    in="shadowBlurOuter1"
+                  ></feColorMatrix>
+                </filter>
+                <path
+                  d="M499.178 195.54c5.828 16.006 14.447 39.657-.562-1.566-5.336-14.64-3.618-9.916-.393-1.053-14.807-40.373-36.1-84.274-58.53-120.637-24.04-38.975-45.588-61.116-60.983-69.195 0 0-7.932-5.624-19.532-.77l-.396.141c-14.996 5.47-33.715 25.286-55.633 58.902-14.538 22.292-28.937 48.334-41.764 75.39-14.042-29.557-30.051-58.123-45.687-81.29-15.87-23.516-39.493-54.78-61.304-54.78-1.663 0-3.31.174-4.895.513v.003c-9.717 1.784-20.027 8.995-32.359 22.649-10.125 11.209-21.155 26.278-32.78 44.784-23.513 37.429-45.83 83.134-61.23 125.404C6.765 238.986-.888 275.643.382 302.987c.881 18.986 6.664 43.19 28.725 53.275l3.093 1.299 2.867.945a42.678 42.678 0 0012.032 1.733h.002c17.686 0 35.05-10.567 51.603-31.403 16.203-20.394 31.744-50.845 46.196-90.516a622.213 622.213 0 009.405-27.965 627.225 627.225 0 009.395 27.918c26.077 71.57 55.065 112.058 86.161 120.338l.48.121c.602.153 1.336.339 2.16.501l.527.109c2.362.452 4.69.712 7.115.8l.285.01a30.71 30.71 0 003.203-.063c.471-.02.904-.048 1.381-.08l1.023-.105a35.83 35.83 0 001.159-.158c.5-.06 1.22-.15 2.073-.311.71-.13 1.424-.28 2.24-.473l.45-.112c.19-.044.379-.092.57-.143 31.237-8.052 60.344-48.563 86.512-120.41a610.7 610.7 0 008.928-26.38 605.593 605.593 0 008.928 26.35c14.432 39.653 29.962 70.099 46.156 90.494 16.547 20.837 33.906 31.404 51.592 31.406h.007c4.729 0 9.407-.785 13.92-2.335 11.15-2.948 20.065-10.173 25.812-20.94 14.201-26.586 9.078-74.145-15.203-141.352"
+                  id="b"
+                ></path>
+              </defs>
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(60 130)">
+                  <use fill="#000" filter="url(#a)" xlink:href="#b"></use>
+                  <use fill="#FFF" xlink:href="#b"></use>
+                </g>
+                <path
+                  d="M212.833 145.065c-26.297 3.973-84.645 97.719-116.018 183.823-33.34 91.572-25.359 135.799.835 145.413.018.02.037.02.037.02s.008 0 .036.02c26.263 9.458 60.834-19.288 94.201-110.87 9.022-24.79 16.733-51.485 22.741-77.44-3.163-70.55-2.157-140.89-1.832-140.966"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M212.834 145.065c21.775-4.676 74.573 74.706 108.915 156.41.626 19.203-8.524 173.233-7.884 173.426-23.151-6.162-50.176-39.282-76.482-111.484-9.01-24.771-16.753-51.453-22.717-77.386l-.481-2.096c-15.758-69.124-19.215-132.285-2.41-138.574 0 0 .006 0 .026-.01h.02a8.75 8.75 0 011.013-.285h.002z"
+                  fill="#FF912E"
+                ></path>
+                <path
+                  d="M330.794 474.52c-.514.166-1.024.322-1.532.47-.23.066-.451.104-.667.17-.5.116-1.018.23-1.559.326-.535.104-1.018.152-1.502.213-.399.072-.756.108-1.138.158-.418.028-.791.05-1.213.068a23.89 23.89 0 01-1.623.056c-.193 0-.373-.017-.555-.017a32.514 32.514 0 01-4.969-.556c-.075-.019-.172-.036-.261-.057-.608-.115-1.26-.286-1.91-.45-.64-.193-1.329-.393-1.996-.628l-.02-.01h-.028c-26.212-9.615-34.2-53.839-.833-145.42 3.29-9.078 6.92-18.233 10.762-27.368l.941-2.23c31.216-73.547 77.02-144.602 101.307-153.456 1.005 19.974.7 70.72 4.319 142.353-5.917 25.257-13.455 51.19-22.249 75.292-26.428 72.555-53.585 105.63-76.806 111.557.254-.074.509-.15.764-.228z"
+                  fill="#F25511"
+                ></path>
+                <path
+                  d="M427.832 286.062c-15.87-68.598-19.71-131.89-3.834-140.273 1.673-.59 3.198-.905 4.643-.917 1.224.096 2.475.382 3.795.853 27.474 9.686 82.893 99.962 113.207 183.107 33.34 91.574 25.38 135.815-.834 145.409 0 0-.02 0-.047.024h-.017c-26.26 9.478-60.833-19.269-94.166-110.849-8.81-24.103-16.346-50.017-22.262-75.274z"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M432.436 162.748c27.474 9.686 84.786 99.016 115.099 182.16 13.7 37.631 20.142 58.855 19.881 86.95 1.666-23.794-4.528-55.658-21.773-103.026-30.312-83.145-85.733-173.421-113.207-183.107-1.32-.471-2.571-.757-3.795-.854-1.445.013-2.97.327-4.643.918-24.532 8.945-71.019 82.296-102.25 156.633-34.34-81.706-87.138-162.033-108.915-157.356-26.296 3.972-84.646 97.716-116.018 183.822-17.243 47.358-23.433 80.158-21.766 103.95-.262-32.858 6.176-50.252 19.873-87.873 31.374-86.105 91.615-178.904 117.91-182.876 21.778-4.677 65.534 60.732 108.917 142.222 39.93-75.569 77.717-132.554 102.249-141.5 1.582-.56 3.032-.87 4.41-.91"
+                  fill="#821414"
+                ></path>
+              </g>
+            </svg>
+            <svg class="w-[54px] h-[45px] inline-block bg-center bg-contain">
+              <use xlink:href="#logo"></use>
+            </svg>
           </a>
         </div>
 
         <!-- Icons on the right -->
         <div class="flex items-center space-x-4">
-          <button id="mobile-search-button" class="p-2">
-            <span
-              class="myntraweb-sprite sprites-search inline-block scale-75"
-            ></span>
-          </button>
-          <a href="#" class="relative p-2">
-            <span class="myntraweb-sprite sprites-headerUser"></span>
+          <a id="mobile-search-button" href="#" class="relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search-icon lucide-search"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
           </a>
-          <a href="#" class="relative p-2">
-            <span class="myntraweb-sprite sprites-headerBag"></span>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <g stroke="none" strokewidth="1" fill="none" fillrule="evenodd">
+                <g fill="#3E4152">
+                  <path
+                    d="M8.1703,4.473425 C6.9537,4.473425 5.8134,4.946625 4.95975,5.805525 C4.10435,6.666175 3.63325,7.815575 3.63325,9.042675 C3.63325,10.269775 4.10435,11.419525 4.95975,12.280175 L12,19.362425 L19.0406,12.279825 C19.89565,11.419525 20.36675,10.270125 20.36675,9.042675 C20.36675,7.815575 19.89565,6.665825 19.0406,5.805875 C19.0406,5.805875 19.0406,5.805525 19.04025,5.805525 C18.1866,4.946625 17.0463,4.473425 15.8297,4.473425 C14.6138,4.473425 13.4742,4.946275 12.62055,5.804475 C12.29225,6.134525 11.70845,6.134875 11.3798,5.804475 C10.5258,4.946275 9.3862,4.473425 8.1703,4.473425 L8.1703,4.473425 Z M12.02835,21.276575 L11.972,21.276575 C11.6304,21.276575 11.2965,21.137625 11.05605,20.895075 L3.71865,13.513925 C2.53495,12.323225 1.88325,10.735275 1.88325,9.042675 C1.88325,7.350075 2.53495,5.762475 3.71865,4.571775 C4.9034,3.379675 6.48435,2.723425 8.1703,2.723425 C9.5759,2.723425 10.90905,3.179825 12,4.022625 C13.0913,3.179825 14.4241,2.723425 15.8297,2.723425 C17.516,2.723425 19.09695,3.379675 20.2817,4.572125 C21.46505,5.762475 22.11675,7.350075 22.11675,9.042675 C22.11675,10.735625 21.46505,12.323225 20.2817,13.513925 L12.94325,20.895775 C12.6993,21.141475 12.3745,21.276575 12.02835,21.276575 L12.02835,21.276575 Z"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="#3E4152"
+                fillrule="evenodd"
+                d="M4.012 20.718L5.246 7.314H7.27v1.763a.733.733 0 101.466 0V7.314h6.528v1.763a.733.733 0 001.466 0V7.314h2.024l1.234 13.404H4.012zM12 3.282c1.56 0 2.865 1.1 3.187 2.565H8.813A3.268 3.268 0 0112 3.282zm8.15 3.228a.733.733 0 00-.73-.663h-2.747A4.734 4.734 0 0012 1.816a4.734 4.734 0 00-4.673 4.03H4.58a.733.733 0 00-.73.664L2.475 21.38a.734.734 0 00.73.804h17.59a.733.733 0 00.73-.803L20.15 6.51z"
+              ></path>
+            </svg>
             <span
               class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
               >0</span
@@ -301,11 +392,17 @@
           class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200 hidden"
         >
           <div class="relative flex items-center">
-            <input
-              type="text"
-              placeholder="Search for products, brands and more"
-              class="block w-full text-sm h-10 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-md bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
-            />
+            <div class="relative w-full">
+              <input
+                type="text"
+                class="block w-full text-sm h-8 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
+              />
+              <span
+                id="typewriter-search"
+                class="absolute left-10 top-1/2 -translate-y-1/2 text-[#696e79] text-sm"
+                style="white-space: pre"
+              ></span>
+            </div>
             <span
               class="myntraweb-sprite sprites-search absolute left-3 top-1/2 -translate-y-1/2 scale-75"
             ></span>
@@ -314,44 +411,52 @@
       </div>
     </header>
 
-    <!-- Mobile Sidebar -->
-    <div
-      id="mobile-sidebar"
-      class="fixed inset-0 bg-black/50 z-50 transform -translate-x-full transition-transform duration-300 xl:hidden"
-    >
+    <!-- Mobile sidebar -->
+    <div id="mobile-sidebar-overlay"></div>
+    <div id="mobile-sidebar">
       <!-- Sidebar Content Area -->
-      <div
-        class="bg-white h-full w-[calc(100vw-60px)] shadow-lg overflow-y-auto relative"
-      >
+      <div class="bg-white h-full w-full shadow-lg overflow-y-auto relative">
         <!-- Sidebar Header -->
-        <div
-          class="flex items-center justify-between p-4 border-b border-gray-200"
-        >
-          <div class="font-bold text-lg text-[#282c3f]">Categories</div>
-          <button id="close-sidebar-button" class="p-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-x"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
+
+        <button id="close-sidebar-button" class="p-2 absolute top-0 right-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+        <img
+          src="https://assets.myntassets.com/f_webp,dpr_1.5,q_40,w_400,c_limit,fl_progressive/assets/images/2023/1/25/08139431-49b4-4895-8f06-3d864e4640fd1674670210709-offer-banner-300-1080x496-code-_-MYNTRA300.jpg"
+          alt="Offer Banner"
+          class="w-full"
+        />
         <!-- Sidebar Navigation Links -->
         <nav id="sidebar-navigation-content" class="py-4"></nav>
+
+        <!-- Image for app download -->
+        <a href="#">
+          <img
+            src="https://assets.myntassets.com/assets/images/retaillabs/2022/12/30/856cb741-8473-4d5e-b6e3-a52b3d98c99e1672386455977-PWA---App-Download-banner.png"
+            alt="Download the App"
+            class="w-full"
+          />
+        </a>
       </div>
     </div>
 
-    <nav class="hidden md:block px-8 pt-3 text-sm text-gray-500 bg-white mt-24">
+    <nav
+      class="hidden md:block px-8 pt-3 text-sm text-gray-500 bg-white mt-24 max-w-[1850px] min-w-[1200px] mx-auto"
+    >
       <a href="#" class="hover:text-myntra-pink">Home</a> /
       <a href="#" class="hover:text-myntra-pink">Clothing</a> /
       <a href="#" class="hover:text-myntra-pink">Men Clothing</a> /
