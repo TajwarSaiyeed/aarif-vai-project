@@ -53,6 +53,37 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(footerContainer);
   }
 
+  // Intersection Observer to hide mobile sort/filter buttons (for products page)
+  const mobileSortFilterContainer = document.getElementById(
+    "mobile-sort-filter-bar"
+  );
+  const productsSliderMobile = document.getElementById(
+    "products-slider-mobile"
+  );
+
+  if (
+    footerContainer &&
+    mobileSortFilterContainer &&
+    "IntersectionObserver" in window
+  ) {
+    const sortFilterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            mobileSortFilterContainer.classList.add("hidden");
+          } else {
+            mobileSortFilterContainer.classList.remove("hidden");
+          }
+        });
+      },
+      {
+        root: null, // Use the viewport as the root
+        threshold: 0, // Trigger as soon as any part of the footer container is visible
+      }
+    );
+    sortFilterObserver.observe(footerContainer);
+  }
+
   // Mobile footer toggle functionality
   const footerToggle = document.getElementById("footerToggle");
   const footerContent = document.getElementById("footerContent");

@@ -452,7 +452,7 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-full h-[330px] group shadow hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-[250px] relative">
         <img
