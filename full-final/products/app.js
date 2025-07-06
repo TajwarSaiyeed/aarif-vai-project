@@ -1457,7 +1457,7 @@ function initializeBrandFilter() {
 
   // Mock brands (100 brands, ~4 per letter A-Z)
   const mockBrands = [];
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for (let i = 0; i < 100; i++) {
     const letter = letters[Math.floor(i / 4) % 26];
     mockBrands.push({
@@ -1492,7 +1492,7 @@ function initializeBrandFilter() {
     brandName.textContent = brand.name;
 
     const brandCount = document.createElement("span");
-    brandCount.className = "text-sm text-gray-400 ml-auto";
+    brandCount.className = "text-sm text-gray-400";
     brandCount.textContent = `(${brand.count.toLocaleString()})`;
 
     label.appendChild(brandName);
@@ -1565,14 +1565,13 @@ function initializeBrandFilter() {
     if (!popup.classList.contains("hidden")) {
       // Populate letter navigation
       brandLetters.innerHTML = "";
-      const letters = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+      const letters = [..."#ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
       letters.forEach((letter) => {
         const span = document.createElement("span");
         span.classList.add(
           "cursor-pointer",
           "text-gray-400",
-          "hover:text-gray-600",
-          "mr-2"
+          "hover:text-gray-600"
         );
         span.textContent = letter;
         brandLetters.appendChild(span);
@@ -1592,7 +1591,7 @@ function initializeBrandFilter() {
           "cursor-pointer",
           "gap-2",
           "relative",
-          "min-w-[200px]"
+          "max-w-[200px]"
         );
 
         const checkbox = document.createElement("input");
