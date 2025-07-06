@@ -397,8 +397,9 @@
                 </h3>
                 <ul id="category-list" class="space-y-1"></ul>
               </div>
+
               <!-- Brand Filter -->
-              <div class="mb-6 border-b border-gray-200 pb-4 px-5">
+              <div class="mb-6 border-b border-gray-200 pb-4 px-5 relative">
                 <div class="flex items-center justify-between relative mb-2">
                   <h3 class="font-bold uppercase">Brands</h3>
                   <div
@@ -442,51 +443,56 @@
                   </div>
                 </div>
                 <ul id="brand-list"></ul>
-                <button class="text-[#ff3f6c] mt-2 ml-7 show-all-brands">
+                <button id="brand-show-all" class="text-[#ff3f6c] mt-2 ml-7">
                   + 1037 more
                 </button>
-              </div>
-
-              <!-- Popup Modal -->
-              <div
-                id="brand-modal"
-                class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
-              >
                 <div
-                  class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-y-auto"
+                  class="absolute top-0 left-0 max-w-[1000px] bg-white shadow-lg z-[99999] hidden"
+                  id="brand-popup"
+                  style="height: 500px; max-height: 500px"
                 >
-                  <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-bold uppercase">All Brands</h3>
-                    <button
-                      class="text-gray-500 hover:text-gray-800 close-modal"
-                    >
-                      &times;
-                    </button>
-                  </div>
-                  <div class="relative mb-4">
+                  <div
+                    class="border-b border-gray-200 flex justify-between items-center px-4 py-3"
+                  >
                     <input
                       type="text"
+                      class="border border-gray-300 p-1 outline-none border-[1px]"
                       placeholder="Search for Brand"
-                      class="w-full p-2 border border-gray-300 rounded-lg pl-10 focus:outline-none focus:border-[#eaeaec]"
-                      id="brand-modal-search"
+                      id="brand-popup-search"
                     />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#797979"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-search-icon absolute left-3 top-1/2 transform -translate-y-1/2"
+                    <div
+                      id="brand-letters"
+                      class="uppercase font-bold gap-3 flex items-center justify-start"
                     >
-                      <path d="m21 21-4.34-4.34" />
-                      <circle cx="11" cy="11" r="8" />
-                    </svg>
+                      <!-- Letters will be populated by JavaScript -->
+                    </div>
+                    <button
+                      id="brand-close-btn"
+                      class="text-gray-500 hover:text-gray-800"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#797979"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-x-icon lucide-x"
+                      >
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                      </svg>
+                    </button>
                   </div>
-                  <ul id="brand-modal-list"></ul>
+                  <div
+                    class="overflow-x-auto"
+                    style="height: calc(500px - 48px)"
+                  >
+                    <div id="brand-checkboxes" class="flex gap-4 p-4"></div>
+                  </div>
                 </div>
               </div>
 
