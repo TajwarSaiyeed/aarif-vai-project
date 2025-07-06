@@ -393,7 +393,7 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white max-w-[210px] h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-[250px] relative">
         <img
@@ -412,15 +412,14 @@ function createProductCardHTML(item) {
           </button>
         </div>
 
-        <div
-          class="w-[40px] h-[40px] hidden group-hover:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
-        >
-          <span
-            class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
-          ></span>
-          <p
-            class="uppercase ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
-          >
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-similar-content="<div><b>Similar products for ${
+          item.title
+        }</b><br>${item.description}</div>" title="View Similar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm">
             View Similar
           </p>
         </div>
