@@ -933,9 +933,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileSidebar = document.getElementById("mobile-sidebar");
   const closeSidebarButton = document.getElementById("close-sidebar-button");
+  const mobileSidebarOverlay = document.getElementById(
+    "mobile-sidebar-overlay"
+  );
   const sidebarNavigationContent = document.getElementById(
     "sidebar-navigation-content"
   );
+
+  // Mobile search elements
   const mobileSearchButton = document.getElementById("mobile-search-button");
   const mobileSearchBar = document.getElementById("mobile-search-bar");
 
@@ -1106,13 +1111,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "font-bold",
         "text-[#282c3f]",
         "uppercase",
-        "text-base",
+        "text-sm",
         "focus:outline-none"
       );
       accordionHeader.innerHTML = `
               <span>${navItem.name}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down transform transition-transform duration-300">
-                <path d="m6 9 6 6 6-6"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right transition-transform duration-300 ease-in-out">
+                <path d="m9 18 6-6-6-6"/> 
               </svg>
             `;
       accordionItem.appendChild(accordionHeader);
@@ -1150,7 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
               itemLink.href = item.href;
               itemLink.classList.add(
                 "hover:font-bold",
-                `hover:text-[${navItem.color}]` // Dynamic color for mobile sub-item hover
+                `hover:text-[${navItem.color}]`
               );
               itemLink.textContent = item.text;
               li.appendChild(itemLink);
@@ -1158,7 +1163,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             innerContent.appendChild(ul);
           } else {
-            // If no items, still add some bottom margin for spacing
             sectionHeading.classList.add("mb-4");
           }
         });
@@ -1178,7 +1182,7 @@ document.addEventListener("DOMContentLoaded", () => {
               openContent.classList.remove("accordion-open");
               openContent.previousElementSibling
                 .querySelector("svg")
-                .classList.remove("rotate-180");
+                .classList.remove("rotate-90");
             }
           });
 
@@ -1187,12 +1191,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isOpen) {
           accordionContent.style.maxHeight = null;
           accordionContent.classList.remove("accordion-open");
-          accordionHeader.querySelector("svg").classList.remove("rotate-180");
+          accordionHeader.querySelector("svg").classList.remove("rotate-90");
         } else {
           accordionContent.style.maxHeight =
             accordionContent.scrollHeight + "px";
           accordionContent.classList.add("accordion-open");
-          accordionHeader.querySelector("svg").classList.add("rotate-180");
+          accordionHeader.querySelector("svg").classList.add("rotate-90");
         }
       });
     });
@@ -1268,23 +1272,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Mobile Specific Event Listeners ---
 
   // Mobile sidebar toggle functionality
+
   mobileMenuButton.addEventListener("click", () => {
-    mobileSidebar.classList.remove("-translate-x-full");
+    mobileSidebar.classList.add("open");
+    mobileSidebarOverlay.classList.add("open");
   });
 
+  // Close sidebar and overlay
   closeSidebarButton.addEventListener("click", () => {
-    mobileSidebar.classList.add("-translate-x-full");
+    mobileSidebar.classList.remove("open");
+    mobileSidebarOverlay.classList.remove("open");
   });
 
-  // Close sidebar when clicking outside (on the overlay)
-  mobileSidebar.addEventListener("click", (e) => {
-    if (e.target === mobileSidebar) {
-      mobileSidebar.classList.add("-translate-x-full");
-    }
+  // Close sidebar when clicking on the overlay
+  mobileSidebarOverlay.addEventListener("click", () => {
+    mobileSidebar.classList.remove("open");
+    mobileSidebarOverlay.classList.remove("open");
   });
 
   // Mobile search bar toggle functionality
-  mobileSearchButton.addEventListener("click", () => {
-    mobileSearchBar.classList.toggle("hidden");
-  });
+  if (mobileSearchButton && mobileSearchBar) {
+    mobileSearchButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      mobileSearchBar.classList.toggle("hidden");
+    });
+  }
 });
