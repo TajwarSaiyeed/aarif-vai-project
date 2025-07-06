@@ -412,9 +412,9 @@ function createProductCardHTML(item) {
           </button>
         </div>
 
-        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-similar-content="<div><b>Similar products for ${
-          item.title
-        }</b><br>${item.description}</div>" title="View Similar">
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-product-id="${
+          item.id
+        }" title="View Similar">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
             <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
             <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
@@ -2061,4 +2061,102 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial render
   render();
+});
+
+// --- Product Sidebar Logic ---
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.getElementById("product-view-similar-sidebar");
+  const overlay = document.getElementById("product-sidebar-overlay");
+  const sidebarContent = document.getElementById("product-similar-content");
+  const closeBtn = document.getElementById("close-product-sidebar");
+
+  function openProductSidebar(productData) {
+    sidebar.classList.remove("translate-x-full");
+    sidebar.style.display = "block";
+    overlay.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    // Clear previous content
+    sidebarContent.innerHTML = "";
+
+    if (productData) {
+      // Get similar products (same category or brand)
+      const currentProduct =
+        products.find((p) => p.id == productData) || products[0];
+      const similarProducts = products.filter(
+        (p) =>
+          p.id !== currentProduct.id &&
+          (p.category === currentProduct.category ||
+            p.brand === currentProduct.brand)
+      );
+
+      if (similarProducts.length > 0) {
+        similarProducts.forEach((item) => {
+          const productCard = document.createElement("div");
+          productCard.innerHTML = `
+            <div
+              class="bg-white max-w-[210px] w-full max-h-[330px] group hover:shadow-md overflow-hidden cursor-pointer"
+              onclick="window.location.href='../product/index.html?id=${item.id}'"
+            >
+              <div class="w-full h-[200px] relative">
+                <img
+                  class="w-full h-full object-cover object-center"
+                  src="${item.image}"
+                  alt="${item.title}"
+                />
+              </div>
+
+              <div class="p-2">
+                <h1 class="text-base font-bold text-black">${item.brand}</h1>
+                <h2 class="text-sm block text-gray-500">
+                  ${item.description}
+                </h2>
+                <p class="space-x-2">
+                  <span class="font-bold">${item.currentPrice}</span>
+                  <del class="text-sm text-gray-500">${item.originalPrice}</del>
+                  <span class="text-xs text-[#ff905a]">(${item.discountPercent}% OFF)</span>
+                </p>
+              </div>
+            </div>
+          `;
+          sidebarContent.appendChild(productCard);
+        });
+      } else {
+        sidebarContent.innerHTML = `
+          <div class="text-gray-500 text-center mt-10 col-span-2">
+            No similar products found.
+          </div>
+        `;
+      }
+    } else {
+      sidebarContent.innerHTML = `
+        <div class="text-gray-500 text-center mt-10 col-span-2">
+          No similar products loaded.
+        </div>
+      `;
+    }
+  }
+
+  function closeSidebar() {
+    sidebar.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      sidebar.style.display = "none";
+    }, 300);
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
+  if (overlay) overlay.addEventListener("click", closeSidebar);
+
+  // Listen for View Similar button clicks
+  document.body.addEventListener("click", function (e) {
+    const btn = e.target.closest(".view-similar-btn");
+    if (btn) {
+      const productId =
+        btn.getAttribute("data-product-id") ||
+        btn.getAttribute("data-similar-content");
+      openProductSidebar(productId);
+    }
+  });
 });
