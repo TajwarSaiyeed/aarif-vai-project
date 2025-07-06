@@ -1455,36 +1455,14 @@ function initializeBrandFilter() {
   brandList.innerHTML = "";
   brandCheckboxesContainer.innerHTML = "";
 
-  // Mock brands (100 brands, ~4 per letter A-Z)
-  const mockBrands = [
-    { name: "Bella Vita Organic", count: 1 },
-    { name: "Plum", count: 1 },
-    { name: "Minimalist", count: 1 },
-    { name: "Himalaya", count: 1 },
-    { name: "L'Oreal Paris", count: 1 },
-    { name: "Olay", count: 1 },
-    { name: "Deconstruct", count: 1 },
-    { name: "Pilgrim", count: 1 },
-    { name: "The Man Company", count: 1 },
-    { name: "Beardo", count: 1 },
-    { name: "Dot & Key", count: 1 },
-    { name: "Mamaearth", count: 2 },
-    { name: "WOW Skin Science", count: 2 },
-    { name: "Mcaffeine", count: 1 },
-    { name: "Biotique", count: 1 },
-    { name: "Neutrogena", count: 1 },
-    { name: "The Body Shop", count: 1 },
-    { name: "Forest Essentials", count: 1 },
-  ];
   const letters = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for (let i = 0; i < 100; i++) {
     const letter = letters[Math.floor(i / 4) % 26];
-    mockBrands.push({
+    brands.push({
       name: `${letter}Brand${i + 1}`,
       count: Math.floor(Math.random() * 100) + 1,
     });
   }
-  const brands = mockBrands; // Replace or merge with your existing brands array
 
   // Initial display of a few brands
   const maxInitialBrands = 5;
@@ -1557,24 +1535,134 @@ function initializeBrandFilter() {
     closeIcon.classList.add("hidden");
     searchIcon.classList.remove("hidden");
     searchInput.value = "";
-    const brandItems = brandList.querySelectorAll("li");
-    brandItems.forEach((item) => {
-      item.style.display = "";
+
+    // Reset brand list to show initial brands
+    brandList.innerHTML = "";
+    const maxInitialBrands = 5;
+    brands.slice(0, maxInitialBrands).forEach((brand) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("m-0");
+      const label = document.createElement("label");
+      label.className =
+        "inline-flex items-center cursor-pointer gap-2 relative";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "custom-checkbox hidden peer";
+      checkbox.value = brand.name.toLowerCase().replace(/\s+/g, "-");
+
+      // Check if this brand is already selected
+      checkbox.checked = globalFilters.brands.includes(checkbox.value);
+
+      const checkboxBox = document.createElement("div");
+      checkboxBox.className =
+        "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+      label.appendChild(checkbox);
+      label.appendChild(checkboxBox);
+
+      const brandName = document.createElement("span");
+      brandName.className = "text-sm text-gray-800 font-medium brand-name";
+      brandName.textContent = brand.name;
+
+      const brandCount = document.createElement("span");
+      brandCount.className = "text-sm text-gray-400";
+      brandCount.textContent = `(${brand.count.toLocaleString()})`;
+
+      label.appendChild(brandName);
+      label.appendChild(brandCount);
+      listItem.appendChild(label);
+      brandList.appendChild(listItem);
+
+      checkbox.addEventListener("change", function () {
+        const normalizedBrand = this.value;
+        if (this.checked) {
+          if (!globalFilters.brands.includes(normalizedBrand)) {
+            globalFilters.brands.push(normalizedBrand);
+          }
+        } else {
+          globalFilters.brands = globalFilters.brands.filter(
+            (b) => b !== normalizedBrand
+          );
+        }
+        applyFilters();
+        const popupCheckbox = popup.querySelector(
+          `input[value="${normalizedBrand}"]`
+        );
+        if (popupCheckbox) popupCheckbox.checked = this.checked;
+      });
     });
   });
 
   searchInput.addEventListener("input", function (e) {
     const searchTerm = e.target.value.toLowerCase();
-    const brandItems = brandList.querySelectorAll("li");
-    brandItems.forEach((item) => {
-      const brandName = item
-        .querySelector(".brand-name")
-        .textContent.toLowerCase();
-      if (brandName.includes(searchTerm)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
-      }
+
+    // Clear the brand list first
+    brandList.innerHTML = "";
+
+    // Filter brands based on search term
+    const filteredBrands = brands.filter((brand) =>
+      brand.name.toLowerCase().includes(searchTerm)
+    );
+
+    // Display filtered brands (limit to reasonable number for performance)
+    const maxDisplayBrands = searchTerm ? 20 : 5; // Show more when searching
+    const brandsToShow = searchTerm
+      ? filteredBrands
+      : brands.slice(0, maxDisplayBrands);
+
+    brandsToShow.slice(0, maxDisplayBrands).forEach((brand) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("m-0");
+      const label = document.createElement("label");
+      label.className =
+        "inline-flex items-center cursor-pointer gap-2 relative";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "custom-checkbox hidden peer";
+      checkbox.value = brand.name.toLowerCase().replace(/\s+/g, "-");
+
+      // Check if this brand is already selected
+      checkbox.checked = globalFilters.brands.includes(checkbox.value);
+
+      const checkboxBox = document.createElement("div");
+      checkboxBox.className =
+        "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+      label.appendChild(checkbox);
+      label.appendChild(checkboxBox);
+
+      const brandName = document.createElement("span");
+      brandName.className = "text-sm text-gray-800 font-medium brand-name";
+      brandName.textContent = brand.name;
+
+      const brandCount = document.createElement("span");
+      brandCount.className = "text-sm text-gray-400";
+      brandCount.textContent = `(${brand.count.toLocaleString()})`;
+
+      label.appendChild(brandName);
+      label.appendChild(brandCount);
+      listItem.appendChild(label);
+      brandList.appendChild(listItem);
+
+      checkbox.addEventListener("change", function () {
+        const normalizedBrand = this.value;
+        if (this.checked) {
+          if (!globalFilters.brands.includes(normalizedBrand)) {
+            globalFilters.brands.push(normalizedBrand);
+          }
+        } else {
+          globalFilters.brands = globalFilters.brands.filter(
+            (b) => b !== normalizedBrand
+          );
+        }
+        applyFilters();
+        const popupCheckbox = popup.querySelector(
+          `input[value="${normalizedBrand}"]`
+        );
+        if (popupCheckbox) popupCheckbox.checked = this.checked;
+      });
     });
   });
 
