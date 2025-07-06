@@ -460,18 +460,14 @@ function createProductCardHTML(item) {
           src="${item.image}"
           alt=""
         />
-        <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block z-[10]"
-        >
-          <button
-            class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
-          >
-            <span class="myntraweb-sprite sprites-notWishlisted"></span>
+        <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-[10]">
+          <button class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
             Wishlist
           </button>
         </div>
 
-        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-product-id="${
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-product-id="${
           item.id
         }" title="View Similar">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
@@ -486,10 +482,10 @@ function createProductCardHTML(item) {
 
       <div class="p-2 relative">
         <h1 class="text-base font-bold text-black">${item.brand}</h1>
-        <h2 class="text-sm block text-gray-500 group-hover:hidden">
+        <h2 class="text-sm block text-gray-500 group-hover:xl:hidden">
           ${item.title}
         </h2>
-        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size: ${item.sizes.join(
+        <h2 class="text-sm hidden text-gray-500 group-hover:xl:block">Size: ${item.sizes.join(
           ", "
         )}</h2>
         <p class="space-x-2 text-[14px]">
