@@ -459,7 +459,48 @@
 
               <!-- Color Filter -->
               <div class="mb-6 border-b border-gray-200 pb-4 px-5">
-                <h3 class="font-bold mb-2 uppercase">Color</h3>
+                <div class="flex items-center justify-between relative mb-2">
+                  <h3 class="font-bold uppercase">Colors</h3>
+                  <div
+                    class="search-container w-[25px] h-[25px] p-1 rounded-full bg-gray-200 flex items-center"
+                  >
+                    <input
+                      type="text"
+                      placeholder="Search for Color"
+                      class="search-input border-none outline-none ml-2 text-sm hidden w-full"
+                    />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#797979"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-x-icon lucide-x hidden"
+                    >
+                      <path d="M18 6 6 18" />
+                      <path d="m6 6 12 12" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#797979"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-search-icon lucide-search"
+                    >
+                      <path d="m21 21-4.34-4.34" />
+                      <circle cx="11" cy="11" r="8" />
+                    </svg>
+                  </div>
+                </div>
                 <ul id="color-filter-list" class="space-y-1">
                   <!-- Color options will be dynamically inserted here -->
                 </ul>

@@ -1052,11 +1052,66 @@ function handleColorFilterChange(colorName, isChecked) {
 // Initialize color filters
 function initializeColorFilters() {
   const colorFilterContainer = document.getElementById("color-filter-list");
+  const searchContainer = document.querySelector(".search-container");
+  const searchInput = document.querySelector(".search-input");
+  const searchIcon = document.querySelector(".lucide-search-icon");
+  const closeIcon = document.querySelector(".lucide-x-icon");
+  const colorsLabel = searchContainer.parentElement.querySelector("h3");
 
-  if (!colorFilterContainer) return;
+  if (
+    !colorFilterContainer ||
+    !searchContainer ||
+    !searchInput ||
+    !searchIcon ||
+    !closeIcon ||
+    !colorsLabel
+  )
+    return;
 
   colorFilterContainer.innerHTML = "";
 
+  // Search toggle functionality
+  searchIcon.addEventListener("click", function () {
+    colorsLabel.classList.add("hidden");
+    searchContainer.classList.remove("w-[25px]", "h-[25px]", "p-1");
+    searchContainer.classList.add("w-full", "h-auto", "p-1", "flex-row");
+    searchInput.classList.remove("hidden");
+    searchIcon.classList.add("hidden");
+    closeIcon.classList.remove("hidden");
+    searchInput.focus();
+  });
+
+  closeIcon.addEventListener("click", function () {
+    colorsLabel.classList.remove("hidden");
+    searchContainer.classList.remove("w-full", "h-auto", "p-1", "flex-row");
+    searchContainer.classList.add("w-[25px]", "h-[25px]", "p-1");
+    searchInput.classList.add("hidden");
+    closeIcon.classList.add("hidden");
+    searchIcon.classList.remove("hidden");
+    searchInput.value = ""; // Clear input on close
+    // Reapply filter to show all colors
+    const colorItems = colorFilterContainer.querySelectorAll("li");
+    colorItems.forEach((item) => {
+      item.style.display = "";
+    });
+  });
+
+  searchInput.addEventListener("input", function (e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const colorItems = colorFilterContainer.querySelectorAll("li");
+    colorItems.forEach((item) => {
+      const colorName = item
+        .querySelector(".color-name")
+        .textContent.toLowerCase();
+      if (colorName.includes(searchTerm)) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  // Color list generation
   colors.forEach((color) => {
     const listItem = document.createElement("li");
     const label = document.createElement("label");
@@ -1084,7 +1139,7 @@ function initializeColorFilters() {
     }
 
     const colorName = document.createElement("span");
-    colorName.className = "text-sm text-gray-800 font-medium";
+    colorName.className = "text-sm text-gray-800 font-medium color-name"; // Added class 'color-name'
     colorName.textContent = color.name;
 
     const colorCount = document.createElement("span");
