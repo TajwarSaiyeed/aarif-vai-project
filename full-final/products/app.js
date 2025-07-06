@@ -1429,6 +1429,11 @@ function initializeBrandFilter() {
   const searchIcon = document.querySelector(".brand-lucide-search-icon");
   const closeIcon = document.querySelector(".brand-lucide-x-icon");
   const brandsLabel = searchContainer.parentElement.querySelector("h3");
+  const showAllButton = document.querySelector(".show-all-brands");
+  const brandModal = document.getElementById("brand-modal");
+  const closeModalButton = brandModal.querySelector(".close-modal");
+  const modalSearchInput = document.getElementById("brand-modal-search");
+  const modalBrandList = document.getElementById("brand-modal-list");
 
   if (
     !brandList ||
@@ -1436,55 +1441,20 @@ function initializeBrandFilter() {
     !searchInput ||
     !searchIcon ||
     !closeIcon ||
-    !brandsLabel
+    !brandsLabel ||
+    !showAllButton ||
+    !brandModal ||
+    !closeModalButton ||
+    !modalSearchInput ||
+    !modalBrandList
   )
     return;
 
   brandList.innerHTML = "";
 
-  // Search toggle functionality
-  searchIcon.addEventListener("click", function () {
-    brandsLabel.classList.add("hidden");
-    searchContainer.classList.remove("w-[25px]", "h-[25px]", "p-1");
-    searchContainer.classList.add("w-full", "h-auto", "p-1", "flex-row");
-    searchInput.classList.remove("hidden");
-    searchIcon.classList.add("hidden");
-    closeIcon.classList.remove("hidden");
-    searchInput.focus();
-  });
-
-  closeIcon.addEventListener("click", function () {
-    brandsLabel.classList.remove("hidden");
-    searchContainer.classList.remove("w-full", "h-auto", "p-1", "flex-row");
-    searchContainer.classList.add("w-[25px]", "h-[25px]", "p-1");
-    searchInput.classList.add("hidden");
-    closeIcon.classList.add("hidden");
-    searchIcon.classList.remove("hidden");
-    searchInput.value = ""; // Clear input on close
-    // Reapply filter to show all brands
-    const brandItems = brandList.querySelectorAll("li");
-    brandItems.forEach((item) => {
-      item.style.display = "";
-    });
-  });
-
-  searchInput.addEventListener("input", function (e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const brandItems = brandList.querySelectorAll("li");
-    brandItems.forEach((item) => {
-      const brandName = item
-        .querySelector(".brand-name")
-        .textContent.toLowerCase();
-      if (brandName.includes(searchTerm)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
-      }
-    });
-  });
-
-  // Brand list generation
-  brands.forEach((brand) => {
+  // Initial display of a few brands
+  const maxInitialBrands = 5;
+  brands.slice(0, maxInitialBrands).forEach((brand) => {
     const listItem = document.createElement("li");
     listItem.classList.add("m-0");
     const label = document.createElement("label");
@@ -1503,7 +1473,7 @@ function initializeBrandFilter() {
     label.appendChild(checkboxBox);
 
     const brandName = document.createElement("span");
-    brandName.className = "text-sm text-gray-800 font-medium brand-name"; // Added class 'brand-name'
+    brandName.className = "text-sm text-gray-800 font-medium brand-name";
     brandName.textContent = brand.name;
 
     const brandCount = document.createElement("span");
@@ -1527,6 +1497,126 @@ function initializeBrandFilter() {
         );
       }
       applyFilters();
+    });
+  });
+
+  // Search toggle functionality
+  searchIcon.addEventListener("click", function () {
+    brandsLabel.classList.add("hidden");
+    searchContainer.classList.remove("w-[25px]", "h-[25px]", "p-1");
+    searchContainer.classList.add("w-full", "h-auto", "p-1", "flex-row");
+    searchInput.classList.remove("hidden");
+    searchIcon.classList.add("hidden");
+    closeIcon.classList.remove("hidden");
+    searchInput.focus();
+  });
+
+  closeIcon.addEventListener("click", function () {
+    brandsLabel.classList.remove("hidden");
+    searchContainer.classList.remove("w-full", "h-auto", "p-1", "flex-row");
+    searchContainer.classList.add("w-[25px]", "h-[25px]", "p-1");
+    searchInput.classList.add("hidden");
+    closeIcon.classList.add("hidden");
+    searchIcon.classList.remove("hidden");
+    searchInput.value = "";
+    const brandItems = brandList.querySelectorAll("li");
+    brandItems.forEach((item) => {
+      item.style.display = "";
+    });
+  });
+
+  searchInput.addEventListener("input", function (e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const brandItems = brandList.querySelectorAll("li");
+    brandItems.forEach((item) => {
+      const brandName = item
+        .querySelector(".brand-name")
+        .textContent.toLowerCase();
+      if (brandName.includes(searchTerm)) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  // Popup functionality
+  showAllButton.addEventListener("click", function () {
+    brandModal.classList.remove("hidden");
+    modalBrandList.innerHTML = "";
+    brands.forEach((brand) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("m-0", "mb-2");
+      const label = document.createElement("label");
+      label.className =
+        "inline-flex items-center cursor-pointer gap-2 relative";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "custom-checkbox hidden peer";
+      checkbox.value = brand.name.toLowerCase().replace(/\s+/g, "-");
+      if (globalFilters.brands.includes(checkbox.value))
+        checkbox.checked = true;
+
+      const checkboxBox = document.createElement("div");
+      checkboxBox.className =
+        "checkbox-box w-4 h-4 rounded-[1px] border border-gray-300 peer-checked:bg-[#f63d68] peer-checked:border-[#f63d68] relative transition";
+
+      label.appendChild(checkbox);
+      label.appendChild(checkboxBox);
+
+      const brandName = document.createElement("span");
+      brandName.className = "text-sm text-gray-800 font-medium";
+      brandName.textContent = brand.name;
+
+      const brandCount = document.createElement("span");
+      brandCount.className = "text-sm text-gray-400 ml-auto";
+      brandCount.textContent = `(${brand.count.toLocaleString()})`;
+
+      label.appendChild(brandName);
+      label.appendChild(brandCount);
+      listItem.appendChild(label);
+      modalBrandList.appendChild(listItem);
+
+      checkbox.addEventListener("change", function () {
+        const normalizedBrand = this.value;
+        if (this.checked) {
+          if (!globalFilters.brands.includes(normalizedBrand)) {
+            globalFilters.brands.push(normalizedBrand);
+          }
+        } else {
+          globalFilters.brands = globalFilters.brands.filter(
+            (b) => b !== normalizedBrand
+          );
+        }
+        applyFilters();
+        const mainCheckbox = document.querySelector(
+          `#brand-list input[value="${normalizedBrand}"]`
+        );
+        if (mainCheckbox) mainCheckbox.checked = this.checked;
+      });
+    });
+  });
+
+  closeModalButton.addEventListener("click", function () {
+    brandModal.classList.add("hidden");
+    modalSearchInput.value = "";
+    const modalBrandItems = modalBrandList.querySelectorAll("li");
+    modalBrandItems.forEach((item) => {
+      item.style.display = "";
+    });
+  });
+
+  modalSearchInput.addEventListener("input", function (e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const modalBrandItems = modalBrandList.querySelectorAll("li");
+    modalBrandItems.forEach((item) => {
+      const brandName = item.querySelector("span").textContent.toLowerCase();
+      if (brandName.includes(searchTerm)) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
     });
   });
 }
