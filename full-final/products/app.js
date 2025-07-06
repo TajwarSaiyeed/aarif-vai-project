@@ -1094,6 +1094,8 @@ function initializeColorFilters() {
     colorItems.forEach((item) => {
       item.style.display = "";
     });
+    // Show the show more button again when search is closed
+    showMoreBtn.style.display = "";
   });
 
   searchInput.addEventListener("input", function (e) {
@@ -1109,10 +1111,37 @@ function initializeColorFilters() {
         item.style.display = "none";
       }
     });
+
+    // Hide show more button when searching
+    if (searchTerm.length > 0) {
+      showMoreBtn.style.display = "none";
+    } else {
+      showMoreBtn.style.display = "";
+    }
+  });
+
+  const maxInitialColors = 7;
+  const showMoreBtn = document.createElement("button");
+  showMoreBtn.className = "text-[15px] text-[#ff3e6c] mt-2 cursor-pointer ml-7";
+  showMoreBtn.textContent = `+${colors.length - maxInitialColors} more`;
+
+  let showAll = false;
+
+  showMoreBtn.addEventListener("click", function () {
+    showAll = !showAll;
+    showMoreBtn.textContent = showAll
+      ? "Hide extra colors"
+      : `+${colors.length - maxInitialColors} more`;
+    const colorItems = colorFilterContainer.querySelectorAll("li");
+    colorItems.forEach((item, index) => {
+      if (index >= maxInitialColors) {
+        item.style.display = showAll ? "" : "none";
+      }
+    });
   });
 
   // Color list generation
-  colors.forEach((color) => {
+  colors.forEach((color, index) => {
     const listItem = document.createElement("li");
     const label = document.createElement("label");
     label.className = "inline-flex items-center cursor-pointer gap-2 relative";
@@ -1154,7 +1183,12 @@ function initializeColorFilters() {
     checkbox.addEventListener("change", function () {
       handleColorFilterChange(color.name, this.checked);
     });
+    if (index >= maxInitialColors) {
+      listItem.style.display = "none";
+    }
   });
+
+  colorFilterContainer.appendChild(showMoreBtn);
 }
 
 // Sort products
