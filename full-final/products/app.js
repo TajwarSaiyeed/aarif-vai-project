@@ -613,7 +613,14 @@ function updateSelectedFilters() {
        ></span>
     `;
     tag.addEventListener("click", () => removeFilter(filterType, value));
+
     selectedFiltersContainer.appendChild(tag);
+  }
+
+  if (hasActiveFilters()) {
+    selectedFiltersContainer.classList.add("pt-4", "mb-2");
+  } else {
+    selectedFiltersContainer.classList.remove("pt-4", "mb-2");
   }
 
   // Add color filters
