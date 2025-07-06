@@ -1052,10 +1052,10 @@ function handleColorFilterChange(colorName, isChecked) {
 // Initialize color filters
 function initializeColorFilters() {
   const colorFilterContainer = document.getElementById("color-filter-list");
-  const searchContainer = document.querySelector(".search-container");
-  const searchInput = document.querySelector(".search-input");
-  const searchIcon = document.querySelector(".lucide-search-icon");
-  const closeIcon = document.querySelector(".lucide-x-icon");
+  const searchContainer = document.querySelector(".color-search-container");
+  const searchInput = document.querySelector(".color-search-input");
+  const searchIcon = document.querySelector(".color-lucide-search-icon");
+  const closeIcon = document.querySelector(".color-lucide-x-icon");
   const colorsLabel = searchContainer.parentElement.querySelector("h3");
 
   if (
@@ -1424,9 +1424,66 @@ const brands = [
 
 function initializeBrandFilter() {
   const brandList = document.getElementById("brand-list");
-  if (!brandList) return;
+  const searchContainer = document.querySelector(".brand-search-container");
+  const searchInput = document.querySelector(".brand-search-input");
+  const searchIcon = document.querySelector(".brand-lucide-search-icon");
+  const closeIcon = document.querySelector(".brand-lucide-x-icon");
+  const brandsLabel = searchContainer.parentElement.querySelector("h3");
+
+  if (
+    !brandList ||
+    !searchContainer ||
+    !searchInput ||
+    !searchIcon ||
+    !closeIcon ||
+    !brandsLabel
+  )
+    return;
 
   brandList.innerHTML = "";
+
+  // Search toggle functionality
+  searchIcon.addEventListener("click", function () {
+    brandsLabel.classList.add("hidden");
+    searchContainer.classList.remove("w-[25px]", "h-[25px]", "p-1");
+    searchContainer.classList.add("w-full", "h-auto", "p-1", "flex-row");
+    searchInput.classList.remove("hidden");
+    searchIcon.classList.add("hidden");
+    closeIcon.classList.remove("hidden");
+    searchInput.focus();
+  });
+
+  closeIcon.addEventListener("click", function () {
+    brandsLabel.classList.remove("hidden");
+    searchContainer.classList.remove("w-full", "h-auto", "p-1", "flex-row");
+    searchContainer.classList.add("w-[25px]", "h-[25px]", "p-1");
+    searchInput.classList.add("hidden");
+    closeIcon.classList.add("hidden");
+    searchIcon.classList.remove("hidden");
+    searchInput.value = ""; // Clear input on close
+    // Reapply filter to show all brands
+    const brandItems = brandList.querySelectorAll("li");
+    brandItems.forEach((item) => {
+      item.style.display = "";
+    });
+  });
+
+  searchInput.addEventListener("input", function (e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const brandItems = brandList.querySelectorAll("li");
+    brandItems.forEach((item) => {
+      const brandName = item
+        .querySelector(".brand-name")
+        .textContent.toLowerCase();
+      if (brandName.includes(searchTerm)) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  // Brand list generation
   brands.forEach((brand) => {
     const listItem = document.createElement("li");
     listItem.classList.add("m-0");
@@ -1446,7 +1503,7 @@ function initializeBrandFilter() {
     label.appendChild(checkboxBox);
 
     const brandName = document.createElement("span");
-    brandName.className = "text-sm text-gray-800 font-medium";
+    brandName.className = "text-sm text-gray-800 font-medium brand-name"; // Added class 'brand-name'
     brandName.textContent = brand.name;
 
     const brandCount = document.createElement("span");
