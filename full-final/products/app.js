@@ -4,6 +4,28 @@ const productCountDesktop = document.getElementById("product-count-desktop");
 const selectedFiltersContainer = document.getElementById("selected-filters");
 const clearFiltersBtnDesktop = document.getElementById("clear-btn");
 
+// Brand filter
+const brands = [
+  { name: "Bella Vita Organic", count: 1 },
+  { name: "Plum", count: 1 },
+  { name: "Minimalist", count: 1 },
+  { name: "Himalaya", count: 1 },
+  { name: "L'Oreal Paris", count: 1 },
+  { name: "Olay", count: 1 },
+  { name: "Deconstruct", count: 1 },
+  { name: "Pilgrim", count: 1 },
+  { name: "The Man Company", count: 1 },
+  { name: "Beardo", count: 1 },
+  { name: "Dot & Key", count: 1 },
+  { name: "Mamaearth", count: 2 },
+  { name: "WOW Skin Science", count: 2 },
+  { name: "Mcaffeine", count: 1 },
+  { name: "Biotique", count: 1 },
+  { name: "Neutrogena", count: 1 },
+  { name: "The Body Shop", count: 1 },
+  { name: "Forest Essentials", count: 1 },
+];
+
 const products = [
   {
     id: 1,
@@ -1400,28 +1422,6 @@ function initializeCategoryFilter() {
   });
 }
 
-// Brand filter
-const brands = [
-  { name: "Bella Vita Organic", count: 1 },
-  { name: "Plum", count: 1 },
-  { name: "Minimalist", count: 1 },
-  { name: "Himalaya", count: 1 },
-  { name: "L'Oreal Paris", count: 1 },
-  { name: "Olay", count: 1 },
-  { name: "Deconstruct", count: 1 },
-  { name: "Pilgrim", count: 1 },
-  { name: "The Man Company", count: 1 },
-  { name: "Beardo", count: 1 },
-  { name: "Dot & Key", count: 1 },
-  { name: "Mamaearth", count: 2 },
-  { name: "WOW Skin Science", count: 2 },
-  { name: "Mcaffeine", count: 1 },
-  { name: "Biotique", count: 1 },
-  { name: "Neutrogena", count: 1 },
-  { name: "The Body Shop", count: 1 },
-  { name: "Forest Essentials", count: 1 },
-];
-
 function initializeBrandFilter() {
   const brandList = document.getElementById("brand-list");
   const searchContainer = document.querySelector(".brand-search-container");
@@ -1456,7 +1456,26 @@ function initializeBrandFilter() {
   brandCheckboxesContainer.innerHTML = "";
 
   // Mock brands (100 brands, ~4 per letter A-Z)
-  const mockBrands = [];
+  const mockBrands = [
+    { name: "Bella Vita Organic", count: 1 },
+    { name: "Plum", count: 1 },
+    { name: "Minimalist", count: 1 },
+    { name: "Himalaya", count: 1 },
+    { name: "L'Oreal Paris", count: 1 },
+    { name: "Olay", count: 1 },
+    { name: "Deconstruct", count: 1 },
+    { name: "Pilgrim", count: 1 },
+    { name: "The Man Company", count: 1 },
+    { name: "Beardo", count: 1 },
+    { name: "Dot & Key", count: 1 },
+    { name: "Mamaearth", count: 2 },
+    { name: "WOW Skin Science", count: 2 },
+    { name: "Mcaffeine", count: 1 },
+    { name: "Biotique", count: 1 },
+    { name: "Neutrogena", count: 1 },
+    { name: "The Body Shop", count: 1 },
+    { name: "Forest Essentials", count: 1 },
+  ];
   const letters = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for (let i = 0; i < 100; i++) {
     const letter = letters[Math.floor(i / 4) % 26];

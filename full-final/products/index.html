@@ -447,7 +447,7 @@
                   + 1037 more
                 </button>
                 <div
-                  class="absolute top-0 left-0 max-w-[1000px] bg-white shadow-lg z-[99999] hidden"
+                  class="absolute top-0 left-0 w-[1000px] bg-white shadow-lg z-[99999] hidden"
                   id="brand-popup"
                   style="height: 500px; max-height: 500px"
                 >
@@ -462,7 +462,7 @@
                     />
                     <div
                       id="brand-letters"
-                      class="uppercase font-bold gap-3 flex items-center justify-start"
+                      class="uppercase font-bold gap-2 flex items-center justify-start"
                     >
                       <!-- Letters will be populated by JavaScript -->
                     </div>
@@ -491,7 +491,10 @@
                     class="overflow-x-auto"
                     style="height: calc(500px - 48px)"
                   >
-                    <div id="brand-checkboxes" class="flex gap-5 p-4"></div>
+                    <div
+                      id="brand-checkboxes"
+                      class="flex flex-col flex-wrap gap-x-10 gap-y-5 p-4 h-full"
+                    ></div>
                   </div>
                 </div>
               </div>
