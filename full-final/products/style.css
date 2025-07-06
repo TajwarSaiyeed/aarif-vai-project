@@ -403,3 +403,19 @@ input[type="radio"].accent-\[\#ff3e6c\] {
 .mobile-static-links a:hover {
     font-weight: 600;
 }
+
+#left-filter {
+    position: -webkit-sticky;
+    /* For Safari compatibility */
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    /* Ensures the filter section doesn't stretch unnecessarily */
+}
+
+@media (max-width: 1023px) {
+    #left-filter {
+        position: static;
+        /* Disable sticky behavior on smaller screens */
+    }
+}

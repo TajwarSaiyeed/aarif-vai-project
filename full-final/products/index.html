@@ -465,7 +465,7 @@
 
         <div class="flex">
           <!-- Filters -->
-          <div class="w-[250px]" id="left-filter">
+          <div class="w-[250px] lg:sticky lg:top-0" id="left-filter">
             <div
               class="flex justify-between items-center px-4 w-full border-b border-gray-200 py-[15px]"
             >
@@ -698,7 +698,7 @@
           </div>
 
           <!-- Products Grid -->
-          <div class="flex-1">
+          <div class="flex-1 pb-5" id="product-section">
             <div class="mb-4 border-b border-gray-200">
               <!-- Filter Categories and Sort By on same line -->
               <div class="flex justify-between items-center px-4 py-[8px]">
@@ -2956,5 +2956,38 @@
     <script src="../nav.js"></script>
     <script src="app.js"></script>
     <script src="../mobile-footer.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterSection = document.querySelector("#left-filter"); // Fixed selector
+        const productSection = document.querySelector("#product-section");
+
+        if (filterSection && productSection) {
+          function handleStickyBehavior() {
+            const filterHeight = filterSection.offsetHeight;
+            const windowHeight = window.innerHeight;
+
+            // Only apply sticky if filter height is less than or equal to window height
+            if (filterHeight <= windowHeight) {
+              filterSection.classList.add("lg:sticky", "lg:top-0");
+            } else {
+              filterSection.classList.remove("lg:sticky", "lg:top-0");
+            }
+          }
+
+          // Run on load
+          handleStickyBehavior();
+
+          // Run on scroll and resize
+          window.addEventListener("scroll", handleStickyBehavior);
+          window.addEventListener("resize", handleStickyBehavior);
+
+          // Cleanup event listeners on page unload to prevent memory leaks
+          window.addEventListener("unload", function () {
+            window.removeEventListener("scroll", handleStickyBehavior);
+            window.removeEventListener("resize", handleStickyBehavior);
+          });
+        }
+      });
+    </script>
   </body>
 </html>
