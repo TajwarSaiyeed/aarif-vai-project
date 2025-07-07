@@ -466,7 +466,7 @@
     </nav>
     <!-- Main Content Area -->
     <main
-      class="max-w-[1850px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row gap-6 relative"
+      class="max-w-[1850px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 hidden md:flex flex-col md:flex-row gap-6 relative"
     >
       <!-- Left Column: Product Images -->
 
@@ -1176,14 +1176,14 @@
               Customer Reviews (<span class="text-myntra-pink">2218</span>)
             </h3>
             <div class="border-b border-gray-200 pb-4">
-              <div class="flex items-start gap-2">
+              <div class="flex flex-col sm:flex-row items-start gap-2">
                 <div
                   class="flex items-center space-x-1 text-xs font-bold bg-teal-600 text-white p-1"
                 >
                   <span>4.5</span>
                   <i class="fas fa-star fill-white"></i>
                 </div>
-                <div class="space-y-2">
+                <div class="space-y-2 max-w-screen-sm">
                   <p class="text-gray-700">
                     I recently purchased clothes from myntra and I must say I'm
                     impressed with my experience. I appreciate how accurate the
@@ -1210,7 +1210,7 @@
                     />
                   </div>
                   <div
-                    class="flex items-center justify-between text-sm text-gray-500 mt-3"
+                    class="flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 mt-3"
                   >
                     <span
                       >Md Shadab Hussain <span class="mx-1">|</span> 6 July
@@ -1368,6 +1368,63 @@
       <!-- ----------------------------------------------- -->
       <!-- SIZE CHART SIDEBAR INJECTION END -->
       <!-- ----------------------------------------------- -->
+    </main>
+
+    <!-- this is mobile screen area -->
+    <main>
+      <div class="flex flex-col gap-2">
+        <div
+          class="w-full overflow-hidden slider-container mt-16 block md:hidden"
+        >
+          <!-- Image Container -->
+          <div
+            class="flex transition-transform duration-500 ease-in-out h-full"
+            id="mobile_image_slider"
+          >
+            <!-- Slides will be dynamically generated here -->
+          </div>
+
+          <!-- Dot Navigation -->
+        </div>
+        <div
+          id="dots-container"
+          class="flex justify-center items-center gap-2 mt-2"
+        ></div>
+      </div>
+
+      <div class="px-4 py-4 flex justify-between">
+        <div>
+          <h1 class="text-[#282c3f] text-base">
+            Blackberrys Polo Collar Slim Fit T-shirt
+          </h1>
+          <div class="text-base flex gap-2 items-center">
+            <span class="font-bold">₹672</span>
+            <span class="text-[#94969f]">
+              <span class="mrpLabel">MRP </span>
+              <del class="original-price">₹1495</del>
+            </span>
+            <span class="text-[#ff5a5a] font-bold text-sm">(55% OFF)</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div>
+            <div
+              class="w-8 h-8 rounded-full flex items-center justify-center bg-[conic-gradient(#00A3E0,_#00C4B4,_#FFD700,_#FF8C00,_#FF4040,_#00A3E0)]"
+            >
+              <div
+                class="w-7 h-7 rounded-full bg-white flex items-center justify-center"
+              >
+                <div>
+                  <p class="text-xs font-bold text-[#3e4152] text-center">+4</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-[8px] uppercase text-[#282c3f] mt-1">COLOURS</div>
+        </div>
+      </div>
+
+      <div class="bg-[#f4f4f5] h-[10px]"></div>
     </main>
 
     <!-- Sticky Mobile Footer (Add to Bag / Wishlist) -->

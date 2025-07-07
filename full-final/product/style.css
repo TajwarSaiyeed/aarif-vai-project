@@ -672,3 +672,14 @@
  .mobile-static-links a:hover {
      font-weight: 600;
  }
+
+
+
+ .slider-container {
+     height: 300px;
+ }
+
+ .slide {
+     height: 100%;
+     min-width: 100%;
+ }

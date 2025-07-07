@@ -527,3 +527,131 @@ document.addEventListener("DOMContentLoaded", () => {
   // NEW JAVASCRIPT FOR SIZE CHART SIDEBAR INJECTION END
   // -----------------------------------------------
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const typewriterEl = document.getElementById("typewriter-search");
+  if (!typewriterEl) return;
+  const phrases = [
+    "Search for products, brands and more",
+    "Try 'T-Shirts', 'Shoes', 'Watches'...",
+    "Discover trending styles!",
+    "Find your favorite brands",
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let typing = true;
+
+  function type() {
+    if (!typing) return;
+    const phrase = phrases[phraseIndex];
+    if (charIndex < phrase.length) {
+      typewriterEl.textContent += phrase.charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 50);
+    } else {
+      setTimeout(erase, 1200);
+    }
+  }
+
+  function erase() {
+    if (!typing) return;
+    if (charIndex > 0) {
+      typewriterEl.textContent = typewriterEl.textContent.slice(0, -1);
+      charIndex--;
+      setTimeout(erase, 25);
+    } else {
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(type, 400);
+    }
+  }
+
+  type();
+
+  // Optional: Pause effect on input focus
+  const searchInput = typewriterEl.previousElementSibling;
+  if (searchInput && searchInput.tagName === "INPUT") {
+    searchInput.addEventListener("focus", () => {
+      typing = false;
+      typewriterEl.textContent = "";
+    });
+    searchInput.addEventListener("blur", () => {
+      if (!typing) {
+        typing = true;
+        charIndex = 0;
+        typewriterEl.textContent = "";
+        type();
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mobile_image_slider = document.querySelector("#mobile_image_slider");
+
+  let currentSlide = 0;
+  const dotsContainer = document.getElementById("dots-container");
+  let totalSlides = 0;
+
+  function addSlide(imageUrl) {
+    const slide = document.createElement("div");
+    slide.className = "slide flex-shrink-0";
+    slide.style.backgroundImage = `url(${imageUrl})`;
+    slide.style.backgroundSize = "cover";
+    slide.style.backgroundPosition = "center";
+    mobile_image_slider.appendChild(slide);
+    totalSlides++;
+  }
+
+  // Example images - you can add as many as you want
+  const images = [
+    "https://picsum.photos/1920/600?random=1",
+    "https://picsum.photos/1920/600?random=2",
+    "https://picsum.photos/1920/600?random=3",
+    "https://picsum.photos/1920/600?random=6",
+    "https://picsum.photos/1920/600?random=5",
+  ];
+
+  // Add all slides
+  images.forEach((image) => addSlide(image));
+
+  function createDots() {
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement("button");
+      dot.className = "w-2 h-2 rounded-full bg-[#ff3f6c] transition-opacity";
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateSlider() {
+    mobile_image_slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    const dots = dotsContainer.querySelectorAll("button");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("bg-[#ff3f6c]", index === currentSlide);
+      dot.classList.toggle("bg-gray-100", index !== currentSlide);
+    });
+  }
+
+  function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    updateSlider();
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  }
+
+  // Initialize after slides are added
+  createDots();
+  updateSlider();
+
+  // Auto-play slider
+  setInterval(nextSlide, 5000);
+});
