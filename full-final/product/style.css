@@ -1,685 +1,686 @@
- /* Global CSS - Font Definitions */
- @font-face {
-     font-family: "Assistant";
-     src: url("https://constant.myntassets.com/www/fonts/Assistant-Regular.eot");
-     src: url("https://constant.myntassets.com/www/fonts/Assistant-Regular.eot?#iefix") format("embedded-opentype"),
-         url("https://constant.myntassets.com/www/fonts/Assistant-Regular.woff") format("woff"),
-         url("https://constant.myntassets.com/www/fonts/Assistant-Regular.ttf") format("truetype");
-     font-weight: 400;
-     font-display: swap;
-     font-style: normal;
- }
-
- @font-face {
-     font-family: "Assistant";
-     src: url("https://constant.myntassets.com/www/fonts/Assistant-Bold.eot");
-     src: url("https://constant.myntassets.com/www/fonts/Assistant-Bold.eot?#iefix") format("embedded-opentype"),
-         url("https://constant.myntassets.com/www/fonts/Assistant-Bold.woff") format("woff"),
-         url("https://constant.myntassets.com/www/fonts/Assistant-Bold.ttf") format("truetype");
-     font-weight: 700;
-     font-display: swap;
-     font-style: normal;
- }
-
- body {
-     font-family: "Assistant", -apple-system, BlinkMacMacSystemFont, Segoe UI,
-         Roboto, Helvetica, Arial, sans-serif;
- }
-
-
- /* Custom styles for Myntra-like branding */
- .myntra-pink {
-     background-color: #ff3f6c;
- }
-
- .myntra-pink:hover {
-     background-color: #f72a5a;
- }
-
- .myntra-text-gray {
-     color: #525252;
- }
-
- .myntra-light-gray {
-     background-color: #f7f7f7;
- }
-
- .myntra-price {
-     color: #282c3f;
- }
-
- .myntra-mrp {
-     color: #94969f;
-     text-decoration: line-through;
- }
-
- .myntra-discount {
-     color: #f26a10;
- }
-
- .rating-star-filled {
-     color: #28a745;
- }
-
- /* Green for filled stars */
- .rating-star-empty {
-     color: #d6d6d6;
- }
-
- /* Light gray for empty stars */
- .text-myntra-green {
-     color: #20bd99;
- }
-
- /* Myntra's green color for specific texts */
-
- /* Sticky Mobile Footer Animation */
- .sticky-mobile-footer {
-     position: fixed;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     z-index: 1000;
-     background-color: #fff;
-     padding: 0.5rem;
-     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-     transition: transform 0.3s ease-in-out;
-     transform: translateY(100%);
-     /* Initially hidden */
- }
-
- .sticky-mobile-footer.show {
-     transform: translateY(0);
-     /* Visible */
- }
-
- /* Hide Scrollbar */
- .hide-scrollbar::-webkit-scrollbar {
-     display: none;
- }
-
- .hide-scrollbar {
-     -ms-overflow-style: none;
-     /* IE and Edge */
-     scrollbar-width: none;
-     /* Firefox */
- }
-
- .image-grid-similarColorsCta {
-     width: 40px;
-     height: 40px;
-     border-radius: 50%;
-     position: absolute;
-     z-index: 4;
-     color: #000;
-     right: 20px;
-     bottom: 20px;
-     border: 1px solid #dadade;
-     line-height: 33px;
-     text-align: center;
-     overflow: hidden;
-     cursor: pointer;
-     -webkit-transition: all 0.2s ease;
-     transition: all 0.2s ease;
-     will-change: contents;
-     background: #fff;
- }
-
- .image-grid-similarColorsCta:hover {
-     border-radius: 42px;
-     width: 140px;
-     text-align: left;
-     padding-left: 13px;
- }
-
- .image-grid-similarColorsCta:hover .image-grid-iconText {
-     visibility: visible;
-     display: inline-block;
-     margin-top: 4px;
- }
-
- .image-grid-similarColorsIcon {
-     vertical-align: middle;
- }
-
- .sprites-similarProductsIcon {
-     background-position: -142px -58px;
-     width: 24px;
-     height: 20px;
- }
-
- .image-grid-iconText {
-     font-weight: 700;
-     color: #ff517b;
-     vertical-align: middle;
-     visibility: hidden;
-     margin-left: 10px;
-     font-size: 14px;
- }
-
- .image-grid-similarColorsCta:hover .image-grid-iconText {
-     visibility: visible;
-     display: inline-block;
-     margin-top: 4px;
- }
-
- /* ----------------------------------------------- */
- /* NEW CSS FOR SIZE CHART SIDEBAR START */
- /* ----------------------------------------------- */
- .myntra-pink-text {
-     color: #ff3f6c;
- }
-
- .myntra-pink-bg {
-     background-color: #ff3f6c;
- }
-
- .myntra-pink-bg:hover {
-     background-color: #f72a5a;
- }
-
- .myntra-border-gray {
-     border-color: #eaeaec;
- }
-
- .myntra-light-gray-bg {
-     background-color: #eaeaec;
- }
-
- .PriceInfo-price {
-     color: #282c3f;
- }
-
- .PriceInfo-mrp {
-     color: #94969f;
-     text-decoration: line-through;
- }
-
- .PriceInfo-discount {
-     color: #f26a10;
- }
-
- .sizeChartWeb-text-color {
-     color: #696b79;
- }
-
- .sizeChartWeb-green-text {
-     color: #03a685;
- }
-
- /* General styling for sizes chart from snippet */
- .sizeChartWeb-header {
-     padding: 12px 16px;
-     border-bottom: 1px solid #eaeaec;
-     position: relative;
-     display: flex;
-     align-items: center;
- }
-
- .sizeChartWeb-close {
-     position: absolute;
-     top: 10px;
-     right: 10px;
-     padding: 0;
-     background: none;
-     border: none;
-     cursor: pointer;
-     font-size: 20px;
-     color: #525252;
- }
-
- .sizeChartWeb-productInfo {
-     margin-left: 12px;
- }
-
- .sizeChartWeb-sizechart-image {
-     width: 90px;
-     height: auto;
-     border-radius: 4px;
-     object-fit: cover;
- }
-
- .sizeChartWeb-title {
-     font-size: 14px;
-     font-weight: 500;
-     color: #535766;
-     margin-bottom: 4px;
- }
-
- .sizeChartWeb-subtitle {
-     font-size: 13px;
-     color: #8e949d;
-     margin-bottom: 4px;
- }
-
- .PriceInfo-price strong {
-     font-weight: 700;
-     font-size: 15px;
- }
-
- .PriceInfo-mrp,
- .PriceInfo-discount {
-     font-size: 13px;
- }
-
- /* Tabs styling from snippet */
- .sizeChartWeb-tabContainer {
-     display: flex;
- }
-
- .sizeChartWeb-sizeChartTab,
- .sizeChartWeb-measureTab {
-     flex: 1;
-     padding: 16px;
-     font-size: 14px;
-     font-weight: 500;
-     cursor: pointer;
-     text-align: center;
-     border-bottom: 2px solid transparent;
-     transition: all 0.2s ease-in-out;
-     color: #525252;
- }
-
- .sizeChartWeb-tabSelected {
-     border-color: #ff3f6c;
-     color: #ff3f6c;
-     font-weight: 700;
- }
-
- /* Unit toggle (in/cm) styling */
- .scaleAndUnits-inchCmToggle {
-     display: flex;
-     border-radius: 9999px;
-     overflow: hidden;
-     background-color: #eaeaec;
-     width: fit-content;
-     margin-left: auto;
-     margin-bottom: 1rem;
- }
-
- .scaleAndUnits-metric {
-     padding: 8px 12px;
-     font-size: 13px;
-     font-weight: 600;
-     cursor: pointer;
-     border: none;
-     outline: none;
-     background-color: transparent;
-     color: #525252;
-     transition: all 0.2s ease-in-out;
- }
-
- .scaleAndUnits-selected {
-     background-color: #ff3f6c;
-     color: white !important;
- }
-
- /* Table styling */
- .sizeChartWeb-tableNew {
-     width: 100%;
-     border-collapse: collapse;
- }
-
- .sizeChartWeb-newRow {
-     border-bottom: 1px solid #eaeaec;
-     display: table-row;
- }
-
- .sizeChartWeb-newCell {
-     padding: 10px 4px;
-     text-align: left;
-     font-size: 14px;
-     color: #525252;
-     display: table-cell;
-     /* Important for radio alignment */
-     vertical-align: middle;
-     position: relative;
-     /* For radio alignment */
- }
-
- .sizeChartWeb-cell-title {
-     font-weight: 700;
-     color: #282c3f;
-     padding-bottom: 16px;
- }
-
- /* Custom Radio Button Styles based on common-customRadio */
- .common-customRadio {
-     position: relative;
-     display: block;
-     /* Important: makes label block-level to occupy full cell height */
-     height: 100%;
-     cursor: pointer;
-     width: 100%;
-     user-select: none;
-     padding-left: 20px;
-     /* Space for custom radio */
-     box-sizing: border-box;
-     /* Include padding in width calculation */
-     align-items: center;
-     display: flex;
-     /* For vertical alignment within cell */
- }
-
- .common-customRadio input {
-     /* Hide original radio input */
-     position: absolute;
-     opacity: 0;
-     cursor: pointer;
-     height: 0;
-     width: 0;
- }
-
- .common-radioIndicator {
-     /* The visual custom radio button */
-     position: absolute;
-     top: 50%;
-     left: 0;
-     transform: translateY(-50%);
-     height: 16px;
-     width: 16px;
-     background-color: #fff;
-     border-radius: 50%;
-     border: 2px solid #ccc;
-     box-sizing: border-box;
-     transition: border-color 0.2s ease-in-out;
- }
-
- .common-customRadio input:checked~.common-radioIndicator {
-     border-color: #ff3f6c;
- }
-
- .common-radioIndicator:after {
-     content: "";
-     position: absolute;
-     display: none;
-     left: 4px;
-     top: 4px;
-     width: 8px;
-     height: 8px;
-     border-radius: 50%;
-     background: #ff3f6c;
-     transform: scale(0);
-     transition: transform 0.2s ease-in-out;
- }
-
- .common-customRadio input:checked~.common-radioIndicator:after {
-     display: block;
-     transform: scale(1);
- }
-
- .common-customRadio:hover input~.common-radioIndicator {
-     border-color: #ff3f6c;
-     /* Subtle hover effect on indicator */
- }
-
- /* Selected table row highlighting */
- .sizeChartWeb-newRow.selected {
-     background-color: #fff1ec;
- }
-
- /* Myntra's light pink hover/selected background */
- /* Ensure radio button container within cell stretches vertically */
- .sizeChartWeb-newCell>label.common-customRadio {
-     height: 100%;
- }
-
- /* Bottom sticky actions */
- .sizeChartWeb-size-chart-cta {
-     position: sticky;
-     bottom: 0;
-     width: 100%;
-     background-color: white;
-     z-index: 10;
-     padding: 16px 20px;
-     border-top: 1px solid #eaeaec;
-     display: flex;
-     gap: 16px;
- }
-
- .pdp-button {
-     flex: 1;
-     padding: 12px 0;
-     text-align: center;
-     border-radius: 4px;
-     cursor: pointer;
-     font-size: 14px;
-     font-weight: 700;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     gap: 8px;
- }
-
- .pdp-add-to-bag {
-     background-color: #ff3f6c;
-     color: white;
-     transition: background-color 0.2s ease;
- }
-
- .pdp-add-to-bag:hover {
-     background-color: #f72a5a;
- }
-
- .pdp-add-to-wishlist {
-     border: 1px solid #eaeaec;
-     background-color: white;
-     color: #282c3f;
-     transition: border-color 0.2s ease;
- }
-
- .pdp-add-to-wishlist:hover {
-     border-color: #525252;
- }
-
- /* Using Font Awesome for bag/heart icons instead of sprites */
- .pdp-whiteBag,
- .pdp-notWishlistedIcon {
-     font-size: 18px;
- }
-
- /* Other details and image in 'How to measure' tab */
- .sizeChartWeb-info {
-     padding: 16px 0;
- }
-
- .scaleAndUnits-unitText {
-     font-size: 12px;
-     color: #8e949d;
-     margin-top: 20px;
- }
-
- .sizeChartWeb-measure-title {
-     font-size: 14px;
-     font-weight: 700;
-     color: #525252;
-     margin-bottom: 12px;
- }
-
- .sizeChartWeb-image-size-chart {
-     width: 100%;
-     height: auto;
-     max-width: 350px;
-     display: block;
-     margin: 0 auto;
- }
-
- /* Ensure it's centered and responsive */
-
- /* Divider */
- .sizeChartWeb-divider {
-     height: 1px;
-     background-color: #eaeaec;
-     margin: 20px 0;
- }
-
- /* Seller info */
- .sizeChartWeb-sellerInfo {
-     font-size: 14px;
-     color: #525252;
-     display: flex;
-     flex-direction: column;
-     gap: 4px;
- }
-
- .sizeChartWeb-sellerLink {
-     font-weight: 500;
-     color: #03a685;
-     cursor: pointer;
- }
-
- /* Green like original */
-
- /* Overlay backdrop */
- .size-chart-backdrop {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.5);
-     z-index: 999;
-     opacity: 0;
-     visibility: hidden;
-     transition: opacity 0.3s ease, visibility 0.3s ease;
- }
-
- .size-chart-backdrop.open {
-     opacity: 1;
-     visibility: visible;
- }
-
- /* Main sidebar panel */
- .sizeChartWeb-content {
-     position: fixed;
-     top: 0;
-     right: 0;
-     width: 100%;
-     max-width: 450px;
-     height: 100%;
-     background-color: #fff;
-     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-     transform: translateX(100%);
-     transition: transform 0.3s ease;
-     z-index: 1000;
-     display: flex;
-     flex-direction: column;
-     /* Allows content and footer to flex */
- }
-
- .sizeChartWeb-content.open {
-     transform: translateX(0);
- }
-
- .sizeChartWeb-main-content {
-     flex-grow: 1;
-     overflow-y: auto;
-     padding: 0 16px;
- }
-
-
-
- /* Mobile Sidebar Overlay Styles */
- #mobile-sidebar-overlay {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.5);
-     z-index: 1000;
-     visibility: hidden;
-     opacity: 0;
-     transition: all 0.3s ease-in-out;
- }
-
- #mobile-sidebar-overlay.open {
-     visibility: visible;
-     opacity: 1;
- }
-
- #mobile-sidebar {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 75%;
-     height: 100%;
-     background-color: white;
-     z-index: 1001;
-     transform: translateX(-100%);
-     transition: transform 0.3s ease-in-out;
-     overflow-y: auto;
- }
-
- #mobile-sidebar.open {
-     transform: translateX(0);
- }
-
- /* Mobile navigation specific styles */
- .mobile-nav-header {
-     background-color: #f5f5f5;
-     padding: 1rem;
-     border-bottom: 1px solid #e5e5e5;
- }
-
- .mobile-nav-content {
-     padding: 0;
- }
-
- /* Accordion styles for mobile sidebar */
- .accordion-item {
-     border-bottom: 1px solid #e5e5e5;
- }
-
- .accordion-header {
-     padding: 1rem;
-     background-color: white;
-     border: none;
-     width: 100%;
-     text-align: left;
-     cursor: pointer;
-     font-weight: 600;
-     color: #282c3f;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
- }
-
- .accordion-content {
-     max-height: 0;
-     overflow: hidden;
-     transition: max-height 0.3s ease-in-out;
- }
-
- .accordion-content.open {
-     max-height: 500px;
- }
-
- /* Static links styling for mobile */
- .mobile-static-links {
-     padding: 1rem;
-     border-bottom: 1px solid #e5e5e5;
- }
-
- .mobile-static-links a {
-     display: block;
-     padding: 0.5rem 0;
-     color: #3e4152;
-     text-decoration: none;
-     font-size: 0.875rem;
- }
-
- .mobile-static-links a:hover {
-     font-weight: 600;
- }
-
-
-
- .slider-container {
-     height: 300px;
- }
-
- .slide {
-     height: 100%;
-     min-width: 100%;
- }
+/* Global CSS - Font Definitions */
+@font-face {
+  font-family: "Assistant";
+  src: url("https://constant.myntassets.com/www/fonts/Assistant-Regular.eot");
+  src: url("https://constant.myntassets.com/www/fonts/Assistant-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://constant.myntassets.com/www/fonts/Assistant-Regular.woff")
+      format("woff"),
+    url("https://constant.myntassets.com/www/fonts/Assistant-Regular.ttf")
+      format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Assistant";
+  src: url("https://constant.myntassets.com/www/fonts/Assistant-Bold.eot");
+  src: url("https://constant.myntassets.com/www/fonts/Assistant-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://constant.myntassets.com/www/fonts/Assistant-Bold.woff")
+      format("woff"),
+    url("https://constant.myntassets.com/www/fonts/Assistant-Bold.ttf")
+      format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+body {
+  font-family: "Assistant", -apple-system, BlinkMacMacSystemFont, Segoe UI,
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Custom styles for Myntra-like branding */
+.myntra-pink {
+  background-color: #ff3f6c;
+}
+
+.myntra-pink:hover {
+  background-color: #f72a5a;
+}
+
+.myntra-text-gray {
+  color: #525252;
+}
+
+.myntra-light-gray {
+  background-color: #f7f7f7;
+}
+
+.myntra-price {
+  color: #282c3f;
+}
+
+.myntra-mrp {
+  color: #94969f;
+  text-decoration: line-through;
+}
+
+.myntra-discount {
+  color: #f26a10;
+}
+
+.rating-star-filled {
+  color: #28a745;
+}
+
+/* Green for filled stars */
+.rating-star-empty {
+  color: #d6d6d6;
+}
+
+/* Light gray for empty stars */
+.text-myntra-green {
+  color: #20bd99;
+}
+
+/* Myntra's green color for specific texts */
+
+/* Sticky Mobile Footer Animation */
+.sticky-mobile-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 0.5rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(100%);
+  /* Initially hidden */
+}
+
+.sticky-mobile-footer.show {
+  transform: translateY(0);
+  /* Visible */
+}
+
+/* Hide Scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.image-grid-similarColorsCta {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 4;
+  color: #000;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid #dadade;
+  line-height: 33px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  will-change: contents;
+  background: #fff;
+}
+
+.image-grid-similarColorsCta:hover {
+  border-radius: 42px;
+  width: 140px;
+  text-align: left;
+  padding-left: 13px;
+}
+
+.image-grid-similarColorsCta:hover .image-grid-iconText {
+  visibility: visible;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.image-grid-similarColorsIcon {
+  vertical-align: middle;
+}
+
+.sprites-similarProductsIcon {
+  background-position: -142px -58px;
+  width: 24px;
+  height: 20px;
+}
+
+.image-grid-iconText {
+  font-weight: 700;
+  color: #ff517b;
+  vertical-align: middle;
+  visibility: hidden;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.image-grid-similarColorsCta:hover .image-grid-iconText {
+  visibility: visible;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------- */
+/* NEW CSS FOR SIZE CHART SIDEBAR START */
+/* ----------------------------------------------- */
+.myntra-pink-text {
+  color: #ff3f6c;
+}
+
+.myntra-pink-bg {
+  background-color: #ff3f6c;
+}
+
+.myntra-pink-bg:hover {
+  background-color: #f72a5a;
+}
+
+.myntra-border-gray {
+  border-color: #eaeaec;
+}
+
+.myntra-light-gray-bg {
+  background-color: #eaeaec;
+}
+
+.PriceInfo-price {
+  color: #282c3f;
+}
+
+.PriceInfo-mrp {
+  color: #94969f;
+  text-decoration: line-through;
+}
+
+.PriceInfo-discount {
+  color: #f26a10;
+}
+
+.sizeChartWeb-text-color {
+  color: #696b79;
+}
+
+.sizeChartWeb-green-text {
+  color: #03a685;
+}
+
+/* General styling for sizes chart from snippet */
+.sizeChartWeb-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eaeaec;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sizeChartWeb-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #525252;
+}
+
+.sizeChartWeb-productInfo {
+  margin-left: 12px;
+}
+
+.sizeChartWeb-sizechart-image {
+  width: 90px;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.sizeChartWeb-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #535766;
+  margin-bottom: 4px;
+}
+
+.sizeChartWeb-subtitle {
+  font-size: 13px;
+  color: #8e949d;
+  margin-bottom: 4px;
+}
+
+.PriceInfo-price strong {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.PriceInfo-mrp,
+.PriceInfo-discount {
+  font-size: 13px;
+}
+
+/* Tabs styling from snippet */
+.sizeChartWeb-tabContainer {
+  display: flex;
+}
+
+.sizeChartWeb-sizeChartTab,
+.sizeChartWeb-measureTab {
+  flex: 1;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+  color: #525252;
+}
+
+.sizeChartWeb-tabSelected {
+  border-color: #ff3f6c;
+  color: #ff3f6c;
+  font-weight: 700;
+}
+
+/* Unit toggle (in/cm) styling */
+.scaleAndUnits-inchCmToggle {
+  display: flex;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: #eaeaec;
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 1rem;
+}
+
+.scaleAndUnits-metric {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #525252;
+  transition: all 0.2s ease-in-out;
+}
+
+.scaleAndUnits-selected {
+  background-color: #ff3f6c;
+  color: white !important;
+}
+
+/* Table styling */
+.sizeChartWeb-tableNew {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sizeChartWeb-newRow {
+  border-bottom: 1px solid #eaeaec;
+  display: table-row;
+}
+
+.sizeChartWeb-newCell {
+  padding: 10px 4px;
+  text-align: left;
+  font-size: 14px;
+  color: #525252;
+  display: table-cell;
+  /* Important for radio alignment */
+  vertical-align: middle;
+  position: relative;
+  /* For radio alignment */
+}
+
+.sizeChartWeb-cell-title {
+  font-weight: 700;
+  color: #282c3f;
+  padding-bottom: 16px;
+}
+
+/* Custom Radio Button Styles based on common-customRadio */
+.common-customRadio {
+  position: relative;
+  display: block;
+  /* Important: makes label block-level to occupy full cell height */
+  height: 100%;
+  cursor: pointer;
+  width: 100%;
+  user-select: none;
+  padding-left: 20px;
+  /* Space for custom radio */
+  box-sizing: border-box;
+  /* Include padding in width calculation */
+  align-items: center;
+  display: flex;
+  /* For vertical alignment within cell */
+}
+
+.common-customRadio input {
+  /* Hide original radio input */
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.common-radioIndicator {
+  /* The visual custom radio button */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.common-customRadio input:checked ~ .common-radioIndicator {
+  border-color: #ff3f6c;
+}
+
+.common-radioIndicator:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff3f6c;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.common-customRadio input:checked ~ .common-radioIndicator:after {
+  display: block;
+  transform: scale(1);
+}
+
+.common-customRadio:hover input ~ .common-radioIndicator {
+  border-color: #ff3f6c;
+  /* Subtle hover effect on indicator */
+}
+
+/* Selected table row highlighting */
+.sizeChartWeb-newRow.selected {
+  background-color: #fff1ec;
+}
+
+/* Myntra's light pink hover/selected background */
+/* Ensure radio button container within cell stretches vertically */
+.sizeChartWeb-newCell > label.common-customRadio {
+  height: 100%;
+}
+
+/* Bottom sticky actions */
+.sizeChartWeb-size-chart-cta {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+  padding: 16px 20px;
+  border-top: 1px solid #eaeaec;
+  display: flex;
+  gap: 16px;
+}
+
+.pdp-button {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pdp-add-to-bag {
+  background-color: #ff3f6c;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.pdp-add-to-bag:hover {
+  background-color: #f72a5a;
+}
+
+.pdp-add-to-wishlist {
+  border: 1px solid #eaeaec;
+  background-color: white;
+  color: #282c3f;
+  transition: border-color 0.2s ease;
+}
+
+.pdp-add-to-wishlist:hover {
+  border-color: #525252;
+}
+
+/* Using Font Awesome for bag/heart icons instead of sprites */
+.pdp-whiteBag,
+.pdp-notWishlistedIcon {
+  font-size: 18px;
+}
+
+/* Other details and image in 'How to measure' tab */
+.sizeChartWeb-info {
+  padding: 16px 0;
+}
+
+.scaleAndUnits-unitText {
+  font-size: 12px;
+  color: #8e949d;
+  margin-top: 20px;
+}
+
+.sizeChartWeb-measure-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #525252;
+  margin-bottom: 12px;
+}
+
+.sizeChartWeb-image-size-chart {
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ensure it's centered and responsive */
+
+/* Divider */
+.sizeChartWeb-divider {
+  height: 1px;
+  background-color: #eaeaec;
+  margin: 20px 0;
+}
+
+/* Seller info */
+.sizeChartWeb-sellerInfo {
+  font-size: 14px;
+  color: #525252;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sizeChartWeb-sellerLink {
+  font-weight: 500;
+  color: #03a685;
+  cursor: pointer;
+}
+
+/* Green like original */
+
+/* Overlay backdrop */
+.size-chart-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.size-chart-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Main sidebar panel */
+.sizeChartWeb-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  /* Allows content and footer to flex */
+}
+
+.sizeChartWeb-content.open {
+  transform: translateX(0);
+}
+
+.sizeChartWeb-main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 16px;
+}
+
+/* Mobile Sidebar Overlay Styles */
+#mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#mobile-sidebar-overlay.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+#mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 100%;
+  background-color: white;
+  z-index: 1001;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+#mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Mobile navigation specific styles */
+.mobile-nav-header {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.mobile-nav-content {
+  padding: 0;
+}
+
+/* Accordion styles for mobile sidebar */
+.accordion-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.accordion-header {
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+  color: #282c3f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-content.open {
+  max-height: 500px;
+}
+
+/* Static links styling for mobile */
+.mobile-static-links {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.mobile-static-links a {
+  display: block;
+  padding: 0.5rem 0;
+  color: #3e4152;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.mobile-static-links a:hover {
+  font-weight: 600;
+}
+
+.slider-container {
+  height: 300px;
+}
+
+.slide {
+  height: 100%;
+  min-width: 100%;
+}
