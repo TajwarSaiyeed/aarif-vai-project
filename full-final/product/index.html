@@ -247,7 +247,7 @@
 
       <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="xl:hidden flex items-center justify-between px-4 py-3 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
+        class="xl:hidden flex items-center justify-between px-4 py-2 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
         <!-- Hamburger Icon -->
         <button id="mobile-menu-button" class="p-2">
@@ -455,22 +455,22 @@
     </div>
 
     <nav
-      class="hidden md:block px-8 pt-3 text-sm text-gray-500 bg-white mt-24 max-w-[1685px] min-w-[1200px] mx-auto"
+      class="hidden xl:block px-8 pt-3 text-sm text-gray-500 bg-white mt-24 max-w-[1685px] min-w-[1200px] mx-auto"
     >
-      <a href="#" class="hover:text-myntra-pink">Home</a> /
-      <a href="#" class="hover:text-myntra-pink">Clothing</a> /
-      <a href="#" class="hover:text-myntra-pink">Men Clothing</a> /
-      <a href="#" class="hover:text-myntra-pink">Tshirts</a> /
-      <a href="#" class="hover:text-myntra-pink">Roadster Tshirts</a> /
+      <a href="#" class="hover:text-text-[#ff3f6c]">Home</a> /
+      <a href="#" class="hover:text-text-[#ff3f6c]">Clothing</a> /
+      <a href="#" class="hover:text-text-[#ff3f6c]">Men Clothing</a> /
+      <a href="#" class="hover:text-text-[#ff3f6c]">Tshirts</a> /
+      <a href="#" class="hover:text-text-[#ff3f6c]">Roadster Tshirts</a> /
       <span class="font-semibold text-gray-800">More By Roadster</span>
     </nav>
     <!-- Main Content Area -->
     <main
-      class="max-w-[1685px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 hidden md:flex flex-col md:flex-row gap-6 relative"
+      class="max-w-[1685px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 hidden xl:flex flex-col xl:flex-row gap-6 relative"
     >
       <!-- Left Column: Product Images -->
 
-      <section class="w-full md:w-[58%]">
+      <section class="w-full xl:w-[58%]">
         <div class="grid grid-cols-2 gap-2">
           <div class="h-[450px] w-full">
             <img
@@ -520,7 +520,7 @@
 
       <!-- Right Column: Product Details -->
       <section
-        class="w-full md:w-[42%] space-y-4 md:sticky md:top-24 self-start"
+        class="w-full xl:w-[42%] space-y-4 md:sticky md:top-24 self-start"
       >
         <div>
           <h1 class="text-xl md:text-2xl font-bold text-gray-900">Roadster</h1>
@@ -646,10 +646,10 @@
         </div>
 
         <!-- Action Buttons (Desktop only) -->
-        <div class="hidden md:flex gap-4 mb-6">
+        <div class="hidden xl:flex gap-4 mb-6">
           <button
             id="add-to-bag-desktop"
-            class="flex-1 myntra-pink text-white py-3 rounded-md font-semibold text-lg hover:myntra-pink focus:outline-none flex items-center justify-center space-x-2"
+            class="flex-1 text-[#ff3f6c] text-white py-3 rounded-md font-semibold text-lg hover:text-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
           >
             <i class="fas fa-shopping-bag"></i>
             <span>ADD TO BAG</span>
@@ -1373,10 +1373,10 @@
     </main>
 
     <!-- this is mobile screen area -->
-    <main class="md:hidden block">
+    <main class="xl:hidden block pb-10">
       <div class="flex flex-col gap-2">
         <div
-          class="w-full overflow-hidden slider-container mt-16 block md:hidden"
+          class="w-full overflow-hidden slider-container mt-16 block xl:hidden"
         >
           <!-- Image Container -->
           <div
@@ -1529,22 +1529,42 @@
       </div>
 
       <div class="bg-[#f4f4f5] h-[10px]"></div>
+
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-2">
+          <h4 class="text-sm font-bold">Select Size</h4>
+          <a href="#" class="text-[#ff3f6c] text-[13px] font-bold"
+            >SIZE CHART</a
+          >
+        </div>
+        <div class="text-xs text-gray-600 mb-4">
+          Garment Measurement: <span id="mobile_measurement">Chest 36.0in</span>
+        </div>
+        <div class="flex space-x-2 mb-4 overflow-x-auto mobile_size-container">
+          <!-- Size buttons will be generated here -->
+        </div>
+        <div class="flex items-center space-x-2 mb-2 text-[16px]">
+          <span class="font-bold">₹879</span>
+          <span class="text-gray-500 line-through">₹1599</span>
+          <span class="text-[#ff3f6c] font-bold">(45% OFF)</span>
+        </div>
+      </div>
     </main>
 
     <!-- Sticky Mobile Footer (Add to Bag / Wishlist) -->
     <div
       id="mobile-sticky-footer"
-      class="md:hidden sticky-mobile-footer flex items-center justify-center space-x-4"
+      class="flex xl:hidden sticky-mobile-footer items-center justify-center space-x-4"
     >
       <button
-        class="flex-1 bg-white text-gray-800 border border-gray-200 py-3 rounded-md font-semibold text-base hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
+        class="flex-1 bg-white text-gray-800 border border-gray-200 py-2 rounded-md font-semibold text-base hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
       >
         <i class="far fa-heart"></i>
         <span>WISHLIST</span>
       </button>
       <button
         id="add-to-bag-mobile"
-        class="flex-1 myntra-pink text-white py-3 rounded-md font-semibold text-base hover:myntra-pink focus:outline-none flex items-center justify-center space-x-2"
+        class="flex-1 bg-[#ff3f6c] text-white py-2 rounded-md font-semibold text-base hover:bg-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
       >
         <i class="fas fa-shopping-bag"></i>
         <span>ADD TO BAG</span>

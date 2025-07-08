@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Handle resize: If resized to desktop, hide sticky footer. If resized to mobile and scrolled, show.
     window.addEventListener("resize", () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1280) {
         mobileStickyFooter.classList.remove("show");
       } else {
         if (window.scrollY > observedStickySection.offsetTop) {
@@ -655,3 +655,58 @@ document.addEventListener("DOMContentLoaded", () => {
   // Auto-play slider
   setInterval(nextSlide, 5000);
 });
+
+const sizes = [
+  { title: "S", subtitle: "Chest 36.0in", quantity: 6 },
+  { title: "M", subtitle: "Chest 38.0in", quantity: 9 },
+  { title: "L", subtitle: "Chest 40.0in", quantity: 2 },
+  { title: "XL", subtitle: "Chest 42.0in", quantity: 0 },
+  { title: "XXL", subtitle: "Chest 44.0in", quantity: 0 },
+  { title: "3XL", subtitle: "Chest 46.0in", quantity: 0 },
+];
+
+let selectedSize = sizes[0];
+
+function renderSizeButtons() {
+  const sizeContainer = document.querySelector(".mobile_size-container");
+  sizeContainer.innerHTML = "";
+  sizes.forEach((size) => {
+    const isSelected = size === selectedSize;
+    const isAvailable = size.quantity > 0;
+    const button = document.createElement("div");
+    button.className = `w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold cursor-pointer ${
+      isSelected
+        ? "bg-[#535766] text-white"
+        : "bg-white text-black border border-[#535766]"
+    } ${!isAvailable ? "relative border-gray-400 text-gray-400" : ""}`;
+    button.innerText = size.title;
+    if (!isAvailable) {
+      const strikethrough = document.createElement("span");
+      strikethrough.className =
+        "absolute inset-0 flex items-center justify-center";
+      strikethrough.innerHTML = '<span class="w-full h-px bg-gray-400"></span>';
+      button.appendChild(strikethrough);
+    }
+    button.addEventListener("click", () => {
+      if (isAvailable) {
+        selectedSize = size;
+        renderSizeButtons();
+        document.getElementById("mobile_measurement").innerText = size.subtitle;
+      }
+    });
+    const wrapper = document.createElement("div");
+    wrapper.className = "text-center";
+    wrapper.appendChild(button);
+    if (isAvailable) {
+      const stock = document.createElement("div");
+      stock.className =
+        "text-[8px] text-[#ff5722] mt-1 border-[0.5px] border-[#ff5722 w-[70%] mx-auto ";
+      stock.innerText = `${size.quantity} Left`;
+      wrapper.appendChild(stock);
+    }
+    sizeContainer.appendChild(wrapper);
+  });
+}
+
+// Initial render
+renderSizeButtons();
