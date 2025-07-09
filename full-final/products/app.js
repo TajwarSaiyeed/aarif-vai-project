@@ -90,14 +90,7 @@ const products = [
     id: 1,
     title: "Bella Vita Organic",
     description: "Vitamin C Glow Face Wash",
-    image:
-      "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
-    images: [
-      "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ718nztPNJfCbDJjZG8fOkejBnBAeQw5eAUA&s",
-      "https://picsum.photos/300/400?random=10",
-      "https://picsum.photos/300/400?random=10",
-    ],
+    image: "https://picsum.photos/300/400?random=10",
     currentPrice: "₹299",
     originalPrice: "₹399",
     discountPercent: "25",
@@ -116,12 +109,6 @@ const products = [
     title: "Plum Green Tea",
     description: "Pore Cleansing Gel Face Wash",
     image: "https://picsum.photos/300/400?random=11",
-    images: [
-      "https://picsum.photos/300/400?random=11",
-      "https://picsum.photos/300/400?random=111",
-      "https://picsum.photos/300/400?random=112",
-      "https://picsum.photos/300/400?random=113",
-    ],
     currentPrice: "₹349",
     originalPrice: "₹449",
     discountPercent: "22",
@@ -140,11 +127,6 @@ const products = [
     title: "Minimalist",
     description: "2% Salicylic Acid Face Wash",
     image: "https://picsum.photos/300/400?random=12",
-    images: [
-      "https://picsum.photos/300/400?random=12",
-      "https://picsum.photos/300/400?random=121",
-      "https://picsum.photos/300/400?random=122",
-    ],
     currentPrice: "₹199",
     originalPrice: "₹299",
     discountPercent: "33",
@@ -158,460 +140,433 @@ const products = [
     bundleType: "Single",
     countryOfOrigin: "India",
   },
-  // {
-  //   id: 4,
-  //   title: "Himalaya",
-  //   description: "Anti-Pimple Neem Face Wash",
-  //   image: "https://picsum.photos/300/400?random=13",
-  //   currentPrice: "₹175",
-  //   originalPrice: "₹225",
-  //   discountPercent: "22",
-  //   rating: "4.1",
-  //   ratingCount: "2.1k",
-  //   href: "#",
-  //   color: "Green",
-  //   brand: "Himalaya",
-  //   category: "Face Wash",
-  //   sizes: ["50ml", "100ml", "200ml"],
-  //   bundleType: "Value Pack",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 5,
-  //   title: "L'Oreal Paris",
-  //   description: "Hyaluron Moisture Sealing",
-  //   image: "https://picsum.photos/300/400?random=14",
-  //   currentPrice: "₹549",
-  //   originalPrice: "₹699",
-  //   discountPercent: "21",
-  //   rating: "4.4",
-  //   ratingCount: "532",
-  //   href: "#",
-  //   color: "Blue",
-  //   brand: "L'Oreal Paris",
-  //   category: "Moisturizer",
-  //   sizes: ["50ml", "100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "France",
-  // },
-  // {
-  //   id: 6,
-  //   title: "Olay Total Effects",
-  //   description: "Night Cream Anti-Aging",
-  //   image: "https://picsum.photos/300/400?random=15",
-  //   currentPrice: "₹899",
-  //   originalPrice: "₹1199",
-  //   discountPercent: "25",
-  //   rating: "4.6",
-  //   ratingCount: "1.5k",
-  //   href: "#",
-  //   color: "White",
-  //   brand: "Olay",
-  //   category: "Night Cream",
-  //   sizes: ["50ml"],
-  //   bundleType: "Gift Set",
-  //   countryOfOrigin: "USA",
-  // },
-  // {
-  //   id: 7,
-  //   title: "Deconstruct",
-  //   description: "Oil-Free Moisturizer",
-  //   image: "https://picsum.photos/300/400?random=16",
-  //   currentPrice: "₹425",
-  //   originalPrice: "₹549",
-  //   discountPercent: "23",
-  //   rating: "4.2",
-  //   ratingCount: "743",
-  //   href: "#",
-  //   color: "White",
-  //   brand: "Deconstruct",
-  //   category: "Moisturizer",
-  //   sizes: ["100ml", "200ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 8,
-  //   title: "Pilgrim",
-  //   description: "Hair Growth Serum",
-  //   image: "https://picsum.photos/300/400?random=17",
-  //   currentPrice: "₹649",
-  //   originalPrice: "₹899",
-  //   discountPercent: "28",
-  //   rating: "4.3",
-  //   ratingCount: "967",
-  //   href: "#",
-  //   color: "Brown",
-  //   brand: "Pilgrim",
-  //   category: "Hair Serum",
-  //   sizes: ["50ml"],
-  //   bundleType: "Starter Kit",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 9,
-  //   title: "The Man Company",
-  //   description: "Charcoal Face Wash",
-  //   image: "https://picsum.photos/300/400?random=18",
-  //   currentPrice: "₹399",
-  //   originalPrice: "₹499",
-  //   discountPercent: "20",
-  //   rating: "4.5",
-  //   ratingCount: "1.1k",
-  //   href: "#",
-  //   color: "Black",
-  //   brand: "The Man Company",
-  //   category: "Face Wash",
-  //   sizes: ["100ml"],
-  //   bundleType: "Combo Pack",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 10,
-  //   title: "Beardo",
-  //   description: "Activated Charcoal Face Wash",
-  //   image: "https://picsum.photos/300/400?random=19",
-  //   currentPrice: "₹299",
-  //   originalPrice: "₹399",
-  //   discountPercent: "25",
-  //   rating: "4.2",
-  //   ratingCount: "800",
-  //   href: "#",
-  //   color: "Black",
-  //   brand: "Beardo",
-  //   category: "Face Wash",
-  //   sizes: ["100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 11,
-  //   title: "Dot & Key",
-  //   description: "Watermelon Superglow Moisturizer",
-  //   image: "https://picsum.photos/300/400?random=20",
-  //   currentPrice: "₹595",
-  //   originalPrice: "₹795",
-  //   discountPercent: "25",
-  //   rating: "4.3",
-  //   ratingCount: "1.8k",
-  //   href: "#",
-  //   color: "Pink",
-  //   brand: "Dot & Key",
-  //   category: "Moisturizer",
-  //   sizes: ["50ml", "100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 12,
-  //   title: "Mamaearth",
-  //   description: "Onion Hair Oil for Hair Growth",
-  //   image: "https://picsum.photos/300/400?random=21",
-  //   currentPrice: "₹389",
-  //   originalPrice: "₹499",
-  //   discountPercent: "22",
-  //   rating: "4.0",
-  //   ratingCount: "3.5k",
-  //   href: "#",
-  //   color: "Brown",
-  //   brand: "Mamaearth",
-  //   category: "Hair Oil",
-  //   sizes: ["200ml"],
-  //   bundleType: "Value Pack",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 13,
-  //   title: "WOW Skin Science",
-  //   description: "Apple Cider Vinegar Shampoo",
-  //   image: "https://picsum.photos/300/400?random=22",
-  //   currentPrice: "₹375",
-  //   originalPrice: "₹499",
-  //   discountPercent: "25",
-  //   rating: "4.1",
-  //   ratingCount: "2.7k",
-  //   href: "#",
-  //   color: "Brown",
-  //   brand: "WOW Skin Science",
-  //   category: "Shampoo",
-  //   sizes: ["200ml", "500ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 14,
-  //   title: "Mcaffeine",
-  //   description: "Naked & Raw Coffee Body Scrub",
-  //   image: "https://picsum.photos/300/400?random=23",
-  //   currentPrice: "₹399",
-  //   originalPrice: "₹599",
-  //   discountPercent: "33",
-  //   rating: "4.4",
-  //   ratingCount: "980",
-  //   href: "#",
-  //   color: "Brown",
-  //   brand: "Mcaffeine",
-  //   category: "Body Scrub",
-  //   sizes: ["100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 15,
-  //   title: "Biotique",
-  //   description: "Bio Papaya Tan Removal Scrub",
-  //   image: "https://picsum.photos/300/400?random=24",
-  //   currentPrice: "₹180",
-  //   originalPrice: "₹250",
-  //   discountPercent: "28",
-  //   rating: "4.0",
-  //   ratingCount: "1.9k",
-  //   href: "#",
-  //   color: "Orange",
-  //   brand: "Biotique",
-  //   category: "Face Scrub",
-  //   sizes: ["100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 16,
-  //   title: "Neutrogena",
-  //   description: "Hydro Boost Water Gel",
-  //   image: "https://picsum.photos/300/400?random=25",
-  //   currentPrice: "₹849",
-  //   originalPrice: "₹950",
-  //   discountPercent: "11",
-  //   rating: "4.5",
-  //   ratingCount: "2.2k",
-  //   href: "#",
-  //   color: "Blue",
-  //   brand: "Neutrogena",
-  //   category: "Moisturizer",
-  //   sizes: ["50ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "USA",
-  // },
-  // {
-  //   id: 17,
-  //   title: "The Body Shop",
-  //   description: "Tea Tree Skin Clearing Face Wash",
-  //   image: "https://picsum.photos/300/400?random=26",
-  //   currentPrice: "₹645",
-  //   originalPrice: "₹745",
-  //   discountPercent: "13",
-  //   rating: "4.6",
-  //   ratingCount: "1.1k",
-  //   href: "#",
-  //   color: "Green",
-  //   brand: "The Body Shop",
-  //   category: "Face Wash",
-  //   sizes: ["100ml", "200ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "UK",
-  // },
-  // {
-  //   id: 18,
-  //   title: "Forest Essentials",
-  //   description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
-  //   image: "https://picsum.photos/300/400?random=27",
-  //   currentPrice: "₹1250",
-  //   originalPrice: "₹1450",
-  //   discountPercent: "14",
-  //   rating: "4.7",
-  //   ratingCount: "900",
-  //   href: "#",
-  //   color: "Yellow",
-  //   brand: "Forest Essentials",
-  //   category: "Face Wash",
-  //   sizes: ["100ml"],
-  //   bundleType: "Gift Set",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 19,
-  //   title: "Mamaearth",
-  //   description: "Vitamin C Face Wash",
-  //   image: "https://picsum.photos/300/400?random=28",
-  //   currentPrice: "₹249",
-  //   originalPrice: "₹349",
-  //   discountPercent: "29",
-  //   rating: "4.2",
-  //   ratingCount: "2.5k",
-  //   href: "#",
-  //   color: "White",
-  //   brand: "Mamaearth",
-  //   category: "Face Wash",
-  //   sizes: ["100ml", "200ml"],
-  //   bundleType: "Combo Pack",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 20,
-  //   title: "WOW Skin Rectified",
-  //   description: "Ubtan Face Wash",
-  //   image: "https://picsum.photos/300/400?random=29",
-  //   currentPrice: "₹299",
-  //   originalPrice: "₹399",
-  //   discountPercent: "25",
-  //   rating: "4.3",
-  //   ratingCount: "1.3k",
-  //   href: "#",
-  //   color: "Yellow",
-  //   brand: "WOW Skin Science",
-  //   category: "Face Wash",
-  //   sizes: ["100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 21,
-  //   title: "Biotique",
-  //   description: "Bio Papaya Tan Removal Scrub",
-  //   image: "https://picsum.photos/300/400?random=24",
-  //   currentPrice: "₹180",
-  //   originalPrice: "₹250",
-  //   discountPercent: "28",
-  //   rating: "4.0",
-  //   ratingCount: "1.9k",
-  //   href: "#",
-  //   color: "Orange",
-  //   brand: "Biotique",
-  //   category: "Face Scrub",
-  //   sizes: ["100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 22,
-  //   title: "Neutrogena",
-  //   description: "Hydro Boost Water Gel",
-  //   image: "https://picsum.photos/300/400?random=25",
-  //   currentPrice: "₹849",
-  //   originalPrice: "₹950",
-  //   discountPercent: "11",
-  //   rating: "4.5",
-  //   ratingCount: "2.2k",
-  //   href: "#",
-  //   color: "Blue",
-  //   brand: "Neutrogena",
-  //   category: "Moisturizer",
-  //   sizes: ["50ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "USA",
-  // },
-  // {
-  //   id: 23,
-  //   title: "The Body Shop",
-  //   description: "Tea Tree Skin Clearing Face Wash",
-  //   image: "https://picsum.photos/300/400?random=26",
-  //   currentPrice: "₹645",
-  //   originalPrice: "₹745",
-  //   discountPercent: "13",
-  //   rating: "4.6",
-  //   ratingCount: "1.1k",
-  //   href: "#",
-  //   color: "Green",
-  //   brand: "The Body Shop",
-  //   category: "Face Wash",
-  //   sizes: ["100ml", "200ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "UK",
-  // },
-  // {
-  //   id: 24,
-  //   title: "Forest Essentials",
-  //   description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
-  //   image: "https://picsum.photos/300/400?random=27",
-  //   currentPrice: "₹1250",
-  //   originalPrice: "₹1450",
-  //   discountPercent: "14",
-  //   rating: "4.7",
-  //   ratingCount: "900",
-  //   href: "#",
-  //   color: "Yellow",
-  //   brand: "Forest Essentials",
-  //   category: "Face Wash",
-  //   sizes: ["100ml"],
-  //   bundleType: "Gift Set",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 25,
-  //   title: "Mamaearth",
-  //   description: "Vitamin C Face Wash",
-  //   image: "https://picsum.photos/300/400?random=28",
-  //   currentPrice: "₹249",
-  //   originalPrice: "₹349",
-  //   discountPercent: "29",
-  //   rating: "4.2",
-  //   ratingCount: "2.5k",
-  //   href: "#",
-  //   color: "White",
-  //   brand: "Mamaearth",
-  //   category: "Face Wash",
-  //   sizes: ["100ml", "200ml"],
-  //   bundleType: "Combo Pack",
-  //   countryOfOrigin: "India",
-  // },
-  // {
-  //   id: 26,
-  //   title: "WOW Skin Rectified",
-  //   description: "Ubtan Face Wash",
-  //   image: "https://picsum.photos/300/400?random=29",
-  //   currentPrice: "₹299",
-  //   originalPrice: "₹399",
-  //   discountPercent: "25",
-  //   rating: "4.3",
-  //   ratingCount: "1.3k",
-  //   href: "#",
-  //   color: "Yellow",
-  //   brand: "WOW Skin Science",
-  //   category: "Face Wash",
-  //   sizes: ["100ml"],
-  //   bundleType: "Single",
-  //   countryOfOrigin: "India",
-  // },
+  {
+    id: 4,
+    title: "Himalaya",
+    description: "Anti-Pimple Neem Face Wash",
+    image: "https://picsum.photos/300/400?random=13",
+    currentPrice: "₹175",
+    originalPrice: "₹225",
+    discountPercent: "22",
+    rating: "4.1",
+    ratingCount: "2.1k",
+    href: "#",
+    color: "Green",
+    brand: "Himalaya",
+    category: "Face Wash",
+    sizes: ["50ml", "100ml", "200ml"],
+    bundleType: "Value Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 5,
+    title: "L'Oreal Paris",
+    description: "Hyaluron Moisture Sealing",
+    image: "https://picsum.photos/300/400?random=14",
+    currentPrice: "₹549",
+    originalPrice: "₹699",
+    discountPercent: "21",
+    rating: "4.4",
+    ratingCount: "532",
+    href: "#",
+    color: "Blue",
+    brand: "L'Oreal Paris",
+    category: "Moisturizer",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "France",
+  },
+  {
+    id: 6,
+    title: "Olay Total Effects",
+    description: "Night Cream Anti-Aging",
+    image: "https://picsum.photos/300/400?random=15",
+    currentPrice: "₹899",
+    originalPrice: "₹1199",
+    discountPercent: "25",
+    rating: "4.6",
+    ratingCount: "1.5k",
+    href: "#",
+    color: "White",
+    brand: "Olay",
+    category: "Night Cream",
+    sizes: ["50ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "USA",
+  },
+  {
+    id: 7,
+    title: "Deconstruct",
+    description: "Oil-Free Moisturizer",
+    image: "https://picsum.photos/300/400?random=16",
+    currentPrice: "₹425",
+    originalPrice: "₹549",
+    discountPercent: "23",
+    rating: "4.2",
+    ratingCount: "743",
+    href: "#",
+    color: "White",
+    brand: "Deconstruct",
+    category: "Moisturizer",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 8,
+    title: "Pilgrim",
+    description: "Hair Growth Serum",
+    image: "https://picsum.photos/300/400?random=17",
+    currentPrice: "₹649",
+    originalPrice: "₹899",
+    discountPercent: "28",
+    rating: "4.3",
+    ratingCount: "967",
+    href: "#",
+    color: "Brown",
+    brand: "Pilgrim",
+    category: "Hair Serum",
+    sizes: ["50ml"],
+    bundleType: "Starter Kit",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 9,
+    title: "The Man Company",
+    description: "Charcoal Face Wash",
+    image: "https://picsum.photos/300/400?random=18",
+    currentPrice: "₹399",
+    originalPrice: "₹499",
+    discountPercent: "20",
+    rating: "4.5",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Black",
+    brand: "The Man Company",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 10,
+    title: "Beardo",
+    description: "Activated Charcoal Face Wash",
+    image: "https://picsum.photos/300/400?random=19",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.2",
+    ratingCount: "800",
+    href: "#",
+    color: "Black",
+    brand: "Beardo",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 11,
+    title: "Dot & Key",
+    description: "Watermelon Superglow Moisturizer",
+    image: "https://picsum.photos/300/400?random=20",
+    currentPrice: "₹595",
+    originalPrice: "₹795",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.8k",
+    href: "#",
+    color: "Pink",
+    brand: "Dot & Key",
+    category: "Moisturizer",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 12,
+    title: "Mamaearth",
+    description: "Onion Hair Oil for Hair Growth",
+    image: "https://picsum.photos/300/400?random=21",
+    currentPrice: "₹389",
+    originalPrice: "₹499",
+    discountPercent: "22",
+    rating: "4.0",
+    ratingCount: "3.5k",
+    href: "#",
+    color: "Brown",
+    brand: "Mamaearth",
+    category: "Hair Oil",
+    sizes: ["200ml"],
+    bundleType: "Value Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 13,
+    title: "WOW Skin Science",
+    description: "Apple Cider Vinegar Shampoo",
+    image: "https://picsum.photos/300/400?random=22",
+    currentPrice: "₹375",
+    originalPrice: "₹499",
+    discountPercent: "25",
+    rating: "4.1",
+    ratingCount: "2.7k",
+    href: "#",
+    color: "Brown",
+    brand: "WOW Skin Science",
+    category: "Shampoo",
+    sizes: ["200ml", "500ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 14,
+    title: "Mcaffeine",
+    description: "Naked & Raw Coffee Body Scrub",
+    image: "https://picsum.photos/300/400?random=23",
+    currentPrice: "₹399",
+    originalPrice: "₹599",
+    discountPercent: "33",
+    rating: "4.4",
+    ratingCount: "980",
+    href: "#",
+    color: "Brown",
+    brand: "Mcaffeine",
+    category: "Body Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 15,
+    title: "Biotique",
+    description: "Bio Papaya Tan Removal Scrub",
+    image: "https://picsum.photos/300/400?random=24",
+    currentPrice: "₹180",
+    originalPrice: "₹250",
+    discountPercent: "28",
+    rating: "4.0",
+    ratingCount: "1.9k",
+    href: "#",
+    color: "Orange",
+    brand: "Biotique",
+    category: "Face Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 16,
+    title: "Neutrogena",
+    description: "Hydro Boost Water Gel",
+    image: "https://picsum.photos/300/400?random=25",
+    currentPrice: "₹849",
+    originalPrice: "₹950",
+    discountPercent: "11",
+    rating: "4.5",
+    ratingCount: "2.2k",
+    href: "#",
+    color: "Blue",
+    brand: "Neutrogena",
+    category: "Moisturizer",
+    sizes: ["50ml"],
+    bundleType: "Single",
+    countryOfOrigin: "USA",
+  },
+  {
+    id: 17,
+    title: "The Body Shop",
+    description: "Tea Tree Skin Clearing Face Wash",
+    image: "https://picsum.photos/300/400?random=26",
+    currentPrice: "₹645",
+    originalPrice: "₹745",
+    discountPercent: "13",
+    rating: "4.6",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Green",
+    brand: "The Body Shop",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "UK",
+  },
+  {
+    id: 18,
+    title: "Forest Essentials",
+    description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+    image: "https://picsum.photos/300/400?random=27",
+    currentPrice: "₹1250",
+    originalPrice: "₹1450",
+    discountPercent: "14",
+    rating: "4.7",
+    ratingCount: "900",
+    href: "#",
+    color: "Yellow",
+    brand: "Forest Essentials",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 19,
+    title: "Mamaearth",
+    description: "Vitamin C Face Wash",
+    image: "https://picsum.photos/300/400?random=28",
+    currentPrice: "₹249",
+    originalPrice: "₹349",
+    discountPercent: "29",
+    rating: "4.2",
+    ratingCount: "2.5k",
+    href: "#",
+    color: "White",
+    brand: "Mamaearth",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 20,
+    title: "WOW Skin Rectified",
+    description: "Ubtan Face Wash",
+    image: "https://picsum.photos/300/400?random=29",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.3k",
+    href: "#",
+    color: "Yellow",
+    brand: "WOW Skin Science",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 21,
+    title: "Biotique",
+    description: "Bio Papaya Tan Removal Scrub",
+    image: "https://picsum.photos/300/400?random=24",
+    currentPrice: "₹180",
+    originalPrice: "₹250",
+    discountPercent: "28",
+    rating: "4.0",
+    ratingCount: "1.9k",
+    href: "#",
+    color: "Orange",
+    brand: "Biotique",
+    category: "Face Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 22,
+    title: "Neutrogena",
+    description: "Hydro Boost Water Gel",
+    image: "https://picsum.photos/300/400?random=25",
+    currentPrice: "₹849",
+    originalPrice: "₹950",
+    discountPercent: "11",
+    rating: "4.5",
+    ratingCount: "2.2k",
+    href: "#",
+    color: "Blue",
+    brand: "Neutrogena",
+    category: "Moisturizer",
+    sizes: ["50ml"],
+    bundleType: "Single",
+    countryOfOrigin: "USA",
+  },
+  {
+    id: 23,
+    title: "The Body Shop",
+    description: "Tea Tree Skin Clearing Face Wash",
+    image: "https://picsum.photos/300/400?random=26",
+    currentPrice: "₹645",
+    originalPrice: "₹745",
+    discountPercent: "13",
+    rating: "4.6",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Green",
+    brand: "The Body Shop",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "UK",
+  },
+  {
+    id: 24,
+    title: "Forest Essentials",
+    description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+    image: "https://picsum.photos/300/400?random=27",
+    currentPrice: "₹1250",
+    originalPrice: "₹1450",
+    discountPercent: "14",
+    rating: "4.7",
+    ratingCount: "900",
+    href: "#",
+    color: "Yellow",
+    brand: "Forest Essentials",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 25,
+    title: "Mamaearth",
+    description: "Vitamin C Face Wash",
+    image: "https://picsum.photos/300/400?random=28",
+    currentPrice: "₹249",
+    originalPrice: "₹349",
+    discountPercent: "29",
+    rating: "4.2",
+    ratingCount: "2.5k",
+    href: "#",
+    color: "White",
+    brand: "Mamaearth",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 26,
+    title: "WOW Skin Rectified",
+    description: "Ubtan Face Wash",
+    image: "https://picsum.photos/300/400?random=29",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.3k",
+    href: "#",
+    color: "Yellow",
+    brand: "WOW Skin Science",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
 ];
 
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden relative"
+      class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-[250px] relative">
-        <!-- Default single image -->
         <img
-          class="w-full h-full object-cover absolute top-0 left-0 default-image"
+          class="w-full h-full object-fit"
           src="${item.image}"
-          alt="${item.title}"
+          alt=""
         />
-        <!-- Slider images (hidden by default, shown on hover) -->
-        <div class="image-slider w-full h-[220px] overflow-hidden absolute opacity-100 transition-opacity duration-300">
-          ${item?.images
-            .map(
-              (img, index) => `
-            <img
-              class="w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-500 slider-image"
-              src="${img}"
-              alt="${item.title} - Image ${index + 1}"
-              style="z-index: ${10 - index};"
-            />
-          `
-            )
-            .join("")}
-        </div>
-        <div class="slider-nav absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          ${item.images
-            .map(
-              (_, index) => `
-            <button class="w-2 h-2 rounded-full bg-gray-300 ${
-              index === 0 ? "bg-gray-800" : ""
-            } slider-dot" data-index="${index}"></button>
-          `
-            )
-            .join("")}
-        </div>
         <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-[10]">
           <button class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
@@ -654,86 +609,9 @@ function createProductCardHTML(item) {
           </svg>
         </div>
       </div>
+
     </div>
   `;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Slider functionality - Initialize after DOM is ready
-  initializeProductSliders();
-});
-
-function initializeProductSliders() {
-  document.querySelectorAll(".image-slider").forEach((slider) => {
-    const images = slider.querySelectorAll(".slider-image");
-    const sliderContainer = slider.parentElement;
-    const dots = sliderContainer
-      .querySelector(".slider-nav")
-      ?.querySelectorAll(".slider-dot");
-    const defaultImage = slider.previousElementSibling;
-    let currentIndex = 0;
-    let sliderInterval;
-
-    function showImage(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle("opacity-100", i === index);
-        img.classList.toggle("opacity-0", i !== index);
-      });
-      if (dots) {
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("bg-gray-800", i === index);
-          dot.classList.toggle("bg-gray-300", i !== index);
-        });
-      }
-    }
-
-    function startSlider() {
-      if (images.length <= 1) return; // Don't start slider if only one image
-
-      defaultImage.style.opacity = "0";
-      currentIndex = 0;
-      showImage(currentIndex);
-
-      clearInterval(sliderInterval); // Clear any existing interval
-      sliderInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
-      }, 2000);
-    }
-
-    function stopSlider() {
-      clearInterval(sliderInterval);
-      images.forEach((img) => img.classList.add("opacity-0"));
-      if (dots) {
-        dots.forEach((dot) => {
-          dot.classList.remove("bg-gray-800");
-          dot.classList.add("bg-gray-300");
-        });
-      }
-      defaultImage.style.opacity = "1";
-    }
-
-    // Add event listeners
-    sliderContainer.addEventListener("mouseenter", startSlider);
-    sliderContainer.addEventListener("mouseleave", stopSlider);
-
-    // Add click handlers for dots
-    if (dots) {
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", (e) => {
-          e.stopPropagation();
-          currentIndex = index;
-          showImage(currentIndex);
-          // Restart the interval from the selected image
-          clearInterval(sliderInterval);
-          sliderInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-          }, 2000);
-        });
-      });
-    }
-  });
 }
 
 // Global filter state
@@ -864,8 +742,6 @@ function renderProductsDesktop(productsToRender) {
       productCard.innerHTML = createProductCardHTML(product);
       productsGridDesktop.appendChild(productCard);
     });
-    // Re-initialize sliders for newly rendered products
-    initializeProductSliders();
   }
   if (productCountDesktop) {
     productCountDesktop.textContent = `- ${productsToRender.length} items`;
@@ -880,8 +756,6 @@ function renderProducts(productsToRender) {
       productCard.innerHTML = createProductCardHTML(product);
       productsSliderMobile.appendChild(productCard);
     });
-    // Re-initialize sliders for newly rendered products
-    initializeProductSliders();
   }
 }
 
@@ -2349,11 +2223,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial render
   render();
-
-  // Initialize sliders after initial render
-  setTimeout(() => {
-    initializeProductSliders();
-  }, 100);
 });
 
 // --- Product Sidebar Logic ---
