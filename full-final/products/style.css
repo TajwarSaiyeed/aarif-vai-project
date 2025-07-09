@@ -59,14 +59,6 @@ body {
   pointer-events: none !important;
 }
 
-.opacity-0 {
-  opacity: 0 !important;
-}
-
-.opacity-50 {
-  opacity: 0.5 !important;
-}
-
 /* Sort modal styling */
 #sort-overlay ul {
   list-style: none;
