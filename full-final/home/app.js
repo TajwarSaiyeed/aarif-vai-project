@@ -129,7 +129,7 @@ const categories = [
   {
     title: "Category 1",
     subtitle: "Subtitle for Category 1",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
+    image: "https://picsum.photos/300/400?random=12",
   },
   {
     title: "Category 2",
@@ -177,6 +177,52 @@ function createCategoryCardHTML(category) {
             </h3>
           </div>
         `;
+}
+
+// Function to create category card HTML with responsive sizing
+function createCategoryMobileCardHTML(category) {
+  return `
+          <div class="rounded-lg text-center flex-shrink-0">
+            <div class="w-20 h-20 sm:w-32 sm:h-32 mx-auto bg-gradient-to-b from-transparent to-blue-200 rounded-xl flex items-center justify-start relative overflow-hidden">
+              <img
+                src="${category.image}"
+                alt="${category.title}"
+                class="w-20 h-20 sm:w-40 sm:h-40 object-fit absolute -top-3 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="text-sm sm:text-xl md:text-2xl">
+              ${category.title}
+            </h3>
+          </div>
+        `;
+}
+
+// mobile top category slider
+const categoryMobileSlider = document.querySelector("#category-mobile-slider");
+const categoryMobileSlider1 = document.querySelector(
+  "#category-mobile-slider1"
+);
+if (categoryMobileSlider) {
+  categories.forEach((category) => {
+    const categoryCard = document.createElement("div");
+    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
+    if (category === categories[categories.length - 1]) {
+      categoryCard.classList.add("pr-5");
+    }
+    categoryMobileSlider.appendChild(categoryCard);
+  });
+}
+
+if (categoryMobileSlider1) {
+  categories.forEach((category) => {
+    const categoryCard = document.createElement("div");
+    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
+    if (category === categories[categories.length - 1]) {
+      categoryCard.classList.add("pr-5");
+    }
+    categoryMobileSlider1.appendChild(categoryCard);
+  });
 }
 
 // Generate slider cards for all devices
