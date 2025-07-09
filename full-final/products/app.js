@@ -739,6 +739,7 @@ function renderProductsDesktop(productsToRender) {
     productsGridDesktop.innerHTML = "";
     productsToRender.forEach((product) => {
       const productCard = document.createElement("div");
+      productCard.className = "z-[-1]";
       productCard.innerHTML = createProductCardHTML(product);
       productsGridDesktop.appendChild(productCard);
     });
