@@ -2162,7 +2162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
-        if (!filterModal.classList.contains("translate-y-neg-full")) {
+        if (!filterModal.classList.contains("translate-y-full")) {
           closeFilterModal();
         }
         if (!sortOverlay.classList.contains("translate-y-full")) {
@@ -2189,13 +2189,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function openFilterModal() {
-    filterModal.classList.remove("translate-y-neg-full");
+    filterModal.classList.remove("translate-y-full");
     filterModal.classList.add("translate-y-0");
     document.body.style.overflow = "hidden";
   }
 
   function closeFilterModal() {
-    filterModal.classList.add("translate-y-neg-full");
+    filterModal.classList.add("translate-y-full");
     filterModal.classList.remove("translate-y-0");
     document.body.style.overflow = "";
     resetFilterModal();

@@ -91,12 +91,12 @@ body {
 
 /* Filter Modal Styling */
 #filter-modal {
-  transform: translateY(-100%);
+  transform: translateY(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 900;
 }
 
-/* Utility classes for filter modal animation (slide from top) */
+/* Utility classes for filter modal animation (slide from bottom) */
 .translate-y-neg-full {
   transform: translateY(-100%) !important;
 }
@@ -106,7 +106,7 @@ body {
 }
 
 #filter-modal.translate-y-full {
-  transform: translateY(-100%) !important;
+  transform: translateY(100%) !important;
 }
 
 /* Filter modal content styling */
