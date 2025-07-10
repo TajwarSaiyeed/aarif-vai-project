@@ -1029,7 +1029,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "shadow-lg",
         "border",
         "border-gray-200",
-        "px-5"
+        "px-5",
+        "overflow-hidden"
       );
 
       // Populate mega menu columns
