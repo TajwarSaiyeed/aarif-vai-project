@@ -7,14 +7,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../footer.css" />
     <title>Products</title>
   </head>
   <body>
     <header
-      class="bg-white z-10 fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
+      class="bg-white z-[9999] fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
     >
       <!-- Desktop Navbar (visible on xl screens and up) -->
       <div
@@ -31,7 +31,7 @@
           </div>
 
           <!-- Navigation items will be dynamically inserted here by JavaScript -->
-          <div id="main-navigation" class="flex relative ml-5"></div>
+          <div id="main-navigation" class="flex relative ml-10"></div>
         </div>
 
         <div class="flex items-center justify-end w-full">
@@ -50,7 +50,7 @@
           </div>
 
           <!-- actions -->
-          <div class="flex leading-0 h-[40px] ml-[50px]">
+          <div class="flex leading-0 h-[40px] ml-[60px]">
             <!-- Profile Dropdown -->
             <div class="relative h-[60px] mx-5 group">
               <div class="flex px-3 relative h-[40px]">
@@ -203,7 +203,7 @@
             </div>
 
             <!-- Wishlist -->
-            <a href="#" class="flex no-underline relative mx-[55px] ml-[10px]">
+            <a href="#" class="flex no-underline relative mx-[50px] ml-[15px]">
               <span
                 class="myntraweb-sprite sprites-headerWishlist mt-2 absolute bottom-[14px] left-[13px]"
               ></span>
@@ -465,9 +465,9 @@
 
         <div class="flex">
           <!-- Filters -->
-          <div class="w-[250px] lg:sticky lg:top-0" id="left-filter">
+          <div class="w-[250px] lg:sticky lg:top-0 z-[99]" id="left-filter">
             <div
-              class="flex justify-between items-center px-4 w-full border-b border-gray-200 py-[15px]"
+              class="flex justify-between items-center px-4 w-full border-b border-gray-200 py-[7px]"
             >
               <h2 class="text-base font-bold">FILTERS</h2>
               <span
@@ -706,7 +706,7 @@
           <div class="flex-1 pb-5" id="product-section">
             <div class="mb-4 border-b border-gray-200">
               <!-- Filter Categories and Sort By on same line -->
-              <div class="flex justify-between items-center px-4 py-[8px]">
+              <div class="flex justify-between items-center px-4">
                 <!-- Filter Categories -->
                 <div id="filter-categories" class="flex items-center">
                   <!-- Dynamic filter categories will be inserted here -->
@@ -825,7 +825,7 @@
               <!-- Sub-categories Container (Full Width) -->
               <div
                 id="sub-categories-container"
-                class="hidden px-4 py-2 w-full"
+                class="hidden px-4 py-2 w-full mb-2"
               >
                 <div
                   class="grid grid-cols-8 gap-4 w-full px-4"
@@ -840,7 +840,7 @@
             </div>
             <div
               id="products-grid-desktop"
-              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 place-items-center 2xl:place-items-between 2xl:gap-2 gap-y-7"
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 place-items-center 2xl:place-items-between gap-y-8"
             >
               <!-- Product cards will be injected here -->
             </div>
@@ -1415,7 +1415,7 @@
     <!-- Sidebar container for product view similar -->
     <div
       id="product-view-similar-sidebar"
-      class="fixed top-0 right-0 h-full w-[500px] max-w-full bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300"
+      class="fixed top-0 right-0 h-full w-[500px] max-w-full bg-white shadow-2xl z-[99999] transform translate-x-full transition-transform duration-300"
       style="display: none"
     >
       <div
@@ -1443,14 +1443,14 @@
       </div>
       <div
         id="product-similar-content"
-        class="p-4 overflow-y-auto h-[calc(100%-64px)] grid grid-cols-2 gap-x-2"
+        class="p-4 overflow-y-auto h-[calc(100%-64px)] grid grid-cols-2 gap-6"
       >
         <!-- Similar products will be loaded here -->
       </div>
     </div>
     <div
       id="product-sidebar-overlay"
-      class="fixed inset-0 bg-black/40 z-[99] hidden"
+      class="fixed inset-0 bg-black/40 z-[9999] hidden"
     ></div>
 
     <!-- This is the desktop footer, hidden on smaller screens (xl:hidden) -->

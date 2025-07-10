@@ -559,7 +559,7 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-full max-w-[220px] h-[330px] group hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-[250px] relative">
         <img
@@ -568,20 +568,20 @@ function createProductCardHTML(item) {
           alt=""
         />
         <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-[10]">
-          <button class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <div class="flex text-xs gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
             Wishlist
-          </button>
+          </div>
         </div>
 
-        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-product-id="${
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[140px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-product-id="${
           item.id
         }" title="View Similar">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
             <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
             <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
           </svg>
-          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm">
+          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-[12px]">
             View Similar
           </p>
         </div>
@@ -739,7 +739,6 @@ function renderProductsDesktop(productsToRender) {
     productsGridDesktop.innerHTML = "";
     productsToRender.forEach((product) => {
       const productCard = document.createElement("div");
-      productCard.className = "z-[-1]";
       productCard.innerHTML = createProductCardHTML(product);
       productsGridDesktop.appendChild(productCard);
     });
