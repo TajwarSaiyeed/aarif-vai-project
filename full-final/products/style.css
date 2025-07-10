@@ -416,3 +416,12 @@ input[type="radio"].accent-\[\#ff3e6c\] {
     /* Disable sticky behavior on smaller screens */
   }
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

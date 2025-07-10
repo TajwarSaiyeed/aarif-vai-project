@@ -1930,7 +1930,7 @@ function initializeBrandFilter() {
             brandCheckboxesContainer.querySelectorAll(".brand-name-span");
           allBrandSpans.forEach((span) => {
             span.classList.remove("text-gray-200", "text-gray-800");
-            span.classList.add("text-gray-800"); // Reset to default
+            span.classList.add("text-gray-800");
           });
         });
       });
