@@ -50,7 +50,7 @@ function createProductHTML(product, isLast = false) {
   const borderClass = isLast ? "" : "border border-gray-200";
 
   return `
-    <div class="relative flex gap-4 p-2 ${borderClass} product-card" data-product-id="${
+    <div class="relative bg-white flex gap-4 p-2 ${borderClass} product-card" data-product-id="${
     product.id
   }">
       <div class="w-20 h-28 md:w-28 md:h-36 bg-gray-100 relative flex-shrink-0">
@@ -68,16 +68,16 @@ function createProductHTML(product, isLast = false) {
         <div class="text-gray-600 leading-snug text-sm md:text-base">${
           product.name
         }</div>
-        <div class="flex gap-6">
-          <div class="flex items-center gap-2">
+        <div class="flex gap-2">
+          <div class="flex items-center gap-2 bg-[#f5f5f6] px-3 font-semibold text-sm">
             <span>Size:</span>
-            <span class="font-semibold cursor-pointer text-teal-500" id="selectedSize-${
+            <span class="cursor-pointer text-teal-500" id="selectedSize-${
               product.id
             }" onclick="openProductSizeModal(${product.id})">${
     product.size
   }</span>
           </div>
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 px-4">
             <span>Qty:</span>
             <div class="flex items-center">
               <button class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center focus:outline-none" onclick="decreaseQuantity(${
