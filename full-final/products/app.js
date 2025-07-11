@@ -559,12 +559,12 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-full max-w-[220px] h-[330px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-[250px] relative">
         <img
           class="w-full h-full object-fit"
-          src="${item.image}"
+          src="../../img.jpeg"
           alt=""
         />
         <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-[10]">
