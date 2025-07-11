@@ -778,7 +778,22 @@ function hasActiveFilters() {
 
 // Function to update selected filters display
 function updateSelectedFilters() {
-  if (!selectedFiltersContainer) return;
+  const selectedFiltersContainerWrapper = document.getElementById(
+    "selected-filters-container"
+  );
+  const selectedFiltersContainer = document.getElementById("selected-filters");
+
+  if (!selectedFiltersContainerWrapper || !selectedFiltersContainer) return;
+
+  // Use the existing helper function to determine if any filters are active
+  const areFiltersActive = hasActiveFilters();
+
+  // Toggle visibility of the entire wrapper based on filter state
+  if (areFiltersActive) {
+    selectedFiltersContainerWrapper.classList.remove("hidden");
+  } else {
+    selectedFiltersContainerWrapper.classList.add("hidden");
+  }
 
   selectedFiltersContainer.innerHTML = "";
 
@@ -800,11 +815,11 @@ function updateSelectedFilters() {
     selectedFiltersContainer.appendChild(tag);
   }
 
-  if (hasActiveFilters()) {
-    selectedFiltersContainer.classList.add("pt-4", "mb-2");
-  } else {
-    selectedFiltersContainer.classList.remove("pt-4", "mb-2");
-  }
+  // if (hasActiveFilters()) {
+  //   selectedFiltersContainer.classList.add("pt-4", "mb-2");
+  // } else {
+  //   selectedFiltersContainer.classList.remove("pt-4", "mb-2");
+  // }
 
   // Add color filters
   globalFilters.colors.forEach((color) => {
