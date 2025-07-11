@@ -6,17 +6,114 @@
     <title>Privacy Policy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../global.css" />
+
+    <link rel="stylesheet" href="../footer.css" />
+    <style>
+      /* Mobile Sidebar Overlay Styles */
+      #mobile-sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      #mobile-sidebar-overlay.open {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      #mobile-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 100%;
+        background-color: white;
+        z-index: 1001;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        overflow-y: auto;
+      }
+
+      #mobile-sidebar.open {
+        transform: translateX(0);
+      }
+
+      /* Mobile navigation specific styles */
+      .mobile-nav-header {
+        background-color: #f5f5f5;
+        padding: 1rem;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .mobile-nav-content {
+        padding: 0;
+      }
+
+      /* Accordion styles for mobile sidebar */
+      .accordion-item {
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .accordion-header {
+        padding: 1rem;
+        background-color: white;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        font-weight: 600;
+        color: #282c3f;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+      }
+
+      .accordion-content.open {
+        max-height: 500px;
+      }
+
+      /* Static links styling for mobile */
+      .mobile-static-links {
+        padding: 1rem;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .mobile-static-links a {
+        display: block;
+        padding: 0.5rem 0;
+        color: #3e4152;
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+
+      .mobile-static-links a:hover {
+        font-weight: 600;
+      }
+    </style>
   </head>
   <body>
     <header
-      class="bg-white z-10 fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
+      class="bg-white z-[999] fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
     >
       <!-- Desktop Navbar (visible on xl screens and up) -->
       <div
-        class="hidden xl:flex items-center justify-between py-4 gap-4 max-w-[1320px] mx-auto"
+        class="hidden xl:flex items-center justify-between py-[18px] gap-4 px-8"
       >
         <div class="flex items-center w-full">
-          <div class="float-left h-inherit ml-[4%] mr-6">
+          <div class="float-left h-inherit mt-1 ml-[3.5%] mr-6">
             <a
               href="#"
               class="inline-block align-middle p-0 m-0 cursor-pointer"
@@ -26,13 +123,13 @@
           </div>
 
           <!-- Navigation items will be dynamically inserted here by JavaScript -->
-          <div id="main-navigation" class="flex relative"></div>
+          <div id="main-navigation" class="flex relative ml-10"></div>
         </div>
 
-        <div class="flex items-center justify-between gap-5 w-full">
+        <div class="flex items-center justify-end w-full">
           <!-- search -->
-          <div class="max-w-[400px] w-full leading-0 relative">
-            <a href="#" class="absolute top-1/2 -translate-y-1/2 mt-1 p-2">
+          <div class="max-w-[540px] w-full leading-0 relative">
+            <a href="#" class="absolute top-1/2 -translate-y-1/2 p-2 rounded-l">
               <span
                 class="myntraweb-sprite sprites-search inline-block scale-75"
               ></span>
@@ -40,12 +137,12 @@
             <input
               type="text"
               placeholder="Search for products, brands and more"
-              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded-r bg-gray-50 pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
+              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded bg-[#f5f5f6] pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
             />
           </div>
 
           <!-- actions -->
-          <div class="flex leading-0 h-[40px] ml-[50px]">
+          <div class="flex leading-0 h-[40px] ml-[60px]">
             <!-- Profile Dropdown -->
             <div class="relative h-[60px] mx-5 group">
               <div class="flex px-3 relative h-[40px]">
@@ -198,7 +295,7 @@
             </div>
 
             <!-- Wishlist -->
-            <a href="#" class="flex no-underline relative mx-[55px] ml-[10px]">
+            <a href="#" class="flex no-underline relative mx-[50px] ml-[15px]">
               <span
                 class="myntraweb-sprite sprites-headerWishlist mt-2 absolute bottom-[14px] left-[13px]"
               ></span>
@@ -214,8 +311,8 @@
                 class="myntraweb-sprite sprites-headerBag mt-2 absolute bottom-[14px] -left-[1px]"
               ></span>
               <span
-                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
-                >0</span
+                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#ff3f6c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold visible"
+                >2</span
               >
               <span
                 class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
@@ -228,7 +325,7 @@
 
       <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="xl:hidden flex items-center justify-between px-4 py-3 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
+        class="xl:hidden flex items-center justify-between px-4 py-2 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
         <!-- Hamburger Icon -->
         <button id="mobile-menu-button" class="p-2">
@@ -251,24 +348,115 @@
         </button>
 
         <!-- Logo -->
-        <div class="flex-shrink-0 mr-auto ml-4">
-          <a href="#" class="inline-block align-middle p-0 m-0 cursor-pointer">
-            <span class="myntraweb-sprite sprites-headerLogo"></span>
+        <div class="flex-shrink-0 mr-auto">
+          <a class="linkClean" href="/">
+            <svg
+              id="logo"
+              style="position: absolute; width: 0; height: 0; overflow: hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 540 540"
+            >
+              <defs>
+                <filter
+                  x="-3.8%"
+                  y="-2.8%"
+                  width="107.7%"
+                  height="111.1%"
+                  filterUnits="objectBoundingBox"
+                  id="a"
+                >
+                  <feOffset
+                    dy="10"
+                    in="SourceAlpha"
+                    result="shadowOffsetOuter1"
+                  ></feOffset>
+                  <feGaussianBlur
+                    stdDeviation="5"
+                    in="shadowOffsetOuter1"
+                    result="shadowBlurOuter1"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"
+                    in="shadowBlurOuter1"
+                  ></feColorMatrix>
+                </filter>
+                <path
+                  d="M499.178 195.54c5.828 16.006 14.447 39.657-.562-1.566-5.336-14.64-3.618-9.916-.393-1.053-14.807-40.373-36.1-84.274-58.53-120.637-24.04-38.975-45.588-61.116-60.983-69.195 0 0-7.932-5.624-19.532-.77l-.396.141c-14.996 5.47-33.715 25.286-55.633 58.902-14.538 22.292-28.937 48.334-41.764 75.39-14.042-29.557-30.051-58.123-45.687-81.29-15.87-23.516-39.493-54.78-61.304-54.78-1.663 0-3.31.174-4.895.513v.003c-9.717 1.784-20.027 8.995-32.359 22.649-10.125 11.209-21.155 26.278-32.78 44.784-23.513 37.429-45.83 83.134-61.23 125.404C6.765 238.986-.888 275.643.382 302.987c.881 18.986 6.664 43.19 28.725 53.275l3.093 1.299 2.867.945a42.678 42.678 0 0012.032 1.733h.002c17.686 0 35.05-10.567 51.603-31.403 16.203-20.394 31.744-50.845 46.196-90.516a622.213 622.213 0 009.405-27.965 627.225 627.225 0 009.395 27.918c26.077 71.57 55.065 112.058 86.161 120.338l.48.121c.602.153 1.336.339 2.16.501l.527.109c2.362.452 4.69.712 7.115.8l.285.01a30.71 30.71 0 003.203-.063c.471-.02.904-.048 1.381-.08l1.023-.105a35.83 35.83 0 001.159-.158c.5-.06 1.22-.15 2.073-.311.71-.13 1.424-.28 2.24-.473l.45-.112c.19-.044.379-.092.57-.143 31.237-8.052 60.344-48.563 86.512-120.41a610.7 610.7 0 008.928-26.38 605.593 605.593 0 008.928 26.35c14.432 39.653 29.962 70.099 46.156 90.494 16.547 20.837 33.906 31.404 51.592 31.406h.007c4.729 0 9.407-.785 13.92-2.335 11.15-2.948 20.065-10.173 25.812-20.94 14.201-26.586 9.078-74.145-15.203-141.352"
+                  id="b"
+                ></path>
+              </defs>
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(60 130)">
+                  <use fill="#000" filter="url(#a)" xlink:href="#b"></use>
+                  <use fill="#FFF" xlink:href="#b"></use>
+                </g>
+                <path
+                  d="M212.833 145.065c-26.297 3.973-84.645 97.719-116.018 183.823-33.34 91.572-25.359 135.799.835 145.413.018.02.037.02.037.02s.008 0 .036.02c26.263 9.458 60.834-19.288 94.201-110.87 9.022-24.79 16.733-51.485 22.741-77.44-3.163-70.55-2.157-140.89-1.832-140.966"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M212.834 145.065c21.775-4.676 74.573 74.706 108.915 156.41.626 19.203-8.524 173.233-7.884 173.426-23.151-6.162-50.176-39.282-76.482-111.484-9.01-24.771-16.753-51.453-22.717-77.386l-.481-2.096c-15.758-69.124-19.215-132.285-2.41-138.574 0 0 .006 0 .026-.01h.02a8.75 8.75 0 011.013-.285h.002z"
+                  fill="#FF912E"
+                ></path>
+                <path
+                  d="M330.794 474.52c-.514.166-1.024.322-1.532.47-.23.066-.451.104-.667.17-.5.116-1.018.23-1.559.326-.535.104-1.018.152-1.502.213-.399.072-.756.108-1.138.158-.418.028-.791.05-1.213.068a23.89 23.89 0 01-1.623.056c-.193 0-.373-.017-.555-.017a32.514 32.514 0 01-4.969-.556c-.075-.019-.172-.036-.261-.057-.608-.115-1.26-.286-1.91-.45-.64-.193-1.329-.393-1.996-.628l-.02-.01h-.028c-26.212-9.615-34.2-53.839-.833-145.42 3.29-9.078 6.92-18.233 10.762-27.368l.941-2.23c31.216-73.547 77.02-144.602 101.307-153.456 1.005 19.974.7 70.72 4.319 142.353-5.917 25.257-13.455 51.19-22.249 75.292-26.428 72.555-53.585 105.63-76.806 111.557.254-.074.509-.15.764-.228z"
+                  fill="#F25511"
+                ></path>
+                <path
+                  d="M427.832 286.062c-15.87-68.598-19.71-131.89-3.834-140.273 1.673-.59 3.198-.905 4.643-.917 1.224.096 2.475.382 3.795.853 27.474 9.686 82.893 99.962 113.207 183.107 33.34 91.574 25.38 135.815-.834 145.409 0 0-.02 0-.047.024h-.017c-26.26 9.478-60.833-19.269-94.166-110.849-8.81-24.103-16.346-50.017-22.262-75.274z"
+                  fill="#F41CB2"
+                ></path>
+                <path
+                  d="M432.436 162.748c27.474 9.686 84.786 99.016 115.099 182.16 13.7 37.631 20.142 58.855 19.881 86.95 1.666-23.794-4.528-55.658-21.773-103.026-30.312-83.145-85.733-173.421-113.207-183.107-1.32-.471-2.571-.757-3.795-.854-1.445.013-2.97.327-4.643.918-24.532 8.945-71.019 82.296-102.25 156.633-34.34-81.706-87.138-162.033-108.915-157.356-26.296 3.972-84.646 97.716-116.018 183.822-17.243 47.358-23.433 80.158-21.766 103.95-.262-32.858 6.176-50.252 19.873-87.873 31.374-86.105 91.615-178.904 117.91-182.876 21.778-4.677 65.534 60.732 108.917 142.222 39.93-75.569 77.717-132.554 102.249-141.5 1.582-.56 3.032-.87 4.41-.91"
+                  fill="#821414"
+                ></path>
+              </g>
+            </svg>
+            <svg class="w-[54px] h-[45px] inline-block bg-center bg-contain">
+              <use xlink:href="#logo"></use>
+            </svg>
           </a>
         </div>
 
         <!-- Icons on the right -->
         <div class="flex items-center space-x-4">
-          <button id="mobile-search-button" class="p-2">
-            <span
-              class="myntraweb-sprite sprites-search inline-block scale-75"
-            ></span>
-          </button>
-          <a href="#" class="relative p-2">
-            <span class="myntraweb-sprite sprites-headerUser"></span>
+          <a id="mobile-search-button" href="#" class="relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search-icon lucide-search"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
           </a>
-          <a href="#" class="relative p-2">
-            <span class="myntraweb-sprite sprites-headerBag"></span>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <g stroke="none" strokewidth="1" fill="none" fillrule="evenodd">
+                <g fill="#3E4152">
+                  <path
+                    d="M8.1703,4.473425 C6.9537,4.473425 5.8134,4.946625 4.95975,5.805525 C4.10435,6.666175 3.63325,7.815575 3.63325,9.042675 C3.63325,10.269775 4.10435,11.419525 4.95975,12.280175 L12,19.362425 L19.0406,12.279825 C19.89565,11.419525 20.36675,10.270125 20.36675,9.042675 C20.36675,7.815575 19.89565,6.665825 19.0406,5.805875 C19.0406,5.805875 19.0406,5.805525 19.04025,5.805525 C18.1866,4.946625 17.0463,4.473425 15.8297,4.473425 C14.6138,4.473425 13.4742,4.946275 12.62055,5.804475 C12.29225,6.134525 11.70845,6.134875 11.3798,5.804475 C10.5258,4.946275 9.3862,4.473425 8.1703,4.473425 L8.1703,4.473425 Z M12.02835,21.276575 L11.972,21.276575 C11.6304,21.276575 11.2965,21.137625 11.05605,20.895075 L3.71865,13.513925 C2.53495,12.323225 1.88325,10.735275 1.88325,9.042675 C1.88325,7.350075 2.53495,5.762475 3.71865,4.571775 C4.9034,3.379675 6.48435,2.723425 8.1703,2.723425 C9.5759,2.723425 10.90905,3.179825 12,4.022625 C13.0913,3.179825 14.4241,2.723425 15.8297,2.723425 C17.516,2.723425 19.09695,3.379675 20.2817,4.572125 C21.46505,5.762475 22.11675,7.350075 22.11675,9.042675 C22.11675,10.735625 21.46505,12.323225 20.2817,13.513925 L12.94325,20.895775 C12.6993,21.141475 12.3745,21.276575 12.02835,21.276575 L12.02835,21.276575 Z"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="#3E4152"
+                fillrule="evenodd"
+                d="M4.012 20.718L5.246 7.314H7.27v1.763a.733.733 0 101.466 0V7.314h6.528v1.763a.733.733 0 001.466 0V7.314h2.024l1.234 13.404H4.012zM12 3.282c1.56 0 2.865 1.1 3.187 2.565H8.813A3.268 3.268 0 0112 3.282zm8.15 3.228a.733.733 0 00-.73-.663h-2.747A4.734 4.734 0 0012 1.816a4.734 4.734 0 00-4.673 4.03H4.58a.733.733 0 00-.73.664L2.475 21.38a.734.734 0 00.73.804h17.59a.733.733 0 00.73-.803L20.15 6.51z"
+              ></path>
+            </svg>
             <span
               class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
               >0</span
@@ -282,11 +470,17 @@
           class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200 hidden"
         >
           <div class="relative flex items-center">
-            <input
-              type="text"
-              placeholder="Search for products, brands and more"
-              class="block w-full text-sm h-10 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-md bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
-            />
+            <div class="relative w-full">
+              <input
+                type="text"
+                class="block w-full text-sm h-8 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
+              />
+              <span
+                id="typewriter-search"
+                class="absolute left-10 top-1/2 -translate-y-1/2 text-[#696e79] text-sm"
+                style="white-space: pre"
+              ></span>
+            </div>
             <span
               class="myntraweb-sprite sprites-search absolute left-3 top-1/2 -translate-y-1/2 scale-75"
             ></span>
@@ -295,40 +489,46 @@
       </div>
     </header>
 
-    <!-- Mobile Sidebar -->
-    <div
-      id="mobile-sidebar"
-      class="fixed inset-0 bg-black/50 z-50 transform -translate-x-full transition-transform duration-300 xl:hidden"
-    >
+    <!-- Mobile sidebar -->
+    <div id="mobile-sidebar-overlay"></div>
+    <div id="mobile-sidebar">
       <!-- Sidebar Content Area -->
-      <div
-        class="bg-white h-full w-[calc(100vw-60px)] shadow-lg overflow-y-auto relative"
-      >
+      <div class="bg-white h-full w-full shadow-lg overflow-y-auto relative">
         <!-- Sidebar Header -->
-        <div
-          class="flex items-center justify-between p-4 border-b border-gray-200"
-        >
-          <div class="font-bold text-lg text-[#282c3f]">Categories</div>
-          <button id="close-sidebar-button" class="p-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-x"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
+
+        <button id="close-sidebar-button" class="p-2 absolute top-0 right-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+        <img
+          src="https://assets.myntassets.com/f_webp,dpr_1.5,q_40,w_400,c_limit,fl_progressive/assets/images/2023/1/25/08139431-49b4-4895-8f06-3d864e4640fd1674670210709-offer-banner-300-1080x496-code-_-MYNTRA300.jpg"
+          alt="Offer Banner"
+          class="w-full"
+        />
         <!-- Sidebar Navigation Links -->
         <nav id="sidebar-navigation-content" class="py-4"></nav>
+
+        <!-- Image for app download -->
+        <a href="#">
+          <img
+            src="https://assets.myntassets.com/assets/images/retaillabs/2022/12/30/856cb741-8473-4d5e-b6e3-a52b3d98c99e1672386455977-PWA---App-Download-banner.png"
+            alt="Download the App"
+            class="w-full"
+          />
+        </a>
       </div>
     </div>
 
@@ -979,7 +1179,12 @@
       </div>
     </div>
 
-    <div style="position: relative" class="hidden xl:block">
+    <!-- This is the desktop footer, hidden on smaller screens (xl:hidden) -->
+    <div
+      style="position: relative"
+      class="hidden xl:block"
+      id="desktop-footer-section"
+    >
       <div>
         <div
           style="
@@ -989,7 +1194,7 @@
             background: #fafbfc;
           "
         >
-          <footer class="max-w-6xl mx-auto min-w-[980px]">
+          <footer class="max-w-[1080px] mx-auto min-w-[980px]">
             <div>
               <div
                 class="overflow-hidden mb-[24px] flex justify-between align-start gap-5"
@@ -998,7 +1203,7 @@
                   <p class="gInfoTitle font-bold">
                     <a
                       href="/?src=onlineShopping"
-                      class="text-[#696b79] pb-[5px] cursor-pointer leading-normal"
+                      class="text-[#282c3f] pb-[5px] cursor-pointer leading-normal"
                     >
                       ONLINE SHOPPING
                     </a>
@@ -1042,7 +1247,7 @@
                   <p class="gInfoTitle font-bold common-a">CUSTOMER POLICIES</p>
                   <a class="common-a pt-[10px]" href="/contactus">Contact Us</a>
                   <a class="common-a" href="/faqs"> FAQ</a>
-                  <a class="common-a" href="/tac">T&amp;C</a>
+                  <a class="common-a" href="/tac">T&C</a>
                   <a class="common-a" href="/termsofuse">Terms Of Use</a>
                   <a class="common-a" href="/my/orders"> Track Orders</a>
                   <a class="common-a" href="/faqs#shipping">Shipping</a>
@@ -1137,7 +1342,7 @@
               <div class="relative">
                 <hr class="h-[1px] border-[#eaeaea]" />
                 <div
-                  class="absolute -mt-[9px] bg-[#fafbfc] pr-[10px] text-[#282c3f] text-xs font-bold"
+                  class="absolute -mt-[9px] bg-[#fafbfc] pr-[10px] gInfoTitle font-bold"
                 >
                   POPULAR SEARCHES
                 </div>
@@ -1831,9 +2036,717 @@
       </div>
     </div>
 
+    <div class="content-overlay" id="contentOverlayFooter"></div>
+    <!-- mobile footer -->
+    <div id="footer-container" class="block xl:hidden">
+      <div class="footer-header clearfix py-2 px-1" id="footerToggle">
+        <p class="title">More about Online Shopping at Myntra</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-down-icon lucide-chevron-down"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+
+      <div class="footer-content-wrapper">
+        <div class="web-footerMount" id="footerContent">
+          <div class="priceContainer mb-5">
+            <div>
+              <h4 class="text-[17px] font-bold">
+                Men's Fashion Store Price List
+              </h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Men's Fashion Store</th>
+                    <th>PRICE (RS)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a
+                        href="serum-and-gel/the+derma+co./the-derma-co-10-niacinamide-face-serum-with-zinc-to-fade-acne-marks--dark-spots-30ml/15538750/buy"
+                        >The Derma co. 10% Niacinamide Face Serum with Zinc To
+                        Fade Acne Marks & Dark Spots 30ml</a
+                      >
+                    </td>
+                    <td>Rs. 509</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="hair-colour/biotique/biotique-herbcolor-set-of-2-no-ammonia-conditioning-hair-color---natural-black-1n/25711332/buy"
+                        >Biotique Herbcolor Set Of 2 No Ammonia Conditioning
+                        Hair Color - Natural Black 1N</a
+                      >
+                    </td>
+                    <td>Rs. 397</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="trunk/xyxx/xyxx-men-aero-super-combed-cotton-anti-odor--moisture-absorbent-trunk-xytrnk96/20037572/buy"
+                        >XYXX Men Aero Super Combed Cotton Anti-odor & Moisture
+                        Absorbent Trunk XYTRNK96</a
+                      >
+                    </td>
+                    <td>Rs. 248</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="trunk/jockey/jockey-men-super-combed-cotton-elastane-stretch-printed-trunk-with-ultrasoft-waistbandfp23/31550622/buy"
+                        >Jockey Men Super Combed Cotton Elastane Stretch Printed
+                        Trunk with Ultrasoft WaistbandFP23</a
+                      >
+                    </td>
+                    <td>Rs. 389</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="serum-and-gel/the+derma+co./the-derma-co-10-vitamin-c-face-serum-with-5-niacinamide--hyaluronic-acid---30ml/15537126/buy"
+                        >The Derma co. 10% Vitamin C Face Serum with 5%
+                        Niacinamide & Hyaluronic Acid - 30ml</a
+                      >
+                    </td>
+                    <td>Rs. 551</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="trunk/levis/levis-men-pure-cotton-long-length-trunk-with-ultrasoft-waistband/12032616/buy"
+                        >Levis Men Pure Cotton Long Length Trunk with Ultrasoft
+                        Waistband</a
+                      >
+                    </td>
+                    <td>Rs. 197</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="trunk/levis/levis-men-pack-of-2-pure-cotton-long-length-trunk-with-ultrasoft-waistband/9261263/buy"
+                        >Levis Men Pack of 2 Pure Cotton Long Length Trunk with
+                        Ultrasoft Waistband</a
+                      >
+                    </td>
+                    <td>Rs. 349</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="hair-serum/bare+anatomy/bare-anatomy-advanced-hair-growth-serum-with-redensyl--anagain---20-ml/34605897/buy"
+                        >Bare Anatomy Advanced Hair Growth Serum with Redensyl &
+                        Anagain - 20 ml</a
+                      >
+                    </td>
+                    <td>Rs. 569</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="briefs/u.s.+polo+assn./us-polo-assn-men-basic-anti-bacterial-briefs/21276038/buy"
+                        >U.S. Polo Assn. Men Basic Anti Bacterial Briefs</a
+                      >
+                    </td>
+                    <td>Rs. 237</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="trunk/underjeans+by+spykar/underjeans-by-spykar-men-cotton-blend-trunk/16864086/buy"
+                        >UnderJeans by Spykar Men Cotton Blend Trunk</a
+                      >
+                    </td>
+                    <td>Rs. 205</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="usefulLinks">
+            <a href="/" class="oShopping">SHOP FOR</a><a href="/"> Explore </a
+            ><a href="/shop/men"> Men </a><a href="/shop/women"> Women </a
+            ><a href="/shop/kids"> Kids </a
+            ><a href="/home-furnishing-menu"> Home & Living </a>
+          </div>
+          <div class="socialLinks">
+            <h4>KEEP IN TOUCH</h4>
+            <a
+              href="https://www.facebook.com/myntra"
+              class="icon"
+              style="padding-left: 0px"
+              ><svg width="36" height="36" viewBox="0 0 24 24">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z" opacity="0.05"></path>
+                  <path
+                    fill="#535766"
+                    d="M21 20.007a.993.993 0 01-.993.993H15.42v-6.97h2.34l.35-2.717h-2.69V9.579c0-.787.218-1.323 1.346-1.323h1.439v-2.43a19.18 19.18 0 00-2.096-.107c-2.074 0-3.494 1.266-3.494 3.59v2.004h-2.346v2.717h2.346V21H3.993A.993.993 0 013 20.007V3.993C3 3.445 3.445 3 3.993 3h16.014c.548 0 .993.445.993.993v16.014"
+                  ></path>
+                </g></svg></a
+            ><a href="https://twitter.com/myntra" class="icon"
+              ><svg width="36" height="36" viewBox="0 0 24 24">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z" opacity="0.05"></path>
+                  <path
+                    fill="#282C3F"
+                    d="M19.744 6.523a6.402 6.402 0 01-1.104.366c.417-.39.732-.878.908-1.422.051-.156-.12-.29-.264-.207a6.428 6.428 0 01-1.686.685.447.447 0 01-.4-.098A3.483 3.483 0 0014.914 5c-.364 0-.731.056-1.092.166a3.31 3.31 0 00-2.252 2.368c-.102.42-.13.84-.082 1.25a.12.12 0 01-.031.095.13.13 0 01-.095.042h-.013a9.089 9.089 0 01-6.216-3.267.182.182 0 00-.295.023 3.345 3.345 0 00-.467 1.705c0 .92.375 1.787 1.028 2.42a3.121 3.121 0 01-.787-.3.18.18 0 00-.268.152 3.394 3.394 0 002.015 3.13h-.074c-.193 0-.389-.017-.58-.054a.179.179 0 00-.207.229 3.441 3.441 0 002.73 2.313 6.44 6.44 0 01-3.564 1.064h-.399a.263.263 0 00-.258.196.267.267 0 00.131.297 9.587 9.587 0 004.757 1.262c1.462 0 2.83-.286 4.065-.848a8.963 8.963 0 002.974-2.193 9.582 9.582 0 001.825-3c.405-1.065.623-2.2.623-3.285v-.051a.57.57 0 01.216-.45c.53-.423.99-.921 1.37-1.48.1-.148-.06-.333-.225-.261"
+                  ></path>
+                </g></svg></a
+            ><a href="https://www.instagram.com/myntra" class="icon"
+              ><svg width="36" height="36" viewBox="0 0 24 24">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z" opacity="0.05"></path>
+                  <g fill="#282C3F">
+                    <path
+                      d="M18.577 15.577h.004c0 1.654-1.345 3-2.996 3h-7.17a2.993 2.993 0 01-2.992-2.993V8.415a2.993 2.993 0 012.993-2.992h7.169a2.993 2.993 0 012.992 2.992v7.162zM15.585 4h-7.17A4.42 4.42 0 004 8.415v7.17A4.42 4.42 0 008.416 20h7.169A4.42 4.42 0 0020 15.584V8.415A4.42 4.42 0 0015.585 4z"
+                    ></path>
+                    <path
+                      d="M12 14.703A2.706 2.706 0 019.297 12 2.706 2.706 0 0112 9.297 2.706 2.706 0 0114.703 12 2.706 2.706 0 0112 14.703m0-6.826A4.127 4.127 0 007.877 12 4.127 4.127 0 0012 16.123 4.127 4.127 0 0016.123 12 4.127 4.127 0 0012 7.877m4.296-1.204a1.045 1.045 0 00-1.041 1.042 1.046 1.046 0 001.041 1.041c.274 0 .542-.112.736-.305a1.045 1.045 0 000-1.473 1.046 1.046 0 00-.736-.305"
+                    ></path>
+                  </g>
+                </g></svg></a
+            ><a href="https://www.youtube.com/user/myntradotcom" class="icon"
+              ><svg width="36" height="36" viewBox="0 0 24 24">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z" opacity="0.05"></path>
+                  <path
+                    fill="#282C3F"
+                    d="M9.933 14.709V9.648c1.7.846 3.38 1.687 5.087 2.538l-5.087 2.523m9.79-5.993a1.991 1.991 0 00-1.729-1.504C16.01 7 14.002 6.999 12.003 7c-2-.001-4.008 0-5.992.212a1.99 1.99 0 00-1.729 1.504C4.003 9.875 4 11.14 4 12.333c0 1.194 0 2.459.279 3.618a1.991 1.991 0 001.729 1.504c1.984.212 3.992.213 5.991.212 2 0 4.008 0 5.992-.212a1.991 1.991 0 001.729-1.504c.279-1.16.28-2.424.28-3.618 0-1.193.002-2.458-.276-3.617"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+          </div>
+          <div class="usefulLinks">
+            <h4>CUSTOMER POLICIES</h4>
+            <a href="/contactus"> Contact Us </a><a href="/faqs"> FAQ </a
+            ><a href="/tac"> T&C </a><a href="/termsofuse"> Terms Of Use </a
+            ><a href="/my/orders"> Track Orders </a
+            ><a href="/faqs#shipping"> Shipping </a
+            ><a href="/faqs#cancel"> Cancellation </a
+            ><a href="/faqs#returns"> Returns </a
+            ><a href="/privacypolicy"> Privacy policy </a
+            ><a href="/grievanceredressal"> Grievance Redressal </a>
+          </div>
+          <div class="usefulLinks">
+            <h4>USEFUL LINKS</h4>
+            <a href="http://blog.myntra.com/"> Blog </a
+            ><a href="https://careers.myntra.com"> Careers </a
+            ><a href="/sitemap"> Site Map </a
+            ><a href="/corp-info"> Corporate Information </a
+            ><a href="/security/whitehat"> Whitehat </a>
+          </div>
+          <address class="lcContainer">
+            <p class="lcHeader">Registered Office Address</p>
+            <div class="lcInfoContainer">
+              <div class="lcAddress">
+                Buildings Alyssa, <br />Begonia and Clover situated in Embassy
+                Tech Village,<br />Outer Ring Road,<br />Devarabeesanahalli
+                Village, <br />Varthur Hobli, <br />Bengaluru – 560103, India
+                <br />
+              </div>
+              <div class="lcLegalInfo">
+                <p>CIN: U72300KA2007PTC041799</p>
+                <p>
+                  Telephone:<a
+                    href="tel:+918061561999"
+                    class="lcTelephone highlightText"
+                    >+91-80-61561999</a
+                  >
+                </p>
+              </div>
+            </div>
+          </address>
+          <p class="copyright">
+            <span>© 2025 www.myntra.com.</span
+            ><span class="pull-right"> All rights reserved.</span>
+          </p>
+        </div>
+
+        <div class="web-footerMount" id="footerContent2">
+          <div class="popularLinks">
+            <h4>POPULAR SEARCHES</h4>
+            <a key="0" href="/blouse-design"> Blouse Designs </a
+            ><a key="1" href="/designer-blouses"> Designer Blouses </a
+            ><a key="2" href="/bra"> Bras </a
+            ><a key="3" href="/designers-saree"> Designers Sarees </a
+            ><a key="4" href="/punjabi-suits"> Punjabi Suits </a
+            ><a key="5" href="/babydoll"> Babydoll </a
+            ><a key="6" href="/saree"> Saree </a
+            ><a key="7" href="/lehengas"> Lehenga </a
+            ><a key="8" href="/bikini"> Bikini </a
+            ><a key="9" href="/women-shirts-tops-tees"> Blouse Neck Designs </a
+            ><a key="10" href="/saree-blouse"> Blouse </a
+            ><a key="11" href="/salwar-suit"> Suit Design </a
+            ><a key="12" href="/designer-dresses"> Designer Dress </a
+            ><a key="13" href="/gown"> Gowns </a
+            ><a key="14" href="/maxi-dresses"> Long Frocks </a
+            ><a key="15" href="/tops"> Top </a
+            ><a key="16" href="/women-kurtas-kurtis-suits"> Kurtis </a
+            ><a key="17" href="/women-palazzo"> Palazzo </a
+            ><a key="18" href="/patiala-suits"> Patiala Suit </a
+            ><a key="19" href="/bridal-lehenga"> Bridal Lehenga </a
+            ><a key="20" href="/girls-jeans"> Jeans Top </a
+            ><a key="21" href="/swimwear"> Swim Dress </a
+            ><a key="22" href="/nightdresses"> Nighty </a
+            ><a key="23" href="/churidar-kurta"> Churidar </a
+            ><a key="24" href="/lehenga-saree"> Lehenga Saree </a
+            ><a key="25" href="/womens-western-wear"> Western Dress </a
+            ><a key="26" href="/short-dresses"> Frock Design </a
+            ><a key="27" href="/string-bikini-briefs"> String Bikini </a
+            ><a key="28" href="/women-jackets"> Ladies Jacket </a
+            ><a key="29" href="/women-innerwear-vests"> Womens Vest </a
+            ><a key="30" href="/women-dresses"> Lady Dress </a
+            ><a key="31" href="/anarkali"> Anarkali </a
+            ><a key="32" href="/"> Online Shopping </a
+            ><a key="32" href="//"> Online Shopping </a
+            ><a key="33" href="/padded-bra"> Padded Bras </a
+            ><a key="35" href="/palazzo-kurta-sets"> Plazo Suits </a
+            ><a key="36" href="/boat-neck"> Boat Neck Blouse </a
+            ><a key="37" href="/palazzo-suits"> Plazo Suit </a
+            ><a key="38" href="/h-and-m-dresses"> H&m Dresses </a
+            ><a key="39" href="/women-sports-leggings"> Gym Leggings </a
+            ><a key="40" href="/panties"> Panties </a
+            ><a key="41" href="/sports-bra"> Sports Bra </a
+            ><a key="42" href="/patiala-salwar"> Patiala Salwar </a
+            ><a key="43" href="/club-dresses-for-women">
+              Club Dresses For Women </a
+            ><a key="44" href="/bodycon-dresses"> Bodycon Dresses </a
+            ><a key="45" href="/party-dresses"> Party Dress </a
+            ><a key="46" href="/blouse-design"> Blouse Designs Back Side </a
+            ><a key="47" href="/silk-saree"> Silk Saree </a
+            ><a key="48" href="/boat-neck-tops"> Boat Neck Blouse Design </a
+            ><a key="49" href="/tokyo-talkies-maxi-dresses">
+              Tokyo Talkies Maxi Dresses </a
+            ><a key="50" href="/black-tops"> Black Top </a>
+          </div>
+
+          <div class="gyanContainer">
+            <h1><strong>ONLINE SHOPPING MADE EASY AT MYNTRA</strong></h1>
+            <p>
+              If you would like to experience the best of online shopping for
+              men, women and kids in India, you are at the right place. Myntra
+              is the ultimate destination for fashion and lifestyle, being host
+              to a wide array of merchandise including
+              <a class="seolink" href="/clothing">clothing</a>, footwear,
+              accessories, jewellery, personal care products and more. It is
+              time to redefine your style statement with our treasure-trove of
+              trendy items. Our online store brings you the latest in designer
+              products straight out of fashion houses. You can shop online at
+              Myntra from the comfort of your home and get your favourites
+              delivered right to your doorstep.
+            </p>
+            <h3>
+              <strong>BEST ONLINE SHOPPING SITE IN INDIA FOR FASHION</strong>
+            </h3>
+            <p>
+              Be it clothing, footwear or accessories, Myntra offers you the
+              ideal combination of fashion and functionality for men, women and
+              kids. You will realise that the sky is the limit when it comes to
+              the types of outfits that you can purchase for different
+              occasions.
+            </p>
+            <ul class="pl-10">
+              <li>
+                <strong>Smart men’s clothing</strong> - At Myntra you will find
+                myriad options in smart formal shirts and trousers, cool
+                T-shirts and jeans, or kurta and pyjama combinations for men.
+                Wear your attitude with printed T-shirts. Create the
+                back-to-campus vibe with varsity T-shirts and distressed jeans.
+                Be it gingham, buffalo or window-pane style, checked shirts are
+                unbeatably smart. Team them up with chinos, cuffed jeans or
+                cropped trousers for a smart casual look. Opt for a stylish
+                layered look with biker jackets. Head out in cloudy weather with
+                courage in water-resistant jackets. Browse through our innerwear
+                section to find supportive garments which would keep you
+                confident in any outfit.
+              </li>
+              <li>
+                <strong>Trendy women’s clothing</strong> -
+                <a class="seolink" href="/shop/women"
+                  >Online shopping for women</a
+                >
+                at Myntra is a mood-elevating experience. Look hip and stay
+                comfortable with chinos and printed shorts this summer. Look hot
+                on your date dressed in a little black dress, or opt for red
+                dresses for a sassy vibe. Striped dresses and T-shirts represent
+                the classic spirit of nautical fashion. Choose your favourites
+                from among Bardot, off-shoulder, shirt-style, blouson,
+                embroidered and peplum tops, to name a few. Team them up with
+                skinny-fit jeans, skirts or palazzos. Kurtis and jeans make the
+                perfect fusion-wear combination for the cool urbanite. Our grand
+                <a class="seolink" href="/saree">sarees</a> and lehenga-choli
+                selections are perfect to make an impression at big social
+                events such as weddings. Our salwar-kameez sets, kurtas and
+                Patiala suits make comfortable options for regular wear.
+              </li>
+              <li>
+                <strong>Fashionable footwear</strong> - While clothes maketh the
+                man, the type of footwear you wear reflects your personality. We
+                bring you an exhaustive lineup of options in casual shoes for
+                men, such as sneakers and loafers. Make a power statement at
+                work dressed in brogues and oxfords. Practice for your marathon
+                with running shoes for men and women. Choose shoes for
+                individual games such as tennis, football, basketball, and the
+                like. Or step into the casual style and comfort offered by
+                sandals, sliders, and flip-flops. Explore our lineup of
+                fashionable footwear for ladies, including pumps, heeled boots,
+                wedge-heels, and pencil-heels. Or enjoy the best of comfort and
+                style with embellished and metallic flats.
+              </li>
+              <li>
+                <strong>Stylish accessories</strong> - Myntra is one of the best
+                online shopping sites for classy accessories that perfectly
+                complement your outfits. You can select smart analogue or
+                digital watches and match them up with belts and ties. Pick up
+                spacious bags, backpacks, and wallets to store your essentials
+                in style. Whether you prefer minimal jewellery or grand and
+                sparkling pieces, our online jewellery collection offers you
+                many impressive options.
+              </li>
+              <li>
+                <strong>Fun and frolic</strong> - Online shopping for kids at
+                Myntra is a complete joy. Your little princess is going to love
+                the wide variety of pretty dresses, ballerina shoes, headbands
+                and clips. Delight your son by picking up sports shoes,
+                superhero T-shirts, football jerseys and much more from our
+                online store. Check out our lineup of toys with which you can
+                create memories to cherish.
+              </li>
+              <li>
+                <strong>Beauty begins here </strong>- You can also refresh,
+                rejuvenate and reveal beautiful skin with personal care, beauty
+                and grooming products from Myntra. Our soaps, shower gels, skin
+                care creams, lotions and other ayurvedic products are specially
+                formulated to reduce the effect of aging and offer the ideal
+                cleansing experience. Keep your scalp clean and your hair
+                uber-stylish with shampoos and hair care products. Choose makeup
+                to enhance your natural beauty.
+              </li>
+            </ul>
+            <p>
+              Myntra is one of the best online shopping sites in India which
+              could help transform your living spaces completely. Add colour and
+              personality to your bedrooms with bed linen and curtains. Use
+              smart tableware to impress your guest. Wall decor, clocks,
+              <a class="seolink" href="/photo-frames">photo frames</a> and
+              artificial plants are sure to breathe life into any corner of your
+              home.
+            </p>
+            <h3><strong>AFFORDABLE FASHION AT YOUR FINGERTIPS</strong></h3>
+            <p>
+              Myntra is one of the unique online shopping sites in India where
+              fashion is accessible to all. Check out our new arrivals to view
+              the latest designer clothing, footwear and accessories in the
+              market. You can get your hands on the trendiest style every season
+              in western wear. You can also avail the best of ethnic fashion
+              during all Indian festive occasions. You are sure to be impressed
+              with our seasonal discounts on footwear, trousers, shirts,
+              backpacks and more. The end-of-season sale is the ultimate
+              experience when fashion gets unbelievably affordable.
+            </p>
+            <h3><strong>MYNTRA INSIDER</strong></h3>
+            <p>
+              Every online shopping experience is precious. Hence, a cashless
+              reward-based customer loyalty program called
+              <a class="seolink" href="/myntrainsider">Myntra Insider</a> was
+              introduced to enhance your online experience. The program is
+              applicable to every registered customer and measures rewards in
+              the form of Insider Points.
+            </p>
+            <p>
+              There are four levels to achieve in the program, as the Insider
+              Points accumulate. They are - Insider, Select, Elite or Icon.
+              Apart from offering discounts on Myntra and partner platform
+              coupons, each tier comes with its own special perks.
+            </p>
+            <p><strong>Insider</strong></p>
+            <ul class="pl-10">
+              <li style="list-style-type: disc">
+                Opportunity to master any domain in fashion with tips from
+                celebrity stylists at Myntra Masterclass sessions.
+              </li>
+              <li style="list-style-type: disc">
+                Curated collections from celeb stylists.
+              </li>
+            </ul>
+            <p><strong>Elite</strong></p>
+            <ul class="pl-10">
+              <li style="list-style-type: disc">
+                VIP access to special sale events such as the End of Reason Sale
+                (EORS) and product launches.
+              </li>
+              <li style="list-style-type: disc">
+                Exclusive early access to Limited Edition products
+              </li>
+            </ul>
+            <p><strong>Icon</strong></p>
+            <ul class="pl-10">
+              <li style="list-style-type: disc">
+                Chance to get on guest lists for special events.
+              </li>
+            </ul>
+            <h3>
+              <strong
+                >Myntra Studio - The Personalised Fashion Feed You Wouldn’t Want
+                To Miss Out On</strong
+              >
+            </h3>
+            <p>
+              The world wide web is evolving at a relentless pace, and with an
+              accelerated growth each passing year, there is bound to be an
+              overwhelming surge of online content. It was for this very reason
+              that personalisation of search feeds was proposed as a solution to
+              combat the overload of irrelevant information.
+            </p>
+            <p>
+              Several social media platforms such as Facebook and Instagram
+              along with various online shopping websites have chosen to help
+              filter content, increasing user engagement, retention and customer
+              loyalty.
+            </p>
+            <p>
+              Myntra is one such online shopping website that joins the list of
+              platforms that help curate a personalised fashion feed. Named
+              the<a class="seolink" href="/studio/home">Myntra Studio</a>, this
+              personalised search feed brings you the latest men and women’s
+              fashion trends, celebrity styles, branded content and daily
+              updates from your favourite fashion labels.
+            </p>
+            <p>
+              If you are wondering how impactful Myntra Studio can be, we are
+              listing out five perks of having a rich, meaningful, and
+              personalised fashion feed in your life.
+            </p>
+            <ul class="pl-10">
+              <li>
+                <strong
+                  >Keep Up With What Your Favourite Fashion Icons Are
+                  Upto</strong
+                >
+              </li>
+              <p>
+                The #OOTD, AKA outfit of the day hashtag trend has been a rage
+                among fashion bloggers and stylists. The whole concept of
+                building an outfit from scratch and showcasing it to a huge
+                community of enthusiasts using the hashtag has helped
+                individuals with understanding trends and making suitable for
+                daily wear.
+              </p>
+              <p>
+                Imagine if you could keep up with every piece of clothing and
+                accessory worn by the fashion icons you look upto. From Sonam
+                Kapoor to Hailey Baldwin Bieber, Myntra Studio has a ‘Stories’
+                feature to help track celebrity fashion trends, exploring
+                details such as their outfit of the day. This way, you would not
+                ever miss out on the latest celebrity fashion trends, from all
+                around the world.
+              </p>
+              <li><strong>Quick Fashion Tip And Tricks</strong></li>
+              <p>
+                Whether it is draping a saree into a dhoti style, wearing the
+                right lingerie under certain dresses or discovering multiple
+                uses out of heavy ethnic wear, Myntra Studio will help you
+                acquire some unique and useful fashion hacks. Each hack is
+                designed with the intention to help you get the best wear out of
+                everything in your wardrobe.
+              </p>
+              <li>
+                <strong
+                  >Updates on What Is Trending and New Product Launches</strong
+                >
+              </li>
+              <p>
+                Since fast fashion seems to be extremely hard to keep up with
+                these days, a quick update on what is trending in accessories,
+                clothing and footwear would certainly be of great help. Myntra
+                Studio helps you stay connected to the most beloved and sought
+                after brands such as Puma, Coverstory, The Label Life and so
+                many more.
+              </p>
+              <p>
+                Your feed keeps you updated with stories of what the brands are
+                creating including clothing, footwear and jewellery, along with
+                their new seasonal collections.
+              </p>
+              <li>
+                <strong
+                  >Explicit Step-By-Step Beauty Routines From Experts</strong
+                >
+              </li>
+              <p>
+                Just like fashion, the beauty community keeps on growing, and
+                with brands such as Huda Beauty, MAC and the latest Kay Beauty
+                by Katrina Kaif, are constantly coming up with mind-blowing
+                products. Whether it is creating a no-makeup look, different
+                winged eyeliners, do-it-yourself facial masks and other personal
+                care beauty routines, Myntra Studio is here for you.
+              </p>
+              <li>
+                <strong
+                  >Celebrity Confessions And A Look Into Their Lives</strong
+                >
+              </li>
+              <p>
+                A bonus feature that Myntra Studio has in store for you is
+                celebrity confessions and a peek into their lives. So, Myntra
+                helps you stay connected to your most beloved celebrities in a
+                matter of clicks.
+              </p>
+              <p>
+                If you are very particular when it comes to the content you wish
+                to view and engage with on social media, the ability to
+                intricately filter content helps achieve that. Applying the same
+                formula for hardcore fashion lovers and shoppers, Myntra Studio
+                brings you a daily fashion fix incorporating everything that you
+                love, all at one place. Sign up on Myntra today and start
+                organising your fashion feed, just the way you want to.
+              </p>
+            </ul>
+            <h3><strong>MYNTRA APP</strong></h3>
+            <p>
+              Myntra, India’s no. 1 online fashion destination justifies its
+              fashion relevance by bringing something new and chic to the table
+              on the daily. Fashion trends seem to change at lightning speed,
+              yet the Myntra shopping app has managed to keep up without any
+              hiccups. In addition, Myntra has vowed to serve customers to the
+              best of its ability by introducing its first-ever loyalty program,
+              The Myntra Insider. Gain access to priority delivery, early sales,
+              lucrative deals and other special perks on all your shopping with
+              the Myntra app. Download the Myntra app on your
+              <a
+                class="seolink"
+                href="https://play.google.com/store/apps/details?id=com.myntra.android"
+                >Android</a
+              >
+              or
+              <a
+                class="seolink"
+                href="https://itunes.apple.com/in/app/myntra-indias-fashion-store/id907394059"
+                >IOS</a
+              >
+              device today and experience shopping like never before!
+            </p>
+            <h3><strong>HISTORY OF MYNTRA</strong></h3>
+            <p>
+              Becoming India’s no. 1 fashion destination is not an easy feat.
+              Sincere efforts, digital enhancements and a team of dedicated
+              personal with an equally loyal customer base have made Myntra the
+              online platform that it is today. The original B2B venture for
+              personalized <a class="seolink" href="/gifts">gifts</a> was
+              conceived in 2007 but transitioned into a full-fledged ecommerce
+              giant within a span of just a few years. By 2012, Myntra had
+              introduced 350 Indian and international brands to its platform,
+              and this has only grown in number each passing year. Today Myntra
+              sits on top of the online fashion game with an astounding social
+              media following, a loyalty program dedicated to its customers, and
+              tempting, hard-to-say-no-to deals.
+            </p>
+            <p>
+              The Myntra shopping app came into existence in the year 2015 to
+              further encourage customers’ shopping sprees. Download the app on
+              your Android or IOS device this very minute to experience fashion
+              like never before
+            </p>
+            <h3>
+              <strong>SHOP ONLINE AT MYNTRA WITH COMPLETE CONVENIENCE</strong>
+            </h3>
+            <p>
+              Another reason why Myntra is the best of all online stores is the
+              complete convenience that it offers. You can view your favourite
+              brands with price options for different products in one place. A
+              user-friendly interface will guide you through your selection
+              process. Comprehensive size charts, product information and
+              high-resolution images help you make the best buying decisions.
+              You also have the freedom to choose your payment options, be it
+              card or cash-on-delivery. The 30-day returns policy gives you more
+              power as a buyer. Additionally, the try-and-buy option for select
+              products takes customer-friendliness to the next level.
+            </p>
+            <p>
+              Enjoy the hassle-free experience as you shop comfortably from your
+              home or your workplace. You can also shop for your friends, family
+              and loved-ones and avail our gift services for special occasions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="../nav.js"></script>
 
+    <script src="../mobile-footer.js"></script>
     <script>
+      // --- Typewriter Effect for Search Placeholder ---
+      document.addEventListener("DOMContentLoaded", function () {
+        const typewriterEl = document.getElementById("typewriter-search");
+        if (typewriterEl) {
+          const phrases = [
+            "Search for products, brands and more",
+            "Try 'Skincare', 'Moisturizer', 'Sunscreen'...",
+            "Discover trending beauty products!",
+            "Find your favorite brands",
+          ];
+          let phraseIndex = 0;
+          let charIndex = 0;
+          let typing = true;
+
+          function type() {
+            if (!typing) return;
+            const phrase = phrases[phraseIndex];
+            if (charIndex < phrase.length) {
+              typewriterEl.textContent += phrase.charAt(charIndex);
+              charIndex++;
+              setTimeout(type, 50);
+            } else {
+              setTimeout(erase, 1200);
+            }
+          }
+
+          function erase() {
+            if (!typing) return;
+            if (charIndex > 0) {
+              typewriterEl.textContent = typewriterEl.textContent.slice(0, -1);
+              charIndex--;
+              setTimeout(erase, 25);
+            } else {
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+              setTimeout(type, 400);
+            }
+          }
+
+          type();
+
+          // Optional: Pause effect on input focus
+          const searchInput = typewriterEl.previousElementSibling;
+          if (searchInput && searchInput.tagName === "INPUT") {
+            searchInput.addEventListener("focus", () => {
+              typing = false;
+              typewriterEl.textContent = "";
+            });
+            searchInput.addEventListener("blur", () => {
+              if (!typing) {
+                typing = true;
+                charIndex = 0;
+                typewriterEl.textContent = "";
+                type();
+              }
+            });
+          }
+        }
+      });
+
       function toggleMobileContent(titleElement) {
         if (window.innerWidth >= 768) return;
 
