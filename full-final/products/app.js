@@ -782,11 +782,27 @@ function updateSelectedFilters() {
     "selected-filters-container"
   );
   const selectedFiltersContainer = document.getElementById("selected-filters");
+  const filterBarHeader = document.getElementById("filter-bar-header");
 
-  if (!selectedFiltersContainerWrapper || !selectedFiltersContainer) return;
+  if (
+    !selectedFiltersContainerWrapper ||
+    !selectedFiltersContainer ||
+    !filterBarHeader
+  )
+    return;
 
   // Use the existing helper function to determine if any filters are active
   const areFiltersActive = hasActiveFilters();
+
+  if (areFiltersActive) {
+    filterBarHeader.classList.add("shadow-[1px_5px_4px_-2px_rgba(0,0,0,0.06)]");
+    filterBarHeader.classList.remove("border-b", "border-gray-200");
+  } else {
+    filterBarHeader.classList.remove(
+      "shadow-[1px_5px_4px_-2px_rgba(0,0,0,0.06)]"
+    );
+    filterBarHeader.classList.add("border-b", "border-gray-200");
+  }
 
   // Toggle visibility of the entire wrapper based on filter state
   if (areFiltersActive) {
@@ -1143,6 +1159,7 @@ function toggleFilter(filterName, buttonElement) {
   const subCategoriesList = document.getElementById("sub-categories-list");
   const allFilterButtons = document.querySelectorAll("[data-filter]");
   const arrowIcon = buttonElement.querySelector(".arrow-icon polyline");
+  const filterBarHeader = document.getElementById("filter-bar-header");
 
   if (activeFilter === filterName) {
     activeFilter = null;
@@ -1150,6 +1167,12 @@ function toggleFilter(filterName, buttonElement) {
     arrowIcon.setAttribute("points", "6,9 12,15 18,9");
     buttonElement.classList.remove("bg-gray-100", "text-gray-800");
     buttonElement.classList.add("text-gray-600");
+    if (filterBarHeader) {
+      filterBarHeader.classList.remove(
+        "shadow-[1px_5px_4px_-2px_rgba(0,0,0,0.06)]"
+      );
+      filterBarHeader.classList.add("border-b", "border-gray-200");
+    }
     return;
   }
 
@@ -1166,6 +1189,11 @@ function toggleFilter(filterName, buttonElement) {
   buttonElement.classList.add("bg-gray-100", "text-gray-800");
   subCategoriesContainer.classList.remove("hidden");
   subCategoriesList.innerHTML = "";
+
+  if (filterBarHeader) {
+    filterBarHeader.classList.add("shadow-[1px_5px_4px_-2px_rgba(0,0,0,0.06)]");
+    filterBarHeader.classList.remove("border-b", "border-gray-200");
+  }
 
   const subCategories = filterData[filterName];
   subCategories.forEach((subCategory) => {
