@@ -552,44 +552,62 @@ const products = [
 // Function to create product card HTML for desktop
 function createProductCardHTML(item) {
   return `
-    <div class="bg-white max-w-[210px] w-full max-h-[330px] group hover:shadow-md overflow-hidden">
-      <div class="w-full h-[200px] relative">
-        <img class="w-full h-full object-center" src="${item.image}" alt="" />
-        <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:block">
-          <button class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            Wishlist
-          </button>
+    <div class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
+        <!-- Product Link (excludes Add to Bag button) -->
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+            <div class="relative overflow-hidden">
+                <!-- Product Image -->
+                <div class="relative w-full h-64 bg-pink-50">
+                    <img
+                        src="${item.image}"
+                        alt="${item.title} ${item.description}"
+                        class="w-full h-full object-cover object-top transition-opacity duration-300"
+                        loading="lazy"
+                    />
+                </div>
+
+                <!-- Content -->
+                <div class="relative px-2">
+                    <div class="py-2">
+                        <!-- Brand Title -->
+                        <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+                            ${item.title}
+                        </h3>
+
+                        <!-- Description -->
+                        <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
+                            ${item.description}
+                        </h4>
+
+                        <!-- Price Container -->
+                        <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
+                            <!-- Current Price -->
+                            <span class="font-semibold text-gray-800 text-sm">
+                                <span class="relative -left-0.5">${item.currentPrice}</span>
+                            </span>
+
+                            <!-- Original Price -->
+                            <span class="text-sm">
+                                <span class="opacity-40 text-gray-800 line-through text-xs">
+                                    <span>${item.originalPrice}</span>
+                                </span>
+                            </span>
+
+                            <!-- Discount -->
+                            <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
+                                <span>(${item.discountPercent}% OFF)</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Add to Bag Button (outside product link) -->
+        <div class="p-2">
+            <button class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
         </div>
-
-        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:flex hover:w-[130px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-similar-content="<div><b>Similar products for ${item.title}</b><br>${item.description}</div>" title="View Similar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
-            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-          </svg>
-          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-sm">
-            View Similar
-          </p>
-        </div>
-      </div>
-
-      <div class="p-2">
-        <h1 class="text-base font-bold text-black">Levis</h1>
-        <h2 class="text-sm block text-gray-500 group-hover:hidden">
-          Solid Lounge T-shirt
-        </h2>
-        <h2 class="text-sm hidden text-gray-500 group-hover:block">Size : S</h2>
-        <p class="space-x-2">
-          <span class="font-bold">Rs. 389</span>
-          <del class="text-sm text-gray-500">Rs. 649 </del>
-          <span class="text-xs text-[#ff905a]">(40% OFF)</span>
-        </p>
-      </div>
-
-      <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-      <div class="p-1">
-        <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
-      </div>
     </div>
 `;
 }
@@ -597,80 +615,77 @@ function createProductCardHTML(item) {
 // Function to create product card HTML for mobile slider
 function createMobileProductCardHTML(item) {
   return `
-    <div
-      class="bg-white w-[180px] max-h-[350px] group shadow-md overflow-hidden"
-    >
-      <div class="w-full h-[200px] relative">
-        <img
-          class="w-full h-full object-center"
-          src="${item.image}"
-          alt=""
-        />
-        <div
-          class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden  group-hover:xl:block"
-        >
-          <button
-            class="flex gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300"
-          >
-            <span class="myntraweb-sprite sprites-notWishlisted"></span>
-            Wishlist
-          </button>
-        </div>
+    <div class="flex-shrink-0 w-44 text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
+        <!-- Product Link (excludes Add to Bag button) -->
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+          <div class="relative overflow-hidden">
+            <!-- Product Image -->
+            <div class="relative w-full h-52 bg-pink-50">
+              <img
+                src="${item.image}"
+                alt="${item.title} ${item.description}"
+                class="w-full h-full object-cover object-top transition-opacity duration-300"
+                loading="lazy"
+              />
+            </div>
 
-        <div
-          class="w-[40px] h-[40px] hidden group-hover:xl:block hover:w-[150px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 flex justify-center items-center gap-2 group/similar overflow-hidden"
-        >
-          <span
-            class="myntraweb-sprite sprites-similarProductsIcon mt-2 ml-[7px]"
-          ></span>
-          <p
-            class="group-hover/similar:opacity-100 opacity-0 ml-10 -mt-7 font-bold text-[#ff517b] transition-opacity duration-300 delay-200 whitespace-nowrap text-base"
-          >
-            View Similar
-          </p>
+            <!-- Content -->
+            <div class="relative px-2">
+              <div class="py-2">
+                <!-- Brand Title -->
+                <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+                  ${item.title}
+                </h3>
+
+                <!-- Description -->
+                <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-xs font-normal text-gray-800 h-3">
+                  ${item.description}
+                </h4>
+
+                <!-- Price Container -->
+                <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
+                  <!-- Current Price -->
+                  <span class="font-semibold text-gray-800 text-sm">
+                    <span class="relative -left-0.5">${item.currentPrice}</span>
+                  </span>
+
+                  <!-- Original Price -->
+                  <span class="text-sm">
+                    <span class="opacity-40 text-gray-800 line-through text-xs">
+                      <span>${item.originalPrice}</span>
+                    </span>
+                  </span>
+
+                  <!-- Discount -->
+                  <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
+                    <span>(${item.discountPercent}% OFF)</span>
+                  </span>
+                </div>
+              </div>
+              <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Add to Bag Button (outside product link) -->
+        <div class="p-2">
+          <button class="w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
         </div>
       </div>
-
-      
-
-      <div class="p-2 relative">
-        <h1 class="text-base font-bold text-black">Levis</h1>
-        <h2 class="text-sm block text-gray-500">
-          Solid Lounge T-shirt
-        </h2>
-        <p class="space-x-2">
-          <span class="font-bold">Rs. 389</span>
-          <del class="text-sm text-gray-500">Rs. 649 </del>
-          <span class="text-xs text-[#ff905a]">(40% OFF)</span>
-        </p>
-
-      <!-- Wishlist Icon -->
-        <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
-            <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-        </div>
-        </div>
-        <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-        <div class="p-1">
-            <button class="outline-none w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
-          </div>
-
-    </div>
   `;
 }
 
 const productsGridDesktop = document.querySelector("#products-grid-desktop");
 const productsGridDesktop1 = document.querySelector("#products-grid-desktop1");
 if (productsGridDesktop) {
-  products.slice(0, 6).forEach((product) => {
+  products.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createProductCardHTML(product);
     productsGridDesktop.appendChild(productCard);
   });
 }
 if (productsGridDesktop1) {
-  products.slice(0, 6).forEach((product) => {
+  products.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createProductCardHTML(product);
     productsGridDesktop1.appendChild(productCard);
@@ -779,11 +794,11 @@ const shopByNotesProducts = [
 // Function to create shop by notes product card HTML
 function createShopByNotesProductCardHTML(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200 max-w-[190px] w-full">
+    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200">
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden">
                 <!-- Product Image -->
-                <div class="relative w-[210px] h-52 bg-pink-50">
+                <div class="relative h-52 bg-pink-50">
                     <img
                         src="${item.image}"
                         alt="${item.title}"
@@ -850,9 +865,9 @@ function createMobileShopByNotesProductCardHTML(item) {
 
 function createStyleYourBadroomDesktopProductCardHTML(item) {
   return `
-    <div class="relative text-center transition-shadow duration-300 overflow-hidden bg-white max-w-[190px] w-full">
+    <div class="relative text-center transition-shadow duration-300 overflow-hidden bg-white">
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-            <div class="relative overflow-hidden">
+            <div class="relative overflow-hidden flex flex-col items-center justify-center">
                 <!-- Product Image -->
                 <div class="relative rounded-full h-40 w-40">
                     <img
@@ -921,7 +936,7 @@ const styleYourBadroomMobile = document.querySelector(
 );
 
 if (shopByNotesGridDesktop) {
-  shopByNotesProducts.slice(0, 6).forEach((product) => {
+  shopByNotesProducts.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
     shopByNotesGridDesktop.appendChild(productCard);
@@ -972,7 +987,7 @@ const shopByNotesGridDesktop2 = document.querySelector(
   "#shop-by-notes-grid-desktop2"
 );
 if (shopByNotesGridDesktop2) {
-  shopByNotesProducts.slice(0, 6).forEach((product) => {
+  shopByNotesProducts.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
     shopByNotesGridDesktop2.appendChild(productCard);
@@ -1002,7 +1017,7 @@ const shopByNotesGridDesktop3 = document.querySelector(
   "#shop-by-notes-grid-desktop3"
 );
 if (shopByNotesGridDesktop3) {
-  shopByNotesProducts.slice(0, 6).forEach((product) => {
+  shopByNotesProducts.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
     shopByNotesGridDesktop3.appendChild(productCard);
