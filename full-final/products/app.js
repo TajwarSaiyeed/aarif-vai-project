@@ -568,7 +568,7 @@ const products = [
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3"
     >
       <div class="w-full h-full max-h-[330px] relative">
         <img
@@ -597,19 +597,21 @@ function createProductCardHTML(item) {
       </div>
 
       <div class="p-2 relative">
-        <h1 class="text-[13px] md:text-base font-bold text-black">${
+        <h1 class="text-[13px] md:text-base font-bold text-black truncate">${
           item.brand
         }</h1>
-        <h2 class="text-[11px] md:text-sm block text-gray-500 group-hover:xl:hidden">
-          ${item.title}
-        </h2>
-        <h2 class="text-sm hidden text-gray-500 group-hover:xl:block">Size: ${item.sizes.join(
+        <h2 class="text-[11px] md:text-sm text-gray-500 group-hover:xl:hidden truncate">${
+          item.title
+        }</h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:xl:block truncate">Size: ${item.sizes.join(
           ", "
         )}</h2>
-        <p class="space-x-2 text-[13px] md:text-sm">
-          <span class="font-bold">Rs. ${item.currentPrice}</span>
-          <del class="text-gray-500">Rs. ${item.originalPrice}</del>
-          <span class="text-xs text-[#ff905a]">(${
+        <p class="flex items-center space-x-1 text-[13px] md:text-sm overflow-hidden">
+          <span class="font-bold flex-shrink-0">Rs. ${item.currentPrice}</span>
+          <del class="text-gray-500 flex-shrink-0">Rs. ${
+            item.originalPrice
+          }</del>
+          <span class="text-xs text-[#ff905a] flex-shrink-0">(${
             item.discountPercent
           }% OFF)</span>
         </p>
@@ -620,7 +622,6 @@ function createProductCardHTML(item) {
           </svg>
         </div>
       </div>
-
     </div>
   `;
 }
@@ -765,7 +766,7 @@ function renderProducts(productsToRender) {
     productsToRender.forEach((product) => {
       const productCard = document.createElement("div");
       productCard.innerHTML = createProductCardHTML(product);
-      productCard.classList.add("border-[0.1px]", "border-gray-200", "pb-4");
+      productCard.classList.add("border-[0.1px]", "border-gray-200");
       productsSliderMobile.appendChild(productCard);
     });
   }
