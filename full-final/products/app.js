@@ -556,10 +556,19 @@ const products = [
   },
 ];
 
+// <div
+//       class="bg-white w-full h-[330px] group hover:shadow-xl overflow-hidden"
+//     >
+//       <div class="w-full h-[250px] relative">
+//         <img
+//           class="w-full h-full object-fit"
+//           src="../img.jpeg"
+//           alt=""
+//         />
 function createProductCardHTML(item) {
   return `
     <div
-      class="bg-white w-full max-w-[300px] h-[430px] group hover:shadow-xl overflow-hidden"
+      class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden"
     >
       <div class="w-full h-full max-h-[330px] relative">
         <img
@@ -754,6 +763,7 @@ function renderProducts(productsToRender) {
     productsToRender.forEach((product) => {
       const productCard = document.createElement("div");
       productCard.innerHTML = createProductCardHTML(product);
+      productCard.classList.add("border-[0.1px]", "border-gray-200", "pb-4");
       productsSliderMobile.appendChild(productCard);
     });
   }
