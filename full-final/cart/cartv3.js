@@ -47,7 +47,7 @@ let tempSelectedSize = null; // To hold selection within modal before confirming
 
 // Function to generate product HTML
 function createProductHTML(product, isLast = false) {
-  const borderClass = isLast ? "" : "border border-gray-200";
+  const borderClass = isLast ? "" : "md:border md:border-gray-200";
 
   return `
     <div class="relative bg-white flex gap-4 p-2 ${borderClass} product-card" data-product-id="${
