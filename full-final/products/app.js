@@ -597,14 +597,16 @@ function createProductCardHTML(item) {
       </div>
 
       <div class="p-2 relative">
-        <h1 class="text-base font-bold text-black">${item.brand}</h1>
-        <h2 class="text-sm block text-gray-500 group-hover:xl:hidden">
+        <h1 class="text-[13px] md:text-base font-bold text-black">${
+          item.brand
+        }</h1>
+        <h2 class="text-[11px] md:text-sm block text-gray-500 group-hover:xl:hidden">
           ${item.title}
         </h2>
         <h2 class="text-sm hidden text-gray-500 group-hover:xl:block">Size: ${item.sizes.join(
           ", "
         )}</h2>
-        <p class="space-x-2 text-[14px]">
+        <p class="space-x-2 text-[13px] md:text-sm">
           <span class="font-bold">Rs. ${item.currentPrice}</span>
           <del class="text-gray-500">Rs. ${item.originalPrice}</del>
           <span class="text-xs text-[#ff905a]">(${
