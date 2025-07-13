@@ -766,7 +766,11 @@ function renderProducts(productsToRender) {
     productsToRender.forEach((product) => {
       const productCard = document.createElement("div");
       productCard.innerHTML = createProductCardHTML(product);
-      productCard.classList.add("border-[0.1px]", "border-gray-200");
+      productCard.classList.add(
+        "border-r-[0.1px]",
+        "border-gray-200",
+        "border-b-[0.1px]"
+      );
       productsSliderMobile.appendChild(productCard);
     });
   }
