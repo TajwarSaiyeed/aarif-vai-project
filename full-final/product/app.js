@@ -657,12 +657,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const sizes = [
-  { title: "S", subtitle: "Chest 36.0in", quantity: 6 },
-  { title: "M", subtitle: "Chest 38.0in", quantity: 9 },
-  { title: "L", subtitle: "Chest 40.0in", quantity: 2 },
-  { title: "XL", subtitle: "Chest 42.0in", quantity: 0 },
-  { title: "XXL", subtitle: "Chest 44.0in", quantity: 0 },
-  { title: "3XL", subtitle: "Chest 46.0in", quantity: 0 },
+  { title: "50ml", subtitle: "Chest 36.0in", quantity: 6 },
+  { title: "100ml", subtitle: "Chest 38.0in", quantity: 9 },
+  { title: "200ml", subtitle: "Chest 40.0in", quantity: 2 },
+  { title: "250ml", subtitle: "Chest 42.0in", quantity: 0 },
+  { title: "500ml", subtitle: "Chest 44.0in", quantity: 0 },
+  { title: "1000ml", subtitle: "Chest 46.0in", quantity: 0 },
 ];
 
 let selectedSize = sizes[0];
@@ -674,7 +674,7 @@ function renderSizeButtons() {
     const isSelected = size === selectedSize;
     const isAvailable = size.quantity > 0;
     const button = document.createElement("div");
-    button.className = `w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold cursor-pointer ${
+    button.className = `w-[52px] h-[53px] rounded-[16px] flex items-center justify-center text-sm font-bold cursor-pointer ${
       isSelected
         ? "bg-[#535766] text-white"
         : "bg-white text-black border border-[#535766]"
