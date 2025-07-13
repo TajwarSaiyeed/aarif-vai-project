@@ -877,9 +877,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
               <div class="relative overflow-hidden">
                   <!-- Product Image -->
-                  <div class="relative w-full h-64 bg-pink-50">
+                  <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
                       <img
-                          src="${item.image}"
+                          src="../img.jpeg"
                           alt="${item.title} ${item.description}"
                           class="w-full h-full object-cover object-top transition-opacity duration-300"
                           loading="lazy"
@@ -940,9 +940,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
           <div class="relative overflow-hidden">
             <!-- Product Image -->
-            <div class="relative w-full h-52 bg-pink-50">
+            <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
               <img
-                src="${item.image}"
+                src="../img.jpeg"
                 alt="${item.title} ${item.description}"
                 class="w-full h-full object-cover object-top transition-opacity duration-300"
                 loading="lazy"
