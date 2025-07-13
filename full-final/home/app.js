@@ -552,12 +552,12 @@ const products = [
 // Function to create product card HTML for desktop
 function createProductCardHTML(item) {
   return `
-    <div class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
+    <div class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
         <!-- Product Link (excludes Add to Bag button) -->
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden">
                 <!-- Product Image -->
-                <div class="relative w-full h-64 bg-pink-50">
+                <div class="w-full h-full max-h-[330px] relative p-[10px]">
                     <img
                         src="../img.jpeg"
                         alt="${item.title} ${item.description}"
@@ -620,9 +620,9 @@ function createMobileProductCardHTML(item) {
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
           <div class="relative overflow-hidden">
             <!-- Product Image -->
-            <div class="relative w-full h-52 bg-pink-50">
+            <div class="relative w-full h-52 bg-white p-[10px]">
               <img
-                src="${item.image}"
+                src="../img.jpeg"
                 alt="${item.title} ${item.description}"
                 class="w-full h-full object-cover object-top transition-opacity duration-300"
                 loading="lazy"
@@ -798,7 +798,7 @@ function createShopByNotesProductCardHTML(item) {
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden">
                 <!-- Product Image -->
-                <div class="relative h-52 bg-pink-50">
+                <div class="relative h-full max-h-[330px] w-full bg-white p-[10px]">
                     <img
                         src="../img.jpeg"
                         alt="${item.title}"
@@ -834,7 +834,7 @@ function createMobileShopByNotesProductCardHTML(item) {
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
             <div class="relative overflow-hidden w-full">
                 <!-- Product Image -->
-                <div class="relative w-full h-48 bg-pink-50">
+                <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
                     <img
                         src="../img.jpeg"
                         alt="${item.title}"
@@ -869,7 +869,7 @@ function createStyleYourBadroomDesktopProductCardHTML(item) {
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden flex flex-col items-center justify-center">
                 <!-- Product Image -->
-                <div class="relative rounded-full h-40 w-40">
+                <div class="relative rounded-full h-full max-h-[330px] w-full bg-white p-[20px]">
                     <img
                         src="../img.jpeg"
                         alt="${item.title}"
