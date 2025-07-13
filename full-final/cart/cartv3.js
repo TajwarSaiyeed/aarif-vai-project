@@ -332,637 +332,83 @@ function confirmSizeSelection() {
   tempSelectedSize = null;
 }
 
-// Universal modal closing logic based on data attribute
-document.addEventListener("click", function (event) {
-  // Check if a close button for any modal was clicked
-  const closeBtn = event.target.closest("[data-modal-close]");
-  if (closeBtn) {
-    const modalIdToClose = closeBtn.dataset.modalClose;
-    closeModal(
-      modalIdToClose,
-      modalIdToClose === "productSizeModal" ? "productSizeModalContent" : null
-    );
-  }
-});
-
-// Close modal when clicking outside (using a common pattern for all modals)
-document.addEventListener("click", function (event) {
-  const modals = ["giftModal", "socialWorkModal", "productSizeModal"];
-  modals.forEach((modalId) => {
-    const modal = document.getElementById(modalId);
-    if (modal && !modal.classList.contains("hidden")) {
-      // If modal is active
-      const modalContentId =
-        modalId === "productSizeModal"
-          ? "productSizeModalContent"
-          : modalId === "giftModal"
-          ? "giftModalContent"
-          : modalId; // Specify content ID if applicable
-      const modalContent = document.getElementById(modalContentId);
-      // Check if click is inside the modal wrapper but *not* inside the actual content
-      if (
-        modal.contains(event.target) &&
-        modalContent &&
-        !modalContent.contains(event.target)
-      ) {
-        // Ensure we click on the transparent overlay, not on modal content itself
-        if (
-          event.target === modal ||
-          event.target.classList.contains("bg-black/50")
-        ) {
-          // Adjust for bg-black/50 overlay
-          closeModal(modalId, modalContentId);
-        }
-      }
-    }
-  });
-});
-
-// Close modal with Escape key
-window.addEventListener("keydown", function (e) {
-  const activeModals = [
-    { id: "giftModal", contentId: "giftModalContent" },
-    { id: "socialWorkModal", contentId: "socialWorkModalContent" },
-    { id: "productSizeModal", contentId: "productSizeModalContent" },
-  ];
-
-  for (const modalDef of activeModals) {
-    const modal = document.getElementById(modalDef.id);
-    if (modal && !modal.classList.contains("hidden")) {
-      if (e.key === "Escape") {
-        closeModal(modalDef.id, modalDef.contentId);
-        break; // Exit loop after closing one modal
-      }
-    }
-  }
-});
-
-// Add to bag functionality for "You may also like" section
+// Event Listeners on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".add-to-bag").forEach((button) => {
-    button.addEventListener("click", function () {
-      this.textContent = "ADDED";
-      this.classList.add("bg-green-500", "text-white", "border-green-500");
-      this.classList.remove(
-        "bg-transparent",
-        "text-rose-500",
-        "border-rose-500"
-      );
-      setTimeout(() => {
-        this.textContent = "ADD TO BAG";
-        this.classList.remove("bg-green-500", "text-white", "border-green-500");
-        this.classList.add(
-          "bg-transparent",
-          "text-rose-500",
-          "border-rose-500"
-        );
-      }, 2000);
-    });
-  });
+    renderProducts();
 
-  // Donation amount selection
-  document.querySelectorAll(".amount-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      // Remove selected class from all buttons in the same section
-      const section = this.parentElement;
-      if (section) {
-        section
-          .querySelectorAll(".amount-btn")
-          .forEach((btn) =>
-            btn.classList.remove(
-              "selected",
-              "bg-rose-50",
-              "text-rose-500",
-              "border-rose-500"
-            )
-          );
-      }
-      this.classList.add(
-        "selected",
-        "bg-rose-50",
-        "text-rose-500",
-        "border-rose-500"
-      );
-    });
-  });
+    // ---- NEW: Event Listeners for "Move from Bag" Modal ----
+    const modalRemoveBtn = document.getElementById('modalRemoveButton');
+    const modalMoveToWishlistBtn = document.getElementById('modalMoveToWishlistButton');
+    const moveFromBagModal = document.getElementById('moveFromBagModal');
 
-  // Category selection for "You may also like"
-  // First, create the category buttons dynamically
-  const categoryButtons = [
-    "All",
-    "Shampoo",
-    "Lip Balm",
-    "Deodorant",
-    "Roll-Ons",
-  ];
-
-  const categoryContainer = document.getElementById("youMayAlsoLikeContainer");
-  if (categoryContainer) {
-    categoryButtons.forEach((buttonText, index) => {
-      const button = document.createElement("button");
-      button.className =
-        "py-2 px-4 border border-gray-300 bg-white text-gray-700 rounded-full cursor-pointer category-btn";
-      button.textContent = buttonText;
-
-      // Make the first button (All) active by default
-      if (index === 0) {
-        button.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-        button.classList.add("border-rose-500", "bg-rose-500", "text-white");
-      }
-
-      categoryContainer.appendChild(button);
-    });
-  }
-
-  // Create mobile category buttons
-  const mobileCategoryContainer = document.getElementById(
-    "mobileCategoryContainer"
-  );
-  if (mobileCategoryContainer) {
-    categoryButtons.forEach((buttonText, index) => {
-      const button = document.createElement("button");
-      button.className =
-        "py-2 px-4 border border-gray-300 bg-white text-gray-700 rounded-full text-sm whitespace-nowrap cursor-pointer category-btn mobile-category-btn";
-      button.textContent = buttonText;
-
-      // Make the first button (All) active by default
-      if (index === 0) {
-        button.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-        button.classList.add("border-rose-500", "bg-rose-500", "text-white");
-      }
-
-      mobileCategoryContainer.appendChild(button);
-    });
-  }
-
-  // Handle category button clicks
-  document.querySelectorAll(".category-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      // Remove active styling from all buttons
-      document.querySelectorAll(".category-btn").forEach((btn) => {
-        btn.classList.remove("border-rose-500", "bg-rose-500", "text-white");
-        btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
-      });
-
-      // Add active styling to clicked button
-      this.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-      this.classList.add("border-rose-500", "bg-rose-500", "text-white");
-
-      // Here you can add logic to filter products based on the category
-      console.log("Selected category:", this.textContent);
-    });
-  });
-
-  // Login button
-  document.querySelectorAll(".login-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      alert("Login functionality would be implemented here");
-    });
-  });
-
-  // Place order button
-  document.querySelectorAll(".place-order-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      alert("Proceeding to payment...");
-    });
-  });
-
-  // Pin code buttons
-  document
-    .querySelectorAll(".pin-code-btn, .enter-pin-btn")
-    .forEach((button) => {
-      button.addEventListener("click", function () {
-        const pincode = prompt("Enter your PIN code:");
-        if (pincode) {
-          alert(`Checking delivery options for ${pincode}...`);
-        }
-      });
-    });
-
-  // Show more offers
-  document.querySelectorAll(".show-more").forEach((button) => {
-    button.addEventListener("click", function () {
-      alert("More offers would be displayed here");
-    });
-  });
-
-  // Apply coupon
-  document.querySelectorAll(".apply-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      const couponCode = prompt("Enter coupon code:");
-      if (couponCode) {
-        alert(`Applying coupon: ${couponCode}`);
-      }
-    });
-  });
-
-  // Character count for gift message (if the element is present)
-  const giftMessageTextarea = document.getElementById("giftMessage");
-  const charCountSpan = document.getElementById("charCount");
-  if (giftMessageTextarea && charCountSpan) {
-    giftMessageTextarea.addEventListener("input", function () {
-      const currentLength = this.value.length;
-      charCountSpan.textContent = currentLength;
-
-      // Change color when approaching limit
-      if (currentLength > 180) {
-        charCountSpan.style.color = "#ff3f6c";
-      } else {
-        charCountSpan.style.color = "#696e79";
-      }
-    });
-  }
-
-  // Back arrow (mobile) - if this element exists
-  document.querySelector(".back-arrow")?.addEventListener("click", function () {
-    if (confirm("Go back to shopping?")) {
-      window.history.back();
+    if (modalRemoveBtn) {
+        modalRemoveBtn.addEventListener('click', () => {
+            if (currentProductIdForModal !== null) {
+                const productIndex = products.findIndex(p => p.id === currentProductIdForModal);
+                if (productIndex > -1) {
+                    console.log(`Removing product ${currentProductIdForModal} from bag.`);
+                    products.splice(productIndex, 1);
+                    renderProducts();
+                }
+                closeMoveFromBagModal();
+            }
+        });
     }
-  });
 
-  // Toggle offers list
-  window.toggleOffers = function () {
-    // Made global to be callable from inline HTML onclick
-    const hiddenOffers = document.querySelectorAll(".hidden-offer");
-    const toggleText = document.getElementById("toggleText");
-    const arrowIcon = document.getElementById("arrowIcon");
-
-    const isHidden = hiddenOffers[0].classList.contains("hidden");
-
-    hiddenOffers.forEach((offer) => {
-      offer.classList.toggle("hidden");
-    });
-
-    toggleText.textContent = isHidden ? "Show Less" : "Show More";
-    arrowIcon.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
-  };
-
-  renderProducts(); // Initial rendering of products
-
-  // Recommended Products Data for "You May Also Like" section
-  const recommendedProducts = [
-    {
-      id: 1,
-      title: "Bella Vita Organic",
-      description: "Vitamin C Glow Face Wash",
-      image: "https://picsum.photos/300/400?random=10",
-      currentPrice: "₹299",
-      originalPrice: "₹399",
-      discountPercent: "25",
-      rating: "4.2",
-      ratingCount: "1.2k",
-      href: "#",
-      category: "Face Wash",
-    },
-    {
-      id: 2,
-      title: "Plum Green Tea",
-      description: "Pore Cleansing Gel Face Wash",
-      image: "https://picsum.photos/300/400?random=11",
-      currentPrice: "₹349",
-      originalPrice: "₹449",
-      discountPercent: "22",
-      rating: "4.5",
-      ratingCount: "890",
-      href: "#",
-      category: "Face Wash",
-    },
-    {
-      id: 3,
-      title: "Minimalist",
-      description: "2% Salicylic Acid Face Wash",
-      image: "https://picsum.photos/300/400?random=12",
-      currentPrice: "₹199",
-      originalPrice: "₹299",
-      discountPercent: "33",
-      rating: "4.3",
-      ratingCount: "654",
-      href: "#",
-      category: "Face Wash",
-    },
-    {
-      id: 4,
-      title: "Himalaya",
-      description: "Anti-Pimple Neem Face Wash",
-      image: "https://picsum.photos/300/400?random=13",
-      currentPrice: "₹175",
-      originalPrice: "₹225",
-      discountPercent: "22",
-      rating: "4.1",
-      ratingCount: "2.1k",
-      href: "#",
-      category: "Face Wash",
-    },
-    {
-      id: 5,
-      title: "L'Oreal Paris",
-      description: "Hyaluron Moisture Sealing",
-      image: "https://picsum.photos/300/400?random=14",
-      currentPrice: "₹549",
-      originalPrice: "₹699",
-      discountPercent: "21",
-      rating: "4.4",
-      ratingCount: "532",
-      href: "#",
-      category: "Shampoo",
-    },
-    {
-      id: 6,
-      title: "Olay Total Effects",
-      description: "Night Cream Anti-Aging",
-      image: "https://picsum.photos/300/400?random=15",
-      currentPrice: "₹899",
-      originalPrice: "₹1199",
-      discountPercent: "25",
-      rating: "4.6",
-      ratingCount: "1.5k",
-      href: "#",
-      category: "Lip Balm",
-    },
-    {
-      id: 7,
-      title: "Deconstruct",
-      description: "Oil-Free Moisturizer",
-      image: "https://picsum.photos/300/400?random=16",
-      currentPrice: "₹425",
-      originalPrice: "₹549",
-      discountPercent: "23",
-      rating: "4.2",
-      ratingCount: "743",
-      href: "#",
-      category: "Deodorant",
-    },
-    {
-      id: 8,
-      title: "Pilgrim",
-      description: "Hair Growth Serum",
-      image: "https://picsum.photos/300/400?random=17",
-      currentPrice: "₹649",
-      originalPrice: "₹899",
-      discountPercent: "28",
-      rating: "4.3",
-      ratingCount: "967",
-      href: "#",
-      category: "Roll-Ons",
-    },
-  ];
-
-  // Function to create product card HTML
-  function createProductCardHTML(item) {
-    return `
-      <div class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
-          <!-- Product Link (excludes Add to Bag button) -->
-          <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-              <div class="relative overflow-hidden">
-                  <!-- Product Image -->
-                  <div class="relative w-full h-64 bg-pink-50">
-                      <img
-                          src="${item.image}"
-                          alt="${item.title} ${item.description}"
-                          class="w-full h-full object-cover object-top transition-opacity duration-300"
-                          loading="lazy"
-                      />
-                  </div>
-
-                  <!-- Content -->
-                  <div class="relative px-2">
-                      <div class="py-2">
-                          <!-- Brand Title -->
-                          <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                              ${item.title}
-                          </h3>
-
-                          <!-- Description -->
-                          <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
-                              ${item.description}
-                          </h4>
-
-                          <!-- Price Container -->
-                          <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                              <!-- Current Price -->
-                              <span class="font-semibold text-gray-800 text-sm">
-                                  <span class="relative -left-0.5">${item.currentPrice}</span>
-                              </span>
-
-                              <!-- Original Price -->
-                              <span class="text-sm">
-                                  <span class="opacity-40 text-gray-800 line-through text-xs">
-                                      <span>${item.originalPrice}</span>
-                                  </span>
-                              </span>
-
-                              <!-- Discount -->
-                              <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
-                                  <span>(${item.discountPercent}% OFF)</span>
-                              </span>
-                          </div>
-                      </div>
-                      <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-                  </div>
-              </div>
-          </a>
-          
-          <!-- Add to Bag Button (outside product link) -->
-          <div class="p-2">
-              <button class="desktop-add-to-bag w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer" data-product-id="${item.id}">Add to Bag</button>
-          </div>
-      </div>
-  `;
-  }
-
-  // Function to create mobile product card HTML
-  function createMobileProductCardHTML(item) {
-    return `
-      <div class="flex-shrink-0 w-44 text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
-        <!-- Product Link (excludes Add to Bag button) -->
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-          <div class="relative overflow-hidden">
-            <!-- Product Image -->
-            <div class="relative w-full h-52 bg-pink-50">
-              <img
-                src="${item.image}"
-                alt="${item.title} ${item.description}"
-                class="w-full h-full object-cover object-top transition-opacity duration-300"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Content -->
-            <div class="relative px-2">
-              <div class="py-2">
-                <!-- Brand Title -->
-                <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                  ${item.title}
-                </h3>
-
-                <!-- Description -->
-                <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-xs font-normal text-gray-800 h-3">
-                  ${item.description}
-                </h4>
-
-                <!-- Price Container -->
-                <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                  <!-- Current Price -->
-                  <span class="font-semibold text-gray-800 text-sm">
-                    <span class="relative -left-0.5">${item.currentPrice}</span>
-                  </span>
-
-                  <!-- Original Price -->
-                  <span class="text-sm">
-                    <span class="opacity-40 text-gray-800 line-through text-xs">
-                      <span>${item.originalPrice}</span>
-                    </span>
-                  </span>
-
-                  <!-- Discount -->
-                  <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
-                    <span>(${item.discountPercent}% OFF)</span>
-                  </span>
-                </div>
-              </div>
-              <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-            </div>
-          </div>
-        </a>
-        
-        <!-- Add to Bag Button (outside product link) -->
-        <div class="p-2">
-          <button class="mobile-add-to-bag w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer" data-product-id="${item.id}">Add to Bag</button>
-        </div>
-      </div>
-    `;
-  }
-
-  // Function to render products in the desktop grid
-  function renderProductGrid(productsToShow = recommendedProducts) {
-    const productsGrid = document.getElementById("products-grid");
-    if (!productsGrid) return;
-
-    productsGrid.innerHTML = "";
-    productsToShow.forEach((product) => {
-      const productCard = document.createElement("div");
-      productCard.innerHTML = createProductCardHTML(product);
-      productsGrid.appendChild(productCard);
-    });
-
-    // Add event listeners to desktop "Add to Bag" buttons
-    const addToBagButtons = productsGrid.querySelectorAll(
-      ".desktop-add-to-bag"
-    );
-    addToBagButtons.forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const productId = parseInt(this.getAttribute("data-product-id"));
-        const product = recommendedProducts.find((p) => p.id === productId);
-
-        if (product) {
-          // Add visual feedback
-          const originalText = this.textContent;
-          this.textContent = "ADDED";
-          this.classList.add("text-green-500");
-          this.classList.remove("text-[#ff3f6c]", "hover:text-[#ff3f6c]/80");
-
-          setTimeout(() => {
-            this.textContent = originalText;
-            this.classList.remove("text-green-500");
-            this.classList.add("text-[#ff3f6c]", "hover:text-[#ff3f6c]/80");
-          }, 2000);
-
-          console.log("Added to bag from desktop:", product.title);
-          // Here you could add the product to the actual cart
-        }
-      });
-    });
-  }
-
-  // Function to render products in the mobile grid
-  function renderMobileProductGrid(productsToShow = recommendedProducts) {
-    const mobileProductsContainer = document.getElementById(
-      "mobileProductsContainer"
-    );
-    if (!mobileProductsContainer) return;
-
-    mobileProductsContainer.innerHTML = "";
-    productsToShow.forEach((product) => {
-      const productCard = document.createElement("div");
-      productCard.innerHTML = createMobileProductCardHTML(product);
-      mobileProductsContainer.appendChild(productCard);
-    });
-
-    // Add event listeners to mobile "Add to Bag" buttons
-    const mobileAddToBagButtons =
-      mobileProductsContainer.querySelectorAll(".mobile-add-to-bag");
-    mobileAddToBagButtons.forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const productId = parseInt(this.getAttribute("data-product-id"));
-        const product = recommendedProducts.find((p) => p.id === productId);
-
-        if (product) {
-          // Add visual feedback
-          const originalText = this.textContent;
-          this.textContent = "ADDED";
-          this.classList.add("text-green-500");
-          this.classList.remove("text-[#ff3f6c]", "hover:text-[#ff3f6c]/80");
-
-          setTimeout(() => {
-            this.textContent = originalText;
-            this.classList.remove("text-green-500");
-            this.classList.add("text-[#ff3f6c]", "hover:text-[#ff3f6c]/80");
-          }, 2000);
-
-          console.log("Added to bag from mobile:", product.title);
-          // Here you could add the product to the actual cart
-        }
-      });
-    });
-  }
-
-  // Function to filter products by category for both desktop and mobile
-  function filterProductsByCategory(category) {
-    if (category === "All") {
-      renderProductGrid(recommendedProducts);
-      renderMobileProductGrid(recommendedProducts);
-    } else {
-      const filteredProducts = recommendedProducts.filter(
-        (product) => product.category === category
-      );
-      renderProductGrid(filteredProducts);
-      renderMobileProductGrid(filteredProducts);
+    if (modalMoveToWishlistBtn) {
+        modalMoveToWishlistBtn.addEventListener('click', () => {
+            if (currentProductIdForModal !== null) {
+                const productIndex = products.findIndex(p => p.id === currentProductIdForModal);
+                if (productIndex > -1) {
+                    console.log(`Moving product ${currentProductIdForModal} to wishlist and removing from bag.`);
+                    // For now, we just remove it from the bag.
+                    products.splice(productIndex, 1);
+                    renderProducts();
+                }
+                closeMoveFromBagModal();
+            }
+        });
     }
-  }
 
-  // Update category button click handler to filter products for both desktop and mobile
-  document.querySelectorAll(".category-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      const category = this.textContent.trim();
+    // Close modal on overlay click
+    if (moveFromBagModal) {
+        moveFromBagModal.addEventListener('click', (event) => {
+            if (event.target === moveFromBagModal) {
+                closeMoveFromBagModal();
+            }
+        });
+    }
+    // ---- END NEW LISTENERS ----
 
-      // Remove active styling from all buttons (both desktop and mobile)
-      document.querySelectorAll(".category-btn").forEach((btn) => {
-        btn.classList.remove("border-rose-500", "bg-rose-500", "text-white");
-        btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
-      });
-
-      // Add active styling to all buttons with the same category text (both desktop and mobile)
-      document.querySelectorAll(".category-btn").forEach((btn) => {
-        if (btn.textContent.trim() === category) {
-          btn.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-          btn.classList.add("border-rose-500", "bg-rose-500", "text-white");
+    // Universal modal closing logic
+    document.addEventListener("click", function (event) {
+        const closeBtn = event.target.closest("[data-modal-close]");
+        if (closeBtn) {
+            const modalIdToClose = closeBtn.dataset.modalClose;
+            closeModal(modalIdToClose, modalIdToClose === "productSizeModal" ? "productSizeModalContent" : null);
         }
-      });
-
-      // Filter products by category for both grids
-      filterProductsByCategory(category);
-
-      console.log("Selected category:", category);
     });
-  });
 
-  // Initial render of both product grids
-  renderProductGrid();
-  renderMobileProductGrid();
+    window.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            const activeModals = ["giftModal", "socialWorkModal", "productSizeModal", "moveFromBagModal"];
+            activeModals.forEach(id => {
+                const modal = document.getElementById(id);
+                if(modal && !modal.classList.contains('hidden')) {
+                    if(id === 'moveFromBagModal') closeMoveFromBagModal();
+                    else closeModal(id, id + 'Content');
+                }
+            });
+        }
+    });
+
+    window.toggleOffers = function () {
+        const hiddenOffers = document.querySelectorAll(".hidden-offer");
+        const toggleText = document.getElementById("toggleText");
+        const arrowIcon = document.getElementById("arrowIcon");
+        const isHidden = hiddenOffers[0].classList.contains("hidden");
+        hiddenOffers.forEach(offer => offer.classList.toggle("hidden"));
+        toggleText.textContent = isHidden ? "Show Less" : "Show More";
+        arrowIcon.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+    };
 });
