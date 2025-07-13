@@ -559,7 +559,7 @@ function createProductCardHTML(item) {
                 <!-- Product Image -->
                 <div class="relative w-full h-64 bg-pink-50">
                     <img
-                        src="${item.image}"
+                        src="../img.jpeg"
                         alt="${item.title} ${item.description}"
                         class="w-full h-full object-cover object-top transition-opacity duration-300"
                         loading="lazy"
@@ -800,7 +800,7 @@ function createShopByNotesProductCardHTML(item) {
                 <!-- Product Image -->
                 <div class="relative h-52 bg-pink-50">
                     <img
-                        src="${item.image}"
+                        src="../img.jpeg"
                         alt="${item.title}"
                         class="w-full h-full object-cover object-top transition-opacity duration-300"
                         loading="lazy"
@@ -836,7 +836,7 @@ function createMobileShopByNotesProductCardHTML(item) {
                 <!-- Product Image -->
                 <div class="relative w-full h-48 bg-pink-50">
                     <img
-                        src="${item.image}"
+                        src="../img.jpeg"
                         alt="${item.title}"
                         class="w-full h-full object-cover object-top transition-opacity duration-300"
                         loading="lazy"
@@ -871,7 +871,7 @@ function createStyleYourBadroomDesktopProductCardHTML(item) {
                 <!-- Product Image -->
                 <div class="relative rounded-full h-40 w-40">
                     <img
-                        src="${item.image}"
+                        src="../img.jpeg"
                         alt="${item.title}"
                         class="w-full h-full object-cover object-top transition-opacity duration-300 rounded-full"
                         loading="lazy"
@@ -902,7 +902,7 @@ function createStyleYourBadroomMobileProductCardHTML(item) {
                 <!-- Product Image -->
                 <div class="relative rounded-full h-40 w-40">
                     <img
-                        src="${item.image}"
+                        src="../img.jpeg"
                         alt="${item.title}"
                         class="w-full h-full object-cover object-top transition-opacity duration-300 rounded-full"
                         loading="lazy"
@@ -1065,7 +1065,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="w-full h-[200px] relative">
               <img
                 class="w-full h-full object-center"
-                src="https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                src="../img.jpeg"
                 alt=""
               />
             </div>

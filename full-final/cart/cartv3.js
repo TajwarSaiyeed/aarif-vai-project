@@ -1,4 +1,3 @@
-// Sample product data - replace with your actual data source
 const products = [
   {
     id: 1,
@@ -41,9 +40,37 @@ const products = [
   },
 ];
 
-// Variables for size selection modal
+// Variables for modals
 let currentProductForSizeSelection = null;
 let tempSelectedSize = null; // To hold selection within modal before confirming
+let currentProductIdForModal = null; // To hold ID for the "Move from Bag" modal
+
+// ---- NEW: Functions for the "Move from Bag" Modal ----
+
+function openMoveFromBagModal(productId) {
+    currentProductIdForModal = productId;
+    const product = products.find(p => p.id === productId);
+    const modal = document.getElementById('moveFromBagModal');
+    
+    if (product && modal) {
+        const modalImage = document.getElementById('modalProductImage');
+        modalImage.src = product.imageUrl;
+        modalImage.alt = product.name;
+        
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+}
+
+function closeMoveFromBagModal() {
+    const modal = document.getElementById('moveFromBagModal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+    currentProductIdForModal = null;
+}
+// ---- END NEW FUNCTIONS ----
 
 // Function to generate product HTML
 function createProductHTML(product, isLast = false) {
@@ -60,7 +87,8 @@ function createProductHTML(product, isLast = false) {
             : ""
         }
       </div>
-      <button class="absolute top-2 right-2 w-5 h-5 md:w-6 md:h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center cursor-pointer text-xs md:text-sm remove-btn" onclick="removeProduct(${
+       <!-- MODIFIED: The 'x' button now opens our custom modal -->
+      <button class="absolute top-2 right-2 w-5 h-5 md:w-6 md:h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center cursor-pointer text-xs md:text-sm remove-btn" onclick="openMoveFromBagModal(${
         product.id
       })">×</button>
       <div class="flex-1 flex gap-1 flex-col gap-3">
@@ -136,16 +164,6 @@ function renderProducts() {
   updateItemCount();
 }
 
-// Function to remove product
-function removeProduct(productId) {
-  if (confirm("Remove this item from your bag?")) {
-    const productIndex = products.findIndex((p) => p.id === productId);
-    if (productIndex > -1) {
-      products.splice(productIndex, 1);
-      renderProducts();
-    }
-  }
-}
 
 // Function to update product size
 function updateProductSize(productId, newSize) {
@@ -161,13 +179,11 @@ function updateProductQuantity(productId, newQuantity) {
   const product = products.find((p) => p.id === productId);
   if (product) {
     let parsedQuantity = parseInt(newQuantity);
-    // Ensure quantity is at least 1
     if (isNaN(parsedQuantity) || parsedQuantity < 1) {
       parsedQuantity = 1;
     }
     product.quantity = parsedQuantity;
-    console.log(`Updated product ${productId} quantity to ${parsedQuantity}`);
-    updateItemCount(); // Recalculate totals as quantity changed
+    updateItemCount(); 
   }
 }
 
@@ -182,7 +198,7 @@ function increaseQuantity(productId) {
 function decreaseQuantity(productId) {
   const input = document.getElementById(`quantity-${productId}`);
   if (input) {
-    input.value = Math.max(1, parseInt(input.value) - 1); // Prevent going below 1
+    input.value = Math.max(1, parseInt(input.value) - 1);
     updateProductQuantity(productId, input.value);
   }
 }
@@ -190,7 +206,7 @@ function decreaseQuantity(productId) {
 // Function to add new product
 function addProduct(productData) {
   const newProduct = {
-    id: Date.now(), // Simple ID generation
+    id: Date.now(), 
     ...productData,
   };
   products.push(newProduct);
@@ -209,40 +225,25 @@ function updateItemCount() {
     totalDiscount += (product.originalPrice - product.price) * product.quantity;
   });
 
-  // Fetch donation amount from current UI, or use default
-  const donationAmountElement = document.querySelector(
-    ".price-donation-amount"
-  );
+  const donationAmountElement = document.querySelector(".price-donation-amount");
   const platformFeeElement = document.querySelector(".price-platform-fee");
 
-  let donationAmount = donationAmountElement
-    ? parseInt(donationAmountElement.textContent.replace("₹", ""))
-    : 20; // Default if not found/parseable
-  let platformFee = platformFeeElement
-    ? parseInt(platformFeeElement.textContent.replace("₹", ""))
-    : 20; // Default if not found/parseable
+  let donationAmount = donationAmountElement ? parseInt(donationAmountElement.textContent.replace("₹", "")) : 20;
+  let platformFee = platformFeeElement ? parseInt(platformFeeElement.textContent.replace("₹", "")) : 20;
+  const couponDiscount = 0;
+  let finalAmount = totalMRP - totalDiscount - couponDiscount + donationAmount + platformFee;
 
-  const couponDiscount = 0; // Implement actual coupon logic later
-
-  let finalAmount =
-    totalMRP - totalDiscount - couponDiscount + donationAmount + platformFee;
-
-  // Update UI elements in Price Details section
-  const priceTitleElements = document.querySelectorAll(".price-title");
-  priceTitleElements.forEach((element) => {
-    element.textContent = `PRICE DETAILS (${totalQuantity} Items)`;
-  });
-
+  document.querySelectorAll(".price-title").forEach(el => el.textContent = `PRICE DETAILS (${totalQuantity} Items)`);
+  
   const totalMRPElement = document.querySelector(".price-total-mrp");
-  const totalDiscountElement = document.querySelector(".price-total-discount");
-  const finalAmountElement = document.querySelector(".price-final-amount");
+  if(totalMRPElement) totalMRPElement.textContent = `₹${totalMRP.toLocaleString()}`;
 
-  if (totalMRPElement) totalMRPElement.textContent = `₹${totalMRP}`;
-  if (totalDiscountElement)
-    totalDiscountElement.textContent = `-₹${totalDiscount}`;
-  if (finalAmountElement) finalAmountElement.textContent = `₹${finalAmount}`;
+  const discountElement = document.querySelector("span[data-price-key='discountOnMRP']");
+  if(discountElement) discountElement.textContent = `-₹${totalDiscount.toLocaleString()}`;
 
-  // Update items selected text
+  const finalAmountElement = document.querySelector("span[data-price-key='totalAmount']");
+  if(finalAmountElement) finalAmountElement.textContent = `₹${finalAmount.toLocaleString()}`;
+
   const itemsSelectedElement = document.querySelector(".items-selected");
   if (itemsSelectedElement) {
     itemsSelectedElement.textContent = `${totalQuantity} items selected for order`;
@@ -253,10 +254,10 @@ function updateItemCount() {
 
 function openModal(modalId, animatedContentId) {
   const modal = document.getElementById(modalId);
-  const content = document.getElementById(animatedContentId || modalId); // Use modalId as contentId if not specified for generic modals
+  const content = document.getElementById(animatedContentId || modalId);
   modal.classList.remove("hidden");
   modal.classList.add("flex");
-  document.body.style.overflow = "hidden"; // Prevent body scroll
+  document.body.style.overflow = "hidden"; 
 
   setTimeout(() => {
     if (content.classList.contains("translate-y-full")) {
@@ -267,7 +268,7 @@ function openModal(modalId, animatedContentId) {
 
 function closeModal(modalId, animatedContentId) {
   const modal = document.getElementById(modalId);
-  const content = document.getElementById(animatedContentId || modalId); // Use modalId as contentId if not specified
+  const content = document.getElementById(animatedContentId || modalId); 
 
   if (content) {
     content.classList.add("translate-y-full");
@@ -279,122 +280,51 @@ function closeModal(modalId, animatedContentId) {
       modal.classList.add("hidden");
       modal.classList.remove("flex");
     }
-  }, 300); // Match Tailwind transition duration
+  }, 300); 
 }
 
-// Gift Modal Specific
-function openGiftModal() {
-  openModal("giftModal", "giftModalContent"); // No specific content ID for giftModal
-}
+function openGiftModal() { openModal("giftModal", "giftModalContent"); }
+function closeGiftModal() { closeModal("giftModal", "giftModalContent"); }
+function openSocialWorkModal() { openModal("socialWorkModal", "socialWorkModalContent"); }
+function closeSocialWorkModal() { closeModal("socialWorkModal", "socialWorkModalContent"); }
 
-function closeGiftModal() {
-  closeModal("giftModal", "giftModalContent"); // No specific content ID for giftModal
-}
-
-// Social Work Modal Specific
-function openSocialWorkModal() {
-  openModal("socialWorkModal", "socialWorkModalContent"); // No specific content ID for socialWorkModal
-}
-
-function closeSocialWorkModal() {
-  closeModal("socialWorkModal", "socialWorkModalContent"); // No specific content ID for socialWorkModal
-}
-
-// Product Size Modal Specific
 function openProductSizeModal(productId) {
   currentProductForSizeSelection = products.find((p) => p.id === productId);
-  if (!currentProductForSizeSelection) {
-    console.error("Product not found for size selection:", productId);
-    return;
-  }
+  if (!currentProductForSizeSelection) return;
 
-  tempSelectedSize = currentProductForSizeSelection.size; // Store current size in case user cancels
-
-  const productInfoContainer = document.getElementById(
-    "productSizeModalProductInfo"
-  );
+  tempSelectedSize = currentProductForSizeSelection.size;
+  const productInfoContainer = document.getElementById("productSizeModalProductInfo");
   const sizeOptionsContainer = document.getElementById("sizeOptionsContainer");
 
-  // Populate product info in modal header
   productInfoContainer.innerHTML = `
-<div class="dialogs-base-productImage flex-shrink-0">
-    <div class="bg-blue-100 h-[80px] w-[60px] flex items-center justify-center overflow-hidden">
-        <img src="${currentProductForSizeSelection.imageUrl}" alt="${currentProductForSizeSelection.name}" class="w-full h-full object-cover">
-    </div>
-</div>
-<div class="dialogs-base-productDetails flex-1">
-    <div class="dialogs-base-brandName text-sm font-semibold text-gray-800">${currentProductForSizeSelection.brand}</div>
-    <div class="dialogs-base-productName text-gray-600 text-sm leading-tight">${currentProductForSizeSelection.name}</div>
-    <div class="inlinePriceComponent-base-price text-sm mt-1 flex items-center">
-        <span class="inlinePriceComponent-base-bold font-bold text-gray-800 flex items-center">
-            <svg width="8" height="10" viewBox="0 0 8 10" class="fill-current mr-0.5"><path fill-rule="nonzero" d="M3.418 10 .898 5.604V4.568h.84c.336 0 .63-.047.882-.14.262-.103.476-.247.644-.434.178-.187.299-.41.364-.672H.898V2.286h2.716a1.694 1.694 0 0 0-.294-.644 1.289 1.289 0 0 0-.532-.434 1.678 1.678 0 0 0-.784-.168H.898V.004h6.314V1.04H5.014c.159.177.29.369.392.574.112.205.187.43.224.672h1.582v1.036H5.658c-.093.69-.36 1.232-.798 1.624-.438.383-1.003.644-1.694.784L5.91 10H3.418Z"></path></svg>${currentProductForSizeSelection.price}
-        </span>
-        <span class="itemComponents-base-strikedAmount ml-2">
-            <span class="itemComponents-base-price itemComponents-base-strike dialogs-base-strikedAmount line-through text-gray-500 flex items-center">
-                <svg width="7" height="9" viewBox="0 0 7 9" xmlns="http://www.w3.org/2000/svg" class="fill-current mr-0.5"><g clip-path="url(#clip0_674_1209)"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.966797 4.6993L3.27973 8.73777H4.52798L2.19057 4.88287C2.6647 4.81768 3.06996 4.69005 3.40632 4.5H7V3.5H4.29767C4.37186 3.30767 4.42008 3.09555 4.44231 2.86364H6.03325V2.08042H4.41785C4.38521 1.79487 4.30771 1.54604 4.18531 1.33392C4.06295 1.12179 3.90795 0.938227 3.72028 0.783217H6.03325V0H0.966797V0.783217H1.23603C1.65211 0.783217 2.00293 0.82809 2.28848 0.917833C2.58218 1.00758 2.8147 1.15035 2.98603 1.34615C3.15736 1.5338 3.27158 1.77855 3.32868 2.08042H0.966797V2.86364H3.34091C3.3155 3.11784 3.24801 3.32996 3.13843 3.5H0V4.5H0.966797V4.6993Z"></path></g><defs><clipPath id="clip0_674_1209"><rect width="7" height="9"></rect></clipPath></defs></svg>${currentProductForSizeSelection.originalPrice}
-            </span>
-        </span>
-        <span class="itemComponents-base-impulseDriverDiscountWrapperStyle bg-orange-100 text-orange-500 px-1 py-0.5 rounded text-xs font-semibold ml-2">
-          <span class="itemComponents-base-itemDiscount">${currentProductForSizeSelection.discount}% OFF</span>
-        </span>
-    </div>
-</div>
-`;
+    <div class="h-[80px] w-[60px] flex-shrink-0"><img src="${currentProductForSizeSelection.imageUrl}" alt="${currentProductForSizeSelection.name}" class="w-full h-full object-cover"></div>
+    <div class="flex-1"><div class="text-sm font-semibold">${currentProductForSizeSelection.brand}</div><div class="text-gray-600 text-sm">${currentProductForSizeSelection.name}</div><div class="text-sm mt-1"><b>₹${currentProductForSizeSelection.price}</b> <s class="text-gray-500">₹${currentProductForSizeSelection.originalPrice}</s> <span class="text-orange-500 text-xs">${currentProductForSizeSelection.discount}% OFF</span></div></div>`;
 
-  // Populate size options
-  sizeOptionsContainer.innerHTML = currentProductForSizeSelection.availableSizes
-    .map(
-      (size) => `
-<div class="sizeSelector-base-item border border-gray-300 rounded-md py-2 px-1 text-center cursor-pointer text-sm font-semibold transition-colors
-${
-  size === currentProductForSizeSelection.size
-    ? "bg-rose-500 text-white border-rose-500"
-    : "bg-white text-gray-700 hover:bg-gray-100"
-}"
-onclick="selectSizeInModal('${size}')" data-size="${size}">
-    <div class="sizeSelector-base-display">${size}</div>
-</div>
-`
-    )
-    .join("");
-
+  sizeOptionsContainer.innerHTML = currentProductForSizeSelection.availableSizes.map(size => `<div class="border rounded-md py-2 text-center cursor-pointer text-sm font-semibold ${size === currentProductForSizeSelection.size ? "bg-rose-500 text-white border-rose-500" : "bg-white text-gray-700"}" onclick="selectSizeInModal('${size}')" data-size="${size}"><div>${size}</div></div>`).join("");
   openModal("productSizeModal", "productSizeModalContent");
 }
 
 function selectSizeInModal(selectedSize) {
-  tempSelectedSize = selectedSize; // Update temporary selection
-
-  const sizeItems = document.querySelectorAll(
-    "#sizeOptionsContainer .sizeSelector-base-item"
-  );
-  sizeItems.forEach((item) => {
-    if (item.dataset.size === selectedSize) {
-      item.classList.add("bg-rose-500", "text-white", "border-rose-500");
-      item.classList.remove("bg-white", "text-gray-700", "hover:bg-gray-100");
-    } else {
-      item.classList.remove("bg-rose-500", "text-white", "border-rose-500");
-      item.classList.add("bg-white", "text-gray-700", "hover:bg-gray-100");
-    }
+  tempSelectedSize = selectedSize;
+  const sizeItems = document.querySelectorAll("#sizeOptionsContainer div[data-size]");
+  sizeItems.forEach(item => {
+    item.classList.toggle("bg-rose-500", item.dataset.size === selectedSize);
+    item.classList.toggle("text-white", item.dataset.size === selectedSize);
+    item.classList.toggle("border-rose-500", item.dataset.size === selectedSize);
+    item.classList.toggle("bg-white", item.dataset.size !== selectedSize);
+    item.classList.toggle("text-gray-700", item.dataset.size !== selectedSize);
   });
 }
 
 function confirmSizeSelection() {
   if (currentProductForSizeSelection && tempSelectedSize) {
-    const productToUpdate = products.find(
-      (p) => p.id === currentProductForSizeSelection.id
-    );
+    const productToUpdate = products.find(p => p.id === currentProductForSizeSelection.id);
     if (productToUpdate) {
       productToUpdate.size = tempSelectedSize;
-      console.log(
-        `Size for product ${currentProductForSizeSelection.id} updated to ${tempSelectedSize}`
-      );
-      const selectedSizeElement = document.getElementById(
-        `selectedSize-${productToUpdate.id}`
-      );
+      const selectedSizeElement = document.getElementById(`selectedSize-${productToUpdate.id}`);
       if (selectedSizeElement) {
-        selectedSizeElement.textContent = tempSelectedSize; // Update visible size immediately
+        selectedSizeElement.textContent = tempSelectedSize;
       }
-      // No full re-render needed if only size changes that don't affect price directly
     }
   }
   closeModal("productSizeModal", "productSizeModalContent");

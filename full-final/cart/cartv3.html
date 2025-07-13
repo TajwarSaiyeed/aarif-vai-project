@@ -745,6 +745,75 @@
         </div>
       </div>
     </div>
+
+    <div
+      id="moveFromBagModal"
+      class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[1001]"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="bg-white rounded-md shadow-lg w-full max-w-sm m-4">
+        <!-- Close Button -->
+        <button
+          onclick="closeMoveFromBagModal()"
+          class="absolute top-4 right-4 text-gray-400 hover:text-gray-800"
+          aria-label="Close modal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            class="fill-current"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9.031 8l6.756-6.756a.731.731 0 0 0 0-1.031.732.732 0 0 0-1.031 0L8 6.969 1.244.213a.732.732 0 0 0-1.031 0 .731.731 0 0 0 0 1.03L6.969 8 .213 14.756a.731.731 0 0 0 0 1.031.732.732 0 0 0 1.031 0L8 9.031l6.756 6.756a.732.732 0 0 0 1.031 0 .731.731 0 0 0 0-1.03L9.031 8z"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Content -->
+        <div class="p-6">
+          <div class="flex items-start gap-4">
+            <!-- Product Image -->
+            <div class="w-12 h-16 bg-gray-200 flex-shrink-0">
+              <img
+                id="modalProductImage"
+                src=""
+                alt="Product Image"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Text -->
+            <div class="flex-1">
+              <h3 class="font-bold text-base text-gray-800">Move from Bag</h3>
+              <p class="text-gray-600 text-sm mt-2">
+                Are you sure you want to move this item from bag?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex border-t border-gray-200">
+          <button
+            id="modalRemoveButton"
+            class="w-1/2 py-3 text-center font-bold text-gray-700 hover:bg-gray-50 transition-colors uppercase"
+          >
+            REMOVE
+          </button>
+          <div class="border-l border-gray-200"></div>
+          <button
+            id="modalMoveToWishlistButton"
+            class="w-1/2 py-3 text-center font-bold text-rose-500 hover:bg-rose-50/50 transition-colors uppercase"
+          >
+            MOVE TO WISHLIST
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile Footer Badges -->
     <div class="md:hidden flex justify-center mt-5 bg-slate-50">
       <img
