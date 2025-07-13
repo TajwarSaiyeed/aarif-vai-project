@@ -747,7 +747,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Made global to be callable from inline HTML onclick
     const hiddenOffers = document.querySelectorAll(".hidden-offer");
     const toggleText = document.getElementById("toggleText");
+    const toggleText2 = document.getElementById("toggleText2");
     const arrowIcon = document.getElementById("arrowIcon");
+    const arrowIcon2 = document.getElementById("arrowIcon2");
 
     const isHidden = hiddenOffers[0].classList.contains("hidden");
 
@@ -756,7 +758,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     toggleText.textContent = isHidden ? "Show Less" : "Show More";
+    toggleText2.textContent = isHidden ? "Show Less" : "Show More";
     arrowIcon.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+    arrowIcon2.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
   };
 
   renderProducts(); // Initial rendering of products
