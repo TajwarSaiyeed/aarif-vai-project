@@ -925,6 +925,42 @@ function createStyleYourBadroomMobileProductCardHTML(item) {
 `;
 }
 
+// Function to create product card HTML for mobile slider
+function createMobileShopByNotesProductCardHTMLFor3(item) {
+  return `
+    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 w-[120px]">
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
+            <div class="relative overflow-hidden w-full">
+                <!-- Product Image -->
+                <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
+                    <img
+                        src="../img.jpeg"
+                        alt="${item.title}"
+                        class="w-full h-full object-cover object-top transition-opacity duration-300"
+                        loading="lazy"
+                    />
+                </div>
+
+                <!-- Content -->
+                <div class="relative">
+                    <div class="py-2">
+                        <!-- Brand Title -->
+                        <h3 class="text-center">
+                            ${item.title}
+                        </h3>
+                        <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
+              Under ${item.price}
+            </h3>
+                        </div>
+
+                </div>
+            </div>
+        </a>
+        
+    </div>
+  `;
+}
+
 const shopByNotesGridDesktop = document.querySelector(
   "#shop-by-notes-grid-desktop"
 );
@@ -958,7 +994,7 @@ if (styleYourBadroomMobile) {
     productCard.innerHTML =
       createStyleYourBadroomMobileProductCardHTML(product);
     if (product === shopByNotesProducts[shopByNotesProducts.length - 1]) {
-      productCard.classList.add("pr-10");
+      productCard.classList.add("pr-5");
     }
     styleYourBadroomMobile.appendChild(productCard);
   });
@@ -977,7 +1013,7 @@ if (shopByNotesSliderMobile) {
         shopByNotesProducts.slice(0, 6).length - 1
       ]
     ) {
-      productCard.classList.add("pr-10");
+      productCard.classList.add("pr-5");
     }
     shopByNotesSliderMobile.appendChild(productCard);
   });
@@ -1007,7 +1043,7 @@ if (shopByNotesSliderMobile2) {
         shopByNotesProducts.slice(0, 6).length - 1
       ]
     ) {
-      productCard.classList.add("pr-10");
+      productCard.classList.add("pr-5");
     }
     shopByNotesSliderMobile2.appendChild(productCard);
   });
@@ -1030,14 +1066,14 @@ const shopByNotesSliderMobile3 = document.querySelector(
 if (shopByNotesSliderMobile3) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
-    productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
+    productCard.innerHTML = createMobileShopByNotesProductCardHTMLFor3(product);
     if (
       product ===
       shopByNotesProducts.slice(0, 6)[
         shopByNotesProducts.slice(0, 6).length - 1
       ]
     ) {
-      productCard.classList.add("pr-10");
+      productCard.classList.add("pr-5");
     }
     shopByNotesSliderMobile3.appendChild(productCard);
   });
