@@ -134,6 +134,78 @@
       <span class="text-xs text-gray-500">STEP 1/3</span>
     </div>
 
+    <div class="bg-white rounded-sm px-5 py-3 block md:hidden">
+      <div class="flex justify-between items-center gap-3 text-sm lg:text-base">
+        <span class="flex items-center gap-2 text-gray-800">
+          <span class="font-semibold">Price Details</span>
+        </span>
+        <button
+          id="showPriceDetails"
+          onclick="togglePriceDetails()"
+          class="text-rose-500 font-semibold bg-transparent border-none cursor-pointer flex items-center text-sm"
+        >
+          <span id="togglePriceShow">Show</span>
+          <svg
+            id="arrowIconPriceDetails"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-chevron-down transition-transform duration-300"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+      </div>
+      <div class="bg-white pt-2 hidden" id="priceDetailsMobile">
+        <div class="flex justify-between mb-1 lg:mb-3 text-sm">
+          <span>Total MRP</span>
+          <span>₹1,448</span>
+        </div>
+        <div class="flex justify-between mb-1 lg:mb-3 text-green-600 text-sm">
+          <span>Discount on MRP</span>
+          <span>-₹500</span>
+        </div>
+        <div class="lg:flex justify-between mb-3 hidden text-sm">
+          <span>Coupon Discount</span>
+          <a href="#" class="text-rose-500 no-underline">Apply Coupon</a>
+        </div>
+        <div class="hidden lg:flex justify-between mb-3 text-sm">
+          <span>Social Work Donation</span>
+          <span>₹20</span>
+        </div>
+        <div class="flex justify-between mb-3 text-sm">
+          <span
+            >Platform Fee
+            <button
+              class="text-rose-500 text-xs bg-transparent border-none cursor-pointer"
+            >
+              Know More
+            </button></span
+          >
+          <span>₹20</span>
+        </div>
+        <div
+          class="font-semibold text-[15px] pt-3 border-t border-gray-200 mt-3 flex justify-between"
+        >
+          <span>Total Amount</span>
+          <span>₹988</span>
+        </div>
+        <button
+          class="w-full bg-rose-500 text-white border-none py-4 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn hidden lg:block"
+        >
+          PLACE ORDER
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-[#f4f4f5] h-[10px] block md:hidden"></div>
+
     <!-- Main Checkout Content -->
     <div
       class="max-w-6xl mx-auto p-0 mt-5 md:p-6 flex flex-col md:flex-row gap-0 md:gap-6"
@@ -141,41 +213,23 @@
       <!-- Left Column: Customer, Billing, Payment, Offers, Products, Login -->
       <div class="md:w-2/3 flex flex-col gap-3">
         <!-- Customer Information Section (NEW) -->
-        <div class="bg-white mx-10 md:mx-0">
+        <div class="bg-white px-5 md:px-0">
           <h2 class="text-xl font-semibold mb-6">Customer information</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label
-                for="firstName"
-                class="block text-gray-700 text-sm font-medium mb-1"
-                >First name <span class="text-red-500">*</span></label
-              >
-              <input
-                type="text"
-                id="firstName"
-                class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500"
-                required
-              />
-              <p class="text-red-500 text-sm mt-1 hidden" id="firstNameError">
-                First name is required
-              </p>
-            </div>
-            <div>
-              <label
-                for="lastName"
-                class="block text-gray-700 text-sm font-medium mb-1"
-                >Last name <span class="text-red-500">*</span></label
-              >
-              <input
-                type="text"
-                id="lastName"
-                class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500"
-                required
-              />
-              <p class="text-red-500 text-sm mt-1 hidden" id="lastNameError">
-                Last name is required
-              </p>
-            </div>
+          <div class="mb-4">
+            <label
+              for="name"
+              class="block text-gray-700 text-sm font-medium mb-1"
+              >Name <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              id="name"
+              class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500"
+              required
+            />
+            <p class="text-red-500 text-sm mt-1 hidden" id="nameError">
+              Name is required
+            </p>
           </div>
           <div class="mb-4">
             <label
@@ -212,45 +266,24 @@
         </div>
 
         <!-- Billing Details Section (NEW) -->
-        <div class="bg-white mx-10 md:mx-0">
+        <div class="bg-white px-5 md:px-0">
           <h2 class="text-xl font-semibold mb-6">Billing details</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label
-                for="streetAddress"
-                class="block text-gray-700 text-sm font-medium mb-1"
-                >Street address <span class="text-red-500">*</span></label
-              >
-              <input
-                type="text"
-                id="streetAddress"
-                placeholder="House number and street name"
-                class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500"
-                required
-              />
-              <p
-                class="text-red-500 text-sm mt-1 hidden"
-                id="streetAddressError"
-              >
-                Street address is required
-              </p>
-            </div>
-            <div>
-              <label
-                for="townCity"
-                class="block text-gray-700 text-sm font-medium mb-1"
-                >Town / City <span class="text-red-500">*</span></label
-              >
-              <input
-                type="text"
-                id="townCity"
-                class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500"
-                required
-              />
-              <p class="text-red-500 text-sm mt-1 hidden" id="townCityError">
-                Town / City is required
-              </p>
-            </div>
+          <div class="mb-4">
+            <label
+              for="fullAddress"
+              class="block text-gray-700 text-sm font-medium mb-1"
+              >Full address <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              id="fullAddress"
+              placeholder="House number and street name"
+              class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500"
+              required
+            />
+            <p class="text-red-500 text-sm mt-1 hidden" id="fullAddressError">
+              Full address is required
+            </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
@@ -275,19 +308,39 @@
             </div>
             <div>
               <label
-                for="country"
+                for="thana"
                 class="block text-gray-700 text-sm font-medium mb-1"
-                >Country <span class="text-red-500">*</span></label
+                >Thana <span class="text-red-500">*</span></label
               >
-              <input
-                type="text"
-                id="country"
-                value="Bangladesh"
-                class="w-full p-3 border border-gray-300 rounded bg-gray-50 cursor-not-allowed"
-                readonly
+              <select
+                id="thana"
+                class="w-full p-3 border border-gray-300 rounded focus:ring-rose-500 focus:border-rose-500 bg-white"
                 required
-              />
+              >
+                <option value="">Select an option...</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chittagong">Chittagong</option>
+                <option value="Khulna">Khulna</option>
+              </select>
+              <p class="text-red-500 text-sm mt-1 hidden" id="thanaError">
+                Thana is required
+              </p>
             </div>
+          </div>
+          <div class="mb-4">
+            <label
+              for="country"
+              class="block text-gray-700 text-sm font-medium mb-1"
+              >Country <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              id="country"
+              value="Bangladesh"
+              class="w-full p-3 border border-gray-300 rounded bg-gray-50 cursor-not-allowed"
+              readonly
+              required
+            />
           </div>
           <div>
             <label
@@ -305,22 +358,40 @@
         </div>
 
         <!-- Payment Section (NEW) -->
-        <div class="bg-white mx-10 md:mx-0 mb-5">
+        <div class="bg-white px-5 md:px-0 mb-5">
           <h2 class="text-xl font-semibold mb-6">Payment</h2>
-          <div class="border border-gray-300 rounded-md p-3 mb-4">
-            <label class="flex items-center">
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="cod"
-                checked
-                class="custom-radio-input"
-              />
-              <span class="ml-2 text-gray-900">Cash on delivery</span>
-            </label>
-            <p class="text-gray-500 text-sm mt-1 ml-6">
-              Pay with cash upon delivery.
-            </p>
+          <div class="border border-gray-300 rounded-md p-3 mb-4 space-y-4">
+            <div>
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="cod"
+                  checked
+                  class="custom-radio-input"
+                />
+                <span class="ml-2 text-gray-900">Cash on delivery</span>
+              </label>
+              <p class="text-gray-500 text-sm mt-1 ml-6">
+                Pay with cash upon delivery.
+              </p>
+            </div>
+            <div>
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="ssl"
+                  checked
+                  class="custom-radio-input"
+                />
+                <span class="ml-2 text-gray-900"
+                  >Pay with
+                  <img src="../ssl.png" class="inline-block h-6" />
+                </span>
+              </label>
+              <p class="text-gray-500 text-sm mt-1 ml-6">Pay with SSL.</p>
+            </div>
           </div>
 
           <p class="text-gray-500 text-sm mb-6">
@@ -340,7 +411,7 @@
 
         <!-- Login Section -->
         <div
-          class="bg-white p-5 rounded-lg shadow flex items-center gap-4 mx-10 md:mx-0"
+          class="bg-white p-5 rounded-lg shadow md:flex items-center gap-4 hidden"
         >
           <div
             class="inline-block flex-shrink-0 flex items-center justify-center h-10 w-[70px] md:h-[50px] md:w-[90px]"
@@ -382,7 +453,7 @@
         <div class="sticky top-4 space-y-4">
           <!-- Coupons Section (Desktop) -->
           <div
-            class="bg-white border-y md:border-y-0 md:border-b border-gray-200 pb-2 pt-4 md:pt-0 px-10 md:px-0"
+            class="bg-white border-y md:border-y-0 md:border-b border-gray-200 pb-2 pt-4 md:pt-0 px-10 md:px-0 hidden md:block"
           >
             <div class="text-xs font-bold text-gray-600 uppercase mb-3">
               Coupons
@@ -431,7 +502,7 @@
 
           <!-- Social Work Donation -->
           <div
-            class="bg-white border-b border-gray-200 pt-2 pb-3 px-10 md:px-0"
+            class="bg-white border-b border-gray-200 pt-2 pb-3 px-10 md:px-0 hidden md:block"
           >
             <div class="text-gray-600 text-xs font-semibold mb-4 uppercase">
               SUPPORT TRANSFORMATIVE SOCIAL WORK IN INDIA
@@ -519,7 +590,7 @@
           </div>
 
           <!-- Price Details -->
-          <div class="bg-white px-10 md:px-0 pt-2">
+          <div class="bg-white hidden md:block pt-2">
             <div
               class="text-gray-600 text-xs font-semibold mb-4 uppercase price-title"
             >
@@ -570,7 +641,7 @@
       </div>
     </div>
     <!-- Mobile Footer Badges -->
-    <div class="md:hidden flex justify-center mt-5 bg-slate-50">
+    <div class="md:hidden flex justify-center bg-slate-50">
       <img
         src="https://assets.myntassets.com/f_webp,dpr_2,q_60,c_limit,fl_progressive/assets/images/retaillabs/2020/6/24/11940eed-9b55-4171-9e59-dfb273b3f5961592993834502-1--1-.png"
         alt="Badges"
@@ -654,9 +725,7 @@
     </div>
 
     <!-- Mobile Bottom Section -->
-    <div
-      class="md:hidden bg-white p-4 sticky bottom-0 border-t border-gray-200"
-    >
+    <div class="hidden bg-white p-4 sticky bottom-0 border-t border-gray-200">
       <div class="text-xs text-gray-600 text-center mb-2">
         By placing the order, you agree to Myntra's Terms of Use and Privacy
         Policy
@@ -673,14 +742,9 @@
     <script>
       const requiredFields = [
         {
-          id: "firstName",
-          errorId: "firstNameError",
-          message: "First name is required",
-        },
-        {
-          id: "lastName",
-          errorId: "lastNameError",
-          message: "Last name is required",
+          id: "name",
+          errorId: "nameError",
+          message: "Name is required",
         },
         { id: "phone", errorId: "phoneError", message: "Phone is required" },
         {
@@ -689,19 +753,19 @@
           message: "Email Address is required",
         },
         {
-          id: "streetAddress",
-          errorId: "streetAddressError",
-          message: "Street address is required",
-        },
-        {
-          id: "townCity",
-          errorId: "townCityError",
-          message: "Town / City is required",
+          id: "fullAddress",
+          errorId: "fullAddressError",
+          message: "Full address is required",
         },
         {
           id: "district",
           errorId: "districtError",
           message: "District is required",
+        },
+        {
+          id: "thana",
+          errorId: "thanaError",
+          message: "Thana is required",
         },
       ];
 

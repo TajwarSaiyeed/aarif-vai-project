@@ -843,6 +843,21 @@ document.addEventListener("DOMContentLoaded", function () {
     arrowIcon2.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
   };
 
+  window.togglePriceDetails = function () {
+    // Made global to be callable from inline HTML onclick
+    const priceDetailsMobile = document.getElementById("priceDetailsMobile");
+    const togglePriceShow = document.getElementById("togglePriceShow");
+    const arrowIconPriceDetails = document.getElementById(
+      "arrowIconPriceDetails"
+    );
+    const isHidden = priceDetailsMobile.classList.contains("hidden");
+    priceDetailsMobile.classList.toggle("hidden");
+    togglePriceShow.textContent = isHidden ? "Hide" : "Show";
+    arrowIconPriceDetails.style.transform = isHidden
+      ? "rotate(180deg)"
+      : "rotate(0deg)";
+  };
+
   renderProducts(); // Initial rendering of products
 
   // Recommended Products Data for "You may also like" section
