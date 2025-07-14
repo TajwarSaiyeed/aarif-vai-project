@@ -570,12 +570,12 @@ function createProductCardHTML(item) {
                 <div class="relative px-2">
                     <div class="py-2">
                         <!-- Brand Title -->
-                        <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+                        <h3 class="text-left pl-1 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
                             ${item.title}
                         </h3>
 
                         <!-- Description -->
-                        <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
+                        <h4 class="text-left pl-1 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
                             ${item.description}
                         </h4>
 
