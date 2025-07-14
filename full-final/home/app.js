@@ -127,35 +127,39 @@ setInterval(nextSlide, 5000);
 
 const categories = [
   {
-    title: "Category 1",
+    title: "Mens Perfume",
     subtitle: "Subtitle for Category 1",
     image: "https://picsum.photos/300/400?random=12",
   },
   {
-    title: "Category 2",
+    title: "Womens Perfume",
     subtitle: "Subtitle for Category 2",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
+    image:
+      "https://cdn1.iconfinder.com/data/icons/wedding-cartoon/512/sim2329-512.png",
   },
   {
-    title: "Category 3",
+    title: "Kids Perfume",
     subtitle: "Subtitle for Category 3",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
+    image:
+      "https://static.vecteezy.com/system/resources/thumbnails/007/479/888/small/icon-coat-suitable-for-men-accessories-symbol-long-shadow-style-simple-design-editable-design-template-simple-symbol-illustration-vector.jpg",
   },
   {
-    title: "Category 6",
+    title: "T-Shirts",
     subtitle: "Subtitle for Category 6",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/037/722/127/non_2x/coverall-clothes-icon-vector.jpg",
   },
   {
-    title: "Category 7",
+    title: "Shoes",
     subtitle: "Subtitle for Category 7",
-    image: "https://www.pngall.com/wp-content/uploads/2016/03/Bottle-PNG-2.png",
+    image:
+      "https://static.vecteezy.com/system/resources/thumbnails/007/479/888/small/icon-coat-suitable-for-men-accessories-symbol-long-shadow-style-simple-design-editable-design-template-simple-symbol-illustration-vector.jpg",
   },
   {
-    title: "Category 8",
+    title: "Watches",
     subtitle: "Subtitle for Category 8",
     image:
-      "https://w7.pngwing.com/pngs/381/198/png-transparent-dove-soap-lotion-bathing-personal-care-soap-miscellaneous-cream-soap-thumbnail.png",
+      "https://static.vecteezy.com/system/resources/previews/037/722/127/non_2x/coverall-clothes-icon-vector.jpg",
   },
 ];
 
@@ -163,11 +167,11 @@ const categories = [
 function createCategoryCardHTML(category) {
   return `
           <div class="rounded-lg p-4 text-center flex-shrink-0 mobile-category-card">
-            <div class="w-16 h-16 sm:w-32 sm:h-32 mx-auto bg-orange-100 rounded-full flex items-center justify-start mb-4 sm:mb-8 relative">
+            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto bg-orange-100 rounded-lg flex items-center justify-start mb-4 sm:mb-8 relative overflow-hidden">
               <img
                 src="${category.image}"
                 alt="${category.title}"
-                class="w-20 h-20 sm:w-40 sm:h-40 object-contain rounded-full absolute -top-3 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                class="w-full h-full object-cover object-center"
                 loading="lazy"
               />
             </div>
@@ -187,11 +191,11 @@ function createCategoryMobileCardHTML(category) {
               <img
                 src="${category.image}"
                 alt="${category.title}"
-                class="w-20 h-20 sm:w-40 sm:h-40 object-fit absolute -top-3 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                class="w-full h-full object-cover object-center"
                 loading="lazy"
               />
             </div>
-            <h3 class="text-sm sm:text-xl md:text-2xl">
+            <h3 class="text-sm font-[600] sm:text-xl md:text-2xl mt-[5px]">
               ${category.title}
             </h3>
           </div>
