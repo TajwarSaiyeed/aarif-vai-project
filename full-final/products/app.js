@@ -2382,3 +2382,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+document.addEventListener("click", function (event) {
+  const popup = document.getElementById("brand-popup");
+  const showAllButton = document.getElementById("brand-show-all");
+  if (
+    popup &&
+    !popup.classList.contains("hidden") &&
+    event.target !== popup &&
+    !popup.contains(event.target) &&
+    event.target !== showAllButton
+  ) {
+    popup.classList.add("hidden");
+    const brandCheckboxesContainer =
+      document.getElementById("brand-checkboxes");
+    const popupSearch = document.getElementById("brand-popup-search");
+    if (brandCheckboxesContainer && popupSearch) {
+      brandCheckboxesContainer.innerHTML = "";
+      popupSearch.value = "";
+      const allCheckboxes = brandCheckboxesContainer.querySelectorAll("label");
+      allCheckboxes.forEach((label) => {
+        label.style.display = "";
+      });
+    }
+  }
+});
