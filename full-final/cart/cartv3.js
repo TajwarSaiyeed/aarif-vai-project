@@ -7,11 +7,10 @@ const products = [
     price: 389,
     originalPrice: 649,
     discount: 40,
-    size: "S",
+    size: "50ml",
     quantity: 1,
-    imageUrl:
-      "https://assets.myntassets.com/w_111,h_148,dpr_1,q_60,c_limit,fl_progressive/h_148,q_60,w_111/v1/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg",
-    availableSizes: ["XS", "S", "M", "L", "XL", "XXL"], // Added for size modal
+    imageUrl: "../img.jpeg",
+    availableSizes: ["50ml", "100ml", "200ml", "250ml", "500ml", "1000ml"], // Added for size modal
   },
   {
     id: 2,
@@ -20,11 +19,10 @@ const products = [
     price: 799,
     originalPrice: 1599,
     discount: 50,
-    size: "M",
+    size: "500ml",
     quantity: 2,
-    imageUrl:
-      "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/16127474/2023/11/20/58711868-9ccb-45aa-a3f3-ca6c6942f0581700479581777USPoloAssnMenRedNavyBlueStripedComfort-FitLoungeT-Shirt1.jpg",
-    availableSizes: ["S", "M", "L", "XXL"],
+    imageUrl: "../img.jpeg",
+    availableSizes: ["100ml", "200ml", "500ml", "1000ml"],
   },
   {
     id: 3,
@@ -33,17 +31,20 @@ const products = [
     price: 549,
     originalPrice: 1099,
     discount: 50,
-    size: "L",
+    size: "200ml",
     quantity: 1,
-    imageUrl:
-      "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/2024/SEPTEMBER/4/1KggjQ4i_18213148989b443795e9067c1a471b09.jpg",
-    availableSizes: ["S", "M", "L", "XL"],
+    imageUrl: "../img.jpeg",
+    availableSizes: ["200ml", "500ml", "1000ml"],
   },
 ];
 
 // Variables for size selection modal
 let currentProductForSizeSelection = null;
 let tempSelectedSize = null; // To hold selection within modal before confirming
+
+// Variables for quantity selection modal
+let currentProductForQuantitySelection = null;
+let tempSelectedQuantity = null;
 
 // NEW: Variable for "Move from Bag" modal
 let currentProductIdForModal = null;
@@ -108,25 +109,13 @@ function createProductHTML(product, isLast = false) {
     product.size
   }</span>
           </div>
-          <div class="flex items-center gap-2 px-4">
+          <div class="flex items-center gap-2 bg-[#f5f5f6] px-3 font-semibold text-sm">
             <span>Qty:</span>
-            <div class="flex items-center">
-              <button class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center focus:outline-none" onclick="decreaseQuantity(${
-                product.id
-              })">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><line x1="5" x2="19" y1="12" y2="12"/></svg>
-              </button>
-              <input type="number" min="1" id="quantity-${
-                product.id
-              }" class="w-12 text-center border border-gray-300 rounded outline-none focus:ring-0 mx-1 appearance-none" value="${
+            <span class="cursor-pointer text-teal-500" id="selectedQuantity-${
+              product.id
+            }" onclick="openQuantityModal(${product.id})">${
     product.quantity
-  }" onchange="updateProductQuantity(${product.id}, this.value)">
-              <button class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center focus:outline-none" onclick="increaseQuantity(${
-                product.id
-              })">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              </button>
-            </div>
+  }</span>
           </div>
         </div>
         <div class="flex items-center gap-1">
@@ -278,6 +267,89 @@ function updateItemCount() {
   if (itemsSelectedElement) {
     itemsSelectedElement.textContent = `${totalQuantity} items selected for order`;
   }
+}
+
+// Function to open quantity modal
+function openQuantityModal(productId) {
+  currentProductForQuantitySelection = products.find((p) => p.id === productId);
+  if (!currentProductForQuantitySelection) {
+    console.error("Product not found for quantity selection:", productId);
+    return;
+  }
+  tempSelectedQuantity = currentProductForQuantitySelection.quantity;
+
+  const productInfoContainer = document.getElementById(
+    "quantityModalProductInfo"
+  );
+  const quantityInput = document.getElementById("modalQuantityInput");
+
+  productInfoContainer.innerHTML = `
+    <div class="flex-shrink-0">
+      <img src="${currentProductForQuantitySelection.imageUrl}" alt="${currentProductForQuantitySelection.name}" class="w-16 h-20 object-cover">
+    </div>
+    <div class="flex-1">
+      <div class="font-semibold text-sm">${currentProductForQuantitySelection.brand}</div>
+      <div class="text-gray-600 text-sm">${currentProductForQuantitySelection.name}</div>
+      <div class="flex items-center gap-1 mt-1">
+        <span class="font-semibold text-base">₹${currentProductForQuantitySelection.price}</span>
+        <span class="line-through text-gray-500 text-base">₹${currentProductForQuantitySelection.originalPrice}</span>
+        <span class="text-yellow-500 font-semibold text-base">${currentProductForQuantitySelection.discount}% OFF</span>
+      </div>
+    </div>
+  `;
+
+  quantityInput.value = tempSelectedQuantity;
+  openModal("quantityModal", "quantityModalContent");
+}
+
+// Function to increase quantity in modal
+function increaseQuantityInModal() {
+  tempSelectedQuantity = parseInt(tempSelectedQuantity) + 1;
+  document.getElementById("modalQuantityInput").value = tempSelectedQuantity;
+}
+
+// Function to decrease quantity in modal
+function decreaseQuantityInModal() {
+  if (tempSelectedQuantity > 1) {
+    tempSelectedQuantity = parseInt(tempSelectedQuantity) - 1;
+    document.getElementById("modalQuantityInput").value = tempSelectedQuantity;
+  }
+}
+
+// Function to update temporary quantity
+function updateTempQuantity(newValue) {
+  const parsedValue = parseInt(newValue);
+  if (!isNaN(parsedValue) && parsedValue >= 1) {
+    tempSelectedQuantity = parsedValue;
+  } else {
+    tempSelectedQuantity = 1;
+    document.getElementById("modalQuantityInput").value = tempSelectedQuantity;
+  }
+}
+
+// Function to confirm quantity selection
+function confirmQuantitySelection() {
+  if (currentProductForQuantitySelection && tempSelectedQuantity !== null) {
+    const productToUpdate = products.find(
+      (p) => p.id === currentProductForQuantitySelection.id
+    );
+    if (productToUpdate) {
+      productToUpdate.quantity = tempSelectedQuantity;
+      console.log(
+        `Quantity for product ${currentProductForQuantitySelection.id} updated to ${tempSelectedQuantity}`
+      );
+      const selectedQuantityElement = document.getElementById(
+        `selectedQuantity-${productToUpdate.id}`
+      );
+      if (selectedQuantityElement) {
+        selectedQuantityElement.textContent = tempSelectedQuantity;
+      }
+      updateItemCount();
+    }
+  }
+  closeModal("quantityModal", "quantityModalContent");
+  currentProductForQuantitySelection = null;
+  tempSelectedQuantity = null;
 }
 
 // --- MODAL FUNCTIONS (Gift, Social Work, Product Size) ---
@@ -441,7 +513,11 @@ document.addEventListener("click", function (event) {
     const modalIdToClose = closeBtn.dataset.modalClose;
     closeModal(
       modalIdToClose,
-      modalIdToClose === "productSizeModal" ? "productSizeModalContent" : null
+      modalIdToClose === "productSizeModal"
+        ? "productSizeModalContent"
+        : modalIdToClose === "quantityModal"
+        ? "quantityModalContent"
+        : null
     );
   }
 });
@@ -453,6 +529,7 @@ document.addEventListener("click", function (event) {
     "socialWorkModal",
     "productSizeModal",
     "moveFromBagModal",
+    "quantityModal",
   ];
   modals.forEach((modalId) => {
     const modal = document.getElementById(modalId);
@@ -463,6 +540,8 @@ document.addEventListener("click", function (event) {
           ? "productSizeModalContent"
           : modalId === "giftModal"
           ? "giftModalContent"
+          : modalId === "quantityModal"
+          ? "quantityModalContent"
           : modalId; // Specify content ID if applicable
       const modalContent = document.getElementById(modalContentId);
       // Check if click is inside the modal wrapper but *not* inside the actual content
@@ -491,6 +570,7 @@ window.addEventListener("keydown", function (e) {
     { id: "socialWorkModal", contentId: "socialWorkModalContent" },
     { id: "productSizeModal", contentId: "productSizeModalContent" },
     { id: "moveFromBagModal", contentId: null }, // NEW: Added moveFromBagModal
+    { id: "quantityModal", contentId: "quantityModalContent" },
   ];
 
   for (const modalDef of activeModals) {

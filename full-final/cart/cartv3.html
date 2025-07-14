@@ -154,12 +154,12 @@
             class="list-disc list-inside text-gray-600 space-y-2 mb-3"
           >
             <li>
-              10% Instant Discount on BOBCARD Credit Cards &amp; Credit Card EMI
-              on a min spend of ₹3,500. TCA
+              10% Instant Discount on BOBCARD Credit Cards & Credit Card EMI on
+              a min spend of ₹3,500. TCA
             </li>
             <li class="hidden-offer hidden">
-              5% Instant Discount on HDFC Bank Credit Cards &amp; Credit Card
-              EMI on a min spend of ₹2,500. TCA
+              5% Instant Discount on HDFC Bank Credit Cards & Credit Card EMI on
+              a min spend of ₹2,500. TCA
             </li>
             <li class="hidden-offer hidden">
               15% Cashback on Paytm Wallet payments above ₹1,000. TCA
@@ -249,12 +249,12 @@
             class="list-disc list-inside text-gray-600 space-y-2 text-[13px]"
           >
             <li class="hidden-offer hidden mt-4">
-              10% Instant Discount on BOBCARD Credit Cards &amp; Credit Card EMI
-              on a min spend of ₹3,500. TCA
+              10% Instant Discount on BOBCARD Credit Cards & Credit Card EMI on
+              a min spend of ₹3,500. TCA
             </li>
             <li class="hidden-offer hidden">
-              5% Instant Discount on HDFC Bank Credit Cards &amp; Credit Card
-              EMI on a min spend of ₹2,500. TCA
+              5% Instant Discount on HDFC Bank Credit Cards & Credit Card EMI on
+              a min spend of ₹2,500. TCA
             </li>
             <li class="hidden-offer hidden">
               15% Cashback on Paytm Wallet payments above ₹1,000. TCA
@@ -323,7 +323,113 @@
             </button>
           </div>
         </div>
-
+        <div
+          id="quantityModal"
+          class="hidden fixed inset-0 z-50 overflow-y-auto flex items-center justify-center"
+          aria-labelledby="modal-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            class="fixed inset-0 bg-black/50 transition-opacity"
+            aria-hidden="true"
+          ></div>
+          <div
+            id="quantityModalContent"
+            class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full max-h-screen"
+          >
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="flex items-start justify-between">
+                <div id="quantityModalProductInfo" class="flex gap-4">
+                  <!-- Product image and details will be populated here -->
+                </div>
+                <button
+                  type="button"
+                  class="text-gray-400 hover:text-gray-500"
+                  data-modal-close="quantityModal"
+                >
+                  <span class="sr-only">Close</span>
+                  <svg
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Quantity</label
+                >
+                <div class="flex items-center gap-2 mt-2">
+                  <button
+                    class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                    onclick="decreaseQuantityInModal()"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="5" x2="19" y1="12" y2="12" />
+                    </svg>
+                  </button>
+                  <input
+                    type="number"
+                    min="1"
+                    id="modalQuantityInput"
+                    class="w-16 text-center border border-gray-300 rounded outline-none focus:ring-0"
+                    value="1"
+                    onchange="updateTempQuantity(this.value)"
+                  />
+                  <button
+                    class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                    onclick="increaseQuantityInModal()"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+            >
+              <button
+                type="button"
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-rose-500 text-base font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 sm:ml-3 sm:w-auto sm:text-sm"
+                onclick="confirmQuantitySelection()"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
         <!-- Login Section -->
         <div
           class="bg-white p-5 flex items-center gap-4 lg:rounded-lg lg:shadow"
