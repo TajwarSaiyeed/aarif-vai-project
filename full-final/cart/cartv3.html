@@ -273,11 +273,15 @@
           <!-- Products will be dynamically inserted here -->
         </div>
         <div
-          class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[1000]"
+          class="hidden fixed bottom-0 left-0 w-full lg:inset-0 z-50 overflow-y-auto flex items-center justify-center"
           id="productSizeModal"
         >
           <div
-            class="bg-white w-full max-w-sm rounded-lg p-4 relative transform translate-y-full transition-transform duration-300 ease-out"
+            class="fixed inset-0 bg-black/50 transition-opacity"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="bg-white w-full lg:max-w-sm lg:rounded-lg p-4 relative transform translate-y-full transition-transform duration-300 ease-out z-10"
             id="productSizeModalContent"
           >
             <!-- Close Button -->
