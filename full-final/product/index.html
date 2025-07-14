@@ -596,39 +596,34 @@
           </p>
           <div class="flex flex-wrap gap-2 my-4" id="size-options">
             <button
-              class="font-bold w-13 h-13 p-4 border rounded-full text-sm size-btn hover:border-[#ff3f6c] hover:text-[#ff3f6c]"
-              data-size="XS"
-              data-chest="36.0in"
+              class="font-bold px-4 py-2 rounded-md text-black border border-gray-200 text-sm size-btn border-[#ff3f6c] text-white bg-[#ff3f6c]"
+              data-size="50ml"
             >
-              XS
+              50ml
             </button>
             <button
-              class="font-bold w-13 h-13 p-4 border rounded-full text-sm size-btn hover:border-[#ff3f6c] hover:text-[#ff3f6c]"
-              data-size="S"
-              data-chest="38.0in"
+              class="font-bold px-4 py-2 rounded-md text-black border border-gray-200 text-sm size-btn hover:border-[#ff3f6c] hover:text-white hover:bg-[#ff3f6c]"
+              data-size="100ml"
             >
-              S
+              100ml
             </button>
             <button
-              class="font-bold w-13 h-13 p-4 border rounded-full text-sm size-btn hover:border-[#ff3f6c] hover:text-[#ff3f6c]"
-              data-size="M"
-              data-chest="40.0in"
+              class="font-bold px-4 py-2 rounded-md text-black border border-gray-200 text-sm size-btn hover:border-[#ff3f6c] hover:text-white hover:bg-[#ff3f6c]"
+              data-size="200ml"
             >
-              M
+              200ml
             </button>
             <button
-              class="font-bold w-13 h-13 p-4 border rounded-full text-sm size-btn hover:border-[#ff3f6c] hover:text-[#ff3f6c]"
-              data-size="L"
-              data-chest="42.0in"
+              class="font-bold px-4 py-2 rounded-md text-black border border-gray-200 text-sm size-btn hover:border-[#ff3f6c] hover:text-white hover:bg-[#ff3f6c]"
+              data-size="500ml"
             >
-              L
+              500ml
             </button>
             <button
-              class="font-bold w-13 h-13 p-4 border rounded-full text-sm size-btn hover:border-[#ff3f6c] hover:text-[#ff3f6c]"
-              data-size="XL"
-              data-chest="44.0in"
+              class="font-bold px-4 py-2 rounded-md text-black border border-gray-200 text-sm size-btn hover:border-[#ff3f6c] hover:text-white hover:bg-[#ff3f6c]"
+              data-size="1000ml"
             >
-              XL
+              1000ml
             </button>
           </div>
           <p
@@ -637,19 +632,13 @@
           >
             Please select a size
           </p>
-          <p id="garment-measurement" class="text-xs text-gray-600 mb-4 hidden">
-            Garment Measurement: Chest - <span id="chest-size"></span>
-          </p>
-          <p id="model-info" class="text-xs text-gray-600 mb-4">
-            The model (height 6') is wearing a size M
-          </p>
         </div>
 
         <!-- Action Buttons (Desktop only) -->
         <div class="hidden xl:flex gap-4 mb-6">
           <button
             id="add-to-bag-desktop"
-            class="flex-1 text-[#ff3f6c] text-white py-3 rounded-md font-semibold text-lg hover:text-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
+            class="flex-1 text-white bg-[#ff3f6c] border hover:border-[#ff3f6c] hover:bg-white py-3 rounded-md font-semibold text-lg hover:text-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
           >
             <i class="fas fa-shopping-bag"></i>
             <span>ADD TO BAG</span>
@@ -1439,7 +1428,7 @@
           Garment Measurement: <span id="mobile_measurement">Chest 36.0in</span>
         </div> -->
         <div
-          class="flex space-x-2 mb-4 overflow-x-auto mobile_size-container mt-4"
+          class="flex space-x-2 mb-4 scrollbar-hide overflow-x-auto mobile_size-container mt-4"
         >
           <!-- Size buttons will be generated here -->
         </div>

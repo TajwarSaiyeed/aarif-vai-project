@@ -657,12 +657,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const sizes = [
-  { title: "50ml", subtitle: "Chest 36.0in", quantity: 6 },
-  { title: "100ml", subtitle: "Chest 38.0in", quantity: 9 },
-  { title: "200ml", subtitle: "Chest 40.0in", quantity: 2 },
-  { title: "250ml", subtitle: "Chest 42.0in", quantity: 0 },
-  { title: "500ml", subtitle: "Chest 44.0in", quantity: 0 },
-  { title: "1000ml", subtitle: "Chest 46.0in", quantity: 0 },
+  { title: "50ml", quantity: 6 },
+  { title: "100ml", quantity: 9 },
+  { title: "200ml", quantity: 2 },
+  { title: "250ml", quantity: 0 },
+  { title: "500ml", quantity: 0 },
+  { title: "1000ml", quantity: 0 },
 ];
 
 let selectedSize = sizes[0];
@@ -670,13 +670,13 @@ let selectedSize = sizes[0];
 function renderSizeButtons() {
   const sizeContainer = document.querySelector(".mobile_size-container");
   sizeContainer.innerHTML = "";
-  sizes.forEach((size) => {
+  sizes.forEach((size, index) => {
     const isSelected = size === selectedSize;
     const isAvailable = size.quantity > 0;
     const button = document.createElement("div");
-    button.className = `w-[52px] h-[53px] rounded-[16px] flex items-center justify-center text-sm font-bold cursor-pointer ${
+    button.className = `px-4 py-2 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer ${
       isSelected
-        ? "bg-[#535766] text-white"
+        ? "bg-[#ff3f6c] text-white border border-[#ff3f6c]"
         : "bg-white text-black border border-[#535766]"
     } ${!isAvailable ? "relative border-gray-400 text-gray-400" : ""}`;
     button.innerText = size.title;
@@ -691,7 +691,6 @@ function renderSizeButtons() {
       if (isAvailable) {
         selectedSize = size;
         renderSizeButtons();
-        document.getElementById("mobile_measurement").innerText = size.subtitle;
       }
     });
     const wrapper = document.createElement("div");
@@ -704,6 +703,11 @@ function renderSizeButtons() {
       stock.innerText = `${size.quantity} Left`;
       wrapper.appendChild(stock);
     }
+
+    if (index === sizes.length - 1) {
+      wrapper.classList.add("pr-5");
+    }
+
     sizeContainer.appendChild(wrapper);
   });
 }
