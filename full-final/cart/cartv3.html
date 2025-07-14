@@ -325,7 +325,7 @@
         </div>
         <div
           id="quantityModal"
-          class="hidden fixed inset-0 z-50 overflow-y-auto flex items-center justify-center"
+          class="hidden fixed bottom-0 left-0 w-full lg:inset-0 z-50 overflow-y-auto flex items-center justify-center"
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"
@@ -336,7 +336,7 @@
           ></div>
           <div
             id="quantityModalContent"
-            class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full max-h-screen"
+            class="inline-block bg-white lg:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:align-middle lg:max-w-lg w-full max-h-screen z-50"
           >
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="flex items-start justify-between">
@@ -417,12 +417,10 @@
                 </div>
               </div>
             </div>
-            <div
-              class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
-            >
+            <div class="bg-gray-50 px-4 py-3 lg:flex lg:flex-row-reverse">
               <button
                 type="button"
-                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-rose-500 text-base font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 sm:ml-3 sm:w-auto sm:text-sm"
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-rose-500 text-base font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 sm:text-sm"
                 onclick="confirmQuantitySelection()"
               >
                 Done
