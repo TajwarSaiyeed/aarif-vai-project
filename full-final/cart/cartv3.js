@@ -1227,3 +1227,25 @@ document.addEventListener("DOMContentLoaded", function () {
   renderProductGrid();
   renderMobileProductGrid();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const applyBtn = document.getElementById("applyBtn");
+  const editBtn = document.getElementById("editCoupon");
+  const applyForm = document.getElementById("applyForm");
+  const appliedCoupon = document.getElementById("appliedCoupon");
+  const input = document.getElementById("couponInput");
+
+  applyBtn.addEventListener("click", () => {
+    const code = input.value.trim();
+    if (code !== "") {
+      applyForm.classList.add("hidden");
+      appliedCoupon.classList.remove("hidden");
+      input.value = "";
+    }
+  });
+
+  editBtn.addEventListener("click", () => {
+    appliedCoupon.classList.add("hidden");
+    applyForm.classList.remove("hidden");
+  });
+});
