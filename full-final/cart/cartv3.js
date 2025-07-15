@@ -732,6 +732,10 @@ document.addEventListener("DOMContentLoaded", function () {
         button.classList.add("border-rose-500", "bg-rose-500", "text-white");
       }
 
+      if (index === categoryButtons.length - 1) {
+        button.classList.add("mr-4");
+      }
+
       mobileCategoryContainer.appendChild(button);
     });
   }
@@ -1145,9 +1149,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!mobileProductsContainer) return;
 
     mobileProductsContainer.innerHTML = "";
-    productsToShow.forEach((product) => {
+    productsToShow.forEach((product, index) => {
       const productCard = document.createElement("div");
       productCard.innerHTML = createMobileProductCardHTML(product);
+      if (index === productsToShow.length - 1) {
+        productCard.classList.add("mr-4");
+      }
       mobileProductsContainer.appendChild(productCard);
     });
 
