@@ -101,19 +101,19 @@ function createProductHTML(product, isLast = false) {
           product.name
         }</div>
         <div class="flex gap-2">
-          <div class="flex items-center gap-2 bg-[#f5f5f6] px-3 font-semibold text-sm">
+          <div class="flex items-center gap-2 bg-[#f5f5f6] px-3 font-semibold text-sm cursor-pointer" onclick="openProductSizeModal(${
+            product.id
+          })">
             <span>Size:</span>
-            <span class="cursor-pointer text-teal-500" id="selectedSize-${
-              product.id
-            }" onclick="openProductSizeModal(${product.id})">${
+            <span class="text-teal-500" id="selectedSize-${product.id}">${
     product.size
   }</span>
           </div>
-          <div class="flex items-center gap-2 bg-[#f5f5f6] px-3 font-semibold text-sm">
+          <div class="flex items-center gap-2 bg-[#f5f5f6] px-3 font-semibold text-sm cursor-pointer" onclick="openQuantityModal(${
+            product.id
+          })">
             <span>Qty:</span>
-            <span class="cursor-pointer text-teal-500" id="selectedQuantity-${
-              product.id
-            }" onclick="openQuantityModal(${product.id})">${
+            <span class="text-teal-500" id="selectedQuantity-${product.id}">${
     product.quantity
   }</span>
           </div>
