@@ -1282,23 +1282,42 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const applyGiftDesktopBtn = document.getElementById("applyGiftDesktopBtn");
   const giftAppliedDesktop = document.getElementById("giftAppliedDesktop");
+  const giftAppliedMobile = document.getElementById("giftAppliedMobile");
   const giftFormDesktop = document.getElementById("giftFormDesktop");
+  const giftFormMobile = document.getElementById("giftFormMobile");
   const removeGiftDesktopBtn = document.getElementById("removeGiftDesktopBtn");
+  const removeGiftMobileBtn = document.getElementById("removeGiftMobileBtn");
 
   applyGiftDesktopBtn.addEventListener("click", function () {
     giftAppliedDesktop.classList.add("lg:block");
     giftFormDesktop.classList.remove("lg:block");
+    giftFormMobile.classList.add("hidden");
+    giftAppliedMobile.classList.remove("hidden");
     closeGiftModal();
   });
 
   removeGiftDesktopBtn.addEventListener("click", function () {
     giftAppliedDesktop.classList.remove("lg:block");
-    document.getElementById("giftFormDesktop").classList.add("lg:block");
+    giftFormDesktop.classList.add("lg:block");
+    giftFormMobile.classList.remove("hidden");
+    giftAppliedMobile.classList.add("hidden");
+    closeGiftModal();
+  });
+
+  removeGiftMobileBtn.addEventListener("click", function () {
+    giftAppliedMobile.classList.add("hidden");
+    giftFormMobile.classList.remove("hidden");
+    giftFormDesktop.classList.add("lg:block");
+    giftAppliedDesktop.classList.remove("lg:block");
     closeGiftModal();
   });
 
   const editGiftDesktopBtn = document.getElementById("editGiftDesktopBtn");
+  const editGiftMobileBtn = document.getElementById("editGiftMobileBtn");
   editGiftDesktopBtn.addEventListener("click", function () {
+    openGiftModal();
+  });
+  editGiftMobileBtn.addEventListener("click", function () {
     openGiftModal();
   });
 });
