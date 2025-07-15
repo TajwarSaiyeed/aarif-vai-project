@@ -669,42 +669,56 @@
           </div>
 
           <div
+            id="giftFormDesktop"
             class="bg-[#fff1ec] p-3 pl-16 text-xs relative rounded leading-4 hidden lg:block"
+            style="min-height: 100px"
           >
-            <div
-              class="inline-block flex-shrink-0 absolute top-[-1px] left-2.5"
-              style="background: none; height: 100px; width: 39px"
-            >
-              <picture class="block max-w-full h-auto" style="width: 100%">
-                <source
-                  srcset="
-                    https://constant.myntassets.com/checkout/assets/img/gift-big.webp
-                  "
-                  type="image/webp"
-                />
-                <img
-                  src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
-                  class="image-base-imgResponsive"
-                  alt="image"
-                  fetchpriority="auto"
-                  loading="eager"
-                  style="height: 100px; width: 39px"
-                />
-              </picture>
+            <div class="absolute top-0 left-2.5 h-[100px] w-[39px]">
+              <img
+                src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
+                alt="gift"
+                class="h-full w-full object-contain"
+              />
             </div>
             <div class="text-sm font-bold mb-px">Buying for a loved one?</div>
-            <div>
-              <span
-                >Gift Packaging and personalised message on card, Only for
-                ₹35</span
-              >
+            <div class="text-xs">
+              Gift packaging + personalised message, Only for ₹35
             </div>
             <button
-              class="mt-2 text-xs font-bold rounded-sm bg-transparent text-rose-500 p-0 cursor-pointer border-none outline-none hover:underline"
+              class="mt-2 text-xs font-bold bg-transparent text-rose-500 hover:underline"
               onclick="openGiftModal()"
             >
-              <div class="text-xs font-bold uppercase">ADD GIFT PACKAGE</div>
+              ADD GIFT PACKAGE
             </button>
+          </div>
+          <div
+            id="giftAppliedDesktop"
+            class="p-4 bg-blue-50 pl-16 text-xs relative rounded leading-4 hidden"
+            style="min-height: 100px"
+          >
+            <div class="absolute top-0 left-2.5 h-[100px] w-[39px]">
+              <img
+                src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
+                alt="gift"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <div class="text-sm font-bold text-gray-800">
+                Yay! Gift Packaging applied
+              </div>
+              <div class="text-xs text-gray-600">
+                Your order will be gift packaged with your personalised message
+              </div>
+            </div>
+            <div class="mt-2 flex gap-4 text-xs font-bold text-rose-500">
+              <button id="removeGiftDesktopBtn" class="hover:underline">
+                REMOVE
+              </button>
+              <button id="editGiftDesktopBtn" class="hover:underline">
+                EDIT MESSAGE
+              </button>
+            </div>
           </div>
         </div>
 
@@ -1176,7 +1190,7 @@
             />
           </div>
 
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-3 overflow-y-auto lg:overflow-hidden">
             <div class="mb-2">
               <label
                 for="recipientName"
@@ -1230,12 +1244,15 @@
 
             <button
               class="w-full bg-rose-500 text-white border-none p-4 rounded text-sm font-semibold cursor-pointer uppercase tracking-wide mt-2 transition-colors ease-in-out hover:bg-rose-600"
+              id="applyGiftDesktopBtn"
             >
               APPLY GIFT PACKAGING
             </button>
           </div>
 
-          <div class="hidden lg:flex flex-col gap-4 overflow-y-auto">
+          <div
+            class="hidden lg:flex flex-col gap-4 overflow-y-auto lg:overflow-hidden"
+          >
             <div class="text-center mb-6">
               <img
                 src="https://constant.myntassets.com/checkout/assets/img/giftwrap-1.webp"

@@ -1278,3 +1278,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const applyGiftDesktopBtn = document.getElementById("applyGiftDesktopBtn");
+  const giftAppliedDesktop = document.getElementById("giftAppliedDesktop");
+  const giftFormDesktop = document.getElementById("giftFormDesktop");
+  const removeGiftDesktopBtn = document.getElementById("removeGiftDesktopBtn");
+
+  applyGiftDesktopBtn.addEventListener("click", function () {
+    giftAppliedDesktop.classList.add("lg:block");
+    giftFormDesktop.classList.remove("lg:block");
+    closeGiftModal();
+  });
+
+  removeGiftDesktopBtn.addEventListener("click", function () {
+    giftAppliedDesktop.classList.remove("lg:block");
+    document.getElementById("giftFormDesktop").classList.add("lg:block");
+    closeGiftModal();
+  });
+
+  const editGiftDesktopBtn = document.getElementById("editGiftDesktopBtn");
+  editGiftDesktopBtn.addEventListener("click", function () {
+    openGiftModal();
+  });
+});
