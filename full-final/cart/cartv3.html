@@ -472,28 +472,6 @@
             >
           </div>
         </div>
-
-        <!-- You may also like (Mobile Only) -->
-        <div class="lg:hidden bg-[#fff8f8] px-4 py-5">
-          <div class="font-semibold mb-4 flex items-center gap-3 text-gray-800">
-            <div class="w-6 h-6 bg-gray-200 rounded"></div>
-            <span>You may also like:</span>
-          </div>
-
-          <div
-            class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar"
-            id="mobileCategoryContainer"
-          >
-            <!-- Dynamic category buttons will be created by JavaScript -->
-          </div>
-
-          <div
-            class="flex gap-4 overflow-x-auto hide-scrollbar"
-            id="mobileProductsContainer"
-          >
-            <!-- Dynamic product cards will be created by JavaScript -->
-          </div>
-        </div>
       </div>
 
       <!-- Divider -->
@@ -610,13 +588,13 @@
           </div>
           <div
             id="giftFormMobile"
-            class="bg-white flex gap-2 items-center justify-between w-full pl-5 pr-2 py-3 lg:hidden"
+            class="bg-white flex gap-2 items-center justify-between w-full p-2 lg:hidden"
           >
             <div
-              class="bg-[#fff1ec] pl-16 text-xs relative rounded leading-4 w-full"
+              class="bg-[#fff1ec] pl-14 text-xs relative rounded leading-4 w-full py-3"
             >
               <div
-                class="inline-block flex-shrink-0 absolute top-[-1px] left-2.5 h-[100px] w-[39px] bg-none"
+                class="inline-block flex-shrink-0 absolute top-[-1px] left-3 h-[80px] w-[39px] bg-none"
               >
                 <picture class="block max-w-full h-auto" style="width: 100%">
                   <source
@@ -627,7 +605,7 @@
                   />
                   <img
                     src="https://constant.myntassets.com/checkout/assets/img/gift-big.png"
-                    class="image-base-imgResponsive lg:h-[100px] lg:w-[39px] h-[60px] w-[39px]"
+                    class="image-base-imgResponsive h-full max-h-[60px] w-[39px]"
                     alt="image"
                     fetchpriority="auto"
                     loading="eager"
@@ -673,7 +651,7 @@
             class="bg-blue-50 flex gap-2 items-center justify-between w-full pl-5 pr-2 pb-3 hidden lg:hidden"
           >
             <div class="relative rounded leading-4 w-full">
-              <div class="absolute left-2.5 top-0 h-full w-[39px] bg-none">
+              <div class="absolute left-0 top-0 h-full w-[39px] bg-none">
                 <picture class="block max-w-full h-auto" style="width: 100%">
                   <source
                     srcset="
@@ -690,7 +668,7 @@
                   />
                 </picture>
               </div>
-              <div class="pl-16 flex flex-col gap-2 py-2">
+              <div class="pl-14 flex flex-col gap-2 py-2">
                 <div>
                   <div class="text-sm font-bold text-gray-800">
                     Yay! Gift Packaging applied
@@ -1014,6 +992,28 @@
       </div>
     </div>
 
+    <!-- You may also like (Mobile Only) -->
+    <div class="lg:hidden bg-[#fff8f8] px-4 py-5 mt-4">
+      <div class="font-semibold mb-4 flex items-center gap-3 text-gray-800">
+        <div class="w-6 h-6 bg-gray-200 rounded"></div>
+        <span>You may also like:</span>
+      </div>
+
+      <div
+        class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar"
+        id="mobileCategoryContainer"
+      >
+        <!-- Dynamic category buttons will be created by JavaScript -->
+      </div>
+
+      <div
+        class="flex gap-4 overflow-x-auto hide-scrollbar"
+        id="mobileProductsContainer"
+      >
+        <!-- Dynamic product cards will be created by JavaScript -->
+      </div>
+    </div>
+
     <div
       id="moveFromBagModal"
       class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[1001]"
@@ -1083,7 +1083,7 @@
     </div>
 
     <!-- Mobile Footer Badges -->
-    <div class="lg:hidden flex justify-center mt-5 bg-slate-50">
+    <div class="lg:hidden flex justify-center bg-slate-50">
       <img
         src="https://assets.myntassets.com/f_webp,dpr_2,q_60,c_limit,fl_progressive/assets/images/retaillabs/2020/6/24/11940eed-9b55-4171-9e59-dfb273b3f5961592993834502-1--1-.png"
         alt="Badges"
