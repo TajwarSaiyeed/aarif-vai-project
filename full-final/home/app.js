@@ -127,37 +127,31 @@ setInterval(nextSlide, 5000);
 
 const categories = [
   {
-    title: "Mens Perfume",
-    subtitle: "Subtitle for Category 1",
+    title: "Mens",
     image: "https://picsum.photos/300/400?random=12",
   },
   {
-    title: "Womens Perfume",
-    subtitle: "Subtitle for Category 2",
+    title: "Womens",
     image:
       "https://cdn1.iconfinder.com/data/icons/wedding-cartoon/512/sim2329-512.png",
   },
   {
     title: "Kids Perfume",
-    subtitle: "Subtitle for Category 3",
     image:
       "https://static.vecteezy.com/system/resources/thumbnails/007/479/888/small/icon-coat-suitable-for-men-accessories-symbol-long-shadow-style-simple-design-editable-design-template-simple-symbol-illustration-vector.jpg",
   },
   {
     title: "T-Shirts",
-    subtitle: "Subtitle for Category 6",
     image:
       "https://static.vecteezy.com/system/resources/previews/037/722/127/non_2x/coverall-clothes-icon-vector.jpg",
   },
   {
     title: "Shoes",
-    subtitle: "Subtitle for Category 7",
     image:
       "https://static.vecteezy.com/system/resources/thumbnails/007/479/888/small/icon-coat-suitable-for-men-accessories-symbol-long-shadow-style-simple-design-editable-design-template-simple-symbol-illustration-vector.jpg",
   },
   {
     title: "Watches",
-    subtitle: "Subtitle for Category 8",
     image:
       "https://static.vecteezy.com/system/resources/previews/037/722/127/non_2x/coverall-clothes-icon-vector.jpg",
   },
@@ -175,7 +169,6 @@ function createCategoryCardHTML(category) {
                 loading="lazy"
               />
             </div>
-            <p class="text-gray-600 text-xs sm:text-sm md:text-base">${category.subtitle}</p>
             <h3 class="text-orange-500 text-sm sm:text-xl md:text-2xl font-semibold">
               ${category.title}
             </h3>
