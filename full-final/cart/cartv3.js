@@ -1229,23 +1229,53 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Desktop coupon functionality
   const applyBtn = document.getElementById("applyBtn");
   const editBtn = document.getElementById("editCoupon");
   const applyForm = document.getElementById("applyForm");
   const appliedCoupon = document.getElementById("appliedCoupon");
   const input = document.getElementById("couponInput");
 
-  applyBtn.addEventListener("click", () => {
-    const code = input.value.trim();
-    if (code !== "") {
-      applyForm.classList.add("hidden");
-      appliedCoupon.classList.remove("hidden");
-      input.value = "";
-    }
-  });
+  if (applyBtn) {
+    applyBtn.addEventListener("click", () => {
+      const code = input.value.trim();
+      if (code !== "") {
+        applyForm.classList.add("hidden");
+        appliedCoupon.classList.remove("hidden");
+        input.value = "";
+      }
+    });
+  }
 
-  editBtn.addEventListener("click", () => {
-    appliedCoupon.classList.add("hidden");
-    applyForm.classList.remove("hidden");
-  });
+  if (editBtn) {
+    editBtn.addEventListener("click", () => {
+      appliedCoupon.classList.add("hidden");
+      applyForm.classList.remove("hidden");
+    });
+  }
+
+  // Mobile coupon functionality
+  const mobileApplyBtn = document.getElementById("mobileApplyBtn");
+  const mobileEditBtn = document.getElementById("mobileEditCoupon");
+  const mobileApplyForm = document.getElementById("mobileApplyForm");
+  const mobileAppliedCoupon = document.getElementById("mobileAppliedCoupon");
+  const mobileInput = document.getElementById("mobileCouponInput");
+
+  if (mobileApplyBtn) {
+    mobileApplyBtn.addEventListener("click", () => {
+      const mobileCode = mobileInput.value.trim();
+      if (mobileCode !== "") {
+        mobileApplyForm.classList.add("hidden");
+        mobileAppliedCoupon.classList.remove("hidden");
+        mobileInput.value = "";
+      }
+    });
+  }
+
+  if (mobileEditBtn) {
+    mobileEditBtn.addEventListener("click", () => {
+      mobileAppliedCoupon.classList.add("hidden");
+      mobileApplyForm.classList.remove("hidden");
+    });
+  }
 });

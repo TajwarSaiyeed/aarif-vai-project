@@ -813,40 +813,87 @@
           <div class="text-xs font-bold text-gray-600 uppercase mb-3">
             Coupons
           </div>
-          <div class="flex items-center gap-2 font-bold text-sm pb-3 relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-tag-icon lucide-tag"
+
+          <div id="mobileApplyForm">
+            <div
+              class="flex items-center gap-2 font-bold text-sm pb-3 relative"
             >
-              <path
-                d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-tag-icon lucide-tag"
+              >
+                <path
+                  d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
+                />
+                <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+              </svg>
+              <span> Apply Coupons </span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input
+                id="mobileCouponInput"
+                placeholder="Enter Coupon Code"
+                class="bg-white border border-gray-300 outline-none rounded-sm p-2 w-full text-sm"
               />
-              <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
-            </svg>
-            <span> Apply Coupons </span>
+              <button
+                id="mobileApplyBtn"
+                class="py-2 px-4 text-xs font-bold rounded-sm bg-white text-rose-500 border-rose-500 border cursor-pointer hover:bg-rose-500 hover:text-white transition"
+              >
+                <div class="box-border flex items-center justify-center">
+                  APPLY
+                </div>
+              </button>
+            </div>
           </div>
 
-          <div class="flex items-center gap-2">
-            <input
-              placeholder="Enter Coupon Code"
-              class="bg-white border border-gray-300 outline-none rounded-sm p-2 w-full text-sm"
-            />
-            <button
-              class="py-2 px-4 text-xs font-bold rounded-sm bg-white text-rose-500 border-rose-500 border cursor-pointer"
-            >
-              <div class="box-border flex items-center justify-center">
-                APPLY
+          <!-- Applied Coupon (Initially Hidden) -->
+          <div id="mobileAppliedCoupon" class="pb-3 rounded-md hidden">
+            <div class="flex items-center justify-between">
+              <div class="flex items-start gap-2 text-sm text-gray-800">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-tag-icon lucide-tag"
+                >
+                  <path
+                    d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
+                  />
+                  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+                </svg>
+                <div>
+                  <p class="font-bold">COUPON2020 applied</p>
+                  <div class="text-sm text-green-600">
+                    You saved additional ₹3,124
+                  </div>
+                </div>
               </div>
-            </button>
+              <button
+                id="mobileEditCoupon"
+                class="py-2 px-4 text-xs font-bold rounded-sm bg-white text-rose-500 border-rose-500 border cursor-pointer hover:bg-rose-500 hover:text-white transition"
+              >
+                <div class="box-border flex items-center justify-center">
+                  Edit
+                </div>
+              </button>
+            </div>
           </div>
+
           <div class="relative">
             <div class="inline-block text-sm mt-2.5">
               <a
