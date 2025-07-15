@@ -81,7 +81,7 @@ function createProductHTML(product, isLast = false) {
   const borderClass = isLast ? "" : "md:border md:border-gray-200";
 
   return `
-    <div class="relative bg-white flex gap-4 p-2 ${borderClass} product-card" data-product-id="${
+    <div class="relative bg-white flex items-center gap-4 p-2 ${borderClass} product-card" data-product-id="${
     product.id
   }">
       <div class="w-20 h-28 md:w-28 md:h-36 bg-gray-100 relative flex-shrink-0">
@@ -91,7 +91,6 @@ function createProductHTML(product, isLast = false) {
             : ""
         }
       </div>
-      <!-- MODIFIED: 'x' button now triggers the new modal instead of removeProduct -->
       <button class="absolute top-2 right-2 w-5 h-5 md:w-6 md:h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center cursor-pointer text-xs md:text-sm remove-btn" onclick="openMoveFromBagModal(${
         product.id
       })">×</button>
