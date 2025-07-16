@@ -565,7 +565,7 @@ const products = [
 //           src="../img.jpeg"
 //           alt=""
 //         />
-function createProductCardHTML(item) {
+function createProductCardHTML(item, wishlisted = false) {
   return `
     <div
       class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3"
@@ -576,9 +576,17 @@ function createProductCardHTML(item) {
           src="../img.jpeg"
           alt=""
         />
-        <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden group-hover:xl:block z-[10]">
-          <div class="flex text-xs gap-2 justify-center items-center bg-white w-full p-2 uppercase font-bold border-[1px] border-gray-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <div class="bg-white absolute  -bottom-7 right-0 w-full p-2 hidden ${
+          wishlisted ? "xl:block" : "group-hover:xl:block"
+        }  z-[10]">
+          <div class="flex text-xs gap-2 justify-center items-center  ${
+            wishlisted ? "bg-[#535766] text-white" : "bg-white"
+          } w-full p-2 uppercase font-bold border-[1px] border-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${
+              wishlisted ? "#ff3f6c" : "none"
+            }" stroke="${
+    wishlisted ? "#ff3f6c" : "#535766"
+  }" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
             Wishlist
           </div>
         </div>
@@ -617,7 +625,11 @@ function createProductCardHTML(item) {
         </p>
         <!-- Wishlist Icon -->
         <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
-          <svg class="w-6 h-6 hover:fill-red-500 hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="w-6 h-6 ${
+            wishlisted
+              ? "fill-[#ff3f6c] stroke-[#ff3f6c]"
+              : "fill-none stroke-[#535766]"
+          } hover:fill-[#ff3f6c] hover:stroke-[#ff3f6c] hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="#535766" stroke-width="2">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
         </div>
@@ -749,9 +761,13 @@ function render(filteredProducts = products) {
 function renderProductsDesktop(productsToRender) {
   if (productsGridDesktop) {
     productsGridDesktop.innerHTML = "";
-    productsToRender.forEach((product) => {
+    productsToRender.forEach((product, index) => {
       const productCard = document.createElement("div");
-      productCard.innerHTML = createProductCardHTML(product);
+      if (index % 2 === 0) {
+        productCard.innerHTML = createProductCardHTML(product, true);
+      } else {
+        productCard.innerHTML = createProductCardHTML(product);
+      }
       productsGridDesktop.appendChild(productCard);
     });
   }
@@ -763,9 +779,13 @@ function renderProductsDesktop(productsToRender) {
 function renderProducts(productsToRender) {
   if (productsSliderMobile) {
     productsSliderMobile.innerHTML = "";
-    productsToRender.forEach((product) => {
+    productsToRender.forEach((product, index) => {
       const productCard = document.createElement("div");
-      productCard.innerHTML = createProductCardHTML(product);
+      if (index % 2 === 0) {
+        productCard.innerHTML = createProductCardHTML(product, true);
+      } else {
+        productCard.innerHTML = createProductCardHTML(product);
+      }
       productCard.classList.add(
         "border-r-[0.1px]",
         "border-gray-200",
