@@ -399,7 +399,10 @@
       <div class="bg-white h-full w-full shadow-lg overflow-y-auto relative">
         <!-- Sidebar Header -->
 
-        <button id="close-sidebar-button" class="p-2 absolute top-0 right-0">
+        <button
+          id="close-sidebar-button"
+          class="p-2 absolute top-0 right-0 z-[10]"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -416,11 +419,19 @@
             <path d="m6 6 12 12" />
           </svg>
         </button>
-        <img
-          src="https://assets.myntassets.com/f_webp,dpr_1.5,q_40,w_400,c_limit,fl_progressive/assets/images/2023/1/25/08139431-49b4-4895-8f06-3d864e4640fd1674670210709-offer-banner-300-1080x496-code-_-MYNTRA300.jpg"
-          alt="Offer Banner"
-          class="w-full"
-        />
+        <div class="relative">
+          <img
+            src="https://assets.myntassets.com/f_webp,dpr_1.5,q_40,w_400,c_limit,fl_progressive/assets/images/2023/1/25/08139431-49b4-4895-8f06-3d864e4640fd1674670210709-offer-banner-300-1080x496-code-_-MYNTRA300.jpg"
+            alt="Offer Banner"
+            class="w-full"
+          />
+
+          <button
+            class="absolute bottom-6 right-25 bg-[#ff3f6c] text-white text-sm font-semibold py-2 px-10 rounded-lg"
+          >
+            Login
+          </button>
+        </div>
         <!-- Sidebar Navigation Links -->
         <nav id="sidebar-navigation-content" class="py-4"></nav>
 
