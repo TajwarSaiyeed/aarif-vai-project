@@ -161,7 +161,7 @@ const categories = [
 function createCategoryCardHTML(category) {
   return `
           <div class="rounded-lg p-4 text-center flex-shrink-0 mobile-category-card">
-            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto bg-orange-100 rounded-lg flex items-center justify-start mb-4 sm:mb-8 relative overflow-hidden">
+            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto bg-orange-100 rounded-lg flex items-center justify-start mb-3 sm:mb-8 relative overflow-hidden">
               <img
                 src="${category.image}"
                 alt="${category.title}"
