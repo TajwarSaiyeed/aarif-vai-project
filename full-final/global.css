@@ -151,7 +151,6 @@ body {
   background-color: transparent;
   border: none;
   height: 100%;
-  padding: 10px;
   cursor: pointer;
   transition: background-color 0.2s; /* Smooth hover effect */
 
@@ -181,4 +180,29 @@ body {
     transform: scale(4);
     opacity: 0;
   }
+}
+
+.header-title {
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  top: 19px;
+  position: relative;
+  font-weight: 700;
+  font-family: Assistant;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
+  max-width: 120px;
+  text-transform: capitalize;
+}
+
+#mobile-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100vw - 200px); /* Responsive to viewport width */
 }
