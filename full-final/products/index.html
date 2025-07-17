@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="../global.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../footer.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- SwiperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
   <body>
     <header
@@ -3059,6 +3067,19 @@
     <script src="../mobile-footer.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".p-h-swiper", {
+          loop: true,
+          autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          slidesPerView: 1,
+          allowTouchMove: true,
+        });
         const filterSection = document.querySelector("#left-filter"); // Fixed selector
         const productSection = document.querySelector("#product-section");
 

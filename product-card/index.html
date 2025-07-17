@@ -3,15 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Hover Swiper Demo</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- SwiperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+      /* Injected CSS for slider */
+      .product-hover-swiper {
+        position: absolute;
+        bottom: 110px; /* Above wishlist, below view similar */
+        left: 0;
+        width: 100%;
+        height: 60px;
+        display: none;
+        z-index: 2;
+        background: #fff;
+        border-top: 1px solid #eaeaea;
+      }
+
+      .product-hover-swiper .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Show slider only on hover */
+      .product-base:hover .product-hover-swiper {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div class="product-base">
       <div class="product-thumbShim"></div>
       <div class="product-ratingsContainer">
-        <span>4.3</span
-        ><span
+        <span>4.3</span>
+        <span
           class="myntraweb-sprite product-starIcon index-productRatingsExcellentIcon sprites-productRatingsExcellentIcon"
         ></span>
         <div class="product-ratingsCount">
@@ -19,12 +54,15 @@
           11k
         </div>
       </div>
+
+      <!-- Main image -->
       <a
         data-refreshpage="true"
         target="_blank"
         href="lounge-tshirts/levis/levis-men-soft-pure-cotton-round-neck-half-sleeve-tshirt/12027436/buy"
         style="display: block"
-        ><div class="product-imageSliderContainer">
+      >
+        <div class="product-imageSliderContainer">
           <div class="product-sliderContainer" style="display: block">
             <div style="background: rgb(255, 237, 243)">
               <div style="height: 280px; width: 100%">
@@ -32,18 +70,7 @@
                   draggable="false"
                   class="img-responsive"
                   style="width: 100%; height: 100%; display: block"
-                  ><source
-                    srcset="
-                      https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg,
-                      https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/20289510/2024/11/10/45c204be-d213-4c73-99ac-ace767eaf4fa1731238741473-deconstruct-Lightweight-Gel-Sunscreen-SPF-55-PA-50gm-3071731-1.jpg 1.5x,
-                      https://assets.myntassets.com/f_webp,dpr_1.8,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg                        1.8x,
-                      https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg                        2x,
-                      https://assets.myntassets.com/f_webp,dpr_2.2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg                        2.2x,
-                      https://assets.myntassets.com/f_webp,dpr_2.4,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg                        2.4x,
-                      https://assets.myntassets.com/f_webp,dpr_2.6,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg                        2.6x,
-                      https://assets.myntassets.com/f_webp,dpr_2.8,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg                        2.8x
-                    "
-                    type="image/webp" />
+                >
                   <img
                     draggable="false"
                     src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
@@ -51,46 +78,77 @@
                     alt="Levis Men Soft Pure Cotton Round Neck Half Sleeve Tshirt"
                     title="Levis Men Soft Pure Cotton Round Neck Half Sleeve Tshirt"
                     style="width: 100%; display: block"
-                /></picture>
+                  />
+                </picture>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Hover SwiperJS Slider -->
+        <div class="product-hover-swiper swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt="Slide 1"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img src="../full-final/img.jpeg" alt="Slide 2" />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt="Slide 3"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Meta Info -->
         <div class="product-productMetaInfo">
           <h3 class="product-brand">Levis</h3>
           <h4 class="product-product">Solid Lounge T-shirt</h4>
           <h4 class="product-sizes">
-            Sizes:
-            <span class="product-sizeInventoryPresent">S</span>
+            Sizes: <span class="product-sizeInventoryPresent">S</span>
           </h4>
           <div class="product-price">
-            <span
-              ><span class="product-discountedPrice">Rs.389</span
-              ><span class="product-strike">Rs. 649</span></span
-            ><span class="product-discountPercentage">(40% OFF)</span>
+            <span>
+              <span class="product-discountedPrice">Rs.389</span>
+              <span class="product-strike">Rs. 649</span>
+            </span>
+            <span class="product-discountPercentage">(40% OFF)</span>
           </div>
-        </div></a
-      >
+        </div>
+      </a>
+
+      <!-- View Similar -->
       <div class="image-grid-similarColorsCta product-similarItemCta">
         <span
           class="myntraweb-sprite image-grid-similarColorsIcon sprites-similarProductsIcon"
-        ></span
-        ><span class="image-grid-iconText">VIEW SIMILAR</span>
+        ></span>
+        <span class="image-grid-iconText">VIEW SIMILAR</span>
       </div>
+
+      <!-- Wishlist -->
       <div class="product-actions">
         <span
           class="product-wishlistFlex product-actionsButton product-wishlist"
           style="width: 100%; text-align: center"
-          ><span
-            class="myntraweb-sprite product-notWishlistedIcon sprites-notWishlisted"
-          ></span
-          >wishlist</span
         >
+          <span
+            class="myntraweb-sprite product-notWishlistedIcon sprites-notWishlisted"
+          ></span>
+          wishlist
+        </span>
       </div>
+
+      <!-- Size Options -->
       <div class="product-sizeDisplayDiv">
         <div class="product-sizeDisplayHeader">
-          <span>Select a size</span
-          ><span
+          <span>Select a size</span>
+          <span
             class="myntraweb-sprite product-sizeDisplayRemoveMark sprites-remove"
           ></span>
         </div>
@@ -99,5 +157,18 @@
         </div>
       </div>
     </div>
+
+    <!-- Swiper Init Script -->
+    <script>
+      new Swiper(".product-hover-swiper", {
+        loop: true,
+        autoplay: {
+          delay: 1000,
+          disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        allowTouchMove: true,
+      });
+    </script>
   </body>
 </html>

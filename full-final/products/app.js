@@ -571,8 +571,63 @@ function createProductCardHTML(item, wishlisted = false) {
       class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3"
     >
       <div class="w-full h-full max-h-[330px] relative">
+        <div class="w-full h-full xl:max-h-[195px]  2xl:max-h-[260px] bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-bold z-[999] overflow-hidden p-h-swiper transition-all duration-300 hidden group-hover:xl:flex swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt="Slide 1"
+                class="w-full h-full object-fit"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img src="../img.jpeg" alt="Slide 2" 
+                class="w-full h-full object-fit"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt="Slide 3"
+                class="w-full h-full object-fit"
+              />
+            </div>
+
+            <div class="swiper-slide">
+              <img src="../img.jpeg" alt="Slide 2" 
+                class="w-full h-full object-fit"
+              />
+            </div><div class="swiper-slide">
+              <img
+                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt="Slide 3"
+                class="w-full h-full object-fit"
+              />
+            </div>
+
+            <div class="swiper-slide">
+              <img src="../img.jpeg" alt="Slide 2" 
+                class="w-full h-full object-fit"
+              />
+            </div><div class="swiper-slide">
+              <img
+                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                alt="Slide 3"
+                class="w-full h-full object-fit"
+              />
+            </div>
+
+            <div class="swiper-slide">
+              <img src="../img.jpeg" alt="Slide 2" 
+                class="w-full h-full object-fit"
+              />
+            </div>
+            </div>
+            <div class="swiper-pagination absolute z-[9999] !bottom-5 w-full !p-0 !m-0 bg-white left-0 right-0"></div>
+          </div>
+
         <img
-          class="w-full h-full object-fit"
+          class="w-full h-full object-fit group-hover:xl:hidden transition-all duration-300"
           src="../img.jpeg"
           alt=""
         />
@@ -591,7 +646,7 @@ function createProductCardHTML(item, wishlisted = false) {
           </div>
         </div>
 
-        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[140px] rounded-full bg-white absolute bottom-10 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar" data-product-id="${
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[140px] rounded-full bg-white absolute bottom-12 right-5 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar  z-[20]" data-product-id="${
           item.id
         }" title="View Similar">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
@@ -605,10 +660,10 @@ function createProductCardHTML(item, wishlisted = false) {
       </div>
 
       <div class="p-2 relative">
-        <h1 class="text-[13px] md:text-base font-bold text-black truncate">${
+        <h1 class="text-[13px] z-[30] md:text-base font-bold text-black truncate">${
           item.brand
         }</h1>
-        <h2 class="text-[11px] md:text-sm text-gray-500 group-hover:xl:hidden truncate">${
+        <h2 class="text-[11px] z-[30] md:text-sm text-gray-500 group-hover:xl:hidden truncate">${
           item.title
         }</h2>
         <h2 class="text-sm hidden text-gray-500 group-hover:xl:block truncate">Size: ${item.sizes.join(

@@ -425,3 +425,23 @@ input[type="radio"].accent-\[\#ff3e6c\] {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.swiper-pagination {
+  height: 20px !important;
+  background-color: white !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: rgb(151, 150, 150) !important;
+  margin: 0 4px !important;
+  padding: 0% !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  margin-top: 0 !important;
+}
