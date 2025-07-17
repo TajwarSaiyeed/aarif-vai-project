@@ -240,10 +240,10 @@
 
       <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="xl:hidden flex items-center justify-between px-4 py-1 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
+        class="xl:hidden h-[56px] flex items-center justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
         <!-- Hamburger Icon -->
-        <button id="mobile-menu-button" class="p-2">
+        <button id="backButton" class="ripple-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -254,11 +254,10 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-menu"
+            class="lucide lucide-arrow-left-icon lucide-arrow-left"
           >
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
           </svg>
         </button>
 
@@ -276,8 +275,8 @@
                 <filter
                   x="-3.8%"
                   y="-2.8%"
-                  width="107.7%"
-                  height="111.1%"
+                  width="100"
+                  height="100"
                   filterUnits="objectBoundingBox"
                   id="a"
                 >
@@ -335,7 +334,7 @@
         </div>
 
         <!-- Icons on the right -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 pr-4">
           <a id="mobile-search-button" href="#" class="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -403,60 +402,6 @@
         </div>
       </div>
     </header>
-
-    <!-- Mobile sidebar -->
-    <div id="mobile-sidebar-overlay"></div>
-    <div id="mobile-sidebar">
-      <!-- Sidebar Content Area -->
-      <div class="bg-white h-full w-full shadow-lg overflow-y-auto relative">
-        <!-- Sidebar Header -->
-
-        <button
-          id="close-sidebar-button"
-          class="p-2 absolute top-0 right-0 z-[10]"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-x"
-          >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </button>
-        <div class="relative">
-          <img
-            src="https://assets.myntassets.com/f_webp,dpr_1.5,q_40,w_400,c_limit,fl_progressive/assets/images/2023/1/25/08139431-49b4-4895-8f06-3d864e4640fd1674670210709-offer-banner-300-1080x496-code-_-MYNTRA300.jpg"
-            alt="Offer Banner"
-            class="w-full"
-          />
-
-          <button
-            class="absolute bottom-3 right-3 bg-[#ff3f6c] text-white text-sm font-semibold py-1 px-3 rounded-lg"
-          >
-            Login
-          </button>
-        </div>
-        <!-- Sidebar Navigation Links -->
-        <nav id="sidebar-navigation-content" class="py-4"></nav>
-
-        <!-- Image for app download -->
-        <a href="#">
-          <img
-            src="https://assets.myntassets.com/assets/images/retaillabs/2022/12/30/856cb741-8473-4d5e-b6e3-a52b3d98c99e1672386455977-PWA---App-Download-banner.png"
-            alt="Download the App"
-            class="w-full"
-          />
-        </a>
-      </div>
-    </div>
 
     <div class="hidden lg:block mt-24 max-w-[1685px] mx-auto">
       <div class="mx-auto py-8 lg:py-0 lg:pt-2">

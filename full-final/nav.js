@@ -930,15 +930,6 @@ const navData = [
 
 document.addEventListener("DOMContentLoaded", () => {
   const mainNavigation = document.getElementById("main-navigation");
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileSidebar = document.getElementById("mobile-sidebar");
-  const closeSidebarButton = document.getElementById("close-sidebar-button");
-  const mobileSidebarOverlay = document.getElementById(
-    "mobile-sidebar-overlay"
-  );
-  const sidebarNavigationContent = document.getElementById(
-    "sidebar-navigation-content"
-  );
 
   // Mobile search elements
   const mobileSearchButton = document.getElementById("mobile-search-button");
@@ -1094,202 +1085,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Function to build mobile sidebar navigation (Accordion)
-  function buildMobileNavigation() {
-    sidebarNavigationContent.innerHTML = ""; // Clear existing content
-
-    navData.forEach((navItem) => {
-      const accordionItem = document.createElement("div");
-      accordionItem.classList.add("border-b", "border-gray-200");
-
-      const accordionHeader = document.createElement("button");
-      accordionHeader.classList.add(
-        "flex",
-        "items-center",
-        "justify-between",
-        "w-full",
-        "p-4",
-        "font-bold",
-        "text-[#282c3f]",
-        "uppercase",
-        "text-sm",
-        "focus:outline-none"
-      );
-      accordionHeader.innerHTML = `
-              <span>${navItem.name}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right transition-transform duration-300 ease-in-out">
-                <path d="m9 18 6-6-6-6"/> 
-              </svg>
-            `;
-      accordionItem.appendChild(accordionHeader);
-
-      const accordionContent = document.createElement("div");
-      accordionContent.classList.add(
-        "max-h-0",
-        "overflow-hidden",
-        "transition-all",
-        "duration-300",
-        "ease-in-out"
-      );
-      const innerContent = document.createElement("div");
-      innerContent.classList.add("p-4", "pt-0", "space-y-4"); // Padding for content
-
-      // Build simplified sub-sections for mobile
-      navItem.megaMenuColumns.forEach((column) => {
-        column.sections.forEach((section) => {
-          const sectionHeading = document.createElement("h4");
-          sectionHeading.classList.add(
-            "font-bold",
-            "text-sm",
-            "mb-2",
-            `text-[${navItem.color}]` // Dynamic color for mobile headings
-          );
-          sectionHeading.textContent = section.heading;
-          innerContent.appendChild(sectionHeading);
-
-          if (section.items && section.items.length > 0) {
-            const ul = document.createElement("ul");
-            ul.classList.add("space-y-1", "text-sm", "text-gray-600", "mb-4"); // Add margin-bottom to separate sections
-            section.items.forEach((item) => {
-              const li = document.createElement("li");
-              const itemLink = document.createElement("a");
-              itemLink.href = item.href;
-              itemLink.classList.add(
-                "hover:font-bold",
-                `hover:text-[${navItem.color}]`
-              );
-              itemLink.textContent = item.text;
-              li.appendChild(itemLink);
-              ul.appendChild(li);
-            });
-            innerContent.appendChild(ul);
-          } else {
-            sectionHeading.classList.add("mb-4");
-          }
-        });
-      });
-
-      accordionContent.appendChild(innerContent);
-      accordionItem.appendChild(accordionContent);
-      sidebarNavigationContent.appendChild(accordionItem);
-
-      accordionHeader.addEventListener("click", () => {
-        // Close all other open accordions
-        document
-          .querySelectorAll("#sidebar-navigation-content .accordion-open")
-          .forEach((openContent) => {
-            if (openContent !== accordionContent) {
-              openContent.style.maxHeight = null;
-              openContent.classList.remove("accordion-open");
-              openContent.previousElementSibling
-                .querySelector("svg")
-                .classList.remove("rotate-90");
-            }
-          });
-
-        // Toggle current accordion
-        const isOpen = accordionContent.classList.contains("accordion-open");
-        if (isOpen) {
-          accordionContent.style.maxHeight = null;
-          accordionContent.classList.remove("accordion-open");
-          accordionHeader.querySelector("svg").classList.remove("rotate-90");
-        } else {
-          accordionContent.style.maxHeight =
-            accordionContent.scrollHeight + "px";
-          accordionContent.classList.add("accordion-open");
-          accordionHeader.querySelector("svg").classList.add("rotate-90");
-        }
-      });
-    });
-
-    // --- Add static links below the dynamic categories ---
-    const staticLinksContainer = document.createElement("div");
-    staticLinksContainer.classList.add(
-      "flex",
-      "flex-col",
-      "px-4",
-      "py-2",
-      "space-y-3",
-      "border-b",
-      "border-gray-200"
-    );
-
-    const staticLinks = [
-      { text: "Orders", href: "#", track: "orders" },
-      { text: "Wishlist", href: "#", track: "wishlist" },
-      { text: "Gift Cards", href: "#", track: "giftcards" },
-      { text: "Contact Us", href: "#", track: "contactus" },
-      {
-        text: "Myntra Insider",
-        href: "#",
-        track: "myntrainsider",
-        newBadge: true,
-      },
-    ];
-
-    staticLinks.forEach((linkData) => {
-      const link = document.createElement("a");
-      link.href = linkData.href;
-      link.dataset.track = linkData.track;
-      link.classList.add(
-        "font-normal",
-        "text-sm",
-        "text-[#3e4152]",
-        "hover:font-bold"
-      );
-      link.textContent = linkData.text;
-
-      if (linkData.newBadge) {
-        const span = document.createElement("span");
-        span.classList.add(
-          "inline-block",
-          "p-px",
-          "py-0",
-          "bg-[#ff3f6c]",
-          "border",
-          "border-[#ff3f6c]",
-          "text-white",
-          "font-black",
-          "ml-[10px]",
-          "-mt-[6px]",
-          "-mb-[10px]",
-          "text-[10px]",
-          "skew-x-[-10deg]",
-          "rounded-sm"
-        );
-        span.textContent = "New";
-        link.appendChild(span);
-      }
-      staticLinksContainer.appendChild(link);
-    });
-    sidebarNavigationContent.appendChild(staticLinksContainer);
-    // --- End static links section ---
-  }
-
-  // Initialize navigations on DOM content loaded
   buildDesktopNavigation();
-  buildMobileNavigation();
-
-  // --- Mobile Specific Event Listeners ---
-
-  // Mobile sidebar toggle functionality
-
-  mobileMenuButton.addEventListener("click", () => {
-    mobileSidebar.classList.add("open");
-    mobileSidebarOverlay.classList.add("open");
-  });
-
-  // Close sidebar and overlay
-  closeSidebarButton.addEventListener("click", () => {
-    mobileSidebar.classList.remove("open");
-    mobileSidebarOverlay.classList.remove("open");
-  });
-
-  // Close sidebar when clicking on the overlay
-  mobileSidebarOverlay.addEventListener("click", () => {
-    mobileSidebar.classList.remove("open");
-    mobileSidebarOverlay.classList.remove("open");
-  });
 
   // Mobile search bar toggle functionality
   if (mobileSearchButton && mobileSearchBar) {
@@ -1298,4 +1094,41 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileSearchBar.classList.toggle("hidden");
     });
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("backButton");
+
+  button.addEventListener("click", function (event) {
+    // Prevent the click from bubbling up to parent elements
+    event.stopPropagation();
+
+    // 1. Get the button's position and size on the page
+    const rect = this.getBoundingClientRect();
+
+    // 2. Calculate the click position relative to the button's top-left corner
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    // 3. Create the ripple element (a span)
+    const ripple = document.createElement("span");
+    ripple.classList.add("ripple");
+
+    // 4. Calculate the size of the ripple. It should be as big as the button's longest side.
+    const diameter = Math.max(this.clientWidth, this.clientHeight);
+    const radius = diameter / 2;
+
+    ripple.style.width = ripple.style.height = `${diameter}px`;
+    // 5. Position the ripple's center at the exact click location
+    ripple.style.left = `${x - radius}px`;
+    ripple.style.top = `${y - radius}px`;
+
+    // 6. Add the ripple to the button
+    this.appendChild(ripple);
+
+    // 7. Remove the ripple after the animation ends to keep the DOM clean
+    setTimeout(() => {
+      ripple.remove();
+    }, 600); // This duration must match the animation-duration in the CSS
+  });
 });
