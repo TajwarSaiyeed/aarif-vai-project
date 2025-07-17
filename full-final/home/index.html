@@ -232,10 +232,13 @@
 
       <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="xl:hidden flex items-center justify-between px-4 py-1 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
+        class="xl:hidden h-[56px] flex items-center justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
         <!-- Hamburger Icon -->
-        <button id="mobile-menu-button" class="p-2">
+        <button
+          id="mobile-menu-button"
+          class="w-[45px] h-full max-h-full ripple-button"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -327,7 +330,7 @@
         </div>
 
         <!-- Icons on the right -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 pr-4">
           <a href="#" class="relative">
             <svg width="20px" height="20px" viewBox="0 0 16 18">
               <g fill="none" fillrule="evenodd">
