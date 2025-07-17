@@ -109,6 +109,53 @@
         margin: 0 auto;
         padding: 0 50px;
       }
+
+      @media screen and (min-width: 376px) and (max-width: 691px) {
+        #products-grid-desktop {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .c-css {
+          width: 100%;
+          height: auto;
+          max-height: 300px;
+        }
+
+        .c-css-img {
+          width: 100%;
+          height: auto;
+          max-height: 200px;
+        }
+        .c-css-img img {
+          width: 100%;
+          height: auto;
+          max-height: 170px;
+        }
+      }
+      @media screen and (min-width: 320px) and (max-width: 375px) {
+        #products-grid-desktop {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .c-css {
+          width: 100%;
+          height: auto;
+          max-height: 330px;
+        }
+
+        .c-css-img {
+          width: 100%;
+          height: auto;
+          max-height: 330px;
+        }
+        .c-css-img img {
+          width: 100%;
+          height: auto;
+          max-height: 200px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -559,7 +606,7 @@
       <section class="bg-white py-5 xl:py-10 px-5">
         <!-- Product Grid - Desktop -->
         <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 place-items-center gap-5 w-full"
+          class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 place-items-center gap-5 w-full"
           id="products-grid-desktop"
         >
           <!-- Product cards will be generated here for desktop -->

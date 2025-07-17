@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 5,
       title: "L'Oreal Paris",
-      description: "Hyaluron Moisture Sealing",
+      description: "Hyaluron Moisture",
       image: "https://picsum.photos/300/400?random=14",
       currentPrice: "₹549",
       originalPrice: "₹699",
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 6,
       title: "Olay Total Effects",
-      description: "Night Cream Anti-Aging",
+      description: "Night Cream",
       image: "https://picsum.photos/300/400?random=15",
       currentPrice: "₹899",
       originalPrice: "₹1199",
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 9,
       title: "The Man Company",
-      description: "Charcoal Face Wash",
+      description: "Charcoal",
       image: "https://picsum.photos/300/400?random=18",
       currentPrice: "₹399",
       originalPrice: "₹499",
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 10,
       title: "Beardo",
-      description: "Activated Charcoal Face Wash",
+      description: "Activated Charcoal",
       image: "https://picsum.photos/300/400?random=19",
       currentPrice: "₹299",
       originalPrice: "₹399",
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 11,
       title: "Dot & Key",
-      description: "Watermelon Superglow Moisturizer",
+      description: "Watermelon Superglow",
       image: "https://picsum.photos/300/400?random=20",
       currentPrice: "₹595",
       originalPrice: "₹795",
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 12,
       title: "Mamaearth",
-      description: "Onion Hair Oil for Hair Growth",
+      description: "Onion Hair Oil",
       image: "https://picsum.photos/300/400?random=21",
       currentPrice: "₹389",
       originalPrice: "₹499",
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 13,
       title: "WOW Skin Science",
-      description: "Apple Cider Vinegar Shampoo",
+      description: "Apple Cider Vinegar",
       image: "https://picsum.photos/300/400?random=22",
       currentPrice: "₹375",
       originalPrice: "₹499",
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 14,
       title: "Mcaffeine",
-      description: "Naked & Raw Coffee Body Scrub",
+      description: "Naked & Raw Coffee",
       image: "https://picsum.photos/300/400?random=23",
       currentPrice: "₹399",
       originalPrice: "₹599",
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 15,
       title: "Biotique",
-      description: "Bio Papaya Tan Removal Scrub",
+      description: "Bio Papaya Tan Removal ",
       image: "https://picsum.photos/300/400?random=24",
       currentPrice: "₹180",
       originalPrice: "₹250",
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 17,
       title: "The Body Shop",
-      description: "Tea Tree Skin Clearing Face Wash",
+      description: "Tea Tree Skin Clearing",
       image: "https://picsum.photos/300/400?random=26",
       currentPrice: "₹645",
       originalPrice: "₹745",
@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 18,
       title: "Forest Essentials",
-      description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+      description: "Delicate Facial",
       image: "https://picsum.photos/300/400?random=27",
       currentPrice: "₹1250",
       originalPrice: "₹1450",
@@ -362,12 +362,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to create product card HTML for desktop
   function createProductCardHTML(item) {
     return `
-    <div class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
+    <div class="c-css bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
         <!-- Product Link (excludes Add to Bag button) -->
         <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
             <div class="relative overflow-hidden">
                 <!-- Product Image -->
-                <div class="w-full h-full max-h-[330px] relative p-[10px]">
+                <div class="w-full h-full c-css-img max-h-[330px] relative p-[10px]">
                     <img
                         src="../img.jpeg"
                         alt="${item.title} ${item.description}"
@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         <!-- Add to Bag Button (outside product link) -->
         <div class="p-2">
-            <button class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
+            <button class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Move to Bag</button>
         </div>
     </div>
 `;
