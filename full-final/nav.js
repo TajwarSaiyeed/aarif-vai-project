@@ -1102,6 +1102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   button.addEventListener("click", function (event) {
     // Prevent the click from bubbling up to parent elements
     event.stopPropagation();
+    console.log("Button clicked, creating ripple effect...");
 
     // 1. Get the button's position and size on the page
     const rect = this.getBoundingClientRect();
