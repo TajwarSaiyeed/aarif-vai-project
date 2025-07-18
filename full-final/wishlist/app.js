@@ -362,127 +362,68 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to create product card HTML for desktop
   function createProductCardHTML(item) {
     return `
-    <div class="c-css bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
-        <!-- Product Link (excludes Add to Bag button) -->
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-            <div class="relative overflow-hidden">
-                <!-- Product Image -->
-                <div class="w-full h-full c-css-img max-h-[330px] relative p-[10px]">
-                    <img
-                        src="../img.jpeg"
-                        alt="${item.title} ${item.description}"
-                        class="w-full h-full object-cover object-top transition-opacity duration-300"
-                        loading="lazy"
-                    />
-                </div>
-
-                <!-- Content -->
-                <div class="relative px-2">
-                    <div class="py-2">
-                        <!-- Brand Title -->
-                        <h3 class="text-left pl-1 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                            ${item.title}
-                        </h3>
-
-                        <!-- Description -->
-                        <h4 class="text-left pl-1 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
-                            ${item.description}
-                        </h4>
-
-                        <!-- Price Container -->
-                        <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                            <!-- Current Price -->
-                            <span class="font-semibold text-gray-800 text-sm">
-                                <span class="relative -left-0.5">${item.currentPrice}</span>
-                            </span>
-
-                            <!-- Original Price -->
-                            <span class="text-sm">
-                                <span class="opacity-40 text-gray-800 line-through text-xs">
-                                    <span>${item.originalPrice}</span>
-                                </span>
-                            </span>
-
-                            <!-- Discount -->
-                            <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
-                                <span>(${item.discountPercent}% OFF)</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-                </div>
-            </div>
-        </a>
-        
-        <!-- Add to Bag Button (outside product link) -->
-        <div class="p-2">
-            <button class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Move to Bag</button>
-        </div>
-    </div>
-`;
-  }
-
-  // Function to create product card HTML for mobile slider
-  function createMobileProductCardHTML(item) {
-    return `
-    <div class="flex-shrink-0 w-44 text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
-        <!-- Product Link (excludes Add to Bag button) -->
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-          <div class="relative overflow-hidden">
-            <!-- Product Image -->
-            <div class="relative w-full h-52 bg-white p-[10px]">
-              <img
-                src="../img.jpeg"
-                alt="${item.title} ${item.description}"
-                class="w-full h-full object-cover object-top transition-opacity duration-300"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Content -->
-            <div class="relative px-2">
-              <div class="py-2">
-                <!-- Brand Title -->
-                <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                  ${item.title}
-                </h3>
-
-                <!-- Description -->
-                <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-xs font-normal text-gray-800 h-3">
-                  ${item.description}
-                </h4>
-
-                <!-- Price Container -->
-                <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                  <!-- Current Price -->
-                  <span class="font-semibold text-gray-800 text-sm">
-                    <span class="relative -left-0.5">${item.currentPrice}</span>
-                  </span>
-
-                  <!-- Original Price -->
-                  <span class="text-sm">
-                    <span class="opacity-40 text-gray-800 line-through text-xs">
-                      <span>${item.originalPrice}</span>
-                    </span>
-                  </span>
-
-                  <!-- Discount -->
-                  <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
-                    <span>(${item.discountPercent}% OFF)</span>
-                  </span>
-                </div>
-              </div>
-              <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-            </div>
-          </div>
-        </a>
-        
-        <!-- Add to Bag Button (outside product link) -->
-        <div class="p-2">
-          <button class="w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
-        </div>
+    <div
+  class="c-css bg-white w-full sm:max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
+  <!-- Remove from wishlist -->
+  <button class="absolute top-1 right-1 text-gray-500 hover:text-red-500 transition-colors duration-200 rounded-full p-1 z-5 border border-gray-300">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+  <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+    <div class="relative overflow-hidden">
+      <!-- Product Image -->
+      <div class="w-full h-full c-css-img sm:max-h-[330px] relative p-[10px]">
+        <img src="../img.jpeg" alt="${item.title} ${item.description}"
+          class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy" />
       </div>
-  `;
+
+      <!-- Content -->
+      <div class="relative px-2">
+        <div class="py-2">
+          <!-- Brand Title -->
+          <h3
+            class="text-left pl-1 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+            ${item.title}
+          </h3>
+
+          <!-- Description -->
+          <h4
+            class="text-left pl-1 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
+            ${item.description}
+          </h4>
+
+          <!-- Price Container -->
+          <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
+            <!-- Current Price -->
+            <span class="font-semibold text-gray-800 text-sm">
+              <span class="relative -left-0.5">${item.currentPrice}</span>
+            </span>
+
+            <!-- Original Price -->
+            <span class="text-sm">
+              <span class="opacity-40 text-gray-800 line-through text-xs">
+                <span>${item.originalPrice}</span>
+              </span>
+            </span>
+
+            <!-- Discount -->
+            <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
+              <span>(${item.discountPercent}% OFF)</span>
+            </span>
+          </div>
+        </div>
+        <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Add to Bag Button (outside product link) -->
+  <div class="p-2">
+    <button
+      class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Move
+      to Bag</button>
+  </div>
+</div>
+`;
   }
 
   const productsGridDesktop = document.querySelector("#products-grid-desktop");
