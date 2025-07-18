@@ -568,24 +568,24 @@ const products = [
 function createProductCardHTML(item, wishlisted = false) {
   return `
     <div
-      class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3"
+      class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 transition-all duration-300"
     >
       <div class="w-full h-full max-h-[330px] relative">
-        <div class="w-full h-full xl:max-h-[195px]  2xl:max-h-[260px] bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-bold z-[999] overflow-hidden p-h-swiper transition-all duration-300 hidden group-hover:xl:flex swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
+        <div class="w-full h-full absolute top-0 left-0 xl:max-h-[195px]  2xl:max-h-[260px] bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-bold overflow-hidden p-h-swiper transition-all duration-300 hidden group-hover:xl:flex swiper-container">
+        <div class="swiper-wrapper h-full relative">
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
                 src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
                 alt="Slide 1"
                 class="w-full h-full object-fit"
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img src="../img.jpeg" alt="Slide 2" 
                 class="w-full h-full object-fit"
               />
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
                 src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
                 alt="Slide 3"
@@ -593,11 +593,11 @@ function createProductCardHTML(item, wishlisted = false) {
               />
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img src="../img.jpeg" alt="Slide 2" 
                 class="w-full h-full object-fit"
               />
-            </div><div class="swiper-slide">
+            </div><div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
                 src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
                 alt="Slide 3"
@@ -605,11 +605,11 @@ function createProductCardHTML(item, wishlisted = false) {
               />
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img src="../img.jpeg" alt="Slide 2" 
                 class="w-full h-full object-fit"
               />
-            </div><div class="swiper-slide">
+            </div><div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
                 src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
                 alt="Slide 3"
@@ -617,17 +617,17 @@ function createProductCardHTML(item, wishlisted = false) {
               />
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img src="../img.jpeg" alt="Slide 2" 
                 class="w-full h-full object-fit"
               />
             </div>
             </div>
-            <div class="swiper-pagination absolute z-[9999] !bottom-5 w-full !p-0 !m-0 bg-white left-0 right-0"></div>
+            <div class="swiper-pagination absolute z-[9999] !bottom-2 w-full !p-0 !m-0 bg-white left-0 right-0"></div>
           </div>
 
         <img
-          class="w-full h-full object-fit group-hover:xl:hidden transition-all duration-300"
+          class="w-full h-full object-fit transition-all duration-300"
           src="../img.jpeg"
           alt=""
         />
