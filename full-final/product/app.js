@@ -409,6 +409,68 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // -----------------------------------------------
+  // VIEW SIMILAR MODAL FUNCTIONALITY START
+  // -----------------------------------------------
+  const viewSimilarBtn = document.getElementById("view-similar-btn");
+  const viewSimilarModal = document.getElementById("viewSimilarModal");
+  const viewSimilarModalContent = document.getElementById(
+    "viewSimilarModalContent"
+  );
+  const closeSimilarModal = document.getElementById("closeSimilarModal");
+
+  // Function to open modal
+  function openSimilarModal() {
+    viewSimilarModal.classList.remove("hidden");
+    viewSimilarModal.classList.add("flex");
+    document.body.style.overflow = "hidden"; // Prevent body scroll
+
+    setTimeout(() => {
+      viewSimilarModalContent.classList.remove("translate-y-full");
+      viewSimilarModalContent.classList.add("translate-y-0");
+    }, 10);
+  }
+
+  // Function to close modal
+  function closeSimilarModalFunc() {
+    viewSimilarModalContent.classList.remove("translate-y-0");
+    viewSimilarModalContent.classList.add("translate-y-full");
+    document.body.style.overflow = "auto";
+
+    setTimeout(() => {
+      viewSimilarModal.classList.remove("flex");
+      viewSimilarModal.classList.add("hidden");
+    }, 300); // Match transition duration
+  }
+
+  // Event listeners
+  if (viewSimilarBtn) {
+    viewSimilarBtn.addEventListener("click", openSimilarModal);
+  }
+
+  if (closeSimilarModal) {
+    closeSimilarModal.addEventListener("click", closeSimilarModalFunc);
+  }
+
+  // Close modal when clicking on backdrop
+  if (viewSimilarModal) {
+    viewSimilarModal.addEventListener("click", function (event) {
+      if (event.target === viewSimilarModal) {
+        closeSimilarModalFunc();
+      }
+    });
+  }
+
+  // Close modal with Escape key
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !viewSimilarModal.classList.contains("hidden")) {
+      closeSimilarModalFunc();
+    }
+  });
+  // -----------------------------------------------
+  // VIEW SIMILAR MODAL FUNCTIONALITY END
+  // -----------------------------------------------
+
   // Initial population of the size chart table (only runs once if popup is hidden by default)
   // This ensures data is ready if user opens popup.
   populateSizeChart(currentUnit);
@@ -692,6 +754,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     recently_viewed_products.addEventListener("touchend", function (e) {
+      this.style.scrollBehavior = "smooth";
+    });
+  }
+
+  const similar_products = document.getElementById("similar-products");
+
+  if (similar_products) {
+    // Clear existing content
+    similar_products.innerHTML = "";
+
+    mockData.forEach((product, index) => {
+      const productElement = document.createElement("div");
+      productElement.innerHTML = createRecentlyViewedProductCardHTML(product);
+
+      // Add right padding to the last item for better scrolling experience
+      if (index === mockData.length - 1) {
+        productElement.classList.add("pr-5");
+      }
+
+      similar_products.appendChild(productElement);
+    });
+
+    // Add touch scroll support for better mobile experience
+    similar_products.addEventListener("touchstart", function (e) {
+      this.style.scrollBehavior = "auto";
+    });
+
+    similar_products.addEventListener("touchend", function (e) {
       this.style.scrollBehavior = "smooth";
     });
   }

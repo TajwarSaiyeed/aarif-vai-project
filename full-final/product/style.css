@@ -719,3 +719,60 @@ body {
 #recently-viewed-products > div {
   flex-shrink: 0;
 }
+
+/* ----------------------------------------------- */
+/* VIEW SIMILAR MODAL STYLES START */
+/* ----------------------------------------------- */
+
+/* Modal styles for view similar functionality */
+#viewSimilarModal {
+  backdrop-filter: blur(2px);
+}
+
+#viewSimilarModalContent {
+  /* On mobile, modal takes full width and slides from bottom */
+  @media (max-width: 1023px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 12px 12px 0 0;
+    max-height: 60vh;
+  }
+
+  /* On desktop, modal is centered */
+  @media (min-width: 1024px) {
+    margin: auto;
+    border-radius: 12px;
+    max-height: 80vh;
+    max-width: 56rem; /* 4xl */
+  }
+}
+
+/* Smooth transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Utility classes for transforms */
+.translate-y-full {
+  transform: translateY(100%);
+}
+
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------- */
+/* VIEW SIMILAR MODAL STYLES END */
+/* ----------------------------------------------- */
