@@ -609,184 +609,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(nextSlide, 5000);
 });
 
-const sizes = [
-  { title: "50ml", quantity: 6 },
-  { title: "100ml", quantity: 9 },
-  { title: "200ml", quantity: 2 },
-  { title: "250ml", quantity: 0 },
-  { title: "500ml", quantity: 0 },
-  { title: "1000ml", quantity: 0 },
-];
-
-let selectedSize = sizes[0];
-
-function renderSizeButtons() {
-  const sizeContainer = document.querySelector(".mobile_size-container");
-  sizeContainer.innerHTML = "";
-  sizes.forEach((size, index) => {
-    const isSelected = size === selectedSize;
-    const isAvailable = size.quantity > 0;
-    const button = document.createElement("div");
-    button.className = `px-4 py-2 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer ${
-      isSelected
-        ? "bg-[#ff3f6c] text-white border border-[#ff3f6c]"
-        : "bg-white text-black border border-[#535766]"
-    } ${!isAvailable ? "relative border-gray-400 text-gray-400" : ""}`;
-    button.innerText = size.title;
-    if (!isAvailable) {
-      const strikethrough = document.createElement("span");
-      strikethrough.className =
-        "absolute inset-0 flex items-center justify-center";
-      strikethrough.innerHTML = '<span class="w-full h-px bg-gray-400"></span>';
-      button.appendChild(strikethrough);
-    }
-    button.addEventListener("click", () => {
-      if (isAvailable) {
-        selectedSize = size;
-        renderSizeButtons();
-      }
-    });
-    const wrapper = document.createElement("div");
-    wrapper.className = "text-center";
-    wrapper.appendChild(button);
-    if (isAvailable) {
-      const stock = document.createElement("div");
-      stock.className =
-        "text-[8px] text-[#ff5722] mt-1 border-[0.5px] border-[#ff5722 w-[70%] mx-auto ";
-      stock.innerText = `${size.quantity} Left`;
-      wrapper.appendChild(stock);
-    }
-
-    if (index === sizes.length - 1) {
-      wrapper.classList.add("pr-5");
-    }
-
-    sizeContainer.appendChild(wrapper);
-  });
-}
-
-// Initial render
-renderSizeButtons();
-
-// Recently Viewed Products with Slider functionality
-document.addEventListener("DOMContentLoaded", () => {
-  const mockData = [
-    {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
-      title: "Product 1",
-      subtitle: "Description for Product 1",
-      brand: "Flying Machine",
-    },
-    {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
-      title: "Product 2",
-      subtitle: "Description for Product 2",
-      brand: "Roadster",
-    },
-    {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
-      title: "Product 3",
-      subtitle: "Description for Product 3",
-      brand: "HERE&NOW",
-    },
-    {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
-      title: "Product 4",
-      subtitle: "Description for Product 4",
-      brand: "HRX by Hrithik Roshan",
-    },
-    {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
-      title: "Product 5",
-      subtitle: "Description for Product 5",
-      brand: "Puma",
-    },
-    {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
-      title: "Product 6",
-      subtitle: "Description for Product 6",
-      brand: "Nike",
-    },
-  ];
-
-  // Function to create recently viewed product card HTML for mobile slider
-  function createRecentlyViewedProductCardHTML(product) {
-    return `
-      <div class="bg-white w-[150px] max-h-[220px] border-[1px] border-gray-200 flex-shrink-0 hover:shadow-md transition-shadow duration-300 cursor-pointer">
-        <div class="w-full h-[160px] overflow-hidden relative">
-          <img
-            src="${product.img}"
-            alt="${product.title}"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="bg-white w-full px-2 py-2">
-          <p class="text-sm font-semibold text-gray-800 truncate">${product.brand}</p>
-          <p class="text-xs text-gray-500 truncate mb-1">${product.subtitle}</p>
-        </div>
-      </div>
-    `;
-  }
-
-  const recently_viewed_products = document.getElementById(
-    "recently-viewed-products"
-  );
-
-  if (recently_viewed_products) {
-    // Clear existing content
-    recently_viewed_products.innerHTML = "";
-
-    mockData.forEach((product, index) => {
-      const productElement = document.createElement("div");
-      productElement.innerHTML = createRecentlyViewedProductCardHTML(product);
-
-      // Add right padding to the last item for better scrolling experience
-      if (index === mockData.length - 1) {
-        productElement.classList.add("pr-5");
-      }
-
-      recently_viewed_products.appendChild(productElement);
-    });
-
-    // Add touch scroll support for better mobile experience
-    recently_viewed_products.addEventListener("touchstart", function (e) {
-      this.style.scrollBehavior = "auto";
-    });
-
-    recently_viewed_products.addEventListener("touchend", function (e) {
-      this.style.scrollBehavior = "smooth";
-    });
-  }
-
-  const similar_products = document.getElementById("similar-products");
-
-  if (similar_products) {
-    // Clear existing content
-    similar_products.innerHTML = "";
-
-    mockData.forEach((product, index) => {
-      const productElement = document.createElement("div");
-      productElement.innerHTML = createRecentlyViewedProductCardHTML(product);
-
-      // Add right padding to the last item for better scrolling experience
-      if (index === mockData.length - 1) {
-        productElement.classList.add("pr-5");
-      }
-
-      similar_products.appendChild(productElement);
-    });
-
-    // Add touch scroll support for better mobile experience
-    similar_products.addEventListener("touchstart", function (e) {
-      this.style.scrollBehavior = "auto";
-    });
-
-    similar_products.addEventListener("touchend", function (e) {
-      this.style.scrollBehavior = "smooth";
-    });
-  }
-});
-
 const products = [
   {
     id: 1,
@@ -1257,6 +1079,155 @@ const products = [
     countryOfOrigin: "India",
   },
 ];
+const sizes = [
+  { title: "50ml", quantity: 6 },
+  { title: "100ml", quantity: 9 },
+  { title: "200ml", quantity: 2 },
+  { title: "250ml", quantity: 0 },
+  { title: "500ml", quantity: 0 },
+  { title: "1000ml", quantity: 0 },
+];
+
+let selectedSize = sizes[0];
+
+function renderSizeButtons() {
+  const sizeContainer = document.querySelector(".mobile_size-container");
+  sizeContainer.innerHTML = "";
+  sizes.forEach((size, index) => {
+    const isSelected = size === selectedSize;
+    const isAvailable = size.quantity > 0;
+    const button = document.createElement("div");
+    button.className = `px-4 py-2 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer ${
+      isSelected
+        ? "bg-[#ff3f6c] text-white border border-[#ff3f6c]"
+        : "bg-white text-black border border-[#535766]"
+    } ${!isAvailable ? "relative border-gray-400 text-gray-400" : ""}`;
+    button.innerText = size.title;
+    if (!isAvailable) {
+      const strikethrough = document.createElement("span");
+      strikethrough.className =
+        "absolute inset-0 flex items-center justify-center";
+      strikethrough.innerHTML = '<span class="w-full h-px bg-gray-400"></span>';
+      button.appendChild(strikethrough);
+    }
+    button.addEventListener("click", () => {
+      if (isAvailable) {
+        selectedSize = size;
+        renderSizeButtons();
+      }
+    });
+    const wrapper = document.createElement("div");
+    wrapper.className = "text-center";
+    wrapper.appendChild(button);
+    if (isAvailable) {
+      const stock = document.createElement("div");
+      stock.className =
+        "text-[8px] text-[#ff5722] mt-1 border-[0.5px] border-[#ff5722 w-[70%] mx-auto ";
+      stock.innerText = `${size.quantity} Left`;
+      wrapper.appendChild(stock);
+    }
+
+    if (index === sizes.length - 1) {
+      wrapper.classList.add("pr-5");
+    }
+
+    sizeContainer.appendChild(wrapper);
+  });
+}
+
+// Initial render
+renderSizeButtons();
+
+// Recently Viewed Products with Slider functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const mockData = [
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      title: "Product 1",
+      subtitle: "Description for Product 1",
+      brand: "Flying Machine",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      title: "Product 2",
+      subtitle: "Description for Product 2",
+      brand: "Roadster",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      title: "Product 3",
+      subtitle: "Description for Product 3",
+      brand: "HERE&NOW",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      title: "Product 4",
+      subtitle: "Description for Product 4",
+      brand: "HRX by Hrithik Roshan",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      title: "Product 5",
+      subtitle: "Description for Product 5",
+      brand: "Puma",
+    },
+    {
+      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      title: "Product 6",
+      subtitle: "Description for Product 6",
+      brand: "Nike",
+    },
+  ];
+
+  // Function to create recently viewed product card HTML for mobile slider
+  function createRecentlyViewedProductCardHTML(product) {
+    return `
+      <div class="bg-white w-[150px] max-h-[220px] border-[1px] border-gray-200 flex-shrink-0 hover:shadow-md transition-shadow duration-300 cursor-pointer">
+        <div class="w-full h-[160px] overflow-hidden relative">
+          <img
+            src="${product.img}"
+            alt="${product.title}"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="bg-white w-full px-2 py-2">
+          <p class="text-sm font-semibold text-gray-800 truncate">${product.brand}</p>
+          <p class="text-xs text-gray-500 truncate mb-1">${product.subtitle}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  const recently_viewed_products = document.getElementById(
+    "recently-viewed-products"
+  );
+
+  if (recently_viewed_products) {
+    // Clear existing content
+    recently_viewed_products.innerHTML = "";
+
+    mockData.forEach((product, index) => {
+      const productElement = document.createElement("div");
+      productElement.innerHTML = createRecentlyViewedProductCardHTML(product);
+
+      // Add right padding to the last item for better scrolling experience
+      if (index === mockData.length - 1) {
+        productElement.classList.add("pr-5");
+      }
+
+      recently_viewed_products.appendChild(productElement);
+    });
+
+    // Add touch scroll support for better mobile experience
+    recently_viewed_products.addEventListener("touchstart", function (e) {
+      this.style.scrollBehavior = "auto";
+    });
+
+    recently_viewed_products.addEventListener("touchend", function (e) {
+      this.style.scrollBehavior = "smooth";
+    });
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   function createProductCardHTML(item, wishlisted = false) {
@@ -1264,7 +1235,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="bg-white border border-gray-100 xl:border-none w-44 xl:w-full group hover:shadow-xl overflow-hidden pb-4 md:pb-3 transition-all duration-300">
       
       <!-- Image Container with Aspect Ratio -->
-      <div class="w-full aspect-[3/4] relative">
+      <div class="w-full aspect-[1/1] relative">
         
         <!-- Main Product Image -->
         <img
@@ -1289,18 +1260,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
 
-        <!-- View Similar Button -->
-        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[140px] rounded-full bg-white absolute bottom-8 right-3 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar  z-[20]" data-product-id="${
-          item.id
-        }" title="View Similar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
-            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-          </svg>
-          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-[12px]">
-            View Similar
-          </p>
-        </div>
       </div>
 
       <!-- Text Content -->
@@ -1370,6 +1329,34 @@ document.addEventListener("DOMContentLoaded", () => {
         productCard.classList.add("pr-5");
       }
       similarProductsMobileSlider.appendChild(productCard);
+    });
+  }
+
+  const similar_products = document.getElementById("similar-products");
+
+  if (similar_products) {
+    // Clear existing content
+    similar_products.innerHTML = "";
+
+    products.forEach((product, index) => {
+      const productElement = document.createElement("div");
+      productElement.innerHTML = createProductCardHTML(product);
+
+      // Add right padding to the last item for better scrolling experience
+      if (index === products.length - 1) {
+        productElement.classList.add("pr-5");
+      }
+
+      similar_products.appendChild(productElement);
+    });
+
+    // Add touch scroll support for better mobile experience
+    similar_products.addEventListener("touchstart", function (e) {
+      this.style.scrollBehavior = "auto";
+    });
+
+    similar_products.addEventListener("touchend", function (e) {
+      this.style.scrollBehavior = "smooth";
     });
   }
 });
