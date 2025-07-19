@@ -193,162 +193,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Mobile Sticky Footer ---
   const mobileStickyFooter = document.getElementById("mobile-sticky-footer");
-  // Original page doesn't have deliveryOptionsSection with this ID. Assuming this refers to product-details-section for now or an appropriate top element.
-  // For robustness, I'll link it to a section likely to be near the bottom where the sticky footer might appear.
-  const observedStickySection = document.getElementById(
-    "ratings-reviews-section"
-  ); // Using an existing large section from your provided HTML
+  const mobileBodyActions = document.getElementById("mobile-body-actions");
 
-  if (mobileStickyFooter && observedStickySection) {
+  if (mobileStickyFooter && mobileBodyActions) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (window.innerWidth < 768) {
-          // Only apply for mobile
-          // If the observed section is mostly out of view (scrolled past), show sticky footer
-          if (
-            !entry.isIntersecting &&
-            window.scrollY > observedStickySection.offsetTop
-          ) {
-            mobileStickyFooter.classList.add("show");
-          } else {
-            // If the section is intersecting (visible) or scrolled above it, hide sticky footer
+        if (window.innerWidth < 1280) {
+          // Only apply for mobile/tablet screens
+          if (entry.isIntersecting) {
+            // When mobile-body-actions is visible, hide the sticky footer
             mobileStickyFooter.classList.remove("show");
+          } else {
+            // When mobile-body-actions is not visible, show the sticky footer
+            mobileStickyFooter.classList.add("show");
           }
         } else {
-          mobileStickyFooter.classList.remove("show"); // Ensure hidden on desktop
+          // Ensure hidden on desktop
+          mobileStickyFooter.classList.remove("show");
         }
       },
-      { threshold: 0 } // Trigger as soon as any part of the section enters/leaves view
+      {
+        threshold: 0.1, // Trigger when 10% of the mobile-body-actions is visible
+        rootMargin: "0px 0px -50px 0px", // Add some margin to fine-tune when it triggers
+      }
     );
 
-    observer.observe(observedStickySection);
+    observer.observe(mobileBodyActions);
 
-    // Initial check on page load if already scrolled past the section on mobile
-    if (
-      window.innerWidth < 768 &&
-      window.scrollY > observedStickySection.offsetTop
-    ) {
-      mobileStickyFooter.classList.add("show");
-    }
-
-    // Handle resize: If resized to desktop, hide sticky footer. If resized to mobile and scrolled, show.
+    // Handle resize: If resized to desktop, hide sticky footer
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1280) {
         mobileStickyFooter.classList.remove("show");
-      } else {
-        if (window.scrollY > observedStickySection.offsetTop) {
+      }
+    });
+
+    // Initial check on page load
+    setTimeout(() => {
+      if (window.innerWidth < 1280) {
+        const rect = mobileBodyActions.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isVisible) {
           mobileStickyFooter.classList.add("show");
         }
       }
-    });
+    }, 100);
   }
-
-  // --- Mobile Image Carousel Placeholder (No actual carousel JS provided in initial code) ---
-  // These elements and functions were part of my prior responsive product page generation,
-  // but not directly relevant to *this* user-provided index.html and its image display grid.
-  // I'll keep them as placeholders commented out to acknowledge they existed in prior context.
-  /*
-        const imageTrack = document.getElementById("image-track");
-        const carouselImages = imageTrack.querySelectorAll(
-          ".main-carousel-img.md\\:hidden"
-        );
-        const prevMobileBtn = document.getElementById("prev-image-mobile");
-        const nextMobileBtn = document.getElementById("next-image-mobile");
-        const carouselDotsContainer = document.getElementById("carousel-dots");
-        let currentIndex = 0; // Current index for mobile carousel
-
-        function updateCarousel() {
-          // Adjust for desktop: main product image is the first one in the track, others are mobile-only
-          const imagesToScroll =
-            window.innerWidth < 768 ? carouselImages : [mainCarouselImages[0]];
-          const offset = -currentIndex * 100;
-          imageTrack.style.transform = `translateX(${offset}%)`;
-
-          // Update dot indicators only for mobile
-          if (window.innerWidth < 768) {
-            carouselDotsContainer.innerHTML = "";
-            imagesToScroll.forEach((_, index) => {
-              const dot = document.createElement("span");
-              dot.classList.add(
-                "w-2",
-                "h-2",
-                "rounded-full",
-                "bg-gray-400",
-                "cursor-pointer"
-              );
-              if (index === currentIndex) {
-                dot.classList.add("bg-white");
-              }
-              dot.addEventListener("click", () => {
-                currentIndex = index;
-                updateCarousel();
-              });
-              carouselDotsContainer.appendChild(dot);
-            });
-          }
-        }
-
-        // Mobile carousel navigation
-        if (prevMobileBtn && nextMobileBtn) {
-          prevMobileBtn.addEventListener("click", () => {
-            currentIndex =
-              currentIndex > 0 ? currentIndex - 1 : carouselImages.length - 1;
-            updateCarousel();
-          });
-
-          nextMobileBtn.addEventListener("click", () => {
-            currentIndex =
-              currentIndex < carouselImages.length - 1 ? currentIndex + 1 : 0;
-            updateCarousel();
-          });
-        }
-
-        // Initialize carousel and dots on page load if mobile
-        if (window.innerWidth < 768) {
-          updateCarousel();
-        }
-        // Re-initialize on resize if crossing breakpoint
-        window.addEventListener("resize", () => {
-          if (window.innerWidth < 768) {
-            updateCarousel();
-          }
-        });
-
-        // --- Desktop Image Navigation (prev/next for main image display) ---
-        const prevDesktopBtn = document.getElementById("prev-image-desktop");
-        const nextDesktopBtn = document.getElementById("next-image-desktop");
-        let currentDesktopImageIndex = 0; // Index for desktop thumbnails
-
-        function updateDesktopImageFromNav() {
-          desktopThumbnails.forEach((t) =>
-            t.classList.remove("border-2", "border-myntra-pink")
-          );
-          desktopThumbnails[currentDesktopImageIndex].classList.add(
-            "border-2",
-            "border-myntra-pink"
-          );
-          mainCarouselImages[0].src =
-            desktopThumbnails[currentDesktopImageIndex].dataset.fullSrc;
-        }
-
-        if (prevDesktopBtn && nextDesktopBtn) {
-          prevDesktopBtn.addEventListener("click", () => {
-            currentDesktopImageIndex =
-              currentDesktopImageIndex > 0
-                ? currentDesktopImageIndex - 1
-                : desktopThumbnails.length - 1;
-            updateDesktopImageFromNav();
-          });
-
-          nextDesktopBtn.addEventListener("click", () => {
-            currentDesktopImageIndex =
-              currentDesktopImageIndex < desktopThumbnails.length - 1
-                ? currentDesktopImageIndex + 1
-                : 0;
-            updateDesktopImageFromNav();
-          });
-        }
-        */
 
   // -----------------------------------------------
   // NEW JAVASCRIPT FOR SIZE CHART SIDEBAR INJECTION START

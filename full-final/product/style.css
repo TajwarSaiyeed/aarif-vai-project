@@ -87,7 +87,8 @@ body {
   z-index: 1000;
   background-color: #fff;
   padding: 0.5rem;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #eaeaec;
   transition: transform 0.3s ease-in-out;
   transform: translateY(100%);
   /* Initially hidden */
@@ -96,6 +97,19 @@ body {
 .sticky-mobile-footer.show {
   transform: translateY(0);
   /* Visible */
+}
+
+/* Ensure mobile-body-actions has enough visibility for intersection observer */
+#mobile-body-actions {
+  position: relative;
+  z-index: 1;
+}
+
+/* Add some padding to the body to prevent content from being hidden behind sticky footer */
+@media (max-width: 1279px) {
+  body {
+    padding-bottom: 60px; /* Adjust based on your footer height */
+  }
 }
 
 /* Hide Scrollbar */
