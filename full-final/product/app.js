@@ -786,3 +786,590 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+const products = [
+  {
+    id: 1,
+    title: "Bella Vita Organic",
+    description: "Vitamin C Glow Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.2",
+    ratingCount: "1.2k",
+    href: "#",
+    color: "White",
+    brand: "Bella Vita Organic",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 2,
+    title: "Plum Green Tea",
+    description: "Pore Cleansing Gel Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹349",
+    originalPrice: "₹449",
+    discountPercent: "22",
+    rating: "4.5",
+    ratingCount: "890",
+    href: "#",
+    color: "Green",
+    brand: "Plum",
+    category: "Face Wash",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 3,
+    title: "Minimalist",
+    description: "2% Salicylic Acid Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹199",
+    originalPrice: "₹299",
+    discountPercent: "33",
+    rating: "4.3",
+    ratingCount: "654",
+    href: "#",
+    color: "White",
+    brand: "Minimalist",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 4,
+    title: "Himalaya",
+    description: "Anti-Pimple Neem Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹175",
+    originalPrice: "₹225",
+    discountPercent: "22",
+    rating: "4.1",
+    ratingCount: "2.1k",
+    href: "#",
+    color: "Green",
+    brand: "Himalaya",
+    category: "Face Wash",
+    sizes: ["50ml", "100ml", "200ml"],
+    bundleType: "Value Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 5,
+    title: "L'Oreal Paris",
+    description: "Hyaluron Moisture Sealing",
+    image: "../img.jpeg",
+    currentPrice: "₹549",
+    originalPrice: "₹699",
+    discountPercent: "21",
+    rating: "4.4",
+    ratingCount: "532",
+    href: "#",
+    color: "Blue",
+    brand: "L'Oreal Paris",
+    category: "Moisturizer",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "France",
+  },
+  {
+    id: 6,
+    title: "Olay Total Effects",
+    description: "Night Cream Anti-Aging",
+    image: "../img.jpeg",
+    currentPrice: "₹899",
+    originalPrice: "₹1199",
+    discountPercent: "25",
+    rating: "4.6",
+    ratingCount: "1.5k",
+    href: "#",
+    color: "White",
+    brand: "Olay",
+    category: "Night Cream",
+    sizes: ["50ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "USA",
+  },
+  {
+    id: 7,
+    title: "Deconstruct",
+    description: "Oil-Free Moisturizer",
+    image: "../img.jpeg",
+    currentPrice: "₹425",
+    originalPrice: "₹549",
+    discountPercent: "23",
+    rating: "4.2",
+    ratingCount: "743",
+    href: "#",
+    color: "White",
+    brand: "Deconstruct",
+    category: "Moisturizer",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 8,
+    title: "Pilgrim",
+    description: "Hair Growth Serum",
+    image: "../img.jpeg",
+    currentPrice: "₹649",
+    originalPrice: "₹899",
+    discountPercent: "28",
+    rating: "4.3",
+    ratingCount: "967",
+    href: "#",
+    color: "Brown",
+    brand: "Pilgrim",
+    category: "Hair Serum",
+    sizes: ["50ml"],
+    bundleType: "Starter Kit",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 9,
+    title: "The Man Company",
+    description: "Charcoal Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹399",
+    originalPrice: "₹499",
+    discountPercent: "20",
+    rating: "4.5",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Black",
+    brand: "The Man Company",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 10,
+    title: "Beardo",
+    description: "Activated Charcoal Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.2",
+    ratingCount: "800",
+    href: "#",
+    color: "Black",
+    brand: "Beardo",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 11,
+    title: "Dot & Key",
+    description: "Watermelon Superglow Moisturizer",
+    image: "../img.jpeg",
+    currentPrice: "₹595",
+    originalPrice: "₹795",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.8k",
+    href: "#",
+    color: "Pink",
+    brand: "Dot & Key",
+    category: "Moisturizer",
+    sizes: ["50ml", "100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 12,
+    title: "Mamaearth",
+    description: "Onion Hair Oil for Hair Growth",
+    image: "../img.jpeg",
+    currentPrice: "₹389",
+    originalPrice: "₹499",
+    discountPercent: "22",
+    rating: "4.0",
+    ratingCount: "3.5k",
+    href: "#",
+    color: "Brown",
+    brand: "Mamaearth",
+    category: "Hair Oil",
+    sizes: ["200ml"],
+    bundleType: "Value Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 13,
+    title: "WOW Skin Science",
+    description: "Apple Cider Vinegar Shampoo",
+    image: "../img.jpeg",
+    currentPrice: "₹375",
+    originalPrice: "₹499",
+    discountPercent: "25",
+    rating: "4.1",
+    ratingCount: "2.7k",
+    href: "#",
+    color: "Brown",
+    brand: "WOW Skin Science",
+    category: "Shampoo",
+    sizes: ["200ml", "500ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 14,
+    title: "Mcaffeine",
+    description: "Naked & Raw Coffee Body Scrub",
+    image: "../img.jpeg",
+    currentPrice: "₹399",
+    originalPrice: "₹599",
+    discountPercent: "33",
+    rating: "4.4",
+    ratingCount: "980",
+    href: "#",
+    color: "Brown",
+    brand: "Mcaffeine",
+    category: "Body Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 15,
+    title: "Biotique",
+    description: "Bio Papaya Tan Removal Scrub",
+    image: "../img.jpeg",
+    currentPrice: "₹180",
+    originalPrice: "₹250",
+    discountPercent: "28",
+    rating: "4.0",
+    ratingCount: "1.9k",
+    href: "#",
+    color: "Orange",
+    brand: "Biotique",
+    category: "Face Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 16,
+    title: "Neutrogena",
+    description: "Hydro Boost Water Gel",
+    image: "../img.jpeg",
+    currentPrice: "₹849",
+    originalPrice: "₹950",
+    discountPercent: "11",
+    rating: "4.5",
+    ratingCount: "2.2k",
+    href: "#",
+    color: "Blue",
+    brand: "Neutrogena",
+    category: "Moisturizer",
+    sizes: ["50ml"],
+    bundleType: "Single",
+    countryOfOrigin: "USA",
+  },
+  {
+    id: 17,
+    title: "The Body Shop",
+    description: "Tea Tree Skin Clearing Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹645",
+    originalPrice: "₹745",
+    discountPercent: "13",
+    rating: "4.6",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Green",
+    brand: "The Body Shop",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "UK",
+  },
+  {
+    id: 18,
+    title: "Forest Essentials",
+    description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+    image: "../img.jpeg",
+    currentPrice: "₹1250",
+    originalPrice: "₹1450",
+    discountPercent: "14",
+    rating: "4.7",
+    ratingCount: "900",
+    href: "#",
+    color: "Yellow",
+    brand: "Forest Essentials",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 19,
+    title: "Mamaearth",
+    description: "Vitamin C Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹249",
+    originalPrice: "₹349",
+    discountPercent: "29",
+    rating: "4.2",
+    ratingCount: "2.5k",
+    href: "#",
+    color: "White",
+    brand: "Mamaearth",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 20,
+    title: "WOW Skin Rectified",
+    description: "Ubtan Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.3k",
+    href: "#",
+    color: "Yellow",
+    brand: "WOW Skin Science",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 21,
+    title: "Biotique",
+    description: "Bio Papaya Tan Removal Scrub",
+    image: "../img.jpeg",
+    currentPrice: "₹180",
+    originalPrice: "₹250",
+    discountPercent: "28",
+    rating: "4.0",
+    ratingCount: "1.9k",
+    href: "#",
+    color: "Orange",
+    brand: "Biotique",
+    category: "Face Scrub",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 22,
+    title: "Neutrogena",
+    description: "Hydro Boost Water Gel",
+    image: "../img.jpeg",
+    currentPrice: "₹849",
+    originalPrice: "₹950",
+    discountPercent: "11",
+    rating: "4.5",
+    ratingCount: "2.2k",
+    href: "#",
+    color: "Blue",
+    brand: "Neutrogena",
+    category: "Moisturizer",
+    sizes: ["50ml"],
+    bundleType: "Single",
+    countryOfOrigin: "USA",
+  },
+  {
+    id: 23,
+    title: "The Body Shop",
+    description: "Tea Tree Skin Clearing Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹645",
+    originalPrice: "₹745",
+    discountPercent: "13",
+    rating: "4.6",
+    ratingCount: "1.1k",
+    href: "#",
+    color: "Green",
+    brand: "The Body Shop",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Single",
+    countryOfOrigin: "UK",
+  },
+  {
+    id: 24,
+    title: "Forest Essentials",
+    description: "Delicate Facial Cleanser Kashmiri Saffron & Neem",
+    image: "../img.jpeg",
+    currentPrice: "₹1250",
+    originalPrice: "₹1450",
+    discountPercent: "14",
+    rating: "4.7",
+    ratingCount: "900",
+    href: "#",
+    color: "Yellow",
+    brand: "Forest Essentials",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Gift Set",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 25,
+    title: "Mamaearth",
+    description: "Vitamin C Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹249",
+    originalPrice: "₹349",
+    discountPercent: "29",
+    rating: "4.2",
+    ratingCount: "2.5k",
+    href: "#",
+    color: "White",
+    brand: "Mamaearth",
+    category: "Face Wash",
+    sizes: ["100ml", "200ml"],
+    bundleType: "Combo Pack",
+    countryOfOrigin: "India",
+  },
+  {
+    id: 26,
+    title: "WOW Skin Rectified",
+    description: "Ubtan Face Wash",
+    image: "../img.jpeg",
+    currentPrice: "₹299",
+    originalPrice: "₹399",
+    discountPercent: "25",
+    rating: "4.3",
+    ratingCount: "1.3k",
+    href: "#",
+    color: "Yellow",
+    brand: "WOW Skin Science",
+    category: "Face Wash",
+    sizes: ["100ml"],
+    bundleType: "Single",
+    countryOfOrigin: "India",
+  },
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  function createProductCardHTML(item, wishlisted = false) {
+    return `
+    <div class="bg-white border border-gray-100 xl:border-none w-44 xl:w-full group hover:shadow-xl overflow-hidden pb-4 md:pb-3 transition-all duration-300">
+      
+      <!-- Image Container with Aspect Ratio -->
+      <div class="w-full aspect-[3/4] relative">
+        
+        <!-- Main Product Image -->
+        <img
+          class="w-full h-full object-cover transition-all duration-300"
+          src="${item.image}"
+          alt="${item.description}"
+        />
+
+        <!-- Wishlist Button (Desktop) -->
+        <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden ${
+          wishlisted ? "xl:block" : "group-hover:xl:block"
+        }  z-[10]">
+          <div class="flex text-xs gap-2 justify-center items-center  ${
+            wishlisted ? "bg-[#535766] text-white" : "bg-white"
+          } w-full p-2 uppercase font-bold border-[1px] border-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${
+              wishlisted ? "#ff3f6c" : "none"
+            }" stroke="${
+      wishlisted ? "#ff3f6c" : "#535766"
+    }" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            Wishlist
+          </div>
+        </div>
+
+        <!-- View Similar Button -->
+        <div class="view-similar-btn w-[30px] h-[30px] hidden group-hover:xl:flex hover:w-[140px] rounded-full bg-white absolute bottom-8 right-3 transition-all duration-300 justify-center items-center gap-2 overflow-hidden outline-none border-none cursor-pointer group/view-similar  z-[20]" data-product-id="${
+          item.id
+        }" title="View Similar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3f6c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+          <p class="hidden group-hover/view-similar:block uppercase font-bold text-[#ff3f6c] transition-opacity duration-300 delay-200 whitespace-nowrap text-[12px]">
+            View Similar
+          </p>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="p-2 relative">
+        <h1 class="text-[13px] z-[30] md:text-base font-bold text-black truncate">${
+          item.brand
+        }</h1>
+        <h2 class="text-[11px] z-[30] md:text-sm text-gray-500 group-hover:xl:hidden truncate">${
+          item.title
+        }</h2>
+        <h2 class="text-sm hidden text-gray-500 group-hover:xl:block truncate">Size: ${item.sizes.join(
+          ", "
+        )}</h2>
+        <p class="flex items-center space-x-1 text-[13px] md:text-sm overflow-hidden">
+          <span class="font-bold flex-shrink-0">${item.currentPrice}</span>
+          <del class="text-gray-500 flex-shrink-0">${item.originalPrice}</del>
+          <span class="text-xs text-[#ff905a] flex-shrink-0">(${
+            item.discountPercent
+          }% OFF)</span>
+        </p>
+        <!-- Wishlist Icon (Mobile) -->
+        <div class="absolute bottom-11 right-2 top-0.5 pt-1 pl-4 h-10 text-gray-800 xl:hidden">
+          <svg class="w-6 h-6 ${
+            wishlisted
+              ? "fill-[#ff3f6c] stroke-[#ff3f6c]"
+              : "fill-none stroke-[#535766]"
+          } hover:fill-[#ff3f6c] hover:stroke-[#ff3f6c] hover:text-red-500 transition-colors cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="#535766" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  `;
+  }
+
+  const similarProductsDesktopGrid = document.getElementById(
+    "similar-products-desktop-grid"
+  );
+
+  const similarProductsMobileSlider = document.getElementById(
+    "similar-products-mobile"
+  );
+
+  if (similarProductsDesktopGrid) {
+    similarProductsDesktopGrid.innerHTML = "";
+    products.forEach((product, index) => {
+      const productCard = document.createElement("div");
+      if (index % 2 === 0) {
+        productCard.innerHTML = createProductCardHTML(product, true);
+      } else {
+        productCard.innerHTML = createProductCardHTML(product);
+      }
+      similarProductsDesktopGrid.appendChild(productCard);
+    });
+  }
+
+  if (similarProductsMobileSlider) {
+    similarProductsMobileSlider.innerHTML = "";
+    products.forEach((product, index) => {
+      const productCard = document.createElement("div");
+      if (index % 2 === 0) {
+        productCard.innerHTML = createProductCardHTML(product, true);
+      } else {
+        productCard.innerHTML = createProductCardHTML(product);
+      }
+      if (index === products.length - 1) {
+        productCard.classList.add("pr-5");
+      }
+      similarProductsMobileSlider.appendChild(productCard);
+    });
+  }
+});
