@@ -477,6 +477,131 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------------------------------
   // NEW JAVASCRIPT FOR SIZE CHART SIDEBAR INJECTION END
   // -----------------------------------------------
+
+  // -----------------------------------------------
+  // IMAGE MODAL FUNCTIONALITY START
+  // -----------------------------------------------
+  const imageModal = document.getElementById("imageModal");
+  const imageModalImg = document.getElementById("imageModalImg");
+  const imageModalClose = document.getElementById("imageModalClose");
+  const imageModalPrev = document.getElementById("imageModalPrev");
+  const imageModalNext = document.getElementById("imageModalNext");
+  const imageModalCounter = document.getElementById("imageModalCounter");
+  const desktopProductImages = document.querySelectorAll(
+    ".desktop-product-image"
+  );
+
+  let currentImageIndex = 0;
+  const productImages = [
+    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg",
+    "../img.jpeg",
+    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg",
+    "../img.jpeg",
+    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg",
+  ];
+
+  // Function to open modal with specific image
+  function openImageModal(imageIndex) {
+    currentImageIndex = imageIndex;
+    updateModalImage();
+    imageModal.classList.add("open");
+    document.body.style.overflow = "hidden"; // Prevent body scroll
+  }
+
+  // Function to close modal
+  function closeImageModal() {
+    imageModal.classList.remove("open");
+    document.body.style.overflow = "auto"; // Restore body scroll
+  }
+
+  // Function to update modal image and counter
+  function updateModalImage() {
+    imageModalImg.src = productImages[currentImageIndex];
+    imageModalCounter.textContent = `${currentImageIndex + 1} / ${
+      productImages.length
+    }`;
+  }
+
+  // Function to show next image
+  function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % productImages.length;
+    updateModalImage();
+  }
+
+  // Function to show previous image
+  function showPrevImage() {
+    currentImageIndex =
+      (currentImageIndex - 1 + productImages.length) % productImages.length;
+    updateModalImage();
+  }
+
+  // Add click event listeners to desktop product images
+  desktopProductImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      openImageModal(index);
+    });
+
+    // Add pointer cursor style
+    img.style.cursor = "pointer";
+  });
+
+  // Modal event listeners
+  if (imageModalClose) {
+    imageModalClose.addEventListener("click", closeImageModal);
+  }
+
+  if (imageModalPrev) {
+    imageModalPrev.addEventListener("click", showPrevImage);
+  }
+
+  if (imageModalNext) {
+    imageModalNext.addEventListener("click", showNextImage);
+  }
+
+  // Close modal when clicking on overlay (outside the image)
+  if (imageModal) {
+    imageModal.addEventListener("click", (e) => {
+      if (e.target === imageModal) {
+        closeImageModal();
+      }
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!imageModal.classList.contains("open")) return;
+
+    switch (e.key) {
+      case "Escape":
+        closeImageModal();
+        break;
+      case "ArrowLeft":
+        showPrevImage();
+        break;
+      case "ArrowRight":
+        showNextImage();
+        break;
+    }
+  });
+
+  // Prevent modal from closing when clicking on the image or navigation buttons
+  if (imageModalImg) {
+    imageModalImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  [imageModalPrev, imageModalNext, imageModalClose].forEach((button) => {
+    if (button) {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    }
+  });
+
+  // -----------------------------------------------
+  // IMAGE MODAL FUNCTIONALITY END
+  // -----------------------------------------------
 });
 
 document.addEventListener("DOMContentLoaded", function () {

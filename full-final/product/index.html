@@ -1977,6 +1977,70 @@
       </div>
     </div>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal-overlay">
+      <div class="image-modal-content">
+        <button id="imageModalClose" class="image-modal-close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+
+        <button id="imageModalPrev" class="image-modal-nav image-modal-prev">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+
+        <div class="w-[70vw] h-[90vh] bg-green-700">
+          <img
+            id="imageModalImg"
+            class="image-modal-img w-full h-full"
+            src=""
+            alt="Product Image"
+          />
+        </div>
+        <button id="imageModalNext" class="image-modal-nav image-modal-next">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+
+        <div id="imageModalCounter" class="image-modal-counter">1 / 5</div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
 
     <script src="../nav.js"></script>
