@@ -604,11 +604,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Example images - you can add as many as you want
   const images = [
-    "https://picsum.photos/1920/600?random=1",
-    "https://picsum.photos/1920/600?random=2",
-    "https://picsum.photos/1920/600?random=3",
-    "https://picsum.photos/1920/600?random=6",
-    "https://picsum.photos/1920/600?random=5",
+    "https://png.pngtree.com/background/20250103/original/pngtree-abstract-light-pink-and-purple-background-picture-image_15503407.jpg",
+    "https://png.pngtree.com/background/20210711/original/pngtree-abstract-80s-trendy-geometric-background-neon-colors-picture-image_1157555.jpg",
+    "https://png.pngtree.com/background/20250209/original/pngtree-spring-flowers-beautiful-scenery-dreamy-spring-background-picture-image_16260934.jpg",
+    "https://png.pngtree.com/background/20210709/original/pngtree-red-scene-synthesis-banner-explosion-picture-image_911074.jpg",
+    "https://png.pngtree.com/background/20250103/original/pngtree-abstract-light-pink-and-purple-background-picture-image_15503407.jpg",
+    "https://png.pngtree.com/background/20210711/original/pngtree-abstract-80s-trendy-geometric-background-neon-colors-picture-image_1157555.jpg",
+    "https://png.pngtree.com/background/20250209/original/pngtree-spring-flowers-beautiful-scenery-dreamy-spring-background-picture-image_16260934.jpg",
   ];
 
   // Add all slides
