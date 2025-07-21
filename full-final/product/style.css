@@ -771,6 +771,27 @@ body {
       12 12,
     auto;
   transition: transform 0.2s ease-in-out;
+  background: -webkit-gradient(
+      linear,
+      0% 0%,
+      100% 0%,
+      from(rgb(234, 234, 236)),
+      color-stop(0.35, rgb(218, 217, 217)),
+      color-stop(0.7, rgb(234, 234, 236)),
+      to(rgb(234, 234, 236))
+    )
+    0% 0% / 800px 100% no-repeat rgb(234, 234, 236);
+  animation: 1.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s infinite normal
+    forwards running image-grid-loading-skeleton;
+}
+
+@keyframes image-grid-loading-skeleton {
+  0% {
+    background-position: -468px 0px;
+  }
+  100% {
+    background-position: 468px 0px;
+  }
 }
 
 /* ----------------------------------------------- */
