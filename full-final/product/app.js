@@ -493,11 +493,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentImageIndex = 0;
   const productImages = [
-    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg",
     "../img.jpeg",
-    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg",
+    "../perfume.jpg",
+    "../perfume2.png",
     "../img.jpeg",
-    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/32193132/2025/1/3/8243634c-0c19-4a5a-890e-aa808dbe19e51735884731052CampusSutraMenStripedPoloCollarRawEdgeT-shirt1.jpg",
+    "../perfume.jpg",
   ];
 
   // Function to open modal with specific image
@@ -757,7 +757,7 @@ const products = [
     id: 2,
     title: "Plum Green Tea",
     description: "Pore Cleansing Gel Face Wash",
-    image: "../img.jpeg",
+    image: "../perfume.jpg",
     currentPrice: "₹349",
     originalPrice: "₹449",
     discountPercent: "22",
@@ -775,7 +775,7 @@ const products = [
     id: 3,
     title: "Minimalist",
     description: "2% Salicylic Acid Face Wash",
-    image: "../img.jpeg",
+    image: "../perfume2.png",
     currentPrice: "₹199",
     originalPrice: "₹299",
     discountPercent: "33",
@@ -811,7 +811,7 @@ const products = [
     id: 5,
     title: "L'Oreal Paris",
     description: "Hyaluron Moisture Sealing",
-    image: "../img.jpeg",
+    image: "../perfume.jpg",
     currentPrice: "₹549",
     originalPrice: "₹699",
     discountPercent: "21",
@@ -829,7 +829,7 @@ const products = [
     id: 6,
     title: "Olay Total Effects",
     description: "Night Cream Anti-Aging",
-    image: "../img.jpeg",
+    image: "../perfume2.png",
     currentPrice: "₹899",
     originalPrice: "₹1199",
     discountPercent: "25",
@@ -865,7 +865,7 @@ const products = [
     id: 8,
     title: "Pilgrim",
     description: "Hair Growth Serum",
-    image: "../img.jpeg",
+    image: "../perfume2.png",
     currentPrice: "₹649",
     originalPrice: "₹899",
     discountPercent: "28",
@@ -883,7 +883,7 @@ const products = [
     id: 9,
     title: "The Man Company",
     description: "Charcoal Face Wash",
-    image: "../img.jpeg",
+    image: "../perfume.jpg",
     currentPrice: "₹399",
     originalPrice: "₹499",
     discountPercent: "20",
@@ -1267,37 +1267,37 @@ renderSizeButtons();
 document.addEventListener("DOMContentLoaded", () => {
   const mockData = [
     {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      img: "../img.jpeg",
       title: "Product 1",
       subtitle: "Description for Product 1",
       brand: "Flying Machine",
     },
     {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      img: "../perfume.jpg",
       title: "Product 2",
       subtitle: "Description for Product 2",
       brand: "Roadster",
     },
     {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      img: "../perfume2.png",
       title: "Product 3",
       subtitle: "Description for Product 3",
       brand: "HERE&NOW",
     },
     {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      img: "../img.jpeg",
       title: "Product 4",
       subtitle: "Description for Product 4",
       brand: "HRX by Hrithik Roshan",
     },
     {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      img: "../perfume.jpg",
       title: "Product 5",
       subtitle: "Description for Product 5",
       brand: "Puma",
     },
     {
-      img: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/h_373,q_80,w_280/v1/assets/images/2024/NOVEMBER/19/N8tWn0a1_fff920fd9e78421d935221cc936c8822.jpg",
+      img: "../perfume2.png",
       title: "Product 6",
       subtitle: "Description for Product 6",
       brand: "Nike",
@@ -1357,7 +1357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   function createProductCardHTML(item, wishlisted = false) {
     return `
-    <div class="bg-white border border-gray-100 xl:border-none w-44 xl:w-full group hover:shadow-xl overflow-hidden pb-4 md:pb-3 transition-all duration-300">
+    <div class="bg-white border border-gray-100 xl:border-none w-44 xl:w-full group hover:shadow-xl overflow-hidden pb-4 md:pb-3 transition-all duration-300 py-2">
       
       <!-- Image Container with Aspect Ratio -->
       <div class="w-full aspect-[1/1] relative">
