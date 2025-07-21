@@ -194,23 +194,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Mobile Sticky Footer ---
   const mobileStickyFooter = document.getElementById("mobile-sticky-footer");
   const mobileBodyActions = document.getElementById("mobile-body-actions");
+  const footerContainer = document.getElementById("footer-container");
 
   if (mobileStickyFooter && mobileBodyActions) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (window.innerWidth < 1280) {
-          // Only apply for mobile/tablet screens
-          if (entry.isIntersecting) {
-            // When mobile-body-actions is visible, hide the sticky footer
-            mobileStickyFooter.classList.remove("show");
-          } else {
-            // When mobile-body-actions is not visible, show the sticky footer
-            mobileStickyFooter.classList.add("show");
-          }
-        } else {
-          // Ensure hidden on desktop
+    let isMobileBodyActionsVisible = false;
+    let isFooterVisible = false;
+
+    // Function to update sticky footer visibility
+    const updateStickyFooterVisibility = () => {
+      if (window.innerWidth < 1280) {
+        // Hide sticky footer if either mobile-body-actions or footer is visible
+        if (isMobileBodyActionsVisible || isFooterVisible) {
           mobileStickyFooter.classList.remove("show");
+        } else {
+          mobileStickyFooter.classList.add("show");
         }
+      } else {
+        // Ensure hidden on desktop
+        mobileStickyFooter.classList.remove("show");
+      }
+    };
+
+    // Observer for mobile-body-actions
+    const bodyActionsObserver = new IntersectionObserver(
+      ([entry]) => {
+        isMobileBodyActionsVisible = entry.isIntersecting;
+        updateStickyFooterVisibility();
       },
       {
         threshold: 0.1, // Trigger when 10% of the mobile-body-actions is visible
@@ -218,23 +227,44 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
 
-    observer.observe(mobileBodyActions);
+    bodyActionsObserver.observe(mobileBodyActions);
+
+    // Observer for footer container (if it exists)
+    if (footerContainer) {
+      const footerObserver = new IntersectionObserver(
+        ([entry]) => {
+          isFooterVisible = entry.isIntersecting;
+          updateStickyFooterVisibility();
+        },
+        {
+          threshold: 0, // Trigger as soon as any part of the footer is visible
+          rootMargin: "0px 0px 0px 0px",
+        }
+      );
+
+      footerObserver.observe(footerContainer);
+    }
 
     // Handle resize: If resized to desktop, hide sticky footer
     window.addEventListener("resize", () => {
-      if (window.innerWidth >= 1280) {
-        mobileStickyFooter.classList.remove("show");
-      }
+      updateStickyFooterVisibility();
     });
 
     // Initial check on page load
     setTimeout(() => {
       if (window.innerWidth < 1280) {
-        const rect = mobileBodyActions.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        if (!isVisible) {
-          mobileStickyFooter.classList.add("show");
+        const bodyActionsRect = mobileBodyActions.getBoundingClientRect();
+        isMobileBodyActionsVisible =
+          bodyActionsRect.top < window.innerHeight &&
+          bodyActionsRect.bottom > 0;
+
+        if (footerContainer) {
+          const footerRect = footerContainer.getBoundingClientRect();
+          isFooterVisible =
+            footerRect.top < window.innerHeight && footerRect.bottom > 0;
         }
+
+        updateStickyFooterVisibility();
       }
     }, 100);
   }
