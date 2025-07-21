@@ -1479,8 +1479,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "similar-products-desktop-grid"
   );
 
+  const customerAlsoLikedDesktopGrid = document.getElementById(
+    "customer-also-liked-desktop-grid"
+  );
+
   const similarProductsMobileSlider = document.getElementById(
     "similar-products-mobile"
+  );
+
+  const customersAlsoViewedMobileSlider = document.getElementById(
+    "customers-also-viewed-mobile"
   );
 
   if (similarProductsDesktopGrid) {
@@ -1493,6 +1501,19 @@ document.addEventListener("DOMContentLoaded", () => {
         productCard.innerHTML = createProductCardHTML(product);
       }
       similarProductsDesktopGrid.appendChild(productCard);
+    });
+  }
+
+  if (customerAlsoLikedDesktopGrid) {
+    customerAlsoLikedDesktopGrid.innerHTML = "";
+    products.forEach((product, index) => {
+      const productCard = document.createElement("div");
+      if (index % 2 === 0) {
+        productCard.innerHTML = createProductCardHTML(product, true);
+      } else {
+        productCard.innerHTML = createProductCardHTML(product);
+      }
+      customerAlsoLikedDesktopGrid.appendChild(productCard);
     });
   }
 
@@ -1509,6 +1530,22 @@ document.addEventListener("DOMContentLoaded", () => {
         productCard.classList.add("pr-5");
       }
       similarProductsMobileSlider.appendChild(productCard);
+    });
+  }
+
+  if (customersAlsoViewedMobileSlider) {
+    customersAlsoViewedMobileSlider.innerHTML = "";
+    products.forEach((product, index) => {
+      const productCard = document.createElement("div");
+      if (index % 2 === 0) {
+        productCard.innerHTML = createProductCardHTML(product, true);
+      } else {
+        productCard.innerHTML = createProductCardHTML(product);
+      }
+      if (index === products.length - 1) {
+        productCard.classList.add("pr-5");
+      }
+      customersAlsoViewedMobileSlider.appendChild(productCard);
     });
   }
 
