@@ -602,6 +602,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------------------------------
   // IMAGE MODAL FUNCTIONALITY END
   // -----------------------------------------------
+
+  // -----------------------------------------------
+  // VIEW SIMILAR SMOOTH SCROLL FUNCTIONALITY START
+  // -----------------------------------------------
+  const viewSimilarButtons = document.querySelectorAll(
+    '.view-similar-btn[href="#similar-products-desktop"]'
+  );
+
+  viewSimilarButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent default anchor behavior
+
+      const targetElement = document.getElementById("similar-products-desktop");
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    });
+  });
+  // -----------------------------------------------
+  // VIEW SIMILAR SMOOTH SCROLL FUNCTIONALITY END
+  // -----------------------------------------------
 });
 
 document.addEventListener("DOMContentLoaded", function () {
