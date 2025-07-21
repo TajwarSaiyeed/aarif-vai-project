@@ -1367,7 +1367,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <img
             src="${product.img}"
             alt="${product.title}"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover bg-gray-50 transition-all duration-300"
+            loading="lazy"
+            onload="this.parentNode.classList.remove('bg-gray-50')"            
           />
         </div>
         <div class="bg-white w-full px-2 py-2">
