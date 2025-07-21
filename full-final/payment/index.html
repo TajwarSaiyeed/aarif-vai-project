@@ -403,6 +403,7 @@
           </p>
 
           <button
+            id="mobile-body-actions"
             class="w-full bg-rose-500 text-white py-3 rounded-md text-lg font-semibold hover:bg-rose-600 transition-colors"
           >
             PLACE ORDER
@@ -724,8 +725,11 @@
       </div>
     </div>
 
-    <!-- Mobile Bottom Section -->
-    <div class="bg-white p-4 sticky bottom-0 border-t border-gray-200">
+    <!-- Mobile Sticky Place Order Button (Initially Hidden) -->
+    <div
+      id="mobile-sticky-place-order"
+      class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white p-4 border-t border-gray-200 transform translate-y-full transition-transform duration-300 ease-in-out"
+    >
       <div class="text-xs text-gray-600 text-center mb-2">
         By placing the order, you agree to Myntra's Terms of Use and Privacy
         Policy
@@ -868,6 +872,63 @@
       );
       if (paymentPlaceOrderBtn) {
         paymentPlaceOrderBtn.addEventListener("click", (e) => {
+          if (!validateAllFields()) {
+            e.preventDefault();
+            // Scroll to first invalid field
+            const firstInvalidField = requiredFields.find((fieldConfig) => {
+              const field = document.getElementById(fieldConfig.id);
+              return field && field.value.trim() === "";
+            });
+
+            if (firstInvalidField) {
+              const field = document.getElementById(firstInvalidField.id);
+              field.scrollIntoView({ behavior: "smooth", block: "center" });
+              field.focus();
+            }
+          }
+        });
+      }
+
+      // Mobile Sticky Place Order Button Functionality
+      const mobileBodyActions = document.getElementById("mobile-body-actions");
+      const mobileStickyPlaceOrder = document.getElementById(
+        "mobile-sticky-place-order"
+      );
+
+      if (
+        mobileBodyActions &&
+        mobileStickyPlaceOrder &&
+        "IntersectionObserver" in window
+      ) {
+        // Initially show the sticky button
+        mobileStickyPlaceOrder.classList.remove("translate-y-full");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Hide sticky button when main button is visible
+                mobileStickyPlaceOrder.classList.add("translate-y-full");
+              } else {
+                // Show sticky button when main button is not visible
+                mobileStickyPlaceOrder.classList.remove("translate-y-full");
+              }
+            });
+          },
+          {
+            root: null, // Use the viewport as the root
+            threshold: 0, // Trigger as soon as any part of the element is visible
+          }
+        );
+        observer.observe(mobileBodyActions);
+      }
+
+      // Add validation to mobile sticky place order button
+      const mobileStickyBtn = document.querySelector(
+        "#mobile-sticky-place-order .place-order-btn"
+      );
+      if (mobileStickyBtn) {
+        mobileStickyBtn.addEventListener("click", (e) => {
           if (!validateAllFields()) {
             e.preventDefault();
             // Scroll to first invalid field
