@@ -578,7 +578,7 @@ document.addEventListener("DOMContentLoaded", () => {
         index === 0 ? "checked" : ""
       }>
             <div class="w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
-              <div class="w-2 h-2 bg-pink-500 rounded-full scale-0 transition-transform duration-200"></div>
+              <div class="w-2 h-2 bg-[#ff3f6c] rounded-full scale-0 transition-transform duration-200"></div>
             </div>
           </label>
         </td>
@@ -674,11 +674,11 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileHowToMeasureContent
     ) {
       // Reset all tabs
-      mobileSizeChartTab.classList.remove("border-pink-500", "text-pink-500");
+      mobileSizeChartTab.classList.remove("border-[#ff3f6c]", "text-[#ff3f6c]");
       mobileSizeChartTab.classList.add("text-gray-500");
       mobileHowToMeasureTab.classList.remove(
-        "border-pink-500",
-        "text-pink-500"
+        "border-[#ff3f6c]",
+        "text-[#ff3f6c]"
       );
       mobileHowToMeasureTab.classList.add("text-gray-500");
 
@@ -687,11 +687,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Set active tab
       if (tab === "sizeChart") {
-        mobileSizeChartTab.classList.add("border-pink-500", "text-pink-500");
+        mobileSizeChartTab.classList.add("border-[#ff3f6c]", "text-[#ff3f6c]");
         mobileSizeChartTab.classList.remove("text-gray-500");
         mobileSizeChartContent.classList.remove("hidden");
       } else {
-        mobileHowToMeasureTab.classList.add("border-pink-500", "text-pink-500");
+        mobileHowToMeasureTab.classList.add(
+          "border-[#ff3f6c]",
+          "text-[#ff3f6c]"
+        );
         mobileHowToMeasureTab.classList.remove("text-gray-500");
         mobileHowToMeasureContent.classList.remove("hidden");
       }
@@ -739,18 +742,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (mobileUnitInBtn && mobileUnitCmBtn) {
     mobileUnitInBtn.addEventListener("click", function () {
       mobileCurrentUnit = "in";
-      mobileUnitInBtn.classList.add("bg-pink-500", "text-white");
+      mobileUnitInBtn.classList.add("bg-[#ff3f6c]", "text-white");
       mobileUnitInBtn.classList.remove("text-gray-600");
-      mobileUnitCmBtn.classList.remove("bg-pink-500", "text-white");
+      mobileUnitCmBtn.classList.remove("bg-[#ff3f6c]", "text-white");
       mobileUnitCmBtn.classList.add("text-gray-600");
       populateMobileSizeChart(mobileCurrentUnit);
     });
 
     mobileUnitCmBtn.addEventListener("click", function () {
       mobileCurrentUnit = "cm";
-      mobileUnitCmBtn.classList.add("bg-pink-500", "text-white");
+      mobileUnitCmBtn.classList.add("bg-[#ff3f6c]", "text-white");
       mobileUnitCmBtn.classList.remove("text-gray-600");
-      mobileUnitInBtn.classList.remove("bg-pink-500", "text-white");
+      mobileUnitInBtn.classList.remove("bg-[#ff3f6c]", "text-white");
       mobileUnitInBtn.classList.add("text-gray-600");
       populateMobileSizeChart(mobileCurrentUnit);
     });
