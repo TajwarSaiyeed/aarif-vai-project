@@ -350,10 +350,8 @@ body {
   font-size: 14px;
   color: #525252;
   display: table-cell;
-  /* Important for radio alignment */
   vertical-align: middle;
   position: relative;
-  /* For radio alignment */
 }
 
 .sizeChartWeb-cell-title {
@@ -365,19 +363,10 @@ body {
 /* Custom Radio Button Styles based on common-customRadio */
 .common-customRadio {
   position: relative;
-  display: block;
-  /* Important: makes label block-level to occupy full cell height */
-  height: 100%;
   cursor: pointer;
-  width: 100%;
   user-select: none;
-  padding-left: 20px;
-  /* Space for custom radio */
   box-sizing: border-box;
-  /* Include padding in width calculation */
-  align-items: center;
-  display: flex;
-  /* For vertical alignment within cell */
+  padding: 10px;
 }
 
 .common-customRadio input {
@@ -393,8 +382,8 @@ body {
   /* The visual custom radio button */
   position: absolute;
   top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 16px;
   width: 16px;
   background-color: #fff;
@@ -412,8 +401,8 @@ body {
   content: "";
   position: absolute;
   display: none;
-  left: 4px;
-  top: 4px;
+  top: 20%;
+  left: 20%;
   width: 8px;
   height: 8px;
   border-radius: 50%;

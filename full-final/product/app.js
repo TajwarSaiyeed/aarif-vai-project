@@ -1361,13 +1361,13 @@ document.addEventListener("DOMContentLoaded", () => {
       
       <!-- Image Container with Aspect Ratio -->
       <div class="w-full aspect-[1/1] relative">
-        
-        <!-- Main Product Image -->
-        <img
-          class="w-full h-full object-cover transition-all duration-300"
-          src="${item.image}"
-          alt="${item.description}"
-        />
+
+      <!-- Main Product Image -->
+      <img class="w-full h-full object-cover bg-red-50 transition-all duration-300" src="${
+        item.image
+      }" priority loading="lazy"
+        onload="this.parentNode.classList.remove('bg-gray-50')"
+         />
 
         <!-- Wishlist Button (Desktop) -->
         <div class="bg-white absolute -bottom-7 right-0 w-full p-2 hidden ${
