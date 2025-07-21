@@ -570,12 +570,13 @@ function createProductCardHTML(item, wishlisted = false) {
     <div
       class="bg-white w-full max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 transition-all duration-300"
     >
-      <div class="w-full h-full max-h-[330px] relative">
-        <div class="w-full h-full absolute top-0 left-0 xl:max-h-[195px]  2xl:max-h-[260px] bg-black bg-opacity-50 flex justify-center items-center text-white text-lg font-bold overflow-hidden p-h-swiper transition-all duration-300 hidden group-hover:xl:flex swiper-container">
-        <div class="swiper-wrapper h-full relative">
+      <div class="w-full h-full aspect-[3/4] relative">
+        <!-- Always visible Swiper slider -->
+        <div class="w-full h-full absolute top-0 left-0 overflow-hidden p-h-swiper transition-all duration-300 swiper-container">
+          <div class="swiper-wrapper h-full relative">
             <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
-                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                src="../perfume.jpg"
                 alt="Slide 1"
                 class="w-full h-full object-fit"
               />
@@ -587,50 +588,44 @@ function createProductCardHTML(item, wishlisted = false) {
             </div>
             <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
-                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
+                src="../perfume2.png"
                 alt="Slide 3"
                 class="w-full h-full object-fit"
               />
             </div>
-
             <div class="swiper-slide absolute top-0 left-0 w-full h-full">
-              <img src="../img.jpeg" alt="Slide 2" 
+              <img src="../img.jpeg" alt="Slide 4" 
                 class="w-full h-full object-fit"
               />
-            </div><div class="swiper-slide absolute top-0 left-0 w-full h-full">
+            </div>
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
-                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
-                alt="Slide 3"
+                src="../perfume.jpg"
+                alt="Slide 5"
                 class="w-full h-full object-fit"
               />
             </div>
-
             <div class="swiper-slide absolute top-0 left-0 w-full h-full">
-              <img src="../img.jpeg" alt="Slide 2" 
+              <img src="../img.jpeg" alt="Slide 6" 
                 class="w-full h-full object-fit"
               />
-            </div><div class="swiper-slide absolute top-0 left-0 w-full h-full">
+            </div>
+            <div class="swiper-slide absolute top-0 left-0 w-full h-full">
               <img
-                src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/12027436/2022/9/15/ea90445c-a37b-43ac-948b-8e291ec78dc31663221311972LevisMenWhiteSolidRoundNeckLoungeT-shirt1.jpg"
-                alt="Slide 3"
+                src="../perfume2.png"
+                alt="Slide 7"
                 class="w-full h-full object-fit"
               />
             </div>
-
             <div class="swiper-slide absolute top-0 left-0 w-full h-full">
-              <img src="../img.jpeg" alt="Slide 2" 
+              <img src="../img.jpeg" alt="Slide 8" 
                 class="w-full h-full object-fit"
               />
             </div>
-            </div>
-            <div class="swiper-pagination absolute z-[9999] !bottom-2 w-full !p-0 !m-0 bg-white left-0 right-0"></div>
           </div>
-
-        <img
-          class="w-full h-full object-fit transition-all duration-300"
-          src="../img.jpeg"
-          alt=""
-        />
+          <!-- Hidden by default, shown on hover -->
+          <div class="swiper-pagination absolute z-[9999] !bottom-5 w-full !p-0 !m-0 bg-white left-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
         <div class="bg-white absolute  -bottom-7 right-0 w-full p-2 hidden ${
           wishlisted ? "xl:block" : "group-hover:xl:block"
         }  z-[10]">
@@ -2481,4 +2476,108 @@ document.addEventListener("click", function (event) {
       });
     }
   }
+});
+
+// --- Product Card Swiper Initialization ---
+document.addEventListener("DOMContentLoaded", function () {
+  // Store all swiper instances
+  let swiperInstances = [];
+
+  function initializeProductSwipers() {
+    // Clean up existing instances
+    swiperInstances.forEach((swiper) => {
+      if (swiper && swiper.destroy) {
+        swiper.destroy(true, true);
+      }
+    });
+    swiperInstances = [];
+
+    // Initialize new swipers for all product cards
+    const swiperContainers = document.querySelectorAll(".p-h-swiper");
+    swiperContainers.forEach((container, index) => {
+      const swiper = new Swiper(container, {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        allowTouchMove: true,
+        autoplay: false, // Start with autoplay disabled
+        speed: 300,
+        pagination: {
+          el: container.querySelector(".swiper-pagination"),
+          clickable: true,
+          bulletClass: "swiper-pagination-bullet",
+          bulletActiveClass: "swiper-pagination-bullet-active",
+        },
+        on: {
+          init: function () {
+            // Disable autoplay initially
+            this.autoplay.stop();
+          },
+        },
+      });
+
+      swiperInstances.push(swiper);
+
+      // Get the parent product card
+      const productCard = container.closest(".group");
+
+      if (productCard) {
+        // On hover, enable autoplay and show pagination
+        productCard.addEventListener("mouseenter", function () {
+          if (swiper && swiper.autoplay) {
+            swiper.autoplay.start();
+            // Update autoplay settings
+            swiper.params.autoplay = {
+              delay: 1000,
+              disableOnInteraction: false,
+            };
+          }
+        });
+
+        // On hover out, disable autoplay
+        productCard.addEventListener("mouseleave", function () {
+          if (swiper && swiper.autoplay) {
+            swiper.autoplay.stop();
+          }
+        });
+      }
+    });
+  }
+
+  // Initialize swipers when products are rendered
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+        // Check if product cards were added
+        const hasProductCards = Array.from(mutation.addedNodes).some(
+          (node) =>
+            node.nodeType === 1 &&
+            ((node.querySelector && node.querySelector(".p-h-swiper")) ||
+              (node.classList && node.classList.contains("p-h-swiper")))
+        );
+
+        if (hasProductCards) {
+          // Delay initialization to ensure DOM is ready
+          setTimeout(initializeProductSwipers, 100);
+        }
+      }
+    });
+  });
+
+  // Observe changes in the products grid containers
+  const productsGridDesktop = document.getElementById("products-grid-desktop");
+  const productsSliderMobile = document.getElementById(
+    "products-slider-mobile"
+  );
+
+  if (productsGridDesktop) {
+    observer.observe(productsGridDesktop, { childList: true, subtree: true });
+  }
+
+  if (productsSliderMobile) {
+    observer.observe(productsSliderMobile, { childList: true, subtree: true });
+  }
+
+  // Initial initialization
+  setTimeout(initializeProductSwipers, 500);
 });
