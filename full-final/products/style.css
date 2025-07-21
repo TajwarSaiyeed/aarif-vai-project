@@ -434,7 +434,6 @@ input[type="radio"].accent-\[\#ff3e6c\] {
   align-items: center !important;
   margin: 0 !important;
   padding: 0 !important;
-  transition: opacity 0.3s ease !important;
 }
 
 .swiper-pagination-bullet {
@@ -445,22 +444,4 @@ input[type="radio"].accent-\[\#ff3e6c\] {
   height: 5px !important;
   border-radius: 50% !important;
   margin-top: 0 !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease !important;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #ff3f6c !important;
-  width: 6px !important;
-  height: 6px !important;
-}
-
-.swiper-pagination-bullet:hover {
-  background-color: #ff3f6c !important;
-  transform: scale(1.2) !important;
-}
-
-/* Product card hover effects */
-.p-h-swiper {
-  transition: all 0.3s ease !important;
 }
