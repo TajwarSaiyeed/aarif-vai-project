@@ -791,72 +791,49 @@ const shopByNotesProducts = [
 // Function to create shop by notes product card HTML
 function createShopByNotesProductCardHTML(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200">
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-            <div class="relative overflow-hidden">
-                <!-- Product Image -->
-                <div class="relative h-full max-h-[330px] w-full bg-white p-[10px]">
-                    <img
-                        src="../img.jpeg"
-                        alt="${item.title}"
-                        class="w-full h-full object-cover object-top transition-opacity duration-300"
-                        loading="lazy"
-                    />
-                </div>
+    <div
+  class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white  border border-gray-200 pb-[10px]">
+  <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+    <div class="relative overflow-hidden">
+      <!-- Product Image -->
+      <div class="relative h-full max-h-[330px] w-full bg-white p-[10px]">
+        <img src="../img.jpeg" alt="${item.title}"
+          class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy" />
+      </div>
 
-                <!-- Content -->
-                <div class="relative">
-                    <div class="py-2">
-                        <!-- Brand Title -->
-                        <h3 class="text-center">
-                            ${item.title}
-                        </h3>
-                        <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
-              Under ${item.price}
-            </h3>
-                        </div>
-
-                </div>
-            </div>
-        </a>
-        
+      <!-- Content -->
+      <h3 class="text-orange-500 text-sm sm:text-xl font-semibold text-center">
+        Under ${item.price}
+      </h3>
     </div>
+  </a>
+</div>
 `;
 }
 
 // Function to create product card HTML for mobile slider
 function createMobileShopByNotesProductCardHTML(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 w-[190px]">
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
-            <div class="relative overflow-hidden w-full">
-                <!-- Product Image -->
-                <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
-                    <img
-                        src="../img.jpeg"
-                        alt="${item.title}"
-                        class="w-full h-full object-cover object-top transition-opacity duration-300"
-                        loading="lazy"
-                    />
-                </div>
+    <div
+   class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 w-[190px]">
+   <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
+     <div class="relative overflow-hidden w-full">
+       <!-- Product Image -->
+       <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
+         <img src="../img.jpeg" alt="${item.title}"
+           class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy" />
+       </div>
 
-                <!-- Content -->
-                <div class="relative">
-                    <div class="py-2">
-                        <!-- Brand Title -->
-                        <h3 class="text-center">
-                            ${item.title}
-                        </h3>
-                        <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
-              Under ${item.price}
-            </h3>
-                        </div>
+       <!-- Content -->
+       <div class="relative">
+         <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center mb-[10px]">
+           Under ${item.price}
+         </h3>
+       </div>
+     </div>
+   </a>
 
-                </div>
-            </div>
-        </a>
-        
-    </div>
+ </div>
   `;
 }
 
@@ -925,36 +902,23 @@ function createStyleYourBadroomMobileProductCardHTML(item) {
 // Function to create product card HTML for mobile slider
 function createMobileShopByNotesProductCardHTMLFor3(item) {
   return `
-    <div class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 w-[120px]">
-        <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
-            <div class="relative overflow-hidden w-full">
-                <!-- Product Image -->
-                <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
-                    <img
-                        src="../img.jpeg"
-                        alt="${item.title}"
-                        class="w-full h-full object-cover object-top transition-opacity duration-300"
-                        loading="lazy"
-                    />
-                </div>
+    <div
+  class="relative rounded-lg text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 w-[120px] pb-[10px]">
+  <a href="${item.href}" class="block text-gray-800 no-underline outline-none w-full">
+    <div class="relative overflow-hidden w-full">
+      <!-- Product Image -->
+      <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
+        <img src="../img.jpeg" alt="${item.title}"
+          class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy" />
+      </div>
 
-                <!-- Content -->
-                <div class="relative">
-                    <div class="py-2">
-                        <!-- Brand Title -->
-                        <h3 class="text-center">
-                            ${item.title}
-                        </h3>
-                        <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
-              Under ${item.price}
-            </h3>
-                        </div>
-
-                </div>
-            </div>
-        </a>
-        
+      <!-- Content -->
+      <h3 class="text-orange-500 text-sm sm:text-xl  font-semibold text-center">
+        Under ${item.price}
+      </h3>
     </div>
+  </a>
+</div>
   `;
 }
 
