@@ -942,3 +942,98 @@ body {
 /* ----------------------------------------------- */
 /* IMAGE MODAL STYLES END */
 /* ----------------------------------------------- */
+
+/* ----------------------------------------------- */
+/* MOBILE SIZE CHART MODAL STYLES START */
+/* ----------------------------------------------- */
+
+/* Mobile Size Chart Modal specific animations and styling */
+#mobileSizeChartModal {
+  backdrop-filter: blur(2px);
+}
+
+#mobileSizeChartModalContent {
+  /* On mobile, modal takes full width and slides from bottom */
+  @media (max-width: 1023px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 12px 12px 0 0;
+    max-height: 70vh;
+  }
+
+  /* On desktop, modal is centered (though hidden on desktop) */
+  @media (min-width: 1024px) {
+    margin: auto;
+    border-radius: 12px;
+    max-height: 80vh;
+    max-width: 56rem; /* 4xl */
+  }
+}
+
+/* Mobile size chart table styling */
+#mobileSizeChartTbody tr {
+  transition: background-color 0.2s ease;
+}
+
+#mobileSizeChartTbody tr:hover {
+  background-color: #fef2f2;
+}
+
+/* Custom radio button styling for mobile */
+#mobileSizeChartTbody input[type="radio"]:checked + div {
+  border-color: #ec4899;
+}
+
+#mobileSizeChartTbody input[type="radio"]:checked + div .w-2 {
+  background-color: #ec4899;
+}
+
+/* Tab styling for mobile size chart */
+.mobile-tab-active {
+  border-bottom-color: #ec4899 !important;
+  color: #ec4899 !important;
+}
+
+/* Smooth transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Utility classes for transforms */
+.translate-y-full {
+  transform: translateY(100%);
+}
+
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+/* Mobile size chart responsive table */
+@media (max-width: 640px) {
+  #mobileSizeChartTbody th,
+  #mobileSizeChartTbody td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  #mobileSizeChartTbody th:first-child,
+  #mobileSizeChartTbody td:first-child {
+    width: 40px;
+  }
+}
+
+/* ----------------------------------------------- */
+/* MOBILE SIZE CHART MODAL STYLES END */
+/* ----------------------------------------------- */

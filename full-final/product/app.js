@@ -504,6 +504,272 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial population of the size chart table (only runs once if popup is hidden by default)
   // This ensures data is ready if user opens popup.
   populateSizeChart(currentUnit);
+
+  // -----------------------------------------------
+  // MOBILE SIZE CHART MODAL FUNCTIONALITY START
+  // -----------------------------------------------
+  const mobileSizeChartLink = document.getElementById("mobile-size-chart-link");
+  const mobileSizeChartModal = document.getElementById("mobileSizeChartModal");
+  const mobileSizeChartModalContent = document.getElementById(
+    "mobileSizeChartModalContent"
+  );
+  const closeMobileSizeChartModal = document.getElementById(
+    "closeMobileSizeChartModal"
+  );
+
+  const mobileSizeChartTab = document.getElementById("mobileSizeChartTab");
+  const mobileHowToMeasureTab = document.getElementById(
+    "mobileHowToMeasureTab"
+  );
+  const mobileSizeChartContent = document.getElementById(
+    "mobileSizeChartContent"
+  );
+  const mobileHowToMeasureContent = document.getElementById(
+    "mobileHowToMeasureContent"
+  );
+
+  const mobileSizeChartTbody = document.getElementById("mobileSizeChartTbody");
+  const mobileUnitInBtn = document.getElementById("mobileUnitInBtn");
+  const mobileUnitCmBtn = document.getElementById("mobileUnitCmBtn");
+  const mobileGarmentUnitNote = document.getElementById(
+    "mobileGarmentUnitNote"
+  );
+  const mobileChestColHeader = document.getElementById("mobileChestColHeader");
+  const mobileFrontLengthColHeader = document.getElementById(
+    "mobileFrontLengthColHeader"
+  );
+  const mobileAcrossShoulderColHeader = document.getElementById(
+    "mobileAcrossShoulderColHeader"
+  );
+
+  let mobileCurrentUnit = "in"; // 'in' for inches, 'cm' for centimeters
+
+  // Function to populate mobile size chart table
+  function populateMobileSizeChart(unit) {
+    if (!mobileSizeChartTbody) return;
+
+    mobileSizeChartTbody.innerHTML = ""; // Clear existing rows
+
+    sizes.forEach((row, index) => {
+      const chest =
+        unit === "cm" ? convertToCm(row.chest) : row.chest.toFixed(1);
+      const frontLength =
+        unit === "cm"
+          ? convertToCm(row.frontLength)
+          : row.frontLength.toFixed(1);
+      const acrossShoulder =
+        unit === "cm"
+          ? convertToCm(row.acrossShoulder)
+          : row.acrossShoulder.toFixed(1);
+
+      const tr = document.createElement("tr");
+      if (index === 0) {
+        tr.classList.add("bg-orange-50", "border-b", "border-gray-200");
+      } else {
+        tr.classList.add("border-b", "border-gray-200");
+      }
+
+      tr.innerHTML = `
+        <td class="py-3 px-1">
+          <label class="relative cursor-pointer flex items-center justify-center h-full">
+            <input type="radio" name="mobile-size-selection" value="${
+              row.size
+            }" class="absolute opacity-0 cursor-pointer h-0 w-0" ${
+        index === 0 ? "checked" : ""
+      }>
+            <div class="w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
+              <div class="w-2 h-2 bg-pink-500 rounded-full scale-0 transition-transform duration-200"></div>
+            </div>
+          </label>
+        </td>
+        <td class="py-3 px-1 text-sm font-medium text-gray-800">${row.size}</td>
+        <td class="py-3 px-1 text-sm text-gray-600">${chest}</td>
+        <td class="py-3 px-1 text-sm text-gray-600">${frontLength}</td>
+        <td class="py-3 px-1 text-sm text-gray-600">${acrossShoulder}</td>
+      `;
+
+      // Add event listener for radio button selection
+      const radio = tr.querySelector('input[type="radio"]');
+      const indicator = tr.querySelector(".w-2");
+
+      radio.addEventListener("change", function () {
+        // Remove selection from all rows
+        document.querySelectorAll("#mobileSizeChartTbody tr").forEach((row) => {
+          row.classList.remove("bg-orange-50");
+          row.querySelector(".w-2").classList.remove("scale-100");
+          row.querySelector(".w-2").classList.add("scale-0");
+        });
+
+        // Add selection to current row
+        if (this.checked) {
+          tr.classList.add("bg-orange-50");
+          indicator.classList.remove("scale-0");
+          indicator.classList.add("scale-100");
+        }
+      });
+
+      // Set initial state for checked radio
+      if (radio.checked) {
+        indicator.classList.remove("scale-0");
+        indicator.classList.add("scale-100");
+      }
+
+      mobileSizeChartTbody.appendChild(tr);
+    });
+
+    // Update column headers and unit note
+    if (
+      mobileChestColHeader &&
+      mobileFrontLengthColHeader &&
+      mobileAcrossShoulderColHeader &&
+      mobileGarmentUnitNote
+    ) {
+      const unitLabel = unit === "cm" ? "cm" : "in";
+      mobileChestColHeader.textContent = `Chest (${unitLabel})`;
+      mobileFrontLengthColHeader.textContent = `Front Length (${unitLabel})`;
+      mobileAcrossShoulderColHeader.textContent = `Across Shoulder (${unitLabel})`;
+      mobileGarmentUnitNote.textContent =
+        unit === "cm" ? "Centimeters" : "Inches";
+    }
+  }
+
+  // Function to open mobile modal
+  function openMobileSizeChartModal() {
+    if (mobileSizeChartModal && mobileSizeChartModalContent) {
+      mobileSizeChartModal.classList.remove("hidden");
+      mobileSizeChartModal.classList.add("flex");
+
+      // Set initial tab state
+      setMobileActiveTab("sizeChart");
+
+      // Populate the size chart
+      populateMobileSizeChart(mobileCurrentUnit);
+
+      setTimeout(() => {
+        mobileSizeChartModalContent.classList.remove("translate-y-full");
+        mobileSizeChartModalContent.classList.add("translate-y-0");
+      }, 10);
+    }
+  }
+
+  // Function to close mobile modal
+  function closeMobileSizeChartModalFunc() {
+    if (mobileSizeChartModal && mobileSizeChartModalContent) {
+      mobileSizeChartModalContent.classList.remove("translate-y-0");
+      mobileSizeChartModalContent.classList.add("translate-y-full");
+
+      setTimeout(() => {
+        mobileSizeChartModal.classList.add("hidden");
+        mobileSizeChartModal.classList.remove("flex");
+      }, 300);
+    }
+  }
+
+  // Function to set active tab
+  function setMobileActiveTab(tab) {
+    if (
+      mobileSizeChartTab &&
+      mobileHowToMeasureTab &&
+      mobileSizeChartContent &&
+      mobileHowToMeasureContent
+    ) {
+      // Reset all tabs
+      mobileSizeChartTab.classList.remove("border-pink-500", "text-pink-500");
+      mobileSizeChartTab.classList.add("text-gray-500");
+      mobileHowToMeasureTab.classList.remove(
+        "border-pink-500",
+        "text-pink-500"
+      );
+      mobileHowToMeasureTab.classList.add("text-gray-500");
+
+      mobileSizeChartContent.classList.add("hidden");
+      mobileHowToMeasureContent.classList.add("hidden");
+
+      // Set active tab
+      if (tab === "sizeChart") {
+        mobileSizeChartTab.classList.add("border-pink-500", "text-pink-500");
+        mobileSizeChartTab.classList.remove("text-gray-500");
+        mobileSizeChartContent.classList.remove("hidden");
+      } else {
+        mobileHowToMeasureTab.classList.add("border-pink-500", "text-pink-500");
+        mobileHowToMeasureTab.classList.remove("text-gray-500");
+        mobileHowToMeasureContent.classList.remove("hidden");
+      }
+    }
+  }
+
+  // Event listeners for mobile size chart
+  if (mobileSizeChartLink) {
+    mobileSizeChartLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      openMobileSizeChartModal();
+    });
+  }
+
+  if (closeMobileSizeChartModal) {
+    closeMobileSizeChartModal.addEventListener(
+      "click",
+      closeMobileSizeChartModalFunc
+    );
+  }
+
+  // Close modal when clicking on backdrop
+  if (mobileSizeChartModal) {
+    mobileSizeChartModal.addEventListener("click", function (e) {
+      if (e.target === mobileSizeChartModal) {
+        closeMobileSizeChartModalFunc();
+      }
+    });
+  }
+
+  // Tab switching
+  if (mobileSizeChartTab) {
+    mobileSizeChartTab.addEventListener("click", function () {
+      setMobileActiveTab("sizeChart");
+    });
+  }
+
+  if (mobileHowToMeasureTab) {
+    mobileHowToMeasureTab.addEventListener("click", function () {
+      setMobileActiveTab("howToMeasure");
+    });
+  }
+
+  // Unit toggle functionality
+  if (mobileUnitInBtn && mobileUnitCmBtn) {
+    mobileUnitInBtn.addEventListener("click", function () {
+      mobileCurrentUnit = "in";
+      mobileUnitInBtn.classList.add("bg-pink-500", "text-white");
+      mobileUnitInBtn.classList.remove("text-gray-600");
+      mobileUnitCmBtn.classList.remove("bg-pink-500", "text-white");
+      mobileUnitCmBtn.classList.add("text-gray-600");
+      populateMobileSizeChart(mobileCurrentUnit);
+    });
+
+    mobileUnitCmBtn.addEventListener("click", function () {
+      mobileCurrentUnit = "cm";
+      mobileUnitCmBtn.classList.add("bg-pink-500", "text-white");
+      mobileUnitCmBtn.classList.remove("text-gray-600");
+      mobileUnitInBtn.classList.remove("bg-pink-500", "text-white");
+      mobileUnitInBtn.classList.add("text-gray-600");
+      populateMobileSizeChart(mobileCurrentUnit);
+    });
+  }
+
+  // Close modal with Escape key
+  window.addEventListener("keydown", function (e) {
+    if (
+      e.key === "Escape" &&
+      mobileSizeChartModal &&
+      !mobileSizeChartModal.classList.contains("hidden")
+    ) {
+      closeMobileSizeChartModalFunc();
+    }
+  });
+
+  // -----------------------------------------------
+  // MOBILE SIZE CHART MODAL FUNCTIONALITY END
+  // -----------------------------------------------
   // -----------------------------------------------
   // NEW JAVASCRIPT FOR SIZE CHART SIDEBAR INJECTION END
   // -----------------------------------------------
