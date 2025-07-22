@@ -477,7 +477,7 @@
     </nav>
     <!-- Main Content Area -->
     <main
-      class="max-w-[1685px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 hidden xl:flex flex-col xl:flex-row gap-6 relative"
+      class="max-w-[1685px] min-w-[1200px] mx-auto px-4 md:px-8 py-6 hidden xl:flex flex-col xl:flex-row gap-[60px] relative"
     >
       <!-- Left Column: Product Images -->
       <section class="w-full xl:w-[58%]">
@@ -554,62 +554,13 @@
       >
         <div>
           <h1 class="text-xl md:text-2xl font-bold text-gray-900">Roadster</h1>
-          <p class="text-lg text-gray-700">
+          <p class="text-lg text-gray-700 mb-2">
             Men Maroon Solid Polo Collar T-shirt
           </p>
-
-          <!-- Rating -->
-          <div
-            class="flex items-center justify-center space-x-2 border border-gray-300 p-1 max-w-[165px] mt-2 group hover:border-black cursor-pointer"
-          >
-            <div class="flex items-center space-x-1">
-              <span class="text-myntra-price font-semibold font-[16px]"
-                >4.2</span
-              >
-              <i class="fas fa-star font-[16px] text-teal-500"></i>
-            </div>
-            <div class="font-[16px] text-gray-500">|</div>
-            <span class="font-[16px] text-gray-500">16.3K Ratings</span>
-          </div>
-        </div>
-
-        <!-- Divider -->
-        <hr class="my-2 border-gray-200" />
-
-        <!-- Price Info -->
-        <div>
-          <div class="flex items-baseline space-x-2">
-            <span class="text-lg font-bold text-[#282c3f]">₹299</span>
-            <span class="text-lg font-thin text-[#282c3f] opacity-50"
-              >MRP <del>₹999</del></span
-            >
-            <span class="text-[#ff905a] text-lg font-semibold">(70% OFF)</span>
-          </div>
-          <p class="text-teal-500 text-xs font-semibold mt-2">
+          <span class="text-lg font-bold text-[#282c3f]">₹299 - ₹299</span>
+          <p class="text-teal-500 text-xs font-semibold">
             inclusive of all taxes
           </p>
-        </div>
-
-        <div id="size-selection-section">
-          <p class="text-base font-semibold text-gray-800 mb-2 uppercase">
-            More Colors
-          </p>
-          <div class="flex space-x-2">
-            <div class="w-14 h-16 overflow-hidden border border-gray-200">
-              <img
-                src="../img.jpeg"
-                alt="thumbnail"
-                class="object-fit w-full h-full"
-              />
-            </div>
-            <div class="w-14 h-16 overflow-hidden border border-gray-200">
-              <img
-                src="../img.jpeg"
-                alt="thumbnail"
-                class="object-fit w-full h-full"
-              />
-            </div>
-          </div>
         </div>
 
         <!-- Size Selection -->
@@ -664,14 +615,36 @@
           </p>
         </div>
 
+        <div class="flex items-baseline space-x-2">
+          <span class="text-lg font-bold text-[#282c3f]">₹299</span>
+          <span class="text-lg font-thin text-[#282c3f] opacity-50"
+            >MRP <del>₹999</del></span
+          >
+          <span class="text-[#ff905a] text-lg font-semibold">(70% OFF)</span>
+        </div>
+
         <!-- Action Buttons (Desktop only) -->
         <div class="hidden xl:flex gap-4 mb-6">
           <button
             id="add-to-bag-desktop"
             class="flex-1 text-white bg-[#ff3f6c] border hover:border-[#ff3f6c] hover:bg-white py-3 rounded-md font-semibold text-lg hover:text-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
           >
-            <i class="fas fa-shopping-bag"></i>
-            <span>ADD TO BAG</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right-icon lucide-arrow-right"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+            <span>GO TO BAG</span>
           </button>
           <button
             class="flex-1 bg-white text-gray-800 border border-gray-200 py-3 rounded-md font-semibold text-lg hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
@@ -679,126 +652,6 @@
             <i class="far fa-heart"></i>
             <span>WISHLIST</span>
           </button>
-        </div>
-
-        <div
-          class="flex items-baseline space-x-2 border-t border-gray-300 pt-4"
-        >
-          <span class="text-[18px] font-bold text-[#282c3f]">₹299</span>
-          <del class="text-[18px] font-thin text-[#282c3f] opacity-50">
-            ₹999</del
-          >
-          <span class="text-[#ff905a] text-[18px] font-semibold"
-            >(70% OFF)</span
-          >
-        </div>
-
-        <!-- Best Offers -->
-        <div class="border-t border-gray-200 pt-4">
-          <h3
-            class="text-base font-semibold text-gray-800 mb-2 uppercase flex items-center gap-2"
-          >
-            BEST OFFERS
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-tag-icon lucide-tag"
-            >
-              <path
-                d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
-              />
-              <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
-            </svg>
-          </h3>
-          <div class="my-2">
-            <p class="text-base font-semibold mb-2">
-              Best Price: <span class="font-bold text-[#ff905a]">Rs. 230</span>
-            </p>
-            <ul class="text-base text-gray-700 space-y-1 ml-4 list-disc">
-              <li>
-                Applicable on: Orders above Rs. 1299 (only on first purchase)
-              </li>
-              <li>Coupon code: <span class="font-bold">FLAT300</span></li>
-              <li>
-                Coupon Discount: Rs. 69 off (check cart for final savings)
-              </li>
-            </ul>
-            <a
-              href="#"
-              class="text-[#ff3f6c] text-sm font-semibold hover:underline mt-2 inline-block"
-              >View Eligible Products</a
-            >
-          </div>
-          <div class="my-2">
-            <p class="text-base font-semibold mb-2">
-              10% Discount on IDFC FIRST SWYP Credit Card.
-            </p>
-            <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
-              <li>Min Spend ₹850, Max Discount ₹350.</li>
-            </ul>
-            <a
-              href="#"
-              class="text-[#ff3f6c] text-xs font-semibold hover:underline mt-2 inline-block"
-              >Terms & Condition</a
-            >
-          </div>
-          <div class="my-2">
-            <p class="text-base font-semibold mb-2">
-              10% Discount on HSBC Credit Cards.
-            </p>
-            <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
-              <li>Min Spend ₹5000, Max Discount ₹1500.</li>
-            </ul>
-            <a
-              href="#"
-              class="text-[#ff3f6c] text-xs font-semibold hover:underline mt-2 inline-block"
-              >Terms & Condition</a
-            >
-          </div>
-          <div class="my-2">
-            <p class="text-base font-semibold mb-2">
-              10% Discount on HDFC Bank Credit & Debit Cards EMI.
-            </p>
-            <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
-              <li>Min Spend ₹3500, Max Discount ₹1000.</li>
-            </ul>
-            <a
-              href="#"
-              class="text-[#ff3f6c] text-xs font-semibold hover:underline mt-2 inline-block"
-              >Terms & Condition</a
-            >
-          </div>
-          <div class="my-2">
-            <p class="text-base font-semibold mb-2">
-              7.5% Discount on Myntra Kotak Credit Card.
-            </p>
-            <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
-              <li>Max Discount up to ₹750 on every spends.</li>
-            </ul>
-            <a
-              href="#"
-              class="text-[#ff3f6c] text-xs font-semibold hover:underline mt-2 inline-block"
-              >Terms & Condition</a
-            >
-          </div>
-          <div class="my-2">
-            <p class="text-base font-semibold mb-2">EMI option available</p>
-            <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
-              <li>EMI starting from Rs.31/month</li>
-            </ul>
-            <a
-              href="#"
-              class="text-[#ff3f6c] text-xs font-semibold hover:underline mt-2 inline-block"
-              >View Plan</a
-            >
-          </div>
         </div>
 
         <!-- Product Details & Specifications -->
@@ -828,39 +681,15 @@
                 <path d="M13 16H8" />
               </svg>
             </h3>
-            <ul>
-              <li>White t-shirt for men</li>
-              <li>Self design</li>
-              <li>Regular length</li>
-              <li>Polo collar</li>
-              <li>Short sleeves</li>
-              <li>Knitted</li>
-              <li>Button closure</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3
-              class="text-base font-semibold text-gray-800 mt-3 mb-2 capitalize"
-            >
-              Size & Fit
-            </h3>
-            <ul>
-              <li>Regular Fit</li>
-              <li>The model (height 6') is wearing a size M</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3
-              class="text-base font-semibold text-gray-800 mt-3 mb-2 capitalize"
-            >
-              Material & Care
-            </h3>
-            <ul>
-              <li>Cotton</li>
-              <li>Machine Wash</li>
-            </ul>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              eos aut repellendus sequi officiis error saepe quas natus nobis
+              minus nemo assumenda, quis corporis repellat ducimus consequuntur
+              illo reprehenderit dignissimos enim quos corrupti aliquam, maxime
+              eligendi hic! Perspiciatis, suscipit impedit nobis quia, laborum
+              necessitatibus voluptate obcaecati modi eum id corporis
+              perferendis aperiam alias debitis ea cupiditate beatae.
+            </p>
           </div>
 
           <h3
@@ -937,307 +766,6 @@
             class="text-myntra-pink text-sm font-semibold hover:underline"
           >
             See More
-          </button>
-        </div>
-
-        <!-- Customer Ratings & Reviews -->
-        <div class="border-t border-gray-200 pt-4" id="ratings-reviews-section">
-          <h3 class="text-sm font-semibold text-gray-800 mb-4">
-            RATINGS <i class="fas fa-star text-gray-500 text-xs ml-1"></i>
-          </h3>
-
-          <div class="flex gap-10 items-center min-h-[140px] mb-5">
-            <div class="flex flex-col items-center">
-              <div class="flex items-center mb-2 gap-2">
-                <div class="text-4xl sm:text-5xl text-gray-800 font-light">
-                  4.6
-                </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 sm:h-8 sm:w-8 text-teal-500"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M9.049 2.929c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69l1.07-3.292z"
-                  />
-                </svg>
-              </div>
-              <div class="text-sm text-gray-600 mb-4">5 Verified Buyers</div>
-            </div>
-
-            <div
-              class="w-[1px] h-28 bg-gray-200 self-center hidden sm:block"
-            ></div>
-
-            <div class="flex flex-col space-y-1">
-              <div class="flex items-center">
-                <div class="text-gray-600">5★</div>
-                <div class="bg-teal-500 h-1 w-16 sm:w-32 ml-2"></div>
-                <div class="bg-gray-200 h-1 w-8 sm:w-24"></div>
-                <div class="text-gray-600 ml-2">3</div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="text-gray-600">4★</div>
-                <div class="bg-teal-500 h-1 w-12 sm:w-24 ml-2"></div>
-                <div class="bg-gray-200 h-1 w-12 sm:w-32"></div>
-                <div class="text-gray-600 ml-2">2</div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="text-gray-600">3★</div>
-                <div class="bg-gray-200 h-1 w-24 sm:w-56 ml-2"></div>
-                <div class="text-gray-600 ml-2">0</div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="text-gray-600">2★</div>
-                <div class="bg-gray-200 h-1 w-24 sm:w-56 ml-2"></div>
-                <div class="text-gray-600 ml-2">0</div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="text-gray-600">1★</div>
-                <div class="bg-gray-200 h-1 w-24 sm:w-56 ml-2"></div>
-                <div class="text-gray-600 ml-2">0</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- What Customers Said with Popup -->
-          <h3 class="text-sm font-semibold text-gray-800 mb-2">
-            WHAT CUSTOMERS SAID
-          </h3>
-          <div class="flex flex-col">
-            <div class="max-w-xs w-full">
-              <p class="text-sm text-gray-500 mb-px">Fit</p>
-              <div class="mb-2 flex items-center gap-2">
-                <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                  <div
-                    class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-600 font-bold"
-                  >Just Right (76%)</span
-                >
-              </div>
-            </div>
-            <div class="max-w-xs w-full">
-              <p class="text-sm text-gray-500 mb-px">Fit</p>
-              <div class="mb-2 flex items-center gap-2">
-                <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                  <div
-                    class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                  ></div>
-                </div>
-                <span class="text-sm text-gray-600 font-bold"
-                  >Just Right (76%)</span
-                >
-              </div>
-            </div>
-          </div>
-          <button
-            id="view-details-fit-length"
-            class="text-[#ff3f6c] text-sm font-semibold"
-          >
-            View Details
-          </button>
-
-          <!-- Fit/Length Details Modal -->
-          <div
-            id="fit-length-modal"
-            class="fixed inset-0 bg-black/50 flex items-center justify-center z-[1001] hidden"
-          >
-            <div class="bg-white p-6 rounded-sm shadow-xl w-full max-w-sm">
-              <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold">
-                  What customers say about this product
-                </h3>
-                <button
-                  id="close-fit-length-modal"
-                  class="text-gray-500 hover:text-gray-800"
-                >
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <div class="space-y-4">
-                <div class="max-w-xs w-full">
-                  <p class="text-sm text-gray-500 mb-px">Fit</p>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                </div>
-                <div class="max-w-xs w-full">
-                  <p class="text-sm text-gray-500 mb-px">Fit</p>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                  <div class="mb-2 flex items-center gap-2">
-                    <div class="flex-1 bg-gray-200 rounded-full h-1 relative">
-                      <div
-                        class="h-1 rounded-full bg-green-700 absolute top-0 left-0 w-[76%]"
-                      ></div>
-                    </div>
-                    <span class="text-sm text-gray-600">Just Right (76%)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="border-t border-gray-200 my-2">
-            <h3 class="text-base font-semibold text-gray-800 py-3 mb-2">
-              Customer Photos (<span class="text-myntra-pink">281</span>)
-            </h3>
-            <div class="flex space-x-2 overflow-x-auto pb-2 hide-scrollbar">
-              <img
-                src="https://assets.myntassets.com/h_150,q_75,w_150,c_fill,fl_progressive/assets/images/2025/MAY/29/MR4HS3DE_88bab4b7cf4548ccb0718e00d92ecefb.jpg"
-                alt="Customer Photo 1"
-                class="w-20 h-20 object-contain border border-gray-200"
-              />
-              <img
-                src="https://assets.myntassets.com/h_150,q_75,w_150,c_fill,fl_progressive/assets/images/2025/MAY/29/MR4HS3DE_88bab4b7cf4548ccb0718e00d92ecefb.jpg"
-                alt="Customer Photo 2"
-                class="w-20 h-20 object-contain border border-gray-200"
-              />
-              <img
-                src="https://assets.myntassets.com/h_150,q_75,w_150,c_fill,fl_progressive/assets/images/2025/MAY/29/MR4HS3DE_88bab4b7cf4548ccb0718e00d92ecefb.jpg"
-                alt="Customer Photo 3"
-                class="w-20 h-20 object-contain border border-gray-200"
-              />
-            </div>
-          </div>
-
-          <div class="space-y-5">
-            <h3 class="text-base font-semibold text-gray-800">
-              Customer Reviews (<span class="text-myntra-pink">2218</span>)
-            </h3>
-            <div class="border-b border-gray-200 pb-4">
-              <div class="flex flex-col sm:flex-row items-start gap-2">
-                <div
-                  class="flex items-center space-x-1 text-xs font-bold bg-teal-600 text-white p-1"
-                >
-                  <span>4.5</span>
-                  <i class="fas fa-star fill-white"></i>
-                </div>
-                <div class="space-y-2 max-w-screen-sm">
-                  <p class="text-gray-700">
-                    I recently purchased clothes from myntra and I must say I'm
-                    impressed with my experience. I appreciate how accurate the
-                    sizing chart was. The clothes fit perfectly based on the
-                    measurements provided.
-                  </p>
-                  <div
-                    class="flex space-x-2 overflow-x-auto pb-2 hide-scrollbar"
-                  >
-                    <img
-                      src="https://assets.myntassets.com/h_150,q_75,w_150,c_fill,fl_progressive/assets/images/2025/MAY/29/MR4HS3DE_88bab4b7cf4548ccb0718e00d92ecefb.jpg"
-                      alt="Customer Photo 1"
-                      class="w-20 h-20 object-contain border border-gray-200"
-                    />
-                    <img
-                      src="https://assets.myntassets.com/h_150,q_75,w_150,c_fill,fl_progressive/assets/images/2025/MAY/29/MR4HS3DE_88bab4b7cf4548ccb0718e00d92ecefb.jpg"
-                      alt="Customer Photo 2"
-                      class="w-20 h-20 object-contain border border-gray-200"
-                    />
-                    <img
-                      src="https://assets.myntassets.com/h_150,q_75,w_150,c_fill,fl_progressive/assets/images/2025/MAY/29/MR4HS3DE_88bab4b7cf4548ccb0718e00d92ecefb.jpg"
-                      alt="Customer Photo 3"
-                      class="w-20 h-20 object-contain border border-gray-200"
-                    />
-                  </div>
-                  <div
-                    class="flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 mt-3"
-                  >
-                    <span
-                      >Md Shadab Hussain <span class="mx-1">|</span> 6 July
-                      2024</span
-                    >
-                    <div class="flex space-x-4">
-                      <button class="flex items-center space-x-1 like-btn">
-                        <i class="far fa-thumbs-up"></i>
-                        <span class="like-count">5</span>
-                      </button>
-                      <button class="flex items-center space-x-1 dislike-btn">
-                        <i class="far fa-thumbs-down"></i>
-                        <span class="dislike-count">3</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            class="text-myntra-pink text-sm font-semibold hover:underline mt-4"
-          >
-            View all 2218 reviews
           </button>
         </div>
       </section>
