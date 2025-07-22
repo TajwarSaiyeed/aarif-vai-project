@@ -1,57 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   // DOM Elements from existing product page script
   // No changes to this section from your provided HTML
-  const mainCarouselImages = document.querySelectorAll(".main-carousel-img"); // Images in the mobile carousel
-  const desktopThumbnails = document.querySelectorAll(".thumbnail-img"); // Thumbnails for desktop view
   const sizeButtons = document.querySelectorAll(".size-btn");
   const addToBagDesktopBtn = document.getElementById("add-to-bag-desktop");
   const addToBagMobileBtn = document.getElementById("add-to-bag-mobile");
   const sizeSelectionMessage = document.getElementById(
     "size-selection-message"
   );
-  const garmentMeasurement = document.getElementById("garment-measurement");
-  const chestSizeSpan = document.getElementById("chest-size");
   const toast = document.getElementById("toast");
-  const pincodeInput = document.getElementById("pincode-input");
-  const pincodeCheckBtn = document.getElementById("pincode-check-btn");
-  const pincodeMessage = document.getElementById("pincode-message");
   const seeMoreSpecsBtn = document.getElementById("see-more-specs");
   const specsMore = document.getElementById("specs-more");
-  const viewDetailsFitLengthBtn = document.getElementById(
-    "view-details-fit-length"
-  );
-  const fitLengthModal = document.getElementById("fit-length-modal");
-  const closeFitLengthModalBtn = document.getElementById(
-    "close-fit-length-modal"
-  );
   // Original HTML reviewContent does not have `readMoreBtns` variable definition, this might be leftover or intended for a separate readMore toggle that wasn't provided. Removing its usage for safety if not used elsewhere.
   // const readMoreBtns = document.querySelectorAll(".read-more-btn");
-  const likeButtons = document.querySelectorAll(".like-btn");
-  const dislikeButtons = document.querySelectorAll(".dislike-btn");
 
   let selectedSize = null; // Track selected size
-
-  // --- Image Gallery (Desktop) ---
-  desktopThumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener("click", () => {
-      desktopThumbnails.forEach((t) =>
-        t.classList.remove("border-2", "border-myntra-pink")
-      );
-      thumbnail.classList.add("border-2", "border-myntra-pink");
-      // Change the first image in the carousel track (which is the main desktop image)
-      if (mainCarouselImages[0]) {
-        mainCarouselImages[0].src = thumbnail.dataset.fullSrc;
-      }
-      // For mobile, if desktop view's thumbnail changes, reset mobile carousel to first image
-      currentIndex = 0;
-      // updateCarousel(); // This function does not exist in the provided HTML, assuming it's meant for a carousel that's not fully provided.
-    });
-  });
-
-  // Initialize the first desktop thumbnail as active
-  if (desktopThumbnails.length > 0) {
-    desktopThumbnails[0].classList.add("border-2", "border-myntra-pink");
-  }
 
   // --- Size Selection ---
   sizeButtons.forEach((button) => {
@@ -62,8 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       button.classList.add("border-[#ff3f6c]", "text-[#ff3f6c]"); // Add active styles
       selectedSize = button.dataset.size;
-      chestSizeSpan.textContent = button.dataset.chest;
-      garmentMeasurement.classList.remove("hidden");
       sizeSelectionMessage.classList.add("hidden");
     });
   });
@@ -114,25 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (addToBagMobileBtn)
     addToBagMobileBtn.addEventListener("click", handleAddToBag);
 
-  // --- Pincode Check ---
-  if (pincodeCheckBtn) {
-    pincodeCheckBtn.addEventListener("click", () => {
-      const pincode = pincodeInput.value.trim();
-      if (pincode.length === 6 && !isNaN(pincode)) {
-        pincodeMessage.textContent =
-          "Delivery available to " +
-          pincode +
-          ". Expected delivery in 3-5 days.";
-        pincodeMessage.classList.remove("text-red-500");
-        pincodeMessage.classList.add("text-myntra-green");
-      } else {
-        pincodeMessage.textContent = "Please enter a valid 6-digit Pincode.";
-        pincodeMessage.classList.remove("text-myntra-green");
-        pincodeMessage.classList.add("text-red-500");
-      }
-    });
-  }
-
   // --- "See More" Specifications Toggle ---
   if (seeMoreSpecsBtn) {
     seeMoreSpecsBtn.addEventListener("click", () => {
@@ -146,50 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // --- Fit/Length Details Modal ---
-  if (viewDetailsFitLengthBtn) {
-    viewDetailsFitLengthBtn.addEventListener("click", () => {
-      fitLengthModal.classList.remove("hidden");
-      document.body.classList.add("overflow-hidden"); // Prevent scrolling body when modal is open
-    });
-  }
-
-  if (closeFitLengthModalBtn) {
-    closeFitLengthModalBtn.addEventListener("click", () => {
-      fitLengthModal.classList.add("hidden");
-      document.body.classList.remove("overflow-hidden");
-    });
-  }
-
-  // Close modal when clicking outside
-  if (fitLengthModal) {
-    fitLengthModal.addEventListener("click", (e) => {
-      if (e.target === fitLengthModal) {
-        fitLengthModal.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
-      }
-    });
-  }
-
-  // --- Like/Dislike Buttons (Visual only) ---
-  likeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const countSpan = button.querySelector(".like-count");
-      let currentCount = parseInt(countSpan.textContent);
-      countSpan.textContent = currentCount + 1;
-      button.classList.add("text-[#ff3f6c]");
-    });
-  });
-
-  dislikeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const countSpan = button.querySelector(".dislike-count");
-      let currentCount = parseInt(countSpan.textContent);
-      countSpan.textContent = currentCount + 1;
-      button.classList.add("text-gray-500");
-    });
-  });
 
   // --- Mobile Sticky Footer ---
   const mobileStickyFooter = document.getElementById("mobile-sticky-footer");
@@ -550,21 +447,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const slide = document.createElement("div");
     slide.className = "slide flex-shrink-0";
     slide.style.backgroundImage = `url(${imageUrl})`;
-    slide.style.backgroundSize = "cover";
+    slide.style.backgroundSize = "contain";
     slide.style.backgroundPosition = "center";
+    slide.style.width = "100%";
+    slide.style.height = "100%";
+    slide.style.backgroundRepeat = "no-repeat";
     mobile_image_slider.appendChild(slide);
     totalSlides++;
   }
 
   // Example images - you can add as many as you want
   const images = [
-    "https://png.pngtree.com/background/20250103/original/pngtree-abstract-light-pink-and-purple-background-picture-image_15503407.jpg",
-    "https://png.pngtree.com/background/20210711/original/pngtree-abstract-80s-trendy-geometric-background-neon-colors-picture-image_1157555.jpg",
-    "https://png.pngtree.com/background/20250209/original/pngtree-spring-flowers-beautiful-scenery-dreamy-spring-background-picture-image_16260934.jpg",
-    "https://png.pngtree.com/background/20210709/original/pngtree-red-scene-synthesis-banner-explosion-picture-image_911074.jpg",
-    "https://png.pngtree.com/background/20250103/original/pngtree-abstract-light-pink-and-purple-background-picture-image_15503407.jpg",
-    "https://png.pngtree.com/background/20210711/original/pngtree-abstract-80s-trendy-geometric-background-neon-colors-picture-image_1157555.jpg",
-    "https://png.pngtree.com/background/20250209/original/pngtree-spring-flowers-beautiful-scenery-dreamy-spring-background-picture-image_16260934.jpg",
+    "../img.jpeg",
+    "../perfume.jpg",
+    "../perfume2.png",
+    "../img.jpeg",
+    "../perfume.jpg",
+    "../perfume2.png",
   ];
 
   // Add all slides
