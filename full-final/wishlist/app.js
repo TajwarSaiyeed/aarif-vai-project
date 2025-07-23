@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createProductCardHTML(item) {
     return `
     <div
-  class="c-css bg-white w-full sm:max-h-[430px] group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
+  class="c-css bg-white w-full  group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
   <!-- Remove from wishlist -->
   <button class="absolute top-1 right-1 text-gray-500 hover:text-red-500 transition-colors duration-200 rounded-full p-1 z-5 border border-gray-300">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
     <div class="relative overflow-hidden">
       <!-- Product Image -->
-      <div class="w-full h-full c-css-img sm:max-h-[330px] relative p-[10px]">
+      <div class="w-full h-full c-css-img aspect-[3/4] bg-white relative p-[10px]">
         <img src="../img.jpeg" alt="${item.title} ${item.description}"
           class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy" />
       </div>
