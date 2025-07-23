@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (addToBagMobileBtn)
     addToBagMobileBtn.addEventListener("click", handleAddToBag);
 
-  // --- "See More" Specifications Toggle ---
+  // --- "See More" Specifications Toggle (Desktop) ---
   if (seeMoreSpecsBtn) {
     seeMoreSpecsBtn.addEventListener("click", () => {
       const isHidden = specsMore.classList.contains("hidden");
@@ -84,6 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         specsMore.classList.add("hidden");
         seeMoreSpecsBtn.textContent = "See More";
+      }
+    });
+  }
+
+  // --- "See More" Specifications Toggle (Mobile) ---
+  const mobileSeeMoreSpecsBtn = document.getElementById(
+    "mobile-see-more-specs"
+  );
+  const mobileSpecsMore = document.getElementById("mobile-specs-more");
+
+  if (mobileSeeMoreSpecsBtn) {
+    mobileSeeMoreSpecsBtn.addEventListener("click", () => {
+      const isHidden = mobileSpecsMore.classList.contains("hidden");
+      if (isHidden) {
+        mobileSpecsMore.classList.remove("hidden");
+        mobileSeeMoreSpecsBtn.textContent = "See Less";
+      } else {
+        mobileSpecsMore.classList.add("hidden");
+        mobileSeeMoreSpecsBtn.textContent = "See More";
       }
     });
   }
