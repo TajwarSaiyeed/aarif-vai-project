@@ -206,3 +206,27 @@ body {
   min-width: 0;
   max-width: calc(100vw - 200px); /* Responsive to viewport width */
 }
+
+.skeleton-loading {
+  background: -webkit-gradient(
+      linear,
+      0% 0%,
+      100% 0%,
+      from(rgb(234, 234, 236)),
+      color-stop(0.35, rgb(218, 217, 217)),
+      color-stop(0.7, rgb(234, 234, 236)),
+      to(rgb(234, 234, 236))
+    )
+    0% 0% / 800px 100% no-repeat rgb(234, 234, 236);
+  animation: 1.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s infinite normal
+    forwards running skeleton-shimmer;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -100% 0px;
+  }
+  100% {
+    background-position: 100% 0px;
+  }
+}

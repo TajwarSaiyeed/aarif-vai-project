@@ -63,7 +63,7 @@ let totalSlides = 0;
 
 function addSlide(imageUrl) {
   const slide = document.createElement("div");
-  slide.className = "slide flex-shrink-0";
+  slide.className = "slide flex-shrink-0 skeleton-loading";
   slide.style.backgroundImage = `url(${imageUrl})`;
   slide.style.backgroundSize = "cover";
   slide.style.backgroundPosition = "center";
@@ -161,7 +161,7 @@ const categories = [
 function createCategoryCardHTML(category) {
   return `
           <div class="rounded-lg p-4 text-center flex-shrink-0 mobile-category-card">
-            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto bg-orange-100 rounded-lg flex items-center justify-start mb-3 sm:mb-8 relative overflow-hidden">
+            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto skeleton-loading rounded-lg flex items-center justify-start mb-3 sm:mb-8 relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <img
                 src="${category.image}"
                 alt="${category.title}"
@@ -180,7 +180,7 @@ function createCategoryCardHTML(category) {
 function createCategoryMobileCardHTML(category) {
   return `
           <div class="rounded-lg text-center flex-shrink-0">
-            <div class="w-20 h-20 sm:w-32 sm:h-32 mx-auto bg-gradient-to-b from-transparent to-blue-200 rounded-xl flex items-center justify-start relative overflow-hidden">
+            <div class="w-20 h-20 sm:w-32 sm:h-32 skeleton-loading rounded-xl flex items-center justify-start relative overflow-hidden  hover:shadow-xl transition-shadow duration-300">
               <img
                 src="${category.image}"
                 alt="${category.title}"
@@ -197,9 +197,7 @@ function createCategoryMobileCardHTML(category) {
 
 // mobile top category slider
 const categoryMobileSlider = document.querySelector("#category-mobile-slider");
-const categoryMobileSlider1 = document.querySelector(
-  "#category-mobile-slider1"
-);
+
 if (categoryMobileSlider) {
   categories.forEach((category) => {
     const categoryCard = document.createElement("div");
@@ -208,17 +206,6 @@ if (categoryMobileSlider) {
       categoryCard.classList.add("pr-5");
     }
     categoryMobileSlider.appendChild(categoryCard);
-  });
-}
-
-if (categoryMobileSlider1) {
-  categories.forEach((category) => {
-    const categoryCard = document.createElement("div");
-    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
-    if (category === categories[categories.length - 1]) {
-      categoryCard.classList.add("pr-5");
-    }
-    categoryMobileSlider1.appendChild(categoryCard);
   });
 }
 
