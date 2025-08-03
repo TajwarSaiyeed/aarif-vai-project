@@ -28,7 +28,6 @@
 
 body {
   font-family: "Assistant", sans-serif;
-  background-color: #f8f9fa;
   margin: 0;
   padding: 0;
 }
@@ -37,10 +36,6 @@ body {
   max-width: 1685px;
   margin: 0 auto;
   padding: 0 50px;
-}
-
-.slider-container {
-  height: 400px;
 }
 
 .slide {

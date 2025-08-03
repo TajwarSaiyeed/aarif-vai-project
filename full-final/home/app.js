@@ -63,7 +63,7 @@ let totalSlides = 0;
 
 function addSlide(imageUrl) {
   const slide = document.createElement("div");
-  slide.className = "slide flex-shrink-0 skeleton-loading";
+  slide.className = "slide flex-shrink-0";
   slide.style.backgroundImage = `url(${imageUrl})`;
   slide.style.backgroundSize = "cover";
   slide.style.backgroundPosition = "center";
