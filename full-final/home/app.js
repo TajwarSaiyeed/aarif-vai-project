@@ -968,21 +968,21 @@ if (shopByNotesSliderMobile) {
   });
 }
 
-const shopByNotesGridDesktop2 = document.querySelector(
-  "#shop-by-notes-grid-desktop2"
+const shopByNotesGridLastDesktop2 = document.querySelector(
+  "#shop-by-notes-grid-last-desktop2"
 );
-if (shopByNotesGridDesktop2) {
+if (shopByNotesGridLastDesktop2) {
   shopByNotesProducts.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
-    shopByNotesGridDesktop2.appendChild(productCard);
+    shopByNotesGridLastDesktop2.appendChild(productCard);
   });
 }
 
-const shopByNotesSliderMobile2 = document.querySelector(
-  "#shop-by-notes-slider-mobile2"
+const shopByNotesSliderLastMobile2 = document.querySelector(
+  "#shop-by-notes-slider-last-mobile2"
 );
-if (shopByNotesSliderMobile2) {
+if (shopByNotesSliderLastMobile2) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
@@ -994,25 +994,25 @@ if (shopByNotesSliderMobile2) {
     ) {
       productCard.classList.add("pr-5");
     }
-    shopByNotesSliderMobile2.appendChild(productCard);
+    shopByNotesSliderLastMobile2.appendChild(productCard);
   });
 }
 
-const shopByNotesGridDesktop3 = document.querySelector(
-  "#shop-by-notes-grid-desktop3"
+const shopByNotesGridLastDesktop3 = document.querySelector(
+  "#shop-by-notes-grid-last-desktop3"
 );
-if (shopByNotesGridDesktop3) {
+if (shopByNotesGridLastDesktop3) {
   shopByNotesProducts.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createShopByNotesProductCardHTML(product);
-    shopByNotesGridDesktop3.appendChild(productCard);
+    shopByNotesGridLastDesktop3.appendChild(productCard);
   });
 }
 
-const shopByNotesSliderMobile3 = document.querySelector(
-  "#shop-by-notes-slider-mobile3"
+const shopByNotesSliderLastMobile3 = document.querySelector(
+  "#shop-by-notes-slider-last-mobile3"
 );
-if (shopByNotesSliderMobile3) {
+if (shopByNotesSliderLastMobile3) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
     productCard.innerHTML = createMobileShopByNotesProductCardHTMLFor3(product);
@@ -1024,7 +1024,7 @@ if (shopByNotesSliderMobile3) {
     ) {
       productCard.classList.add("pr-5");
     }
-    shopByNotesSliderMobile3.appendChild(productCard);
+    shopByNotesSliderLastMobile3.appendChild(productCard);
   });
 }
 
