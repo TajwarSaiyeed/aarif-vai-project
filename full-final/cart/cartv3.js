@@ -974,63 +974,66 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to create product card HTML
   function createProductCardHTML(item) {
     return `
-      <div class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
-          <!-- Product Link (excludes Add to Bag button) -->
-          <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
-              <div class="relative overflow-hidden">
-                  <!-- Product Image -->
-                  <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
-                      <img
-                          src="../img.jpeg"
-                          alt="${item.title} ${item.description}"
-                          class="w-full h-full object-cover object-top transition-opacity duration-300"
-                          loading="lazy"
-                      />
-                  </div>
-
-                  <!-- Content -->
-                  <div class="relative px-2">
-                      <div class="py-2">
-                          <!-- Brand Title -->
-                          <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
-                              ${item.title}
-                          </h3>
-
-                          <!-- Description -->
-                          <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
-                              ${item.description}
-                          </h4>
-
-                          <!-- Price Container -->
-                          <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
-                              <!-- Current Price -->
-                              <span class="font-semibold text-gray-800 text-sm">
-                                  <span class="relative -left-0.5">${item.currentPrice}</span>
-                              </span>
-
-                              <!-- Original Price -->
-                              <span class="text-sm">
-                                  <span class="opacity-40 text-gray-800 line-through text-xs">
-                                      <span>${item.originalPrice}</span>
-                                  </span>
-                              </span>
-
-                              <!-- Discount -->
-                              <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
-                                  <span>(${item.discountPercent}% OFF)</span>
-                              </span>
-                          </div>
-                      </div>
-                      <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
-                  </div>
-              </div>
-          </a>
-          
-          <!-- Add to Bag Button (outside product link) -->
-          <div class="p-2">
-              <button class="desktop-add-to-bag w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer" data-product-id="${item.id}">Add to Bag</button>
-          </div>
+      <div
+  class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
+  <!-- Product Link (excludes Add to Bag button) -->
+  <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+    <div class="relative overflow-hidden">
+      <!-- Product Image -->
+      <div class="relative w-full h-full aspect-[1] skeleton-loading bg-white p-[10px]">
+        <img src="../img.jpeg" alt="${item.title} ${item.description}"
+          class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy"
+            onload="this.parentNode.classList.remove('skeleton-loading')" 
+          />
       </div>
+
+      <!-- Content -->
+      <div class="relative px-2">
+        <div class="py-2">
+          <!-- Brand Title -->
+          <h3
+            class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+            ${item.title}
+          </h3>
+
+          <!-- Description -->
+          <h4
+            class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
+            ${item.description}
+          </h4>
+
+          <!-- Price Container -->
+          <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
+            <!-- Current Price -->
+            <span class="font-semibold text-gray-800 text-sm">
+              <span class="relative -left-0.5">${item.currentPrice}</span>
+            </span>
+
+            <!-- Original Price -->
+            <span class="text-sm">
+              <span class="opacity-40 text-gray-800 line-through text-xs">
+                <span>${item.originalPrice}</span>
+              </span>
+            </span>
+
+            <!-- Discount -->
+            <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
+              <span>(${item.discountPercent}% OFF)</span>
+            </span>
+          </div>
+        </div>
+        <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Add to Bag Button (outside product link) -->
+  <div class="p-2">
+    <button
+      class="desktop-add-to-bag w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer"
+      data-product-id="${item.id}">Add to Bag</button>
+  </div>
+</div>
   `;
   }
 
