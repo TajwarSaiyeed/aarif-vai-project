@@ -109,58 +109,335 @@
     </style>
   </head>
   <body class="bg-white max-h-screen">
-    <!-- Header Skeleton -->
-    <header class="bg-white fixed top-0 right-0 left-0 shadow-md z-40">
-      <!-- Desktop Header -->
-      <div class="hidden lg:flex items-center justify-between py-4 gap-4 px-8">
+    <header
+      class="bg-white z-[999] fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
+    >
+      <!-- Desktop Navbar (visible on xl screens and up) -->
+      <div
+        class="hidden xl:flex items-center justify-between py-[18px] gap-4 px-8"
+      >
         <div class="flex items-center w-full">
-          <!-- Logo Skeleton -->
-          <div class="mr-6">
-            <div class="skeleton-box w-10 h-10"></div>
+          <div class="float-left h-inherit mt-1 ml-[3.5%] mr-6">
+            <a
+              href="#"
+              class="inline-block align-middle p-0 m-0 cursor-pointer"
+            >
+              <span class="myntraweb-sprite sprites-headerLogo"></span>
+            </a>
           </div>
 
-          <!-- Navigation Skeleton -->
-          <div class="flex gap-8">
-            <div class="skeleton-text h-4 w-12"></div>
-            <div class="skeleton-text h-4 w-16"></div>
-            <div class="skeleton-text h-4 w-10"></div>
-            <div class="skeleton-text h-4 w-12"></div>
-            <div class="skeleton-text h-4 w-14"></div>
-          </div>
+          <!-- Navigation items will be dynamically inserted here by JavaScript -->
+          <div id="main-navigation" class="flex relative ml-10"></div>
         </div>
 
         <div class="flex items-center justify-end w-full">
-          <!-- Search Bar Skeleton -->
-          <div class="max-w-lg w-full mr-8">
-            <div class="skeleton-box h-10 w-full"></div>
+          <!-- search -->
+          <div class="max-w-[540px] w-full leading-0 relative">
+            <a href="#" class="absolute top-1/2 -translate-y-1/2 p-2 rounded-l">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search-icon lucide-search"
+              >
+                <path d="m21 21-4.34-4.34" />
+                <circle cx="11" cy="11" r="8" />
+              </svg>
+            </a>
+            <input
+              type="text"
+              placeholder="Search for products, brands and more"
+              class="inline-block float-left text-sm h-5 leading-6 text-[#696e79] box-content m-0 outline-0 border border-[#f5f5f6] rounded bg-[#f5f5f6] pl-10 py-2 w-full focus:bg-white focus:border-[#eaeaec]"
+            />
           </div>
 
-          <!-- Action Icons Skeleton -->
-          <div class="flex gap-4">
-            <div class="skeleton-box w-16 h-10"></div>
-            <div class="skeleton-box w-16 h-10"></div>
-            <div class="skeleton-box w-16 h-10"></div>
+          <!-- actions -->
+          <div class="flex leading-0 h-[40px] ml-[60px]">
+            <!-- Profile Dropdown -->
+            <div class="relative h-[60px] mx-5 group">
+              <div class="flex px-3 relative h-[40px]">
+                <span
+                  class="myntraweb-sprite sprites-headerUser mt-[10px] absolute bottom-[13px] left-[5px] block"
+                ></span>
+                <span
+                  class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
+                  >Profile</span
+                >
+              </div>
+              <!-- Dropdown Menu -->
+              <div
+                class="invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[250px] -left-[137.5px] top-[62px] absolute py-[25px] px-4 z-[9] shadow-lg transition-all duration-200 bg-white text-[#3e4152] border border-[#f5f5f6] -mt-[2px]"
+              >
+                <!-- Arrow -->
+                <div
+                  class="block -top-[5px] absolute w-[58px] border-b-4 border-[#f16565] left-[124px]"
+                ></div>
+                <!-- Content -->
+                <div class="block">
+                  <div class="block pb-[2px]">
+                    <div
+                      class="font-bold h-5 text-sm w-full whitespace-nowrap overflow-hidden text-ellipsis leading-[10px]"
+                    >
+                      Welcome
+                    </div>
+                    <div
+                      class="h-[14px] text-[#282c3f] text-sm w-full whitespace-nowrap leading-[10px]"
+                    >
+                      To access account and manage orders
+                    </div>
+                  </div>
+                  <div>
+                    <div class="inline-block w-full py-[10px] border-t-0">
+                      <a
+                        data-refreshPage="true"
+                        href="/website/login.html"
+                        data-track="login"
+                        class="inline-block py-2 px-4 border border-[#eaeaec] rounded-sm text-center uppercase text-sm text-[#ff3f6c] font-bold hover:border-[#ff3f6c]"
+                        >login / Signup</a
+                      >
+                    </div>
+                    <div
+                      class="flex flex-col w-full py-[10px] space-y-2 border-t border-[#eaeaec]"
+                    >
+                      <a
+                        href="#"
+                        data-track="orders"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Orders
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="wishlist"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Wishlist
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="giftcards"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Gift Cards
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="contactus"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Contact Us
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="myntrainsider"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Myntra Insider
+                          <span
+                            class="inline-block p-px py-0 bg-[#ff3f6c] border border-[#ff3f6c] text-white font-black ml-[10px] -mt-[6px] -mb-[10px] text-[10px] skew-x-[-10deg] rounded-sm"
+                          >
+                            New
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                    <div
+                      class="flex flex-col w-full py-[10px] space-y-2 border-t border-[#eaeaec]"
+                    >
+                      <a
+                        href="#"
+                        data-track="myntracredit"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Myntra Credit
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="coupons"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Coupons
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="savedcards"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Saved Cards
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="savedvpa"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Saved VPA
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        data-track="savedaddresses"
+                        class="font-normal text-sm text-[#3e4152]"
+                      >
+                        <div class="m-0 cursor-pointer hover:font-bold">
+                          Saved Addresses
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wishlist -->
+            <a href="#" class="flex no-underline relative mx-[50px] ml-[15px]">
+              <span
+                class="myntraweb-sprite sprites-headerWishlist mt-2 absolute bottom-[14px] left-[13px]"
+              ></span>
+              <span
+                class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
+                >Wishlist</span
+              >
+            </a>
+
+            <!-- Cart -->
+            <a href="#" class="flex no-underline relative mr-[50px] ml-[15px]">
+              <span
+                class="myntraweb-sprite sprites-headerBag mt-2 absolute bottom-[14px] -left-[1px]"
+              ></span>
+              <span
+                class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#ff3f6c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold visible"
+                >2</span
+              >
+              <span
+                class="text-black absolute bottom-1 left-0 text-xs font-bold inline-block pt-[10px] leading-[6px]"
+                >Bag</span
+              >
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Mobile Header -->
+      <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="lg:hidden h-14 flex items-center justify-between px-4 bg-white"
+        class="xl:hidden h-[56px] flex items-center justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
-        <div class="flex items-center gap-4">
-          <div class="skeleton-circle w-6 h-6"></div>
-          <div class="skeleton-box w-8 h-6"></div>
-          <div class="skeleton-text h-4 w-32"></div>
+        <div class="flex h-full items-center justify-start w-full">
+          <button
+            id="backButton"
+            class="ripple-button w-[45px] h-full max-h-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-left-icon lucide-arrow-left"
+            >
+              <path d="m12 19-7-7 7-7" />
+              <path d="M19 12H5" />
+            </svg>
+          </button>
+
+          <div class="text-black text-base font-bold ml-2" id="mobile-title">
+            The Souled Store long long text
+          </div>
         </div>
-        <div class="flex items-center gap-4">
-          <div class="skeleton-circle w-5 h-5"></div>
-          <div class="skeleton-circle w-5 h-5"></div>
-          <div class="skeleton-circle w-5 h-5"></div>
+        <!-- Icons on the right -->
+        <div class="flex items-center space-x-4 pr-4">
+          <a id="mobile-search-button" href="#" class="relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search-icon lucide-search"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+          </a>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <g stroke="none" strokewidth="1" fill="none" fillrule="evenodd">
+                <g fill="#3E4152">
+                  <path
+                    d="M8.1703,4.473425 C6.9537,4.473425 5.8134,4.946625 4.95975,5.805525 C4.10435,6.666175 3.63325,7.815575 3.63325,9.042675 C3.63325,10.269775 4.10435,11.419525 4.95975,12.280175 L12,19.362425 L19.0406,12.279825 C19.89565,11.419525 20.36675,10.270125 20.36675,9.042675 C20.36675,7.815575 19.89565,6.665825 19.0406,5.805875 C19.0406,5.805875 19.0406,5.805525 19.04025,5.805525 C18.1866,4.946625 17.0463,4.473425 15.8297,4.473425 C14.6138,4.473425 13.4742,4.946275 12.62055,5.804475 C12.29225,6.134525 11.70845,6.134875 11.3798,5.804475 C10.5258,4.946275 9.3862,4.473425 8.1703,4.473425 L8.1703,4.473425 Z M12.02835,21.276575 L11.972,21.276575 C11.6304,21.276575 11.2965,21.137625 11.05605,20.895075 L3.71865,13.513925 C2.53495,12.323225 1.88325,10.735275 1.88325,9.042675 C1.88325,7.350075 2.53495,5.762475 3.71865,4.571775 C4.9034,3.379675 6.48435,2.723425 8.1703,2.723425 C9.5759,2.723425 10.90905,3.179825 12,4.022625 C13.0913,3.179825 14.4241,2.723425 15.8297,2.723425 C17.516,2.723425 19.09695,3.379675 20.2817,4.572125 C21.46505,5.762475 22.11675,7.350075 22.11675,9.042675 C22.11675,10.735625 21.46505,12.323225 20.2817,13.513925 L12.94325,20.895775 C12.6993,21.141475 12.3745,21.276575 12.02835,21.276575 L12.02835,21.276575 Z"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="#3E4152"
+                fillrule="evenodd"
+                d="M4.012 20.718L5.246 7.314H7.27v1.763a.733.733 0 101.466 0V7.314h6.528v1.763a.733.733 0 001.466 0V7.314h2.024l1.234 13.404H4.012zM12 3.282c1.56 0 2.865 1.1 3.187 2.565H8.813A3.268 3.268 0 0112 3.282zm8.15 3.228a.733.733 0 00-.73-.663h-2.747A4.734 4.734 0 0012 1.816a4.734 4.734 0 00-4.673 4.03H4.58a.733.733 0 00-.73.664L2.475 21.38a.734.734 0 00.73.804h17.59a.733.733 0 00.73-.803L20.15 6.51z"
+              ></path>
+            </svg>
+            <span
+              class="whitespace-nowrap text-center leading-[18px] px-[6px] h-[18px] bg-[#7e818c] absolute rounded-full text-xs text-white left-[13px] -top-[2px] font-bold invisible"
+              >0</span
+            >
+          </a>
+        </div>
+
+        <!-- Mobile Search Input (initially hidden) -->
+        <div
+          id="mobile-search-bar"
+          class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200 hidden"
+        >
+          <div class="relative flex items-center">
+            <div class="relative w-full">
+              <input
+                type="text"
+                class="block w-full text-sm h-8 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
+              />
+              <span
+                id="typewriter-search"
+                class="absolute left-10 top-1/2 -translate-y-1/2 text-[#696e79] text-sm"
+                style="white-space: pre"
+              ></span>
+            </div>
+            <span
+              class="myntraweb-sprite sprites-search absolute left-3 top-1/2 -translate-y-1/2 scale-75"
+            ></span>
+          </div>
         </div>
       </div>
     </header>
-
     <!-- Main Content -->
     <div class="hidden lg:block mt-20 max-w-7xl mx-auto">
       <div class="mx-auto py-8">
@@ -531,21 +808,17 @@
       </div>
     </div>
 
+    <script src="../nav.js"></script>
     <script>
-      // Add debugging
       console.log("Skeleton loading page started");
 
-      // Simulate loading completion after 3 seconds
       setTimeout(() => {
         console.log("Redirecting to products page");
-        // Redirect to actual products page or replace with real content
         window.location.href = "./index.html";
       }, 5000);
 
-      // Add fallback for browsers that don't support some CSS
       document.addEventListener("DOMContentLoaded", function () {
         console.log("DOM loaded, skeleton should be visible");
-        // Ensure all skeleton elements are visible
         const skeletonElements = document.querySelectorAll(
           ".skeleton-text, .skeleton-box, .skeleton-circle"
         );
