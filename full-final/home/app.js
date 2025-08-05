@@ -910,6 +910,9 @@ function createMobileShopByNotesProductCardHTMLFor3(item) {
   `;
 }
 
+const shopByNotesGridDesktop0 = document.querySelector(
+  "#shop-by-notes-grid-desktop-0"
+);
 const shopByNotesGridDesktop = document.querySelector(
   "#shop-by-notes-grid-desktop"
 );
@@ -919,6 +922,14 @@ const styleYourBadroomDesktop = document.querySelector(
 const styleYourBadroomMobile = document.querySelector(
   "#style-your-badroom-mobile"
 );
+
+if (shopByNotesGridDesktop0) {
+  shopByNotesProducts.slice(0, 5).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createShopByNotesProductCardHTML(product);
+    shopByNotesGridDesktop0.appendChild(productCard);
+  });
+}
 
 if (shopByNotesGridDesktop) {
   shopByNotesProducts.slice(0, 5).forEach((product) => {
@@ -949,9 +960,28 @@ if (styleYourBadroomMobile) {
   });
 }
 
+const shopByNotesSliderMobile0 = document.querySelector(
+  "#shop-by-notes-slider-mobile-0"
+);
+
 const shopByNotesSliderMobile = document.querySelector(
   "#shop-by-notes-slider-mobile"
 );
+if (shopByNotesSliderMobile0) {
+  shopByNotesProducts.slice(0, 6).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
+    if (
+      product ===
+      shopByNotesProducts.slice(0, 6)[
+        shopByNotesProducts.slice(0, 6).length - 1
+      ]
+    ) {
+      productCard.classList.add("pr-5");
+    }
+    shopByNotesSliderMobile0.appendChild(productCard);
+  });
+}
 if (shopByNotesSliderMobile) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
@@ -968,9 +998,20 @@ if (shopByNotesSliderMobile) {
   });
 }
 
+const shopByNotesGridLastDesktop0 = document.querySelector(
+  "#shop-by-notes-grid-last-desktop-0"
+);
+
 const shopByNotesGridLastDesktop2 = document.querySelector(
   "#shop-by-notes-grid-last-desktop2"
 );
+if (shopByNotesGridLastDesktop0) {
+  shopByNotesProducts.slice(0, 5).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createShopByNotesProductCardHTML(product);
+    shopByNotesGridLastDesktop0.appendChild(productCard);
+  });
+}
 if (shopByNotesGridLastDesktop2) {
   shopByNotesProducts.slice(0, 5).forEach((product) => {
     const productCard = document.createElement("div");
@@ -985,7 +1026,7 @@ const shopByNotesSliderLastMobile2 = document.querySelector(
 if (shopByNotesSliderLastMobile2) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
-    productCard.innerHTML = createMobileShopByNotesProductCardHTML(product);
+    productCard.innerHTML = createMobileShopByNotesProductCardHTMLFor3(product);
     if (
       product ===
       shopByNotesProducts.slice(0, 6)[
@@ -1009,9 +1050,29 @@ if (shopByNotesGridLastDesktop3) {
   });
 }
 
+const shopByNotesSliderLastMobile0 = document.querySelector(
+  "#shop-by-notes-slider-last-mobile-0"
+);
+
 const shopByNotesSliderLastMobile3 = document.querySelector(
   "#shop-by-notes-slider-last-mobile3"
 );
+
+if (shopByNotesSliderLastMobile0) {
+  shopByNotesProducts.slice(0, 6).forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = createMobileShopByNotesProductCardHTMLFor3(product);
+    if (
+      product ===
+      shopByNotesProducts.slice(0, 6)[
+        shopByNotesProducts.slice(0, 6).length - 1
+      ]
+    ) {
+      productCard.classList.add("pr-5");
+    }
+    shopByNotesSliderLastMobile0.appendChild(productCard);
+  });
+}
 if (shopByNotesSliderLastMobile3) {
   shopByNotesProducts.slice(0, 6).forEach((product) => {
     const productCard = document.createElement("div");
