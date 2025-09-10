@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category</title>
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <!-- Mobile Navbar (visible on screens smaller than xl) -->
+      <div class="mobile-nav">
+        <!-- back Icon -->
+        <div class="button-container">
+          <button id="backButton" class="ripple-button back-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-left-icon lucide-arrow-left"
+            >
+              <path d="m12 19-7-7 7-7" />
+              <path d="M19 12H5" />
+            </svg>
+          </button>
+          <span class="button-text">SHOPPING BAG</span>
+        </div>
+
+        <!-- Icons on the right -->
+        <div class="icon-container">
+          <a href="#">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <g stroke="none" strokewidth="1" fill="none" fillrule="evenodd">
+                <g fill="#3E4152">
+                  <path
+                    d="M8.1703,4.473425 C6.9537,4.473425 5.8134,4.946625 4.95975,5.805525 C4.10435,6.666175 3.63325,7.815575 3.63325,9.042675 C3.63325,10.269775 4.10435,11.419525 4.95975,12.280175 L12,19.362425 L19.0406,12.279825 C19.89565,11.419525 20.36675,10.270125 20.36675,9.042675 C20.36675,7.815575 19.89565,6.665825 19.0406,5.805875 C19.0406,5.805875 19.0406,5.805525 19.04025,5.805525 C18.1866,4.946625 17.0463,4.473425 15.8297,4.473425 C14.6138,4.473425 13.4742,4.946275 12.62055,5.804475 C12.29225,6.134525 11.70845,6.134875 11.3798,5.804475 C10.5258,4.946275 9.3862,4.473425 8.1703,4.473425 L8.1703,4.473425 Z M12.02835,21.276575 L11.972,21.276575 C11.6304,21.276575 11.2965,21.137625 11.05605,20.895075 L3.71865,13.513925 C2.53495,12.323225 1.88325,10.735275 1.88325,9.042675 C1.88325,7.350075 2.53495,5.762475 3.71865,4.571775 C4.9034,3.379675 6.48435,2.723425 8.1703,2.723425 C9.5759,2.723425 10.90905,3.179825 12,4.022625 C13.0913,3.179825 14.4241,2.723425 15.8297,2.723425 C17.516,2.723425 19.09695,3.379675 20.2817,4.572125 C21.46505,5.762475 22.11675,7.350075 22.11675,9.042675 C22.11675,10.735625 21.46505,12.323225 20.2817,13.513925 L12.94325,20.895775 C12.6993,21.141475 12.3745,21.276575 12.02835,21.276575 L12.02835,21.276575 Z"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a href="#" class="relative">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                fill="#3E4152"
+                fillrule="evenodd"
+                d="M4.012 20.718L5.246 7.314H7.27v1.763a.733.733 0 101.466 0V7.314h6.528v1.763a.733.733 0 001.466 0V7.314h2.024l1.234 13.404H4.012zM12 3.282c1.56 0 2.865 1.1 3.187 2.565H8.813A3.268 3.268 0 0112 3.282zm8.15 3.228a.733.733 0 00-.73-.663h-2.747A4.734 4.734 0 0012 1.816a4.734 4.734 0 00-4.673 4.03H4.58a.733.733 0 00-.73.664L2.475 21.38a.734.734 0 00.73.804h17.59a.733.733 0 00.73-.803L20.15 6.51z"
+              ></path>
+            </svg>
+            <span class="cart-counter">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div id="left-side">
+        <div
+          class="category-item"
+          data-category="womens"
+          style="position: relative"
+        >
+          <div class="left-border"></div>
+          <div class="c-i-t">
+            <div class="image">
+              <img src="../img.png" />
+            </div>
+            <div class="category-text">Women's Wear</div>
+          </div>
+        </div>
+        <div
+          class="category-item"
+          data-category="mens"
+          style="position: relative"
+        >
+          <div class="left-border"></div>
+          <div class="c-i-t">
+            <div class="image">
+              <img src="../img.png" />
+            </div>
+            <div class="category-text">Men's Wear</div>
+          </div>
+        </div>
+        <div
+          class="category-item active"
+          data-category="footwear"
+          style="position: relative"
+        >
+          <div class="left-border"></div>
+          <div class="c-i-t">
+            <div class="image">
+              <img src="../img.png" />
+            </div>
+            <div class="category-text">Footwear</div>
+          </div>
+        </div>
+        <div
+          class="category-item"
+          data-category="beauty"
+          style="position: relative"
+        >
+          <div class="left-border"></div>
+          <div class="c-i-t">
+            <div class="image">
+              <img src="../img.png" />
+            </div>
+            <div class="category-text">Beauty & Grooming</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="right-side">
+        <div class="banner">
+          <p id="banner-title">
+            Footwear
+            <br />
+            Collection
+          </p>
+
+          <div
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <div class="banner-image-container">
+              <img src="../img.png" />
+            </div>
+
+            <div class="banner-button">
+              <button class="ripple-button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="transform: rotate(180deg)"
+                >
+                  <path d="m12 19-7-7 7-7" />
+                  <path d="M19 12H5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="dynamic-content">
+          <div class="category-section">
+            <h6 style="margin-left: 10px">Women's Footwear</h6>
+            <div class="category-data">
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Heels</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Flats</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Casual Shoes</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Flip Flops</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Boots</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Sport Shoes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-section">
+            <h6 style="margin-left: 10px">Men's Footwear</h6>
+            <div class="category-data">
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Casual Shoes</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Sport Shoes</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Formal Shoes</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Sandals</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Flip Flops</span>
+              </div>
+              <div class="item">
+                <div><img src="../img.png" /></div>
+                <span>Boots</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all category items and dynamic content elements
+        const categoryItems = document.querySelectorAll(".category-item");
+        const bannerTitle = document.getElementById("banner-title");
+        const dynamicContent = document.getElementById("dynamic-content");
+        const banner = document.querySelector(".banner");
+
+        // Category data structure
+        const categoryData = {
+          womens: {
+            title: "Women's Fashion<br>Store",
+            bannerColor: "linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%)",
+            sections: [
+              {
+                title: "Casual Wear",
+                items: [
+                  "Tops",
+                  "Dresses",
+                  "Jeans",
+                  "Skirts",
+                  "T-shirts",
+                  "Blouses",
+                ],
+              },
+              {
+                title: "Ethnic Wear",
+                items: ["Sarees", "Kurtas", "Lehengas"],
+              },
+            ],
+          },
+          mens: {
+            title: "Men's Gen-Z<br>Fashion Store",
+            bannerColor: "linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)",
+            sections: [
+              {
+                title: "Casual Wear",
+                items: [
+                  "T-shirt",
+                  "Shirts",
+                  "Jeans",
+                  "Trousers",
+                  "Shorts",
+                  "Track Pants",
+                ],
+              },
+              {
+                title: "Formal Wear",
+                items: ["Jackets", "Sweatshirts", "Co-Ords"],
+              },
+            ],
+          },
+          footwear: {
+            title: "Footwear<br>Collection",
+            bannerColor: "linear-gradient(135deg, #fff3e0 0%, #ffcc02 100%)",
+            sections: [
+              {
+                title: "Women's Footwear",
+                items: [
+                  "Heels",
+                  "Flats",
+                  "Casual Shoes",
+                  "Flip Flops",
+                  "Boots",
+                  "Sport Shoes",
+                ],
+              },
+              {
+                title: "Men's Footwear",
+                items: [
+                  "Casual Shoes",
+                  "Sport Shoes",
+                  "Formal Shoes",
+                  "Sandals",
+                  "Flip Flops",
+                  "Boots",
+                ],
+              },
+            ],
+          },
+          beauty: {
+            title: "Gen-Z Beauty<br>Store",
+            bannerColor: "linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%)",
+            sections: [
+              {
+                title: "Skincare",
+                items: [
+                  "Face Wash",
+                  "Sunscreen",
+                  "Masks Peels",
+                  "Moisturizers",
+                  "Serums And Gel",
+                ],
+              },
+              {
+                title: "Hair Care",
+                items: [
+                  "Shampoos",
+                  "Conditioners",
+                  "Hair Serums",
+                  "Hair Masks",
+                  "Hair Oils",
+                  "Hair Appliances",
+                ],
+              },
+              {
+                title: "Bath & Body",
+                items: [
+                  "Body Washes & Shower Gels",
+                  "Body Lotion",
+                  "Body Mists & Sprays",
+                ],
+              },
+              {
+                title: "MakeUp",
+                items: ["Foundation", "Lipstick", "Eye Makeup"],
+              },
+            ],
+          },
+        };
+
+        // Function to update content based on selected category
+        function updateContent(categoryKey) {
+          const data = categoryData[categoryKey];
+          if (!data) return;
+
+          // Update banner
+          bannerTitle.innerHTML = data.title;
+          banner.style.background = data.bannerColor;
+
+          // Update dynamic content
+          let sectionsHTML = "";
+          data.sections.forEach((section) => {
+            sectionsHTML += `
+              <div class="category-section">
+                <h6 style="margin-left: 10px">${section.title}</h6>
+                <div class="category-data">
+                  ${section.items
+                    .map(
+                      (item) => `
+                    <div class="item">
+                      <div><img src="../img.png" /></div>
+                      <span>${item}</span>
+                    </div>
+                  `
+                    )
+                    .join("")}
+                </div>
+              </div>
+            `;
+          });
+
+          dynamicContent.innerHTML = sectionsHTML;
+        }
+
+        // Add click event listeners to category items
+        categoryItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            // Remove active class from all items
+            categoryItems.forEach((cat) => cat.classList.remove("active"));
+
+            // Add active class to clicked item
+            this.classList.add("active");
+
+            // Get category key and update content
+            const categoryKey = this.getAttribute("data-category");
+            updateContent(categoryKey);
+          });
+        });
+
+        // Back button functionality
+        const backButton = document.getElementById("backButton");
+        if (backButton) {
+          backButton.addEventListener("click", function () {
+            window.history.back();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
