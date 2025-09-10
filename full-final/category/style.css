@@ -101,7 +101,7 @@ a {
 .main-container {
   margin-top: 56px;
   display: flex;
-  height: 100%;
+  height: calc(100vh - 56px);
   width: 100%;
 }
 
@@ -198,16 +198,18 @@ a {
 #right-side {
   flex: 1;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   gap: 20px;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .banner {
-  background-color: red;
+  background: linear-gradient(135deg, #a8e6cf 0%, #4caf50 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -220,6 +222,11 @@ a {
 .banner p {
   font-weight: bolder;
   font-size: 20px;
+  background: linear-gradient(135deg, #1b5e20 0%, #66bb6a 50%, #1b5e20 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .banner-button {
@@ -246,10 +253,10 @@ a {
 
 .category-data {
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
   padding: 0 10px;
-  gap: 10px;
+  gap: 20px;
   background-color: white;
   height: 100%;
   width: 100%;
@@ -257,19 +264,19 @@ a {
 }
 
 .category-data .item {
-  width: 100px;
+  width: 130px;
   height: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2px;
+  gap: 5px;
 }
 
 .category-data .item div {
   background-color: gainsboro;
-  width: 100%;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   overflow: hidden;
   border-radius: 100%;
 }
@@ -282,4 +289,34 @@ a {
 
 .category-data .item span {
   font-size: 14px;
+}
+
+/* Category Section Styling */
+.category-section {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.category-section:last-child {
+  margin-bottom: 0;
+}
+
+.category-section h6 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  color: #333;
+}
+
+/* Improve item spacing */
+.category-data .item {
+  width: 100px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
 }
