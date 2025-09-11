@@ -197,7 +197,7 @@
           <span>₹988</span>
         </div>
         <button
-          class="w-full bg-[#FF3F6C] text-white border-none py-4 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn hidden lg:block"
+          class="w-full bg-[#FF3F6C] text-white border-none py-3 rounded text-sm font-semibold mt-4 cursor-pointer place-order-btn hidden lg:block tracking-wide"
         >
           PLACE ORDER
         </button>
@@ -633,7 +633,7 @@
               <span>₹988</span>
             </div>
             <button
-              class="w-full bg-[#FF3F6C] text-white border-none py-4 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn hidden lg:block"
+              class="w-full bg-[#FF3F6C] text-white border-none py-3 rounded text-base font-semibold mt-4 cursor-pointer place-order-btn hidden lg:block"
             >
               PLACE ORDER
             </button>
@@ -740,8 +740,6 @@
         PLACE ORDER
       </button>
     </div>
-
-    <script src="../cart/cartv3.js"></script>
 
     <script>
       const requiredFields = [
@@ -866,9 +864,9 @@
         });
       });
 
-      // Validate Payment section Place Order button
-      const paymentPlaceOrderBtn = document.querySelector(
-        ".bg-[#FF3F6C].text-white.py-3"
+      // Validate Payment section Place Order button (fix selector)
+      const paymentPlaceOrderBtn = document.getElementById(
+        "mobile-body-actions"
       );
       if (paymentPlaceOrderBtn) {
         paymentPlaceOrderBtn.addEventListener("click", (e) => {
@@ -900,27 +898,51 @@
         mobileStickyPlaceOrder &&
         "IntersectionObserver" in window
       ) {
-        // Initially show the sticky button
-        mobileStickyPlaceOrder.classList.remove("translate-y-full");
+        // Function to check if main button is visible
+        function checkButtonVisibility() {
+          const rect = mobileBodyActions.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
 
+          if (isVisible) {
+            // Main button is visible, hide sticky button
+            mobileStickyPlaceOrder.classList.add("translate-y-full");
+          } else {
+            // Main button is not visible, show sticky button
+            mobileStickyPlaceOrder.classList.remove("translate-y-full");
+          }
+        }
+
+        // Initial check
+        checkButtonVisibility();
+
+        // Use Intersection Observer for better performance
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                // Hide sticky button when main button is visible
+                // Main button is visible, hide sticky button
                 mobileStickyPlaceOrder.classList.add("translate-y-full");
               } else {
-                // Show sticky button when main button is not visible
+                // Main button is not visible, show sticky button
                 mobileStickyPlaceOrder.classList.remove("translate-y-full");
               }
             });
           },
           {
-            root: null, // Use the viewport as the root
-            threshold: 0, // Trigger as soon as any part of the element is visible
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px 0px -20px 0px",
           }
         );
+
         observer.observe(mobileBodyActions);
+
+        // Also listen to scroll events for immediate response
+        let scrollTimeout;
+        window.addEventListener("scroll", () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(checkButtonVisibility, 10);
+        });
       }
 
       // Add validation to mobile sticky place order button
