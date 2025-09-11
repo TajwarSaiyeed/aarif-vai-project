@@ -570,7 +570,7 @@
           <p class="text-base font-semibold text-gray-800 mb-2">SELECT SIZE</p>
           <div class="flex flex-wrap gap-2 my-4" id="size-options">
             <button
-              class="font-bold px-8 py-3 rounded-md text-black border border-gray-200 text-base size-btn border-[#ff3f6c] text-white bg-[#ff3f6c]"
+              class="font-bold px-8 py-3 rounded-md border border-gray-200 text-base size-btn border-[#ff3f6c] text-white bg-[#ff3f6c]"
               data-size="50ml"
             >
               50ml
@@ -588,16 +588,24 @@
               200ml
             </button>
             <button
-              class="font-bold px-8 py-3 rounded-md text-black border border-gray-200 text-base size-btn hover:border-[#ff3f6c] hover:text-white hover:bg-[#ff3f6c]"
+              class="font-bold px-8 py-3 rounded-md border border-gray-200 text-base size-btn text-gray-400 cursor-not-allowed relative"
               data-size="500ml"
+              disabled
             >
               500ml
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="w-full h-px bg-gray-400"></span>
+              </span>
             </button>
             <button
-              class="font-bold px-8 py-3 rounded-md text-black border border-gray-200 text-base size-btn hover:border-[#ff3f6c] hover:text-white hover:bg-[#ff3f6c]"
+              class="font-bold px-8 py-3 rounded-md border border-gray-200 text-base size-btn text-gray-400 cursor-not-allowed relative"
               data-size="1000ml"
+              disabled
             >
               1000ml
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="w-full h-px bg-gray-400"></span>
+              </span>
             </button>
           </div>
           <p
@@ -907,7 +915,7 @@
                 Base Notes
               </h2>
               <div
-                class="flex gap-[22px] lg:gap-[24px] flex-wrap justify-start items-center"
+                class="flex gap-[22px] lg:gap-[24px] flex-wrap justify-start items-start"
               >
                 <div class="flex flex-col items-center w-16">
                   <img
@@ -1011,7 +1019,7 @@
 					l-4.7,8.2H59.3z M59.3,72.2"
                   ></path>
                 </svg>
-                <p class="text-[13px] mt-1">winter</p>
+                <p class="text-base lg:text-[18px] mt-1">winter</p>
                 <div class="w-12 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-10 h-1 bg-blue-500 rounded-full"></div>
                 </div>
@@ -1030,7 +1038,7 @@
 				c50.4,6,66.9-34.6,69.1-48.8C114.1,25.5,96,0,96,0L96,0z M96,0"
                   ></path>
                 </svg>
-                <p class="text-[13px] mt-1">spring</p>
+                <p class="text-base lg:text-[18px] mt-1">spring</p>
                 <div class="w-12 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-8 h-1 bg-green-500 rounded-full"></div>
                 </div>
@@ -1062,7 +1070,7 @@
 				c19.7,1.3,37,11.9,44.5,28.8L110.8,43.4z M110.8,43.4"
                   ></path>
                 </svg>
-                <p class="text-[13px] mt-1">summer</p>
+                <p class="text-base lg:text-[18px] mt-1">summer</p>
                 <div class="w-12 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-6 h-1 bg-red-400 rounded-full"></div>
                 </div>
@@ -1085,7 +1093,7 @@
 					L17.9,107.1z M40.6,42.9l-6.7-6.3l2.6-2.6l6.5,6.8l43.8-11.9l-40.8,15l40.2,42.2L44,46.1L30,88.7L40.6,42.9z M40.6,42.9"
                   ></path>
                 </svg>
-                <p class="text-[13px] mt-1">fall</p>
+                <p class="text-base lg:text-[18px] mt-1">fall</p>
                 <div class="w-12 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-9 h-1 bg-orange-400 rounded-full"></div>
                 </div>
@@ -1149,7 +1157,7 @@
                     d="M128,64l-14.6-7.3c0.4,2.4,0.6,4.8,0.6,7.3s-0.2,4.9-0.6,7.3L128,64z"
                   ></path>
                 </svg>
-                <p class="text-[13px] mt-1">day</p>
+                <p class="text-base lg:text-[18px] mt-1">day</p>
                 <div class="w-12 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-4 h-1 bg-yellow-100 rounded-full"></div>
                 </div>
@@ -1179,7 +1187,7 @@
 						c25.9,25.9,67.8,25.9,93.6,0c6.8-6.7,11.7-14.6,15-22.9C104.3,94.8,76.4,89.8,57.3,70.7z"
                   ></path>
                 </svg>
-                <p class="text-[13px] mt-1">night</p>
+                <p class="text-base lg:text-[18px] mt-1">night</p>
                 <div class="w-12 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-8 h-1 bg-indigo-600 rounded-full"></div>
                 </div>
@@ -1617,7 +1625,7 @@
               <h2 class="text-[18px] lg:text-[20px] capitalize font-bold">
                 Base Notes
               </h2>
-              <div class="flex gap-[22px] flex-wrap justify-start items-center">
+              <div class="flex gap-[22px] flex-wrap justify-start items-start">
                 <div class="flex flex-col items-center w-16">
                   <img
                     src="https://fimgs.net/mdimg/sastojci/t.74.jpg"
@@ -1717,7 +1725,7 @@
                     l-4.7,8.2H59.3z M59.3,72.2"
                   ></path>
                 </svg>
-                <p class="text-[11px] mt-1">winter</p>
+                <p class="text-base lg:text-[18px] mt-1">winter</p>
                 <div class="w-10 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-8 h-1 bg-blue-500 rounded-full"></div>
                 </div>
@@ -1736,7 +1744,7 @@
                 c50.4,6,66.9-34.6,69.1-48.8C114.1,25.5,96,0,96,0L96,0z M96,0"
                   ></path>
                 </svg>
-                <p class="text-[11px] mt-1">spring</p>
+                <p class="text-base lg:text-[18px] mt-1">spring</p>
                 <div class="w-10 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-6 h-1 bg-green-500 rounded-full"></div>
                 </div>
@@ -1768,7 +1776,7 @@
                 c19.7,1.3,37,11.9,44.5,28.8L110.8,43.4z M110.8,43.4"
                   ></path>
                 </svg>
-                <p class="text-[11px] mt-1">summer</p>
+                <p class="text-base lg:text-[18px] mt-1">summer</p>
                 <div class="w-10 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-5 h-1 bg-red-400 rounded-full"></div>
                 </div>
@@ -1791,7 +1799,7 @@
                     L17.9,107.1z M40.6,42.9l-6.7-6.3l2.6-2.6l6.5,6.8l43.8-11.9l-40.8,15l40.2,42.2L44,46.1L30,88.7L40.6,42.9z M40.6,42.9"
                   ></path>
                 </svg>
-                <p class="text-[11px] mt-1">fall</p>
+                <p class="text-base lg:text-[18px] mt-1">fall</p>
                 <div class="w-10 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-7 h-1 bg-orange-400 rounded-full"></div>
                 </div>
@@ -1852,7 +1860,7 @@
                     d="M128,64l-14.6-7.3c0.4,2.4,0.6,4.8,0.6,7.3s-0.2,4.9-0.6,7.3L128,64z"
                   ></path>
                 </svg>
-                <p class="text-[11px] mt-1">day</p>
+                <p class="text-base lg:text-[18px] mt-1">day</p>
                 <div class="w-10 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-3 h-1 bg-yellow-100 rounded-full"></div>
                 </div>
@@ -1882,7 +1890,7 @@
                         c25.9,25.9,67.8,25.9,93.6,0c6.8-6.7,11.7-14.6,15-22.9C104.3,94.8,76.4,89.8,57.3,70.7z"
                   ></path>
                 </svg>
-                <p class="text-[11px] mt-1">night</p>
+                <p class="text-base lg:text-[18px] mt-1">night</p>
                 <div class="w-10 h-1 bg-gray-200 rounded-full mt-1">
                   <div class="w-7 h-1 bg-indigo-600 rounded-full"></div>
                 </div>
@@ -1963,14 +1971,14 @@
         class="flex items-center justify-center space-x-4 p-4"
       >
         <button
-          class="flex-1 bg-white text-gray-800 border border-gray-200 py-2 rounded-md font-semibold text-base hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
+          class="flex-1 bg-white text-gray-800 border border-gray-200 py-2 rounded-xl font-semibold text-base hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
         >
           <i class="far fa-heart"></i>
           <span>WISHLIST</span>
         </button>
         <button
           id="add-to-bag-mobile"
-          class="flex-1 bg-[#ff3f6c] text-white py-2 rounded-md font-semibold text-base hover:bg-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
+          class="flex-1 bg-[#ff3f6c] text-white py-2 rounded-xl font-semibold text-base hover:bg-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
         >
           <i class="fas fa-shopping-bag"></i>
           <span>ADD TO BAG</span>
@@ -2095,14 +2103,14 @@
       class="xl:hidden sticky-mobile-footer flex items-center justify-center space-x-4"
     >
       <button
-        class="flex-1 bg-white text-gray-800 border border-gray-200 py-2 rounded-md font-semibold text-base hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
+        class="flex-1 bg-white text-gray-800 border border-gray-200 py-2 rounded-xl font-semibold text-base hover:border-gray-500 focus:outline-none flex items-center justify-center space-x-2"
       >
         <i class="far fa-heart"></i>
         <span>WISHLIST</span>
       </button>
       <button
         id="add-to-bag-mobile"
-        class="flex-1 bg-[#ff3f6c] text-white py-2 rounded-md font-semibold text-base hover:bg-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
+        class="flex-1 bg-[#ff3f6c] text-white py-2 rounded-xl font-semibold text-base hover:bg-[#ff3f6c] focus:outline-none flex items-center justify-center space-x-2"
       >
         <i class="fas fa-shopping-bag"></i>
         <span>ADD TO BAG</span>

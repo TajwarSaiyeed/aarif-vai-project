@@ -13,16 +13,44 @@ document.addEventListener("DOMContentLoaded", () => {
   // Original HTML reviewContent does not have `readMoreBtns` variable definition, this might be leftover or intended for a separate readMore toggle that wasn't provided. Removing its usage for safety if not used elsewhere.
   // const readMoreBtns = document.querySelectorAll(".read-more-btn");
 
-  let selectedSize = null; // Track selected size
+  let selectedSize = "50ml"; // Track selected size - default to 50ml
+
+  // Initialize default selection
+  const defaultButton = document.querySelector('.size-btn[data-size="50ml"]');
+  if (defaultButton && !defaultButton.disabled) {
+    defaultButton.classList.remove("text-black");
+    defaultButton.classList.add(
+      "border-[#ff3f6c]",
+      "text-white",
+      "bg-[#ff3f6c]"
+    );
+  }
 
   // --- Size Selection ---
   sizeButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      // Don't allow selection of disabled buttons
+      if (button.disabled) {
+        return;
+      }
+
       sizeButtons.forEach((btn) => {
-        // Note: using explicit hex color for border and text based on myntra-pink definition.
-        btn.classList.remove("border-[#ff3f6c]", "text-[#ff3f6c]"); // Remove active styles
+        // Remove active styles from all buttons
+        btn.classList.remove(
+          "border-[#ff3f6c]",
+          "text-[#ff3f6c]",
+          "text-white",
+          "bg-[#ff3f6c]"
+        );
+        // Restore default styles for enabled buttons
+        if (!btn.disabled) {
+          btn.classList.add("text-black");
+        }
       });
-      button.classList.add("border-[#ff3f6c]", "text-[#ff3f6c]"); // Add active styles
+
+      // Add active styles to clicked button
+      button.classList.remove("text-black");
+      button.classList.add("border-[#ff3f6c]", "text-white", "bg-[#ff3f6c]");
       selectedSize = button.dataset.size;
       sizeSelectionMessage.classList.add("hidden");
     });
