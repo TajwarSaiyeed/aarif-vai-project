@@ -115,7 +115,7 @@ a {
 }
 
 #left-side {
-  background: #dddddd;
+  background: #f8f8f8;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -127,6 +127,16 @@ a {
   min-width: 90px;
   max-width: 120px;
   flex-shrink: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar for webkit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for webkit browsers */
+#left-side::-webkit-scrollbar {
+  display: none;
 }
 
 #left-side > div {
@@ -155,7 +165,7 @@ a {
   top: -15px;
   width: 15px;
   height: 15px;
-  background: #dddddd;
+  background: #f8f8f8;
   border-radius: 50%;
   box-shadow: 10px 10px 0 3px white;
   pointer-events: none;
@@ -168,7 +178,7 @@ a {
   bottom: -15px;
   width: 15px;
   height: 15px;
-  background: #dddddd;
+  background: #f8f8f8;
   border-radius: 50%;
   box-shadow: 10px -10px 0 3px white;
   pointer-events: none;
@@ -221,6 +231,15 @@ a {
   gap: 20px;
   padding: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar for webkit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for webkit browsers */
+#right-side::-webkit-scrollbar {
+  display: none;
 }
 
 .banner {
