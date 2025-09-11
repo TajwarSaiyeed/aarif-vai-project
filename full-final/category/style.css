@@ -140,7 +140,7 @@ a {
 }
 
 #left-side > div {
-  padding: 8px 5px 5px 5px;
+  padding: 8px;
   width: 100%;
   max-width: 100px;
 }
@@ -354,7 +354,7 @@ a {
   }
 
   #left-side > div {
-    padding: 6px 3px 4px 3px;
+    padding: 6px;
   }
 
   .image {
