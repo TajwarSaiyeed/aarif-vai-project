@@ -361,13 +361,13 @@ a {
   }
 
   .category-data {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     max-width: 100%;
   }
 
   .category-data .item {
-    min-width: 70px;
+    min-width: 90px;
     height: 90px;
   }
 
@@ -425,7 +425,15 @@ a {
   }
 
   .category-data {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     max-width: 100%;
+  }
+
+  .category-data .item {
+    width: 100px;
+    min-width: 100px;
+    flex: 0 0 auto;
   }
 }
