@@ -450,7 +450,7 @@ function openProductSizeModal(productId) {
 <div class="sizeSelector-base-item border border-gray-300 rounded-md py-2 px-1 text-center cursor-pointer text-sm font-semibold transition-colors
 ${
   size === currentProductForSizeSelection.size
-    ? "bg-rose-500 text-white border-rose-500"
+    ? "bg-[#FF3F6C] text-white border-rose-500"
     : "bg-white text-gray-700 hover:bg-gray-100"
 }"
 onclick="selectSizeInModal('${size}')" data-size="${size}">
@@ -471,10 +471,10 @@ function selectSizeInModal(selectedSize) {
   );
   sizeItems.forEach((item) => {
     if (item.dataset.size === selectedSize) {
-      item.classList.add("bg-rose-500", "text-white", "border-rose-500");
+      item.classList.add("bg-[#FF3F6C]", "text-white", "border-rose-500");
       item.classList.remove("bg-white", "text-gray-700", "hover:bg-gray-100");
     } else {
-      item.classList.remove("bg-rose-500", "text-white", "border-rose-500");
+      item.classList.remove("bg-[#FF3F6C]", "text-white", "border-rose-500");
       item.classList.add("bg-white", "text-gray-700", "hover:bg-gray-100");
     }
   });
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Make the first button (All) active by default
       if (index === 0) {
         button.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-        button.classList.add("border-rose-500", "bg-rose-500", "text-white");
+        button.classList.add("border-rose-500", "bg-[#FF3F6C]", "text-white");
       }
 
       categoryContainer.appendChild(button);
@@ -729,7 +729,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Make the first button (All) active by default
       if (index === 0) {
         button.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-        button.classList.add("border-rose-500", "bg-rose-500", "text-white");
+        button.classList.add("border-rose-500", "bg-[#FF3F6C]", "text-white");
       }
 
       if (index === categoryButtons.length - 1) {
@@ -745,13 +745,13 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       // Remove active styling from all buttons
       document.querySelectorAll(".category-btn").forEach((btn) => {
-        btn.classList.remove("border-rose-500", "bg-rose-500", "text-white");
+        btn.classList.remove("border-rose-500", "bg-[#FF3F6C]", "text-white");
         btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
       });
 
       // Add active styling to clicked button
       this.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-      this.classList.add("border-rose-500", "bg-rose-500", "text-white");
+      this.classList.add("border-rose-500", "bg-[#FF3F6C]", "text-white");
 
       // Here you can add logic to filter products based on the category
       console.log("Selected category:", this.textContent);
@@ -1213,7 +1213,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Remove active styling from all buttons (both desktop and mobile)
       document.querySelectorAll(".category-btn").forEach((btn) => {
-        btn.classList.remove("border-rose-500", "bg-rose-500", "text-white");
+        btn.classList.remove("border-rose-500", "bg-[#FF3F6C]", "text-white");
         btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
       });
 
@@ -1221,7 +1221,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".category-btn").forEach((btn) => {
         if (btn.textContent.trim() === category) {
           btn.classList.remove("border-gray-300", "bg-white", "text-gray-700");
-          btn.classList.add("border-rose-500", "bg-rose-500", "text-white");
+          btn.classList.add("border-rose-500", "bg-[#FF3F6C]", "text-white");
         }
       });
 

@@ -393,7 +393,7 @@ function openProductSizeModal(productId) {
     <div class="sizeSelector-base-item border border-gray-300 rounded-md py-2 px-1 text-center cursor-pointer text-sm font-semibold transition-colors
     ${
       size === currentProductForSizeSelection.size
-        ? "bg-rose-500 text-white border-rose-500"
+        ? "bg-[#FF3F6C] text-white border-rose-500"
         : "bg-white text-gray-700 hover:bg-gray-100"
     }"
     onclick="selectSizeInModal('${size}')" data-size="${size}">
@@ -414,10 +414,10 @@ function selectSizeInModal(selectedSize) {
   );
   sizeItems.forEach((item) => {
     if (item.dataset.size === selectedSize) {
-      item.classList.add("bg-rose-500", "text-white", "border-rose-500");
+      item.classList.add("bg-[#FF3F6C]", "text-white", "border-rose-500");
       item.classList.remove("bg-white", "text-gray-700", "hover:bg-gray-100");
     } else {
-      item.classList.remove("bg-rose-500", "text-white", "border-rose-500");
+      item.classList.remove("bg-[#FF3F6C]", "text-white", "border-rose-500");
       item.classList.add("bg-white", "text-gray-700", "hover:bg-gray-100");
     }
   });
@@ -568,9 +568,9 @@ document.addEventListener("DOMContentLoaded", function () {
       document
         .querySelectorAll(".category-btn")
         .forEach((btn) =>
-          btn.classList.remove("active", "bg-rose-500", "text-white")
+          btn.classList.remove("active", "bg-[#FF3F6C]", "text-white")
         );
-      this.classList.add("active", "bg-rose-500", "text-white");
+      this.classList.add("active", "bg-[#FF3F6C]", "text-white");
     });
   });
 
