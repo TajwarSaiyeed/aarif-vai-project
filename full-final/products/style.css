@@ -445,3 +445,44 @@ input[type="radio"].accent-\[\#ff3e6c\] {
   border-radius: 50% !important;
   margin-top: 0 !important;
 }
+
+/* Category Pills Styles */
+.category-pill {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #9ca3af;
+  background-color: transparent;
+  color: #424553;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.category-pill:hover {
+  border-color: #ff3f6c;
+  color: #ff3f6c;
+}
+
+.category-pill.active {
+  background-color: transparent;
+  border-color: #ff3f6c;
+  color: #ff3f6c;
+  font-weight: bold;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+#category-slider {
+  scroll-behavior: smooth;
+}

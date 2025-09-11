@@ -829,10 +829,27 @@
     </div>
 
     <div class="relative mt-12 lg:hidden">
-      <div class="bg-[linear-gradient(90deg,#bd6da6,#d799cb)] px-4 py-4">
-        <div class="text-center text-white text-sm">
-          <div class="font-bold">UPTO 300 OFF</div>
-          <div>MYNTRA300</div>
+      <!-- Category Slider -->
+      <div class="bg-white px-4 py-3 border-b border-gray-100 pt-6">
+        <div
+          class="flex gap-3 overflow-x-auto scrollbar-hide"
+          id="category-slider"
+        >
+          <button class="category-pill active" data-category="footwear">
+            Footwear
+          </button>
+          <button class="category-pill" data-category="bags">Bags</button>
+          <button class="category-pill" data-category="add-ons">Add-Ons</button>
+          <button class="category-pill" data-category="jewellery">
+            Jewellery
+          </button>
+          <button class="category-pill" data-category="accessories">
+            Accessories
+          </button>
+          <button class="category-pill" data-category="beauty">Beauty</button>
+          <button class="category-pill" data-category="home">
+            Home & Living
+          </button>
         </div>
       </div>
       <div
@@ -2991,6 +3008,31 @@
 
         // Initial setup
         addHoverListeners();
+
+        // Category Pills Functionality
+        function initializeCategoryPills() {
+          const categoryPills = document.querySelectorAll(".category-pill");
+
+          categoryPills.forEach((pill) => {
+            pill.addEventListener("click", function () {
+              // Remove active class from all pills
+              categoryPills.forEach((p) => p.classList.remove("active"));
+
+              // Add active class to clicked pill
+              this.classList.add("active");
+
+              // Get category and filter products (you can implement filtering logic here)
+              const category = this.getAttribute("data-category");
+              console.log("Selected category:", category);
+
+              // You can add filtering logic here to filter products by category
+              // For now, it just changes the active state
+            });
+          });
+        }
+
+        // Initialize category pills
+        initializeCategoryPills();
 
         // Re-add listeners when products are re-rendered
         const observer = new MutationObserver(function (mutations) {
