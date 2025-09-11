@@ -217,7 +217,8 @@ a {
 }
 
 .category-text {
-  font-size: 10px;
+  font-size: 14px;
+  text-align: center;
 }
 
 #right-side {
@@ -363,7 +364,7 @@ a {
   }
 
   .category-text {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .active .left-border {
