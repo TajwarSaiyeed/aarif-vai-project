@@ -2947,19 +2947,112 @@
     <script src="../mobile-footer.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        new Swiper(".p-h-swiper", {
-          loop: true,
-          autoplay: {
-            delay: 1000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          slidesPerView: 1,
-          allowTouchMove: true,
+        // Initialize all swipers and store references
+        const swiperInstances = [];
+
+        // Initialize swiper for each product card
+        document
+          .querySelectorAll(".p-h-swiper")
+          .forEach((swiperElement, index) => {
+            const swiper = new Swiper(swiperElement, {
+              loop: true,
+              autoplay: {
+                delay: 1000,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: swiperElement.querySelector(".swiper-pagination"),
+                clickable: true,
+              },
+              slidesPerView: 1,
+              allowTouchMove: true,
+            });
+            swiperInstances.push(swiper);
+          });
+
+        // Add hover event listeners to product cards
+        function addHoverListeners() {
+          document.querySelectorAll(".group").forEach((productCard) => {
+            const swiperContainer = productCard.querySelector(".p-h-swiper");
+            if (swiperContainer) {
+              productCard.addEventListener("mouseenter", function () {
+                // Find the swiper instance for this container
+                const swiperInstance = swiperInstances.find(
+                  (swiper) => swiper.el === swiperContainer
+                );
+                if (swiperInstance) {
+                  // Reset to first slide (index 0)
+                  swiperInstance.slideToLoop(0, 0); // slideToLoop(index, speed)
+                }
+              });
+            }
+          });
+        }
+
+        // Initial setup
+        addHoverListeners();
+
+        // Re-add listeners when products are re-rendered
+        const observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            if (
+              mutation.type === "childList" &&
+              mutation.addedNodes.length > 0
+            ) {
+              // Check if new product cards were added
+              const hasNewProductCards = Array.from(mutation.addedNodes).some(
+                (node) =>
+                  node.nodeType === 1 &&
+                  (node.classList.contains("group") ||
+                    node.querySelector(".group"))
+              );
+              if (hasNewProductCards) {
+                // Re-initialize swipers for new cards
+                setTimeout(() => {
+                  document
+                    .querySelectorAll(".p-h-swiper")
+                    .forEach((swiperElement) => {
+                      // Check if this swiper is already initialized
+                      const alreadyInitialized = swiperInstances.some(
+                        (swiper) => swiper.el === swiperElement
+                      );
+                      if (!alreadyInitialized) {
+                        const swiper = new Swiper(swiperElement, {
+                          loop: true,
+                          autoplay: {
+                            delay: 1000,
+                            disableOnInteraction: false,
+                          },
+                          pagination: {
+                            el: swiperElement.querySelector(
+                              ".swiper-pagination"
+                            ),
+                            clickable: true,
+                          },
+                          slidesPerView: 1,
+                          allowTouchMove: true,
+                        });
+                        swiperInstances.push(swiper);
+                      }
+                    });
+                  addHoverListeners();
+                }, 100);
+              }
+            }
+          });
         });
+
+        // Observe changes to the products grid
+        const productsGrid = document.getElementById("products-grid-desktop");
+        const productsSlider = document.getElementById(
+          "products-slider-mobile"
+        );
+        if (productsGrid) {
+          observer.observe(productsGrid, { childList: true, subtree: true });
+        }
+        if (productsSlider) {
+          observer.observe(productsSlider, { childList: true, subtree: true });
+        }
         const filterSection = document.querySelector("#left-filter"); // Fixed selector
         const productSection = document.querySelector("#product-section");
 

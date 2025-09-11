@@ -1,5 +1,11 @@
 // --- Typewriter Effect for Search Placeholder ---
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialize DOM elements
+  productsGridDesktop = document.getElementById("products-grid-desktop");
+  productsSliderMobile = document.getElementById("products-slider-mobile");
+  productCountDesktop = document.getElementById("product-count-desktop");
+  selectedFiltersContainer = document.getElementById("selected-filters");
+  clearFiltersBtnDesktop = document.getElementById("clear-btn");
   const typewriterEl = document.getElementById("typewriter-search");
   if (typewriterEl) {
     const phrases = [
@@ -57,11 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-const productsGridDesktop = document.getElementById("products-grid-desktop");
-const productsSliderMobile = document.getElementById("products-slider-mobile");
-const productCountDesktop = document.getElementById("product-count-desktop");
-const selectedFiltersContainer = document.getElementById("selected-filters");
-const clearFiltersBtnDesktop = document.getElementById("clear-btn");
+let productsGridDesktop;
+let productsSliderMobile;
+let productCountDesktop;
+let selectedFiltersContainer;
+let clearFiltersBtnDesktop;
 
 // Brand filter
 const brands = [
