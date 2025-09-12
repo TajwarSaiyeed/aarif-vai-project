@@ -455,7 +455,6 @@ input[type="radio"].accent-\[\#ff3e6c\] {
   background-color: transparent;
   color: #424553;
   font-size: 14px;
-  font-weight: bold;
   white-space: nowrap;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -463,14 +462,14 @@ input[type="radio"].accent-\[\#ff3e6c\] {
 
 .category-pill:hover {
   border-color: #ff3f6c;
-  color: #ff3f6c;
+  color: white;
+  background-color: #ff3f6c;
 }
 
 .category-pill.active {
-  background-color: transparent;
+  background-color: #ff3e6c;
   border-color: #ff3f6c;
-  color: #ff3f6c;
-  font-weight: bold;
+  color: white;
 }
 
 /* Hide scrollbar but keep functionality */
