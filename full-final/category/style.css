@@ -146,6 +146,23 @@ a {
   cursor: pointer;
 }
 
+.left-border {
+  position: absolute;
+  background-color: transparent;
+  width: 5px;
+  height: 60px;
+  left: 0;
+  top: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
 .c-i-t {
   display: flex;
   flex-direction: column;
@@ -194,14 +211,7 @@ a {
 }
 
 .active .left-border {
-  position: absolute;
   background-color: green;
-  width: 5px;
-  height: 60px;
-  left: 0;
-  top: 10px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 .image {
   width: 70px;
@@ -348,6 +358,23 @@ a {
   margin-bottom: 15px;
   margin-left: 10px;
   color: #333;
+}
+
+/* Ripple Effect Styles */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: white; /* Green tint matching active state */
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 /* Responsive grid adjustments - Optimized for minimum 375px screen width */

@@ -471,6 +471,28 @@ input[type="radio"].accent-\[\#ff3e6c\] {
   color: white;
 }
 
+/* Ripple styles for category pills */
+.category-pill {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-pill .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255);
+  transform: scale(0);
+  animation: category-ripple 1s linear;
+  pointer-events: none;
+}
+
+@keyframes category-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
 /* Hide scrollbar but keep functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;

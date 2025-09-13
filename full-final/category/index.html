@@ -68,11 +68,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Women's Wear</div>
             </div>
-            <div class="category-text">Women's Wear</div>
           </div>
         </div>
 
@@ -82,11 +84,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Men's Wear</div>
             </div>
-            <div class="category-text">Men's Wear</div>
           </div>
         </div>
 
@@ -96,11 +100,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Footwear</div>
             </div>
-            <div class="category-text">Footwear</div>
           </div>
         </div>
 
@@ -110,11 +116,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Beauty & Grooming</div>
             </div>
-            <div class="category-text">Beauty & Grooming</div>
           </div>
         </div>
 
@@ -125,11 +133,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Accessories</div>
             </div>
-            <div class="category-text">Accessories</div>
           </div>
         </div>
 
@@ -139,11 +149,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Electronics</div>
             </div>
-            <div class="category-text">Electronics</div>
           </div>
         </div>
 
@@ -153,11 +165,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Kids</div>
             </div>
-            <div class="category-text">Kids</div>
           </div>
         </div>
 
@@ -167,11 +181,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Sports & Fitness</div>
             </div>
-            <div class="category-text">Sports & Fitness</div>
           </div>
         </div>
 
@@ -181,11 +197,13 @@
           style="position: relative"
         >
           <div class="left-border"></div>
-          <div class="c-i-t">
-            <div class="image">
-              <img src="../img.png" />
+          <div class="ripple-container">
+            <div class="c-i-t">
+              <div class="image">
+                <img src="../img.png" />
+              </div>
+              <div class="category-text">Home & Living</div>
             </div>
-            <div class="category-text">Home & Living</div>
           </div>
         </div>
       </div>
@@ -563,6 +581,40 @@
           },
         };
 
+        // Ripple effect function
+        function createRipple(event) {
+          const item = event.currentTarget;
+          const container = item.querySelector(".ripple-container");
+          if (!container) return;
+
+          // Remove any existing ripple
+          const existingRipple = container.querySelector(".ripple");
+          if (existingRipple) {
+            existingRipple.remove();
+          }
+
+          const circle = document.createElement("span");
+          const rect = container.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = event.clientX - rect.left - size / 2;
+          const y = event.clientY - rect.top - size / 2;
+
+          circle.style.width = `${size}px`;
+          circle.style.height = `${size}px`;
+          circle.style.left = `${x}px`;
+          circle.style.top = `${y}px`;
+          circle.classList.add("ripple");
+
+          container.appendChild(circle);
+
+          // Remove ripple after animation
+          setTimeout(() => {
+            if (circle.parentNode) {
+              circle.remove();
+            }
+          }, 600);
+        }
+
         // Function to update content based on selected category
         function updateContent(categoryKey) {
           const data = categoryData[categoryKey];
@@ -599,7 +651,10 @@
 
         // Add click event listeners to category items
         categoryItems.forEach((item) => {
-          item.addEventListener("click", function () {
+          item.addEventListener("click", function (e) {
+            // Create ripple effect
+            createRipple(e);
+
             // Remove active class from all items
             categoryItems.forEach((cat) => cat.classList.remove("active"));
 

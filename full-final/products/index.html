@@ -852,6 +852,39 @@
           </button>
         </div>
       </div>
+      <script>
+        // Ripple effect for category pills
+        (function () {
+          function createRipple(btn, clientX, clientY) {
+            var rect = btn.getBoundingClientRect();
+            var ripple = document.createElement("span");
+            ripple.className = "ripple";
+            var size = Math.max(rect.width, rect.height) * 2;
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = clientX - rect.left - size / 2 + "px";
+            ripple.style.top = clientY - rect.top - size / 2 + "px";
+            btn.appendChild(ripple);
+            ripple.addEventListener("animationend", function () {
+              ripple.remove();
+            });
+          }
+
+          function init() {
+            var pills = document.querySelectorAll(".category-pill");
+            pills.forEach(function (p) {
+              p.addEventListener("click", function (e) {
+                createRipple(p, e.clientX, e.clientY);
+              });
+            });
+          }
+
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", init);
+          } else {
+            init();
+          }
+        })();
+      </script>
       <div
         id="products-slider-mobile"
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 place-items-center gap-0 lg:hidden mb-10"
