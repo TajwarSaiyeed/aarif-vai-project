@@ -427,29 +427,6 @@
             >
           </a>
         </div>
-
-        <!-- Mobile Search Input (initially hidden) -->
-        <div
-          id="mobile-search-bar"
-          class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200 hidden"
-        >
-          <div class="relative flex items-center">
-            <div class="relative w-full">
-              <input
-                type="text"
-                class="block w-full text-sm h-8 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
-              />
-              <span
-                id="typewriter-search"
-                class="absolute left-10 top-1/2 -translate-y-1/2 text-[#696e79] text-sm"
-                style="white-space: pre"
-              ></span>
-            </div>
-            <span
-              class="myntraweb-sprite sprites-search absolute left-3 top-1/2 -translate-y-1/2 scale-75"
-            ></span>
-          </div>
-        </div>
       </div>
     </header>
     <!-- Main Content -->
@@ -844,7 +821,7 @@
       setTimeout(() => {
         console.log("Redirecting to products page");
         window.location.href = "./index.html";
-      }, 100000000);
+      }, 5000);
 
       document.addEventListener("DOMContentLoaded", function () {
         console.log("DOM loaded, skeleton should be visible");
