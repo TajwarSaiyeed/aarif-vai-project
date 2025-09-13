@@ -493,6 +493,23 @@ input[type="radio"].accent-\[\#ff3e6c\] {
   }
 }
 
+/* Ripple styles for sort/filter buttons */
+#sort-btn,
+#filter-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+#sort-btn .ripple,
+#filter-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.08);
+  transform: scale(0);
+  animation: category-ripple 600ms linear;
+  pointer-events: none;
+}
+
 /* Hide scrollbar but keep functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;

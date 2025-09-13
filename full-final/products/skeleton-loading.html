@@ -80,6 +80,20 @@
         display: block;
       }
 
+      /* Rounded pill skeletons for category slider */
+      .skeleton-pill {
+        display: inline-block;
+        border-radius: 9999px;
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200px 100%;
+        animation: shimmer 1.5s infinite;
+      }
+
       /* Pulse animation for variety */
       @keyframes pulse {
         0%,
@@ -704,8 +718,23 @@
 
     <!-- Mobile Version -->
     <div class="relative mt-12 lg:hidden">
-      <!-- Mobile Promo Banner Skeleton -->
-      <div class="skeleton-box h-16 mx-4 mb-4"></div>
+      <!-- Mobile Category Pills Skeleton -->
+      <div class="px-4 mb-4 pt-6">
+        <div class="flex gap-3 items-center justify-start pr-4">
+          <div
+            class="skeleton-pill skeleton-box h-9 w-2/6 min-w-[56px] rounded-full"
+          ></div>
+          <div
+            class="skeleton-pill skeleton-box h-9 w-1/6 min-w-[56px] rounded-full"
+          ></div>
+          <div
+            class="skeleton-pill skeleton-box h-9 w-3/6 min-w-[56px] rounded-full"
+          ></div>
+          <div
+            class="skeleton-pill skeleton-box h-9 w-1/6 min-w-[56px] rounded-full"
+          ></div>
+        </div>
+      </div>
 
       <!-- Mobile Products Grid -->
       <div
@@ -815,7 +844,7 @@
       setTimeout(() => {
         console.log("Redirecting to products page");
         window.location.href = "./index.html";
-      }, 5000);
+      }, 100000000);
 
       document.addEventListener("DOMContentLoaded", function () {
         console.log("DOM loaded, skeleton should be visible");

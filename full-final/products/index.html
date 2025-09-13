@@ -853,13 +853,18 @@
         </div>
       </div>
       <script>
-        // Ripple effect for category pills
+        // Ripple effect for category pills and mobile action buttons
         (function () {
           function createRipple(btn, clientX, clientY) {
             var rect = btn.getBoundingClientRect();
             var ripple = document.createElement("span");
             ripple.className = "ripple";
-            var size = Math.max(rect.width, rect.height) * 2;
+            // Slightly larger ripples for pills, smaller for buttons
+            var multiplier =
+              btn.classList && btn.classList.contains("category-pill")
+                ? 2
+                : 1.2;
+            var size = Math.max(rect.width, rect.height) * multiplier;
             ripple.style.width = ripple.style.height = size + "px";
             ripple.style.left = clientX - rect.left - size / 2 + "px";
             ripple.style.top = clientY - rect.top - size / 2 + "px";
@@ -870,10 +875,21 @@
           }
 
           function init() {
-            var pills = document.querySelectorAll(".category-pill");
-            pills.forEach(function (p) {
-              p.addEventListener("click", function (e) {
-                createRipple(p, e.clientX, e.clientY);
+            var targets = document.querySelectorAll(
+              ".category-pill, #sort-btn, #filter-btn"
+            );
+            targets.forEach(function (el) {
+              el.addEventListener("click", function (e) {
+                // If touch event provides touches, use it (mobile taps)
+                var x =
+                  e.clientX ||
+                  (e.touches && e.touches[0] && e.touches[0].clientX) ||
+                  0;
+                var y =
+                  e.clientY ||
+                  (e.touches && e.touches[0] && e.touches[0].clientY) ||
+                  0;
+                createRipple(el, x, y);
               });
             });
           }
