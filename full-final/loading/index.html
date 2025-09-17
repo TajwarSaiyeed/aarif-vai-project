@@ -443,19 +443,21 @@
 
         <!-- Icons on the right -->
         <div class="flex items-center space-x-4 pr-4">
-          <a href="#" class="relative">
-            <svg width="20px" height="20px" viewBox="0 0 16 18">
-              <g fill="none" fillrule="evenodd">
-                <path d="M-4-3h24v24H-4z"></path>
-                <g fill="#3E4152">
-                  <path
-                    d="M3.23 1.3c-.788 0-1.43.61-1.43 1.359V15.34c0 .75.642 1.359 1.43 1.359h9.54c.788 0 1.43-.61 1.43-1.359V2.66c0-.75-.642-1.359-1.43-1.359H3.23zM13 18H3C1.621 18 .5 16.937.5 15.632V2.368C.5 1.063 1.621 0 3 0h10c1.379 0 2.5 1.063 2.5 2.368v13.264C15.5 16.937 14.379 18 13 18z"
-                  ></path>
-                  <path
-                    d="M10.25 8.25h-1.5v-1.5a.75.75 0 00-1.5 0v1.5h-1.5a.75.75 0 000 1.5h1.5v1.5a.75.75 0 001.5 0v-1.5h1.5a.75.75 0 000-1.5"
-                  ></path>
-                </g>
-              </g>
+          <a id="mobile-search-button" href="#" class="relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search-icon lucide-search"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
             </svg>
           </a>
           <a href="#" class="relative">
@@ -485,15 +487,14 @@
         </div>
 
         <div
-          class="absolute top-full left-0 w-full p-3 py-5 bg-white border-t border-gray-200"
+          id="mobile-search-bar"
+          class="absolute top-full left-0 w-full bg-white p-3 border-t border-gray-200 hidden"
         >
-          <div
-            class="relative flex items-center rounded-full shadow-lg bg-white"
-          >
-            <div class="relative w-full h-9">
+          <div class="relative flex items-center">
+            <div class="relative w-full">
               <input
                 type="text"
-                class="block w-full text-sm h-full leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
+                class="block w-full text-sm h-8 leading-6 text-[#696e79] outline-none border border-[#eaeaec] rounded-full bg-gray-50 pl-10 pr-4 py-2 focus:bg-white focus:border-[#eaeaec]"
               />
               <span
                 id="typewriter-search"
@@ -501,23 +502,9 @@
                 style="white-space: pre"
               ></span>
             </div>
-            <span class="absolute left-3 top-1/2 -translate-y-1/2 scale-75">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-search-icon lucide-search"
-              >
-                <path d="m21 21-4.34-4.34" />
-                <circle cx="11" cy="11" r="8" />
-              </svg>
-            </span>
+            <span
+              class="myntraweb-sprite sprites-search absolute left-3 top-1/2 -translate-y-1/2 scale-75"
+            ></span>
           </div>
         </div>
       </div>
@@ -626,5 +613,23 @@
 
     <script src="../home/nav-home.js"></script>
     <script src="../type-writer.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Mobile search elements
+        const mobileSearchButton = document.getElementById(
+          "mobile-search-button"
+        );
+        const mobileSearchBar = document.getElementById("mobile-search-bar");
+
+        // Mobile search bar toggle functionality
+        if (mobileSearchButton && mobileSearchBar) {
+          mobileSearchButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            mobileSearchBar.classList.toggle("hidden");
+          });
+        }
+      });
+    </script>
   </body>
 </html>

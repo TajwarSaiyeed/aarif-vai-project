@@ -1098,7 +1098,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const button = document.getElementById("backButton");
-
+  if (!button) return;
   button.addEventListener("click", function (event) {
     // Prevent the click from bubbling up to parent elements
     event.stopPropagation();

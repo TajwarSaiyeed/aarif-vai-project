@@ -325,10 +325,13 @@
 
       <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div
-        class="xl:hidden flex items-center justify-between px-4 py-1 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
+        class="xl:hidden h-[56px] flex items-center justify-between shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] relative z-20 bg-white"
       >
         <!-- Hamburger Icon -->
-        <button id="mobile-menu-button" class="p-2">
+        <button
+          id="mobile-menu-button"
+          class="w-[45px] h-full max-h-full ripple-button"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -420,7 +423,7 @@
         </div>
 
         <!-- Icons on the right -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 pr-4">
           <a id="mobile-search-button" href="#" class="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -647,67 +650,10 @@
       </div>
     </div>
 
-    <script src="../nav.js"></script>
+    <script src="../home/nav-home.js"></script>
+    <script src="../type-writer.js"></script>
 
     <script>
-      // --- Typewriter Effect for Search Placeholder ---
-      document.addEventListener("DOMContentLoaded", function () {
-        const typewriterEl = document.getElementById("typewriter-search");
-        if (typewriterEl) {
-          const phrases = [
-            "Search for products, brands and more",
-            "Try 'Skincare', 'Moisturizer', 'Sunscreen'...",
-            "Discover trending beauty products!",
-            "Find your favorite brands",
-          ];
-          let phraseIndex = 0;
-          let charIndex = 0;
-          let typing = true;
-
-          function type() {
-            if (!typing) return;
-            const phrase = phrases[phraseIndex];
-            if (charIndex < phrase.length) {
-              typewriterEl.textContent += phrase.charAt(charIndex);
-              charIndex++;
-              setTimeout(type, 50);
-            } else {
-              setTimeout(erase, 1200);
-            }
-          }
-
-          function erase() {
-            if (!typing) return;
-            if (charIndex > 0) {
-              typewriterEl.textContent = typewriterEl.textContent.slice(0, -1);
-              charIndex--;
-              setTimeout(erase, 25);
-            } else {
-              phraseIndex = (phraseIndex + 1) % phrases.length;
-              setTimeout(type, 400);
-            }
-          }
-
-          type();
-
-          // Optional: Pause effect on input focus
-          const searchInput = typewriterEl.previousElementSibling;
-          if (searchInput && searchInput.tagName === "INPUT") {
-            searchInput.addEventListener("focus", () => {
-              typing = false;
-              typewriterEl.textContent = "";
-            });
-            searchInput.addEventListener("blur", () => {
-              if (!typing) {
-                typing = true;
-                charIndex = 0;
-                typewriterEl.textContent = "";
-                type();
-              }
-            });
-          }
-        }
-      });
       document.addEventListener("DOMContentLoaded", function () {
         const mobileInput = document.querySelector(".mobile-input");
         const mobileLabel = document.querySelector(".mobile-label");
@@ -774,6 +720,20 @@
 
         // Initialize the label state
         updateLabelState();
+
+        // Mobile search elements
+        const mobileSearchButton = document.getElementById(
+          "mobile-search-button"
+        );
+        const mobileSearchBar = document.getElementById("mobile-search-bar");
+
+        // Mobile search bar toggle functionality
+        if (mobileSearchButton && mobileSearchBar) {
+          mobileSearchButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            mobileSearchBar.classList.toggle("hidden");
+          });
+        }
       });
     </script>
   </body>
