@@ -860,9 +860,8 @@
         <div class="footer-underline absolute -inset-1 bg-[#ff3f6c] h-1"></div>
       </div>
       <a
-        href="../category/index.html"
         class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item cursor-pointer"
-        data-footer="under999"
+        data-footer="category"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -870,19 +869,27 @@
           height="16"
           viewBox="0 0 24 24"
           fill="none"
+          stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="lucide lucide-user-icon lucide-user stroke-[#ff3f6c]"
+          class="lucide lucide-grip-icon lucide-grip"
         >
-          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-          <circle cx="12" cy="7" r="4" />
+          <circle cx="12" cy="5" r="1" />
+          <circle cx="19" cy="5" r="1" />
+          <circle cx="5" cy="5" r="1" />
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="19" cy="12" r="1" />
+          <circle cx="5" cy="12" r="1" />
+          <circle cx="12" cy="19" r="1" />
+          <circle cx="19" cy="19" r="1" />
+          <circle cx="5" cy="19" r="1" />
         </svg>
-        <span class="footer-label text-sm font-thin">Under ₹999</span>
+        <span class="footer-label text-sm font-thin"> Category </span>
       </a>
       <div
         class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item cursor-pointer"
-        data-footer="beauty"
+        data-footer="offers"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -898,7 +905,7 @@
           <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
-        <span class="footer-label text-sm font-thin"> Beauty </span>
+        <span class="footer-label text-sm font-thin">Offers</span>
       </div>
       <div
         class="w-full h-full flex justify-center items-center flex-col relative mobile-footer-nav-item cursor-pointer"
@@ -919,6 +926,179 @@
           <circle cx="12" cy="7" r="4" />
         </svg>
         <span class="footer-label text-sm font-thin"> Profile </span>
+      </div>
+    </div>
+
+    <!-- Category Bottom Drawer Modal (half screen) -->
+    <div
+      id="category-drawer-overlay"
+      class="fixed inset-0 transition-opacity duration-300"
+      style="
+        background: rgba(0, 0, 0, 0.28);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 99999;
+        display: none;
+      "
+    ></div>
+    <div
+      id="category-drawer"
+      class="fixed left-0 right-0 bottom-0 bg-white transform translate-y-full transition-transform duration-300 shadow-xl"
+      style="z-index: 100000; height: 100%; max-height: 70vh"
+    >
+      <div class="p-4 overflow-y-auto h-full">
+        <div id="category-drawer-content" class="grid grid-cols-2 gap-3">
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/1.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Food</div> </a
+          ><a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/2.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Food</div> </a
+          ><a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/3.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Food</div> </a
+          ><a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/4.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Food</div> </a
+          ><a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/5.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Food</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/6.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Baby Food & Care</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/7.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Home Cleaning</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/8.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Pet Care</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/9.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Beauty & Health</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/1.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Fashion & Lifestyle</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/2.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Home & Kitchen</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/3.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Stationeries</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/4.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Toys & Sports</div>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+          >
+            <img
+              src="../images/5.png"
+              alt="category"
+              class="w-12 h-12 object-cover rounded-md flex-shrink-0"
+            />
+            <div class="text-sm font-semibold">Gadget</div>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -1778,6 +1958,61 @@
         </div>
       </div>
     </div>
+
+    <script>
+      (function () {
+        const footerCategory = document.querySelector(
+          '#mobile-footer-nav .mobile-footer-nav-item[data-footer="category"]'
+        );
+        const drawer = document.getElementById("category-drawer");
+        const overlay = document.getElementById("category-drawer-overlay");
+
+        if (!drawer || !overlay || !footerCategory) return;
+
+        // ensure overlay has a smooth transition
+        overlay.style.transition =
+          overlay.style.transition || "opacity 300ms ease";
+
+        function openDrawer() {
+          // ensure overlay is visible for fade-in
+          overlay.style.display = "block";
+          // allow transition to apply
+          requestAnimationFrame(() => {
+            overlay.style.pointerEvents = "auto";
+            overlay.style.opacity = "1";
+          });
+          drawer.classList.remove("translate-y-full");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeDrawer() {
+          overlay.style.opacity = "0";
+          // after transition, hide overlay fully and disable pointer events
+          setTimeout(() => {
+            overlay.style.pointerEvents = "none";
+            overlay.style.display = "none";
+          }, 350);
+          drawer.classList.add("translate-y-full");
+          document.body.style.overflow = "";
+        }
+
+        footerCategory.addEventListener("click", (e) => {
+          e.preventDefault();
+          openDrawer();
+        });
+
+        overlay.addEventListener("click", () => {
+          closeDrawer();
+        });
+
+        // close button removed: overlay click and Escape close the drawer
+
+        // close on Escape
+        document.addEventListener("keydown", (ev) => {
+          if (ev.key === "Escape") closeDrawer();
+        });
+      })();
+    </script>
 
     <div class="content-overlay" id="contentOverlayFooter"></div>
     <!-- mobile footer -->
