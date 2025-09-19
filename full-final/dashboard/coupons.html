@@ -453,6 +453,66 @@
     <main class="relative mt-20 px-6">
       <div class="max-w-[1200px] mx-auto py-10">
         <h3 class="text-sm font-bold mb-4">MY PROFILE</h3>
+        <div class="bg-white px-4 py-6 border-b border-gray-100 w-full">
+          <div
+            class="flex gap-3 overflow-x-auto scrollbar-hide"
+            id="nav-slider"
+          >
+            <button class="nav-item-pill active" data-nav="overview">
+              Overview
+            </button>
+            <button class="nav-item-pill" data-nav="orders">Orders</button>
+            <button class="nav-item-pill" data-nav="coupons">Coupons</button>
+            <button class="nav-item-pill" data-nav="address">Address</button>
+          </div>
+        </div>
+        <script>
+          (function () {
+            function createRipple(btn, clientX, clientY) {
+              var rect = btn.getBoundingClientRect();
+              var ripple = document.createElement("span");
+              ripple.className = "ripple";
+              var multiplier =
+                btn.classList && btn.classList.contains("nav-item-pill")
+                  ? 2
+                  : 1.2;
+              var size = Math.max(rect.width, rect.height) * multiplier;
+              ripple.style.width = ripple.style.height = size + "px";
+              ripple.style.left = clientX - rect.left - size / 2 + "px";
+              ripple.style.top = clientY - rect.top - size / 2 + "px";
+              btn.appendChild(ripple);
+              ripple.addEventListener("animationend", function () {
+                ripple.remove();
+              });
+            }
+
+            function init() {
+              var targets = document.querySelectorAll(
+                ".nav-item-pill, #sort-btn, #filter-btn"
+              );
+              targets.forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                  var x =
+                    e.clientX ||
+                    (e.touches && e.touches[0] && e.touches[0].clientX) ||
+                    0;
+                  var y =
+                    e.clientY ||
+                    (e.touches && e.touches[0] && e.touches[0].clientY) ||
+                    0;
+                  createRipple(el, x, y);
+                });
+              });
+            }
+
+            if (document.readyState === "loading") {
+              document.addEventListener("DOMContentLoaded", init);
+            } else {
+              init();
+            }
+          })();
+        </script>
+
         <div class="grid grid-cols-12 gap-8">
           <aside class="col-span-12 lg:col-span-3">
             <nav class="space-y-3">
@@ -537,6 +597,40 @@
             a.classList.add("bg-gray-100");
           }
         });
+
+        // Initialize nav-item-pill navigation
+        (function initNavPills() {
+          const navPills = document.querySelectorAll(".nav-item-pill");
+          var map = {
+            overview: "index.html",
+            orders: "orders.html",
+            coupons: "coupons.html",
+            address: "address.html",
+          };
+          var cur = location.pathname.split("/").pop() || "index.html";
+          navPills.forEach(function (p) {
+            var nav = p.getAttribute("data-nav");
+            if (
+              (nav === "overview" && (cur === "" || cur === "index.html")) ||
+              map[nav] === cur
+            ) {
+              p.classList.add("active");
+            } else {
+              p.classList.remove("active");
+            }
+            p.addEventListener("click", function () {
+              navPills.forEach(function (x) {
+                x.classList.remove("active");
+              });
+              this.classList.add("active");
+              var href = map[this.getAttribute("data-nav")];
+              if (href)
+                setTimeout(function () {
+                  location.href = href;
+                }, 120);
+            });
+          });
+        })();
       });
     </script>
   </body>

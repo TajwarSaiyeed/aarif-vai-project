@@ -91,3 +91,51 @@
 .mobile-static-links a:hover {
   font-weight: 600;
 }
+
+/* Category Pills Styles */
+.nav-item-pill {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #9ca3af;
+  background-color: transparent;
+  color: #424553;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-item-pill:hover {
+  border-color: #ff3f6c;
+  color: white;
+  background-color: #ff3f6c;
+}
+
+.nav-item-pill.active {
+  background-color: #ff3e6c;
+  border-color: #ff3f6c;
+  color: white;
+}
+
+/* Ripple styles for nav-item pills */
+.nav-item-pill {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-pill .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255);
+  transform: scale(0);
+  animation: category-ripple 1s linear;
+  pointer-events: none;
+}
+
+@keyframes category-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
