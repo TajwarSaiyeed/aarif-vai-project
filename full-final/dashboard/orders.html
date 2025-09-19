@@ -450,18 +450,17 @@
       </div>
     </div>
 
-    <main class="relative mt-20 px-6">
-      <div class="max-w-[1200px] mx-auto py-10">
-        <h3 class="text-sm font-bold mb-4">MY PROFILE</h3>
-        <div class="bg-white px-4 py-6 border-b border-gray-100 w-full">
+    <main class="relative mt-14 xl:mt-20 px-6">
+      <div class="max-w-[1200px] mx-auto lg:py-10">
+        <div class="bg-white py-6 w-full lg:hidden block">
           <div
             class="flex gap-3 overflow-x-auto scrollbar-hide"
             id="nav-slider"
           >
-            <button class="nav-item-pill active" data-nav="overview">
-              Overview
+            <button class="nav-item-pill" data-nav="overview">Overview</button>
+            <button class="nav-item-pill active" data-nav="orders">
+              Orders
             </button>
-            <button class="nav-item-pill" data-nav="orders">Orders</button>
             <button class="nav-item-pill" data-nav="coupons">Coupons</button>
             <button class="nav-item-pill" data-nav="address">Address</button>
           </div>
@@ -512,9 +511,10 @@
             }
           })();
         </script>
+        <h3 class="text-sm font-bold mb-4">MY PROFILE</h3>
 
         <div class="grid grid-cols-12 gap-8">
-          <aside class="col-span-12 lg:col-span-3">
+          <aside class="lg:block hidden col-span-12 lg:col-span-3">
             <nav class="space-y-3">
               <a
                 href="index.html"
