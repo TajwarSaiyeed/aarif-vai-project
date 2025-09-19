@@ -202,16 +202,12 @@ a {
   pointer-events: none;
 }
 
-.active .image {
-  background-color: green;
-}
-
 .active .category-text {
-  color: green;
+  color: #ff3f6c;
 }
 
 .active .left-border {
-  background-color: green;
+  background-color: #ff3f6c;
 }
 .image {
   width: 70px;
@@ -364,7 +360,7 @@ a {
 .ripple {
   position: absolute;
   border-radius: 50%;
-  background: white; /* Green tint matching active state */
+  background: white;
   transform: scale(0);
   animation: ripple-animation 0.6s linear;
   pointer-events: none;

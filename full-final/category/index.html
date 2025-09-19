@@ -9,9 +9,7 @@
   </head>
   <body>
     <header class="header">
-      <!-- Mobile Navbar (visible on screens smaller than xl) -->
       <div class="mobile-nav">
-        <!-- back Icon -->
         <div class="button-container">
           <button id="backButton" class="ripple-button back-button">
             <svg
@@ -71,7 +69,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/1.png" />
               </div>
               <div class="category-text">Women's Wear</div>
             </div>
@@ -87,7 +85,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/2.png" />
               </div>
               <div class="category-text">Men's Wear</div>
             </div>
@@ -103,7 +101,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/3.png" />
               </div>
               <div class="category-text">Footwear</div>
             </div>
@@ -119,7 +117,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/4.png" />
               </div>
               <div class="category-text">Beauty & Grooming</div>
             </div>
@@ -136,7 +134,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/5.png" />
               </div>
               <div class="category-text">Accessories</div>
             </div>
@@ -152,7 +150,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/6.png" />
               </div>
               <div class="category-text">Electronics</div>
             </div>
@@ -168,7 +166,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/7.png" />
               </div>
               <div class="category-text">Kids</div>
             </div>
@@ -184,7 +182,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/8.png" />
               </div>
               <div class="category-text">Sports & Fitness</div>
             </div>
@@ -200,7 +198,7 @@
           <div class="ripple-container">
             <div class="c-i-t">
               <div class="image">
-                <img src="../img.png" />
+                <img src="../images/9.png" />
               </div>
               <div class="category-text">Home & Living</div>
             </div>
@@ -220,7 +218,7 @@
             style="display: flex; justify-content: center; align-items: center"
           >
             <div class="banner-image-container">
-              <img src="../img.png" />
+              <img src="../images/1.png" />
             </div>
 
             <div class="banner-button">
@@ -249,27 +247,27 @@
             <h6 style="margin-left: 10px">Women's Footwear</h6>
             <div class="category-data">
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/2.png" /></div>
                 <span>Heels</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/3.png" /></div>
                 <span>Flats</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/4.png" /></div>
                 <span>Casual Shoes</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/5.png" /></div>
                 <span>Flip Flops</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/6.png" /></div>
                 <span>Boots</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/7.png" /></div>
                 <span>Sport Shoes</span>
               </div>
             </div>
@@ -279,27 +277,27 @@
             <h6 style="margin-left: 10px">Men's Footwear</h6>
             <div class="category-data">
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/8.png" /></div>
                 <span>Casual Shoes</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/9.png" /></div>
                 <span>Sport Shoes</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/1.png" /></div>
                 <span>Formal Shoes</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/3.png" /></div>
                 <span>Sandals</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/5.png" /></div>
                 <span>Flip Flops</span>
               </div>
               <div class="item">
-                <div><img src="../img.png" /></div>
+                <div><img src="../images/7.png" /></div>
                 <span>Boots</span>
               </div>
             </div>
@@ -635,7 +633,11 @@
                     .map(
                       (item) => `
                     <div class="item">
-                      <div><img src="../img.png" /></div>
+                      <div><img src="../images/${
+                        Math.floor(Math.random() * 9) + 1
+                      }.png"
+                        
+                        /></div>
                       <span>${item}</span>
                     </div>
                   `
