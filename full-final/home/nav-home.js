@@ -1270,10 +1270,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mobile sidebar toggle functionality
 
-  mobileMenuButton.addEventListener("click", () => {
-    mobileSidebar.classList.add("open");
-    mobileSidebarOverlay.classList.add("open");
-  });
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener("click", () => {
+      mobileSidebar.classList.add("open");
+      mobileSidebarOverlay.classList.add("open");
+    });
+  }
 
   // Close sidebar and overlay
   closeSidebarButton.addEventListener("click", () => {
