@@ -475,65 +475,384 @@
             class="col-span-12 lg:col-span-9 bg-white p-6 border border-gray-100"
           >
             <div class="flex items-center justify-between mb-6">
-              <div class="space-x-2">
-                <button class="px-4 py-2 bg-green-100 rounded">
+              <div class="space-x-2" role="tablist" aria-label="Order filters">
+                <button
+                  data-filter="all"
+                  class="filter-btn px-4 py-2 bg-[#FF3F6C]/50 font-semibold rounded"
+                  aria-pressed="true"
+                >
                   All Orders
                 </button>
-                <button class="px-4 py-2 bg-yellow-100 rounded">
+                <button
+                  data-filter="progress"
+                  class="filter-btn px-4 py-2 bg-yellow-100 rounded"
+                  aria-pressed="false"
+                >
                   On Progress
                 </button>
-                <button class="px-4 py-2 bg-gray-100 rounded">Completed</button>
+                <button
+                  data-filter="completed"
+                  class="filter-btn px-4 py-2 bg-gray-100 rounded"
+                  aria-pressed="false"
+                >
+                  Completed
+                </button>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <!-- Order card -->
-              <div class="border rounded p-4 shadow-sm">
-                <div class="flex items-start gap-4">
+            <div class="space-y-4" id="orders-list">
+              <!-- Order 1 -->
+              <div
+                class="border border-gray-200 rounded-lg bg-white"
+                data-order-id="1000212214"
+                data-order-status="progress"
+              >
+                <!-- Collapsed Row - Mobile & Desktop -->
+                <div class="p-4">
                   <div
-                    class="w-10 h-10 bg-green-100 rounded flex items-center justify-center font-bold"
+                    class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
                   >
-                    A4
-                  </div>
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between">
-                      <div class="font-semibold">Ariel Hikmat</div>
-                      <div class="text-xs text-gray-500">Ready</div>
+                    <div
+                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                    >
+                      <div>
+                        <span class="font-semibold lg:hidden">Order #:</span>
+                        1000212214
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Date:</span>
+                        9/18/25
+                      </div>
+                      <div class="col-span-2 lg:col-span-1">
+                        <span class="font-semibold lg:hidden">Ship To:</span>
+                        DSS REAL ESTATE
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Total:</span>
+                        &#2547;2,960.00
+                      </div>
+                      <div class="flex items-center">
+                        <span
+                          class="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full"
+                          >Pending</span
+                        >
+                      </div>
                     </div>
-                    <div class="text-xs text-gray-400">
-                      Wed, July 12, 2023 • 06:12 PM
+                    <div
+                      class="flex items-center space-x-4 mt-4 lg:mt-0 border-t lg:border-t-0 pt-3 lg:pt-0"
+                    >
+                      <button
+                        class="text-blue-600 font-semibold text-sm order-row-toggle"
+                        aria-expanded="false"
+                      >
+                        View Order
+                      </button>
+                      <a href="#" class="text-blue-600 font-semibold text-sm"
+                        >Reorder</a
+                      >
                     </div>
                   </div>
                 </div>
 
-                <div class="mt-4 text-sm text-gray-600">
-                  <div class="flex justify-between">
-                    <div>Scrambled eggs with toast</div>
-                    <div>$16.99</div>
+                <!-- Expanded detail panel -->
+                <div
+                  class="p-4 sm:p-6 border-t border-gray-200 bg-gray-50 hidden order-detail-panel"
+                >
+                  <div
+                    class="flex flex-col sm:flex-row justify-between sm:items-center pb-4 mb-4 border-b"
+                  >
+                    <div class="mb-2 sm:mb-0">
+                      <p class="text-lg font-bold">Order # 1000212214</p>
+                      <p class="text-xs text-gray-500">
+                        Order Date: September 18, 2025
+                      </p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                      <button class="text-sm text-gray-700">Print Order</button>
+                      <button
+                        class="px-4 py-2 bg-orange-500 text-white rounded-md text-sm font-semibold"
+                      >
+                        Reorder
+                      </button>
+                    </div>
                   </div>
-                  <div class="flex justify-between">
-                    <div>Smoked Salmon Bagel</div>
-                    <div>$18.49</div>
+                  <h4 class="font-bold text-base mb-3">Items Ordered</h4>
+                  <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center">
+                      <div class="flex items-center flex-1 mb-2 sm:mb-0">
+                        <div
+                          class="w-16 h-16 bg-yellow-300 rounded-md mr-4 shrink-0"
+                        ></div>
+                        <div>
+                          <p class="font-semibold text-sm">
+                            QCY Q29 Pro in-ear TWS Bluetooth Double Headset -
+                            BLACK
+                          </p>
+                          <p class="text-xs text-gray-500">SKU: 106872</p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex justify-between items-center sm:space-x-8 text-sm w-full sm:w-auto ml-20 sm:ml-0"
+                      >
+                        <div class="sm:w-24 font-semibold">&#2547;2,900.00</div>
+                        <div class="sm:w-16 text-center text-gray-600">
+                          Qty: 1
+                        </div>
+                        <div
+                          class="sm:w-24 text-right sm:text-left font-semibold"
+                        >
+                          &#2547;2,900.00
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="flex justify-between mt-4 font-bold">
-                    <div>Total</div>
-                    <div>$87.34</div>
+                  <div class="flex justify-end mt-4 pt-4 border-t">
+                    <div class="w-full sm:w-64 text-sm space-y-1">
+                      <div class="flex justify-between">
+                        <span>Subtotal</span> <span>&#2547;2,900.00</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Shipping & Handling</span>
+                        <span>&#2547;60.00</span>
+                      </div>
+                      <div class="flex justify-between font-bold text-base">
+                        <span>Grand Total</span> <span>&#2547;2,960.00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h4 class="font-bold text-base mt-6 mb-3">
+                    Order Information
+                  </h4>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm"
+                  >
+                    <div>
+                      <h5 class="font-semibold mb-1">Shipping Address</h5>
+                      <address class="not-italic text-gray-600">
+                        DSS REAL ESTATE<br />170, Doctor Goli, Moghbazar<br />Dhaka,
+                        Bangladesh<br />T: 01713569417
+                      </address>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold mb-1">Shipping Method</h5>
+                      <p class="text-gray-600">
+                        Delivery within 1-3 Days - Inside Dhaka City (Home
+                        Delivery)
+                      </p>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold mb-1">Billing Address</h5>
+                      <address class="not-italic text-gray-600">
+                        DSS REAL ESTATE<br />170, Doctor Goli, Moghbazar<br />Dhaka,
+                        Bangladesh<br />T: 01713569417
+                      </address>
+                    </div>
+                    <div>
+                      <h5 class="font-semibold mb-1">Payment Method</h5>
+                      <p class="text-gray-600 text-xs">
+                        অর্ডার করার সময় পণ্যের মুল্যের ১০% + ডেলিভারি চার্জ
+                        অগ্রিম পেমেন্ট/সম্পূর্ণ পেমেন্ট এডভান্স করে অর্ডার করতে
+                        পারেন।প্রয়োজনে কল করুন 09678-300400 (প্রতিদিন সকাল ১০ টা
+                        থেকে রাত ১০ টা)
+                      </p>
+                    </div>
                   </div>
                 </div>
-
-                <div class="mt-4 flex gap-2">
-                  <a href="#" class="px-3 py-2 border rounded text-sm"
-                    >See Details</a
+              </div>
+              <!-- Order 3 - On Progress -->
+              <div
+                class="border border-gray-200 rounded-lg bg-white"
+                data-order-id="1000212216"
+                data-order-status="progress"
+              >
+                <div class="p-4">
+                  <div
+                    class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
                   >
-                  <button class="px-3 py-2 bg-yellow-400 rounded text-sm">
-                    Pay Bills
-                  </button>
+                    <div
+                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                    >
+                      <div>
+                        <span class="font-semibold lg:hidden">Order #:</span>
+                        1000212216
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Date:</span>
+                        9/19/25
+                      </div>
+                      <div class="col-span-2 lg:col-span-1">
+                        <span class="font-semibold lg:hidden">Ship To:</span>
+                        DSS REAL ESTATE
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Total:</span>
+                        &#2547;3,450.00
+                      </div>
+                      <div class="flex items-center">
+                        <span
+                          class="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full"
+                          >Pending</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center space-x-4 mt-4 lg:mt-0 border-t lg:border-t-0 pt-3 lg:pt-0"
+                    >
+                      <button
+                        class="text-blue-600 font-semibold text-sm order-row-toggle"
+                        aria-expanded="false"
+                      >
+                        View Order
+                      </button>
+                      <a href="#" class="text-blue-600 font-semibold text-sm"
+                        >Reorder</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="p-4 sm:p-6 border-t border-gray-200 bg-gray-50 hidden order-detail-panel"
+                >
+                  <div
+                    class="flex justify-between items-center pb-4 mb-4 border-b"
+                  >
+                    <div>
+                      <p class="text-lg font-bold">Order # 1000212216</p>
+                      <p class="text-xs text-gray-500">
+                        Order Date: September 19, 2025
+                      </p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                      <button class="text-sm text-gray-700">Print Order</button
+                      ><button
+                        class="px-4 py-2 bg-orange-500 text-white rounded-md text-sm font-semibold"
+                      >
+                        Reorder
+                      </button>
+                    </div>
+                  </div>
+                  <p class="text-gray-600">
+                    Sample content for order 1000212216.
+                  </p>
                 </div>
               </div>
 
-              <!-- Repeat placeholder cards -->
-              <div class="border rounded p-4 shadow-sm">(sample)</div>
-              <div class="border rounded p-4 shadow-sm">(sample)</div>
+              <!-- Order 4 - Completed -->
+              <div
+                class="border border-gray-200 rounded-lg bg-white"
+                data-order-id="1000212217"
+                data-order-status="completed"
+              >
+                <div class="p-4">
+                  <div
+                    class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
+                  >
+                    <div
+                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                    >
+                      <div>
+                        <span class="font-semibold lg:hidden">Order #:</span>
+                        1000212217
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Date:</span>
+                        9/10/25
+                      </div>
+                      <div class="col-span-2 lg:col-span-1">
+                        <span class="font-semibold lg:hidden">Ship To:</span>
+                        DSS REAL ESTATE
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Total:</span>
+                        &#2547;1,200.00
+                      </div>
+                      <div class="flex items-center">
+                        <span
+                          class="px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full"
+                          >Completed</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center space-x-4 mt-4 lg:mt-0 border-t lg:border-t-0 pt-3 lg:pt-0"
+                    >
+                      <button
+                        class="text-blue-600 font-semibold text-sm order-row-toggle"
+                        aria-expanded="false"
+                      >
+                        View Order
+                      </button>
+                      <a href="#" class="text-blue-600 font-semibold text-sm"
+                        >Reorder</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="p-4 sm:p-6 border-t border-gray-200 bg-gray-50 hidden order-detail-panel"
+                >
+                  <p class="text-gray-600">
+                    Sample completed order content for 1000212217.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Order 2 -->
+              <div
+                class="border border-gray-200 rounded-lg bg-white"
+                data-order-id="1000212215"
+              >
+                <div class="p-4">
+                  <div
+                    class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
+                  >
+                    <div
+                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                    >
+                      <div>
+                        <span class="font-semibold lg:hidden">Order #:</span>
+                        1000212214
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Date:</span>
+                        9/18/25
+                      </div>
+                      <div class="col-span-2 lg:col-span-1">
+                        <span class="font-semibold lg:hidden">Ship To:</span>
+                        DSS REAL ESTATE
+                      </div>
+                      <div>
+                        <span class="font-semibold lg:hidden">Total:</span>
+                        &#2547;2,960.00
+                      </div>
+                      <div class="flex items-center">
+                        <span
+                          class="px-2 py-0.5 bg-red-100 text-red-800 text-xs rounded-full"
+                          >Canceled</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center space-x-4 mt-4 lg:mt-0 border-t lg:border-t-0 pt-3 lg:pt-0"
+                    >
+                      <button
+                        class="text-blue-600 font-semibold text-sm order-row-toggle"
+                        aria-expanded="false"
+                      >
+                        View Order
+                      </button>
+                      <a href="#" class="text-blue-600 font-semibold text-sm"
+                        >Reorder</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="p-4 sm:p-6 border-t border-gray-200 bg-gray-50 hidden order-detail-panel"
+                >
+                  <p class="text-gray-600">This order has been canceled.</p>
+                </div>
+              </div>
             </div>
           </section>
         </div>
@@ -606,6 +925,118 @@
           });
         })();
       });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const ordersList = document.getElementById("orders-list");
+        ordersList.addEventListener("click", function (event) {
+          const toggleButton = event.target.closest(".order-row-toggle");
+          if (!toggleButton) return;
+
+          const orderContainer = toggleButton.closest("[data-order-id]");
+          const isExpanded =
+            toggleButton.getAttribute("aria-expanded") === "true";
+
+          // Close all other open orders
+          ordersList.querySelectorAll(".order-row-toggle").forEach((btn) => {
+            const container = btn.closest("[data-order-id]");
+            if (container !== orderContainer) {
+              btn.setAttribute("aria-expanded", "false");
+              container
+                .querySelector(".order-detail-panel")
+                .classList.add("hidden");
+            }
+          });
+
+          // Toggle the current order
+          toggleButton.setAttribute("aria-expanded", !isExpanded);
+          orderContainer
+            .querySelector(".order-detail-panel")
+            .classList.toggle("hidden");
+        });
+
+        // Filtering logic
+        const filterButtons = document.querySelectorAll(".filter-btn");
+
+        function applyFilter(status) {
+          const orders = ordersList.querySelectorAll("[data-order-id]");
+          orders.forEach(function (o) {
+            const s = o.getAttribute("data-order-status") || "progress";
+            if (
+              status === "all" ||
+              (status === "progress" && s === "progress") ||
+              (status === "completed" && s === "completed")
+            ) {
+              o.classList.remove("hidden");
+            } else {
+              o.classList.add("hidden");
+            }
+          });
+        }
+
+        filterButtons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            filterButtons.forEach(function (b) {
+              b.classList.remove("bg-[#FF3F6C]/50", "font-semibold");
+              b.setAttribute("aria-pressed", "false");
+            });
+            this.classList.add("bg-[#FF3F6C]/50", "font-semibold");
+            this.setAttribute("aria-pressed", "true");
+            const status = this.getAttribute("data-filter");
+            applyFilter(status);
+          });
+        });
+
+        // Initialize with 'all'
+        applyFilter("all");
+      });
+    </script>
+
+    <script>
+      // Orders list expand/collapse behavior
+      (function () {
+        function closeAll(except) {
+          document
+            .querySelectorAll(".order-row-toggle")
+            .forEach(function (btn) {
+              if (btn !== except) {
+                btn.setAttribute("aria-expanded", "false");
+                var panel = btn.parentElement.querySelector(
+                  ".order-detail-panel"
+                );
+                if (panel) panel.classList.add("hidden");
+                var icon = btn.querySelector("svg");
+                if (icon) icon.classList.remove("rotate-180");
+              }
+            });
+        }
+
+        function toggle(btn) {
+          var expanded = btn.getAttribute("aria-expanded") === "true";
+          if (!expanded) {
+            closeAll(btn);
+          }
+          btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+          var panel = btn.parentElement.querySelector(".order-detail-panel");
+          if (panel) panel.classList.toggle("hidden");
+          var icon = btn.querySelector("svg");
+          if (icon) icon.classList.toggle("rotate-180");
+        }
+
+        document.querySelectorAll(".order-row-toggle").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            toggle(btn);
+          });
+
+          // keyboard accessibility
+          btn.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggle(btn);
+            }
+          });
+        });
+      })();
     </script>
   </body>
 </html>
