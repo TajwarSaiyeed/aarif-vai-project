@@ -428,31 +428,37 @@
           <section
             class="col-span-12 lg:col-span-9 bg-white lg:p-6 lg:border lg:border-gray-100"
           >
-            <div class="flex items-center justify-between mb-6">
-              <div class="space-x-2" role="tablist" aria-label="Order filters">
-                <button
-                  data-filter="all"
-                  class="filter-btn px-4 py-2 bg-[#FF3F6C]/50 font-semibold rounded"
-                  aria-pressed="true"
-                >
-                  All Orders
-                </button>
-                <button
-                  data-filter="progress"
-                  class="filter-btn px-4 py-2 bg-yellow-100 rounded"
-                  aria-pressed="false"
-                >
-                  On Progress
-                </button>
-                <button
-                  data-filter="completed"
-                  class="filter-btn px-4 py-2 bg-gray-100 rounded"
-                  aria-pressed="false"
-                >
-                  Completed
-                </button>
+            <!-- <div class="mb-6 w-full">
+              <div
+                class="flex items-center overflow-x-auto scrollbar-hide -mx-4 px-4"
+                role="tablist"
+                aria-label="Order filters"
+              >
+                <div class="flex space-x-2">
+                  <button
+                    data-filter="all"
+                    class="filter-btn px-4 py-2 bg-[#FF3F6C]/50 font-semibold rounded"
+                    aria-pressed="true"
+                  >
+                    All Orders
+                  </button>
+                  <button
+                    data-filter="progress"
+                    class="filter-btn px-4 py-2 bg-yellow-100 rounded"
+                    aria-pressed="false"
+                  >
+                    On Progress
+                  </button>
+                  <button
+                    data-filter="completed"
+                    class="filter-btn px-4 py-2 bg-gray-100 rounded"
+                    aria-pressed="false"
+                  >
+                    Completed
+                  </button>
+                </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="space-y-4" id="orders-list">
               <!-- Order 1 -->
@@ -467,7 +473,7 @@
                     class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
                   >
                     <div
-                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                      class="lg:flex-1 grid grid-cols-1 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
                     >
                       <div>
                         <span class="font-semibold lg:hidden">Order #:</span>
@@ -477,7 +483,7 @@
                         <span class="font-semibold lg:hidden">Date:</span>
                         9/18/25
                       </div>
-                      <div class="col-span-2 lg:col-span-1">
+                      <div>
                         <span class="font-semibold lg:hidden">Ship To:</span>
                         DSS REAL ESTATE
                       </div>
@@ -546,7 +552,7 @@
                         </div>
                       </div>
                       <div
-                        class="flex justify-between items-center sm:space-x-8 text-sm w-full sm:w-auto ml-20 sm:ml-0"
+                        class="flex gap-5 items-center flex-wrap sm:space-x-8 text-sm w-full ml-0 lg:ml-20"
                       >
                         <div class="sm:w-24 font-semibold">&#2547;2,900.00</div>
                         <div class="sm:w-16 text-center text-gray-600">
@@ -624,7 +630,7 @@
                     class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
                   >
                     <div
-                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                      class="lg:flex-1 grid grid-cols-1 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
                     >
                       <div>
                         <span class="font-semibold lg:hidden">Order #:</span>
@@ -634,7 +640,7 @@
                         <span class="font-semibold lg:hidden">Date:</span>
                         9/19/25
                       </div>
-                      <div class="col-span-2 lg:col-span-1">
+                      <div>
                         <span class="font-semibold lg:hidden">Ship To:</span>
                         DSS REAL ESTATE
                       </div>
@@ -702,7 +708,7 @@
                     class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
                   >
                     <div
-                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                      class="lg:flex-1 grid grid-cols-1 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
                     >
                       <div>
                         <span class="font-semibold lg:hidden">Order #:</span>
@@ -712,7 +718,7 @@
                         <span class="font-semibold lg:hidden">Date:</span>
                         9/10/25
                       </div>
-                      <div class="col-span-2 lg:col-span-1">
+                      <div>
                         <span class="font-semibold lg:hidden">Ship To:</span>
                         DSS REAL ESTATE
                       </div>
@@ -761,7 +767,7 @@
                     class="flex flex-col lg:flex-row lg:items-center lg:justify-between"
                   >
                     <div
-                      class="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
+                      class="lg:flex-1 grid grid-cols-1 lg:grid-cols-5 gap-y-2 gap-x-4 text-sm"
                     >
                       <div>
                         <span class="font-semibold lg:hidden">Order #:</span>
@@ -771,7 +777,7 @@
                         <span class="font-semibold lg:hidden">Date:</span>
                         9/18/25
                       </div>
-                      <div class="col-span-2 lg:col-span-1">
+                      <div>
                         <span class="font-semibold lg:hidden">Ship To:</span>
                         DSS REAL ESTATE
                       </div>
