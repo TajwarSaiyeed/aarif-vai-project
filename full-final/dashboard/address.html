@@ -496,16 +496,24 @@
               id="address-overlay"
               class="fixed inset-0 bg-black/40 hidden z-[99999]"
             ></div>
-
             <!-- Modal -->
             <div
               id="address-modal"
-              class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] bg-white rounded shadow-lg z-[100000] hidden"
+              class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-[520px] bg-white rounded shadow-lg z-[100000] hidden"
             >
-              <div class="border-b px-4 py-3 font-semibold">EDIT ADDRESS</div>
+              <!-- Header -->
+              <div
+                class="border-b px-4 py-3 font-semibold text-base sm:text-lg"
+              >
+                EDIT ADDRESS
+              </div>
+
+              <!-- Body -->
               <div class="p-4 max-h-[70vh] overflow-y-auto">
                 <form id="address-form" class="space-y-4">
                   <input type="hidden" id="address-id" />
+
+                  <!-- Name -->
                   <div>
                     <label class="text-sm font-medium">Name *</label>
                     <input
@@ -514,6 +522,8 @@
                       required
                     />
                   </div>
+
+                  <!-- Mobile -->
                   <div>
                     <label class="text-sm font-medium">Mobile *</label>
                     <input
@@ -522,7 +532,9 @@
                       required
                     />
                   </div>
-                  <div class="flex gap-4">
+
+                  <!-- Pincode + State -->
+                  <div class="flex flex-col sm:flex-row gap-4">
                     <div class="flex-1">
                       <label class="text-sm font-medium">Pincode *</label>
                       <input
@@ -531,7 +543,7 @@
                         required
                       />
                     </div>
-                    <div class="w-1/2">
+                    <div class="flex-1">
                       <label class="text-sm font-medium">State *</label>
                       <input
                         id="field-state"
@@ -540,10 +552,12 @@
                       />
                     </div>
                   </div>
+
+                  <!-- Address -->
                   <div>
-                    <label class="text-sm font-medium"
-                      >Address (House No, Building, Street, Area) *</label
-                    >
+                    <label class="text-sm font-medium">
+                      Address (House No, Building, Street, Area) *
+                    </label>
                     <textarea
                       id="field-address"
                       class="w-full border rounded px-3 py-2 text-sm"
@@ -551,6 +565,8 @@
                       required
                     ></textarea>
                   </div>
+
+                  <!-- Locality -->
                   <div>
                     <label class="text-sm font-medium">Locality/Town</label>
                     <input
@@ -560,13 +576,20 @@
                   </div>
                 </form>
               </div>
-              <div class="flex justify-end gap-3 p-4 border-t">
-                <button id="modal-cancel" class="px-4 py-2 border rounded">
+
+              <!-- Footer -->
+              <div
+                class="flex flex-col sm:flex-row justify-end gap-3 p-4 border-t"
+              >
+                <button
+                  id="modal-cancel"
+                  class="px-4 py-2 border rounded text-sm sm:text-base"
+                >
                   CANCEL
                 </button>
                 <button
                   id="modal-save"
-                  class="px-4 py-2 bg-[#ff3f6c] text-white rounded"
+                  class="px-4 py-2 bg-[#ff3f6c] text-white rounded text-sm sm:text-base"
                 >
                   SAVE
                 </button>
