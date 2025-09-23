@@ -253,7 +253,7 @@
             </svg>
           </button>
 
-          <div class="text-black text-base font-bold" id="mobile-title">
+          <div class="text-black text-base font-bold ml-2" id="mobile-title">
             My Profile
           </div>
         </div>
@@ -478,7 +478,7 @@
               <div class="text-sm text-gray-500">Default Address</div>
               <button
                 id="add-address-btn"
-                class="py-2 px-4 border rounded text-sm bg-white hover:bg-gray-50"
+                class="py-2 px-4 border border-[#e7e7e7] rounded text-sm bg-white"
               >
                 + ADD NEW ADDRESS
               </button>
@@ -494,13 +494,13 @@
             <!-- Modal Overlay -->
             <div
               id="address-overlay"
-              class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"
+              class="fixed inset-0 bg-black/40 hidden z-[99999]"
             ></div>
 
             <!-- Modal -->
             <div
               id="address-modal"
-              class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] bg-white rounded shadow-lg z-50 hidden"
+              class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] bg-white rounded shadow-lg z-[100000] hidden"
             >
               <div class="border-b px-4 py-3 font-semibold">EDIT ADDRESS</div>
               <div class="p-4 max-h-[70vh] overflow-y-auto">
@@ -651,7 +651,7 @@
           }
           list.forEach((addr) => {
             const card = document.createElement("div");
-            card.className = "border rounded p-4 relative";
+            card.className = "border border-[#e7e7e7] rounded p-4 relative";
             card.innerHTML = `
               <div class="absolute top-3 right-3 text-xs text-gray-400">${
                 addr.tag || ""
@@ -669,7 +669,7 @@
               <div class="mt-3 flex gap-2">
                 <button data-action="edit" data-id="${
                   addr.id
-                }" class="px-3 py-2 border rounded text-sm">EDIT</button>
+                }" class="px-3 py-2 border border-[#e7e7e7] rounded text-sm">EDIT</button>
                 <button data-action="remove" data-id="${
                   addr.id
                 }" class="px-3 py-2 bg-red-100 rounded text-sm">REMOVE</button>
@@ -802,13 +802,13 @@
         navLinks.forEach((a) => {
           const href = a.getAttribute("href");
           if (href === path) {
-            a.classList.add("bg-[#FF3F6C]/50", "font-semibold");
+            a.classList.add("bg-[#FF3F6C]", "font-semibold", "text-white");
             a.classList.remove("bg-gray-100");
           } else if (href === "index.html" && path === "") {
-            a.classList.add("bg-[#FF3F6C]/50", "font-semibold");
+            a.classList.add("bg-[#FF3F6C]", "font-semibold");
           } else {
-            a.classList.remove("bg-[#FF3F6C]/50", "font-semibold");
-            a.classList.add("bg-gray-100");
+            a.classList.remove("bg-[#FF3F6C]", "font-semibold");
+            a.classList.add("bg-gray-100", "hover:bg-[#f8f8f8]");
           }
         });
 

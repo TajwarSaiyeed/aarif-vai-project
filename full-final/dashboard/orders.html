@@ -253,7 +253,7 @@
             </svg>
           </button>
 
-          <div class="text-black text-base font-bold" id="mobile-title">
+          <div class="text-black text-base font-bold ml-2" id="mobile-title">
             My Profile
           </div>
         </div>
@@ -855,13 +855,13 @@
         navLinks.forEach((a) => {
           const href = a.getAttribute("href");
           if (href === path) {
-            a.classList.add("bg-[#FF3F6C]/50", "font-semibold");
+            a.classList.add("bg-[#FF3F6C]", "font-semibold", "text-white");
             a.classList.remove("bg-gray-100");
           } else if (href === "index.html" && path === "") {
-            a.classList.add("bg-[#FF3F6C]/50", "font-semibold");
+            a.classList.add("bg-[#FF3F6C]", "font-semibold");
           } else {
-            a.classList.remove("bg-[#FF3F6C]/50", "font-semibold");
-            a.classList.add("bg-gray-100");
+            a.classList.remove("bg-[#FF3F6C]", "font-semibold");
+            a.classList.add("bg-gray-100", "hover:bg-[#f8f8f8]");
           }
         });
 
