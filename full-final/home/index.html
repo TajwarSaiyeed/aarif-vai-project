@@ -10,6 +10,30 @@
     <link rel="stylesheet" href="../global.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../footer.css" />
+    <style>
+      /* Ripple effect styles */
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 600ms linear;
+        background: rgba(0, 0, 0, 0.12);
+        pointer-events: none;
+      }
+
+      @keyframes ripple {
+        to {
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Ensure targets hide overflow and can position ripples */
+      .ripple-target {
+        position: relative;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <header
@@ -2662,9 +2686,6 @@
       </div>
     </div>
 
-    <script src="app.js"></script>
-    <script src="nav-home.js"></script>
-    <script src="../mobile-footer.js"></script>
     <!-- Sidebar container for product view similar -->
     <div
       id="product-view-similar-sidebar"
@@ -2705,5 +2726,75 @@
       id="product-sidebar-overlay"
       class="fixed inset-0 bg-black/40 z-[99] hidden"
     ></div>
+
+    <script src="app.js"></script>
+    <script>
+      (function () {
+        function createRipple(btn, clientX, clientY) {
+          var rect = btn.getBoundingClientRect();
+          var ripple = document.createElement("span");
+          ripple.className = "ripple";
+
+          var multiplier =
+            btn.classList && btn.classList.contains("nav-item-pill") ? 2 : 1.2;
+          var size = Math.max(rect.width, rect.height) * multiplier;
+          ripple.style.width = ripple.style.height = size + "px";
+          ripple.style.left = clientX - rect.left - size / 2 + "px";
+          ripple.style.top = clientY - rect.top - size / 2 + "px";
+
+          btn.appendChild(ripple);
+          ripple.addEventListener("animationend", function () {
+            ripple.remove();
+          });
+        }
+
+        function attachRippleTo(selector) {
+          var els = document.querySelectorAll(selector);
+          els.forEach(function (el) {
+            // ensure element can contain the ripple
+            if (!el.classList.contains("ripple-target")) {
+              el.classList.add("ripple-target");
+            }
+
+            el.addEventListener(
+              "click",
+              function (e) {
+                var x =
+                  e.clientX ||
+                  (e.touches && e.touches[0] && e.touches[0].clientX) ||
+                  0;
+                var y =
+                  e.clientY ||
+                  (e.touches && e.touches[0] && e.touches[0].clientY) ||
+                  0;
+                createRipple(el, x, y);
+              },
+              { passive: true }
+            );
+          });
+        }
+
+        function init() {
+          // category drawer links
+          attachRippleTo("#category-drawer a");
+          // mobile footer category button
+          attachRippleTo(
+            '#mobile-footer-nav .mobile-footer-nav-item[data-footer="category"]'
+          );
+          // keep existing targets from example
+          attachRippleTo(
+            ".nav-item-pill, #sort-btn, #filter-btn, .ripple-button"
+          );
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+    <script src="nav-home.js"></script>
+    <script src="../mobile-footer.js"></script>
   </body>
 </html>
