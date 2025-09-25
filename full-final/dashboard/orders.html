@@ -404,22 +404,22 @@
             <nav class="space-y-3">
               <a
                 href="index.html"
-                class="block bg-gray-100 text-center py-3 rounded shadow-sm"
+                class="block bg-gray-100 text-center py-3 rounded shadow-sm font-semibold"
                 >OVERVIEW</a
               >
               <a
                 href="orders.html"
-                class="block text-center py-3 rounded shadow-sm font-semibold"
+                class="block text-center py-3 rounded shadow-sm font-semibold bg-[#FF3F6C] text-white"
                 >ORDERS</a
               >
               <a
                 href="coupons.html"
-                class="block bg-gray-100 text-center py-3 rounded shadow-sm"
+                class="block bg-gray-100 text-center py-3 rounded shadow-sm font-semibold"
                 >COUPONS</a
               >
               <a
                 href="address.html"
-                class="block bg-gray-100 text-center py-3 rounded shadow-sm"
+                class="block bg-gray-100 text-center py-3 rounded shadow-sm font-semibold"
                 >ADDRESS</a
               >
             </nav>
@@ -849,21 +849,6 @@
             mobileSearchBar.classList.toggle("hidden");
           });
         }
-        const path =
-          location.pathname.split("/orders.html").pop() || "orders.html";
-        const navLinks = document.querySelectorAll("aside nav a");
-        navLinks.forEach((a) => {
-          const href = a.getAttribute("href");
-          if (href === path) {
-            a.classList.add("bg-[#FF3F6C]", "font-semibold", "text-white");
-            a.classList.remove("bg-gray-100");
-          } else if (href === "index.html" && path === "") {
-            a.classList.add("bg-[#FF3F6C]", "font-semibold");
-          } else {
-            a.classList.remove("bg-[#FF3F6C]", "font-semibold");
-            a.classList.add("bg-gray-100", "hover:bg-[#f8f8f8]");
-          }
-        });
 
         // Initialize nav-item-pill navigation
         (function initNavPills() {
