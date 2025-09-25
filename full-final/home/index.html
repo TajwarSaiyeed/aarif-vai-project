@@ -2805,16 +2805,19 @@
         }
 
         function init() {
+          // Prefer central global helper if available, otherwise use local attachRippleTo
+          var attach =
+            window && window.__attachRipple
+              ? window.__attachRipple
+              : attachRippleTo;
           // category drawer links
-          attachRippleTo("#category-drawer a");
+          attach("#category-drawer a");
           // mobile footer category button
-          attachRippleTo(
+          attach(
             '#mobile-footer-nav .mobile-footer-nav-item[data-footer="category"]'
           );
           // keep existing targets from example
-          attachRippleTo(
-            ".nav-item-pill, #sort-btn, #filter-btn, .ripple-button"
-          );
+          attach(".nav-item-pill, #sort-btn, #filter-btn, .ripple-button");
 
           // Attach ripple to sidebar navigation links/buttons only on mobile
           function attachSidebarIfMobile() {

@@ -149,4 +149,63 @@
   }
 
   window.createMobilePopup = createMobilePopup;
+  // Central ripple helper (small, dependency-free)
+  (function () {
+    function createRippleElement(btn, clientX, clientY, opts) {
+      try {
+        var rect = btn.getBoundingClientRect();
+        var ripple = document.createElement("span");
+        ripple.className = opts && opts.className ? opts.className : "ripple";
+
+        var multiplier = btn.classList && btn.classList.contains("nav-item-pill") ? 2 : 1.2;
+        var size = Math.max(rect.width, rect.height) * (opts && opts.multiplier ? opts.multiplier : multiplier);
+        ripple.style.width = ripple.style.height = size + "px";
+        ripple.style.left = (clientX - rect.left - size / 2) + "px";
+        ripple.style.top = (clientY - rect.top - size / 2) + "px";
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.transform = 'scale(0)';
+        ripple.style.pointerEvents = 'none';
+        ripple.style.background = (opts && opts.color) ? opts.color : 'rgba(0,0,0,0.12)';
+        ripple.style.animation = (opts && opts.duration) ? `ripple ${opts.duration}ms linear` : 'ripple 600ms linear';
+
+        // ensure container can host ripple
+        if (!btn.classList.contains('ripple-target')) btn.classList.add('ripple-target');
+
+        btn.appendChild(ripple);
+        ripple.addEventListener('animationend', function () { ripple.remove(); });
+      } catch (e) {
+        // silent
+      }
+    }
+
+    function attachRippleToSelector(selector, options) {
+      if (!selector) return;
+      var els = typeof selector === 'string' ? document.querySelectorAll(selector) : (selector instanceof Element ? [selector] : selector);
+      if (!els || !els.length) return;
+      els.forEach(function (el) {
+        if (!el.classList.contains('ripple-target')) el.classList.add('ripple-target');
+        // avoid double attaching
+        if (el.__ripple_attached) return;
+        el.__ripple_attached = true;
+        el.addEventListener('click', function (e) {
+          var x = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX) || 0;
+          var y = e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY) || 0;
+          createRippleElement(el, x, y, options || {});
+        }, { passive: true });
+      });
+    }
+
+    // Expose API
+    window.__attachRipple = attachRippleToSelector;
+    window.__createRippleElement = createRippleElement;
+
+    // Provide default ripple CSS if not present (inject once)
+    if (!document.getElementById('__ripple_styles')) {
+      var style = document.createElement('style');
+      style.id = '__ripple_styles';
+      style.innerHTML = '\n@keyframes ripple { to { transform: scale(1); opacity: 0 } }\n.ripple-target { position: relative; overflow: hidden; }\n.ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple 600ms linear; background: rgba(0,0,0,0.12); pointer-events: none; }\n';
+      document.head.appendChild(style);
+    }
+  })();
 })();
