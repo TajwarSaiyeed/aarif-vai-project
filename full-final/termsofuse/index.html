@@ -4312,6 +4312,7 @@
       </div>
     </div>
 
+    <script src="../js/global.js"></script>
     <script src="../nav.js"></script>
     <script src="../mobile-footer.js"></script>
     <script>
@@ -4567,6 +4568,73 @@
 
         buildMobileNavigation();
 
+        // Ensure ripples are attached to the generated sidebar links.
+        // Prefer central helper if present, otherwise attach a small local handler.
+        (function () {
+          var attach =
+            window && window.__attachRipple
+              ? window.__attachRipple
+              : function (selector) {
+                  var els = document.querySelectorAll(selector || "");
+                  if (!els) return;
+                  els.forEach(function (el) {
+                    if (!el.classList.contains("ripple-target"))
+                      el.classList.add("ripple-target");
+                    if (el.__ripple_attached) return;
+                    el.__ripple_attached = true;
+                    el.addEventListener(
+                      "click",
+                      function (e) {
+                        var x =
+                          e.clientX ||
+                          (e.touches && e.touches[0] && e.touches[0].clientX) ||
+                          0;
+                        var y =
+                          e.clientY ||
+                          (e.touches && e.touches[0] && e.touches[0].clientY) ||
+                          0;
+                        if (window && window.__createRippleElement) {
+                          try {
+                            window.__createRippleElement(el, x, y, {});
+                            return;
+                          } catch (err) {}
+                        }
+                        // local fallback
+                        try {
+                          var rect = el.getBoundingClientRect();
+                          var ripple = document.createElement("span");
+                          ripple.className = "ripple";
+                          var diameter =
+                            Math.max(rect.width, rect.height) * 1.2;
+                          ripple.style.width = ripple.style.height =
+                            diameter + "px";
+                          ripple.style.left =
+                            x - rect.left - diameter / 2 + "px";
+                          ripple.style.top = y - rect.top - diameter / 2 + "px";
+                          ripple.style.position = "absolute";
+                          ripple.style.borderRadius = "50%";
+                          ripple.style.pointerEvents = "none";
+                          ripple.style.background = "rgba(0,0,0,0.12)";
+                          ripple.style.animation = "ripple 600ms linear";
+                          if (!el.classList.contains("ripple-target"))
+                            el.classList.add("ripple-target");
+                          el.appendChild(ripple);
+                          ripple.addEventListener("animationend", function () {
+                            ripple.remove();
+                          });
+                        } catch (e) {
+                          /* silent */
+                        }
+                      },
+                      { passive: true }
+                    );
+                  });
+                };
+
+          attach("#sidebar-navigation-content a");
+          attach("#sidebar-navigation-content button");
+        })();
+
         // --- Mobile Specific Event Listeners ---
 
         // Mobile sidebar toggle functionality
@@ -4588,6 +4656,94 @@
           mobileSidebarOverlay.classList.remove("open");
         });
       });
+
+      // --- Mobile sidebar ripple initializer (delegated, resilient) ---
+      (function () {
+        function localCreateRipple(btn, clientX, clientY) {
+          try {
+            var rect = btn.getBoundingClientRect();
+            var ripple = document.createElement("span");
+            ripple.className = "ripple";
+            var diameter = Math.max(rect.width, rect.height) * 1.2;
+            ripple.style.width = ripple.style.height = diameter + "px";
+            ripple.style.left = clientX - rect.left - diameter / 2 + "px";
+            ripple.style.top = clientY - rect.top - diameter / 2 + "px";
+            ripple.style.position = "absolute";
+            ripple.style.borderRadius = "50%";
+            ripple.style.pointerEvents = "none";
+            ripple.style.background = "rgba(0,0,0,0.12)";
+            ripple.style.animation = "ripple 600ms linear";
+            if (!btn.classList.contains("ripple-target"))
+              btn.classList.add("ripple-target");
+            btn.appendChild(ripple);
+            ripple.addEventListener("animationend", function () {
+              ripple.remove();
+            });
+          } catch (e) {
+            /* silent */
+          }
+        }
+
+        function attachDelegatedSidebarRipple() {
+          try {
+            if (
+              !(
+                window.matchMedia &&
+                window.matchMedia("(max-width:1279px)").matches
+              )
+            )
+              return;
+            var container = document.querySelector(
+              "#sidebar-navigation-content"
+            );
+            if (!container) return;
+            if (container.__ripple_delegated) return; // already attached
+            container.__ripple_delegated = true;
+
+            container.addEventListener(
+              "click",
+              function (e) {
+                var tgt = e.target;
+                var el = tgt.closest && tgt.closest("a, button");
+                if (!el || !container.contains(el)) return;
+                var x =
+                  e.clientX ||
+                  (e.touches && e.touches[0] && e.touches[0].clientX) ||
+                  0;
+                var y =
+                  e.clientY ||
+                  (e.touches && e.touches[0] && e.touches[0].clientY) ||
+                  0;
+                if (window && window.__createRippleElement) {
+                  try {
+                    window.__createRippleElement(el, x, y, {});
+                  } catch (err) {
+                    localCreateRipple(el, x, y);
+                  }
+                } else {
+                  localCreateRipple(el, x, y);
+                }
+              },
+              { passive: true }
+            );
+          } catch (e) {
+            /* silent */
+          }
+        }
+
+        // run now, after load, and a short delayed retry to handle dynamic nav population
+        attachDelegatedSidebarRipple();
+        window.addEventListener("load", attachDelegatedSidebarRipple);
+        setTimeout(attachDelegatedSidebarRipple, 300);
+        var __termsofuse_ripple_resize;
+        window.addEventListener("resize", function () {
+          clearTimeout(__termsofuse_ripple_resize);
+          __termsofuse_ripple_resize = setTimeout(
+            attachDelegatedSidebarRipple,
+            120
+          );
+        });
+      })();
 
       function toggleMobileContent(titleElement) {
         if (window.innerWidth >= 768) return;

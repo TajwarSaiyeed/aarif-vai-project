@@ -2819,15 +2819,48 @@
           // keep existing targets from example
           attach(".nav-item-pill, #sort-btn, #filter-btn, .ripple-button");
 
-          // Attach ripple to sidebar navigation links/buttons only on mobile
+          // Attach ripple to sidebar navigation links/buttons only on mobile.
+          // Use event delegation so ripples work even if sidebar content is generated later.
           function attachSidebarIfMobile() {
             try {
               if (
                 window.matchMedia &&
                 window.matchMedia("(max-width:1279px)").matches
               ) {
-                attachRippleTo(
-                  "#sidebar-navigation-content a, #sidebar-navigation-content button"
+                var container = document.querySelector(
+                  "#sidebar-navigation-content"
+                );
+                if (!container) return;
+                if (container.__ripple_delegated) return; // already attached
+                container.__ripple_delegated = true;
+
+                container.addEventListener(
+                  "click",
+                  function (e) {
+                    var tgt = e.target;
+                    var el = tgt.closest && tgt.closest("a, button");
+                    if (!el || !container.contains(el)) return;
+
+                    var x =
+                      e.clientX ||
+                      (e.touches && e.touches[0] && e.touches[0].clientX) ||
+                      0;
+                    var y =
+                      e.clientY ||
+                      (e.touches && e.touches[0] && e.touches[0].clientY) ||
+                      0;
+
+                    // prefer central helper if available
+                    if (window && window.__createRippleElement) {
+                      window.__createRippleElement(el, x, y, {});
+                    } else {
+                      // fallback to local createRipple
+                      try {
+                        createRipple(el, x, y);
+                      } catch (err) {}
+                    }
+                  },
+                  { passive: true }
                 );
               }
             } catch (e) {
@@ -2837,10 +2870,12 @@
 
           // initial attach (if mobile)
           attachSidebarIfMobile();
+          // in case nav-home.js populates the sidebar after this runs
+          window.addEventListener("load", attachSidebarIfMobile);
+          setTimeout(attachSidebarIfMobile, 300);
 
           // also attempt to attach when viewport becomes mobile after resize
           window.addEventListener("resize", function () {
-            // small debounce
             clearTimeout(window.__ripple_resize_timer);
             window.__ripple_resize_timer = setTimeout(
               attachSidebarIfMobile,
