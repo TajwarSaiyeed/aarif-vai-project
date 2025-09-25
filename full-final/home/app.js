@@ -125,6 +125,84 @@ updateSlider();
 // Auto-play slider
 setInterval(nextSlide, 5000);
 
+// Reusable toast: showAddToBagToast(imageUrl, message)
+function showAddToBagToast(imageUrl, message = "Added to bag") {
+  // Prefer the central implementation alias to avoid accidental recursion
+  if (window && window.__central_showAddToBagToast) {
+    return window.__central_showAddToBagToast(imageUrl, message);
+  }
+  // fallback simple implementation
+  let toast = document.getElementById("global-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "global-toast";
+    toast.textContent = message;
+    Object.assign(toast.style, {
+      position: "fixed",
+      top: "20px",
+      right: "20px",
+      background: "black",
+      color: "white",
+      padding: "8px",
+      zIndex: 999999999,
+    });
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+}
+
+// Delegate Add to Bag clicks on this page to show toast (desktop + mobile)
+document.body.addEventListener("click", function (e) {
+  // prefer button or element that acts like a button
+  const el =
+    e.target.closest &&
+    e.target.closest(
+      "button, [role=button], .add-to-bag-btn, .add-to-bag, .add-to-cart"
+    );
+  if (!el) return;
+
+  // normalize candidate text
+  const text = ((el.textContent || el.innerText) + "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
+  const isAddToBagByText =
+    /add to bag|add to cart|move to bag|go to bag|add to bag/i.test(text);
+  const hasAddToBagClass =
+    el.classList &&
+    (el.classList.contains("add-to-bag-btn") ||
+      el.classList.contains("add-to-bag") ||
+      el.classList.contains("add-to-cart"));
+  const dataAction =
+    el.getAttribute && (el.getAttribute("data-action") || "").toLowerCase();
+
+  if (
+    isAddToBagByText ||
+    hasAddToBagClass ||
+    dataAction === "add-to-bag" ||
+    dataAction === "add-to-cart"
+  ) {
+    // try to find an image within the product card (walk up to a reasonable container)
+    const card =
+      el.closest(".c-css") ||
+      el.closest("[data-product-card]") ||
+      el.closest(".product-card") ||
+      el.closest("div");
+    const img = card && card.querySelector("img");
+    const src = (img && img.src) || "../img.jpeg";
+    // call central alias if present
+    if (window && window.__central_showAddToBagToast) {
+      window.__central_showAddToBagToast(src, "Added to bag");
+    } else {
+      showAddToBagToast(src, "Added to bag");
+    }
+    // allow other handlers but prevent accidental navigation if button was inside an anchor
+    e.preventDefault && e.preventDefault();
+    return;
+  }
+});
+
 const categories = [
   {
     title: "Mens",
@@ -590,7 +668,7 @@ function createProductCardHTML(item) {
    <!-- Add to Bag Button (outside product link) -->
    <div class="p-2">
      <button
-       class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add
+       class="add-to-bag-btn w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add
        to Bag</button>
    </div>
  </div>
@@ -654,7 +732,7 @@ function createMobileProductCardHTML(item) {
         
         <!-- Add to Bag Button (outside product link) -->
         <div class="p-2">
-          <button class="w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
+          <button class="add-to-bag-btn w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Add to Bag</button>
         </div>
       </div>
   `;

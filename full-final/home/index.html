@@ -36,6 +36,8 @@
     </style>
   </head>
   <body>
+    <!-- popup root for mobile product popup -->
+    <div id="panda-popup-root" aria-hidden="true"></div>
     <header
       class="bg-white z-10 fixed top-0 right-0 left-0 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)]"
     >
@@ -2727,6 +2729,34 @@
       class="fixed inset-0 bg-black/40 z-[99] hidden"
     ></div>
 
+    <script src="../js/global.js"></script>
+    <script>
+      (function () {
+        try {
+          // show popup on mobile once per 24h
+          if (
+            window.innerWidth <= 768 &&
+            window.createMobilePopup &&
+            !window.__pandaPopup.isDismissedWithin(24)
+          ) {
+            const root = document.getElementById("panda-popup-root");
+            const slides = [
+              {
+                image: "../img.jpeg",
+                title: "Fresh arrival",
+                subtitle: "Best sellers - limited",
+              },
+              {
+                image: "../perfume.jpg",
+                title: "Top rated",
+                subtitle: "Popular picks",
+              },
+            ];
+            window.createMobilePopup(root, slides);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script src="app.js"></script>
     <script>
       (function () {

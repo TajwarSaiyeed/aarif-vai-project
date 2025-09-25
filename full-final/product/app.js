@@ -102,6 +102,128 @@ document.addEventListener("DOMContentLoaded", () => {
   if (addToBagMobileBtn)
     addToBagMobileBtn.addEventListener("click", handleAddToBag);
 
+  // Reusable toast for product page
+  function showAddToBagToast(imageUrl, message = "Added to bag") {
+    // prefer the central alias to avoid recursion
+    if (window && window.__central_showAddToBagToast) {
+      return window.__central_showAddToBagToast(imageUrl, message);
+    }
+    // fallback
+    let toast = document.getElementById("global-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "global-toast";
+      toast.textContent = message;
+      Object.assign(toast.style, {
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        background: "black",
+        color: "white",
+        padding: "8px",
+        zIndex: 9999,
+      });
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  }
+
+  // wire other Add to Bag buttons on the product page (delegation)
+  // wire Add to Bag and Wishlist buttons (delegation)
+  document.body.addEventListener("click", function (e) {
+    const el =
+      e.target.closest &&
+      e.target.closest(
+        "button, [role=button], .add-to-bag-btn, .add-to-bag, .add-to-cart"
+      );
+    if (!el) return;
+
+    const text = ((el.textContent || el.innerText) + "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+    const isAddToBagByText =
+      /add to bag|add to cart|move to bag|go to bag|add to bag/i.test(text);
+    const hasAddToBagClass =
+      el.classList &&
+      (el.classList.contains("add-to-bag-btn") ||
+        el.classList.contains("add-to-bag") ||
+        el.classList.contains("add-to-cart"));
+    const dataAction =
+      el.getAttribute && (el.getAttribute("data-action") || "").toLowerCase();
+
+    // Add to bag
+    if (
+      isAddToBagByText ||
+      hasAddToBagClass ||
+      dataAction === "add-to-bag" ||
+      dataAction === "add-to-cart"
+    ) {
+      const card =
+        el.closest(".c-css") ||
+        el.closest("[data-product-card]") ||
+        el.closest(".product-card") ||
+        el.closest("div");
+      const img = card && card.querySelector("img");
+      const src = (img && img.src) || "../img.jpeg";
+      if (window && window.__central_showAddToBagToast) {
+        window.__central_showAddToBagToast(src, "Added to bag");
+      } else {
+        showAddToBagToast(src, "Added to bag");
+      }
+      e.preventDefault && e.preventDefault();
+      return;
+    }
+
+    // Wishlist button (could be desktop or mobile). Show wishlist modal
+    if (
+      text.includes("wishlist") ||
+      (el.classList && el.classList.contains("wishlist-btn"))
+    ) {
+      const card = el.closest(".c-css") || el.closest("div");
+      const img = card && card.querySelector("img");
+      const src = (img && img.src) || "../img.jpeg";
+      const modal = document.getElementById("wishlistToastModal");
+      const modalImg = document.getElementById("wishlistToastImage");
+      const modalText = document.getElementById("wishlistToastText");
+      if (modalImg) modalImg.src = src;
+      if (modalText) modalText.textContent = "Added to Wishlist";
+      if (modal) {
+        // ensure proper display classes (match add-to-bag toast behavior)
+        modal.classList.remove("hidden");
+        // remove translate-x-full then translate to 0 to animate in
+        setTimeout(() => {
+          modal.classList.remove("translate-x-full");
+          modal.classList.add("translate-x-0");
+        }, 50);
+
+        // Auto hide after 3s (match add-to-bag)
+        setTimeout(() => {
+          modal.classList.remove("translate-x-0");
+          modal.classList.add("translate-x-full");
+          setTimeout(() => {
+            modal.classList.add("hidden");
+          }, 300);
+        }, 3000);
+      }
+      return;
+    }
+  });
+
+  const closeWishlistToast = document.getElementById("closeWishlistToast");
+  const wishlistModalEl = document.getElementById("wishlistToastModal");
+  if (closeWishlistToast && wishlistModalEl) {
+    closeWishlistToast.addEventListener("click", function () {
+      // animate out then hide
+      wishlistModalEl.classList.remove("translate-x-0");
+      wishlistModalEl.classList.add("translate-x-full");
+      setTimeout(() => {
+        wishlistModalEl.classList.add("hidden");
+      }, 300);
+      document.body.style.overflow = "auto";
+    });
+  }
+
   // --- "See More" Specifications Toggle (Desktop) ---
   if (seeMoreSpecsBtn) {
     seeMoreSpecsBtn.addEventListener("click", () => {

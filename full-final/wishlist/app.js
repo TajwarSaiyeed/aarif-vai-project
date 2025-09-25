@@ -419,8 +419,11 @@ document.addEventListener("DOMContentLoaded", function () {
   <!-- Add to Bag Button (outside product link) -->
   <div class="p-2">
     <button
-      class="w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer">Move
-      to Bag</button>
+      class="move-to-bag-btn w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer"
+      data-product-id="${item.id}"
+    >
+      Move to Bag
+    </button>
   </div>
 </div>
 `;
@@ -483,11 +486,72 @@ document.addEventListener("DOMContentLoaded", function () {
         if (card) openMoveFromWishlistModal(card);
       });
 
+    // delegate clicks on Move to Bag buttons on cards
+    productsGridDesktop &&
+      productsGridDesktop.addEventListener("click", function (e) {
+        const moveBtn =
+          e.target.closest && e.target.closest(".move-to-bag-btn");
+        if (!moveBtn) return;
+        // find the outer wrapper we appended earlier
+        const wrapper =
+          moveBtn.closest(".product-wrapper") ||
+          moveBtn.closest(".c-css") ||
+          moveBtn.closest("div");
+        // get product image
+        const img =
+          wrapper && wrapper.querySelector && wrapper.querySelector("img");
+        const src = (img && img.src) || "../img.jpeg";
+
+        // prefer central alias
+        if (window && window.__central_showAddToBagToast) {
+          window.__central_showAddToBagToast(src, "Added to bag");
+        } else if (window.showAddToBagToast) {
+          window.showAddToBagToast(src, "Added to bag");
+        } else {
+          // minimal fallback: use any existing global toast
+          const t =
+            document.getElementById("global-toast") ||
+            document.getElementById("toast");
+          if (t) {
+            const imgEl = t.querySelector && t.querySelector("img");
+            if (imgEl && src) imgEl.src = src;
+            const txt = t.querySelector && t.querySelector("span");
+            if (txt) txt.textContent = "Added to bag";
+            t.classList.remove("hidden");
+            setTimeout(() => {
+              t.classList.add("translate-x-full");
+              setTimeout(() => t.classList.add("hidden"), 300);
+            }, 3000);
+          }
+        }
+
+        // remove the card from wishlist
+        if (wrapper && wrapper.remove) wrapper.remove();
+
+        e.preventDefault && e.preventDefault();
+        e.stopPropagation && e.stopPropagation();
+      });
+
     // Remove from wishlist action
     removeBtn &&
       removeBtn.addEventListener("click", function () {
         if (activeCard) {
           activeCard.remove();
+          // show toast
+          try {
+            const img =
+              activeCard.querySelector && activeCard.querySelector("img");
+            const src = (img && img.src) || "../img.jpeg";
+            if (window.showAddToBagToast) {
+              window.showAddToBagToast(src, "Removed from wishlist");
+            } else {
+              // create simple toast fallback
+              const t = document.getElementById("global-toast");
+              if (t) {
+                t.querySelector("span").textContent = "Removed from wishlist";
+              }
+            }
+          } catch (err) {}
         }
         closeMoveFromWishlistModal();
       });
@@ -497,6 +561,23 @@ document.addEventListener("DOMContentLoaded", function () {
       moveToBagBtn.addEventListener("click", function () {
         if (activeCard) {
           // Optionally, copy item data and add to bag logic here
+          const img =
+            activeCard.querySelector && activeCard.querySelector("img");
+          const src = (img && img.src) || "../img.jpeg";
+          if (window.showAddToBagToast) {
+            window.showAddToBagToast(src, "Added to bag");
+          } else {
+            // minimal fallback
+            const t = document.getElementById("global-toast");
+            if (t) {
+              const imgEl = t.querySelector("img");
+              if (imgEl && src) imgEl.src = src;
+              const txt = t.querySelector("span");
+              if (txt) txt.textContent = "Added to bag";
+              t.classList.remove("hidden");
+              setTimeout(() => t.classList.add("hidden"), 3000);
+            }
+          }
           activeCard.remove();
         }
         closeMoveFromWishlistModal();
