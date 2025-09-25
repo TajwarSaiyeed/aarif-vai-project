@@ -1298,29 +1298,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const removeGiftDesktopBtn = document.getElementById("removeGiftDesktopBtn");
   const removeGiftMobileBtn = document.getElementById("removeGiftMobileBtn");
 
-  applyGiftDesktopBtn.addEventListener("click", function () {
-    giftAppliedDesktop.classList.add("lg:block");
-    giftFormDesktop.classList.remove("lg:block");
-    giftFormMobile.classList.add("hidden");
-    giftAppliedMobile.classList.remove("hidden");
-    closeGiftModal();
-  });
+  if (applyGiftDesktopBtn) {
+    applyGiftDesktopBtn.addEventListener("click", function () {
+      giftAppliedDesktop.classList.add("lg:block");
+      giftFormDesktop.classList.remove("lg:block");
+      giftFormMobile.classList.add("hidden");
+      giftAppliedMobile.classList.remove("hidden");
+      closeGiftModal();
+    });
+  }
 
-  removeGiftDesktopBtn.addEventListener("click", function () {
-    giftAppliedDesktop.classList.remove("lg:block");
-    giftFormDesktop.classList.add("lg:block");
-    giftFormMobile.classList.remove("hidden");
-    giftAppliedMobile.classList.add("hidden");
-    closeGiftModal();
-  });
+  if (removeGiftDesktopBtn) {
+    removeGiftDesktopBtn.addEventListener("click", function () {
+      giftAppliedDesktop.classList.remove("lg:block");
+      giftFormDesktop.classList.add("lg:block");
+      giftFormMobile.classList.remove("hidden");
+      giftAppliedMobile.classList.add("hidden");
+      closeGiftModal();
+    });
+  }
 
-  removeGiftMobileBtn.addEventListener("click", function () {
-    giftAppliedMobile.classList.add("hidden");
-    giftFormMobile.classList.remove("hidden");
-    giftFormDesktop.classList.add("lg:block");
-    giftAppliedDesktop.classList.remove("lg:block");
-    closeGiftModal();
-  });
+  if (removeGiftMobileBtn) {
+    removeGiftMobileBtn.addEventListener("click", function () {
+      giftAppliedMobile.classList.add("hidden");
+      giftFormMobile.classList.remove("hidden");
+      giftFormDesktop.classList.add("lg:block");
+      giftAppliedDesktop.classList.remove("lg:block");
+      closeGiftModal();
+    });
+  }
 
   const editGiftDesktopBtn = document.getElementById("editGiftDesktopBtn");
   const editGiftMobileBtn = document.getElementById("editGiftMobileBtn");

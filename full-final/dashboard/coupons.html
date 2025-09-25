@@ -565,5 +565,39 @@
         })();
       });
     </script>
+
+    <!-- ripple-init: attach sidebar ripples on mobile -->
+    <script>
+      (function () {
+        function ensure(cb) {
+          if (window.__attachRipple) return cb();
+          var s = document.createElement("script");
+          s.src = "../js/global.js";
+          s.onload = cb;
+          s.onerror = cb;
+          document.head.appendChild(s);
+        }
+        ensure(function () {
+          try {
+            var attach = window.__attachRipple;
+            if (!attach) return;
+            var mq = window.matchMedia("(max-width:1279px)");
+            function apply() {
+              if (mq.matches)
+                attach(
+                  "#sidebar-navigation-content a, #sidebar-navigation-content button",
+                  { color: "rgba(0,0,0,0.08)" }
+                );
+            }
+            apply();
+            var t;
+            window.addEventListener("resize", function () {
+              clearTimeout(t);
+              t = setTimeout(apply, 120);
+            });
+          } catch (e) {}
+        });
+      })();
+    </script>
   </body>
 </html>
