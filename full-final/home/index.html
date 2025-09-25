@@ -2815,6 +2815,35 @@
           attachRippleTo(
             ".nav-item-pill, #sort-btn, #filter-btn, .ripple-button"
           );
+
+          // Attach ripple to sidebar navigation links/buttons only on mobile
+          function attachSidebarIfMobile() {
+            try {
+              if (
+                window.matchMedia &&
+                window.matchMedia("(max-width:1279px)").matches
+              ) {
+                attachRippleTo(
+                  "#sidebar-navigation-content a, #sidebar-navigation-content button"
+                );
+              }
+            } catch (e) {
+              // silent fallback
+            }
+          }
+
+          // initial attach (if mobile)
+          attachSidebarIfMobile();
+
+          // also attempt to attach when viewport becomes mobile after resize
+          window.addEventListener("resize", function () {
+            // small debounce
+            clearTimeout(window.__ripple_resize_timer);
+            window.__ripple_resize_timer = setTimeout(
+              attachSidebarIfMobile,
+              120
+            );
+          });
         }
 
         if (document.readyState === "loading") {
