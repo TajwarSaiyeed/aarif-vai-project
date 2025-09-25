@@ -652,7 +652,7 @@
         navLinks.forEach((a) => {
           const href = a.getAttribute("href");
           console.log(href, path);
-          if (href === path || path == "") {
+          if (href === path && path == "") {
             a.classList.add("bg-[#FF3F6C]", "font-semibold", "text-white");
             a.classList.remove("bg-gray-100");
           } else if (href === "index.html" && path === "") {
