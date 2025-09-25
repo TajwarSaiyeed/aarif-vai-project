@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div
   class="c-css bg-white w-full  group hover:shadow-xl overflow-hidden pb-4 md:pb-3 relative text-center  transition-shadow duration-300 bg-white border border-gray-200 rounded-lg">
   <!-- Remove from wishlist -->
-  <button class="absolute top-1 right-1 text-gray-500 hover:text-red-500 transition-colors duration-200 rounded-full p-1 z-5 border border-gray-300">
+  <button data-id="${item.id}" class="wishlist-remove-btn absolute top-1 right-1 text-gray-500 hover:text-red-500 transition-colors duration-200 rounded-full p-1 z-5 border border-gray-300" aria-label="Remove from wishlist">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
   </button>
   <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
@@ -431,7 +431,81 @@ document.addEventListener("DOMContentLoaded", function () {
     products.forEach((product) => {
       const productCard = document.createElement("div");
       productCard.innerHTML = createProductCardHTML(product);
+      // mark the outer wrapper so we can remove the whole wrapper (prevents empty gaps)
+      productCard.classList.add("product-wrapper");
+      productCard.setAttribute("data-product-id", product.id);
       productsGridDesktop.appendChild(productCard);
     });
   }
+
+  // Modal handling for wishlist remove/move actions
+  (function () {
+    const modal = document.getElementById("moveFromWishlistModal");
+    const modalImg = document.getElementById("wishlistModalProductImage");
+    const removeBtn = document.getElementById("wishlistModalRemoveButton");
+    const moveToBagBtn = document.getElementById(
+      "wishlistModalMoveToBagButton"
+    );
+    let activeCard = null;
+
+    function openMoveFromWishlistModal(card) {
+      if (!modal) return;
+      // ensure we remove the outer wrapper element (the one appended to the grid)
+      const wrapper =
+        card.closest(".product-wrapper") || card.parentElement || card;
+      activeCard = wrapper;
+      // try to find the image inside the card first, fallback to wrapper
+      const img =
+        card.querySelector("img") || (wrapper && wrapper.querySelector("img"));
+      if (modalImg && img) modalImg.src = img.src || "";
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeMoveFromWishlistModal() {
+      if (!modal) return;
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      activeCard = null;
+    }
+
+    // expose for inline onclick on the modal close button
+    window.closeMoveFromWishlistModal = closeMoveFromWishlistModal;
+
+    // delegate clicks on remove buttons
+    productsGridDesktop &&
+      productsGridDesktop.addEventListener("click", function (e) {
+        const btn =
+          e.target.closest && e.target.closest(".wishlist-remove-btn");
+        if (!btn) return;
+        // find the product card container (the .c-css element)
+        const card = btn.closest(".c-css") || btn.closest("div");
+        if (card) openMoveFromWishlistModal(card);
+      });
+
+    // Remove from wishlist action
+    removeBtn &&
+      removeBtn.addEventListener("click", function () {
+        if (activeCard) {
+          activeCard.remove();
+        }
+        closeMoveFromWishlistModal();
+      });
+
+    // Move to bag action - here we simply remove from wishlist and could add to bag logic
+    moveToBagBtn &&
+      moveToBagBtn.addEventListener("click", function () {
+        if (activeCard) {
+          // Optionally, copy item data and add to bag logic here
+          activeCard.remove();
+        }
+        closeMoveFromWishlistModal();
+      });
+
+    // close modal when clicking overlay
+    modal &&
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeMoveFromWishlistModal();
+      });
+  })();
 });
