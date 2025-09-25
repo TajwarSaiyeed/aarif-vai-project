@@ -646,10 +646,11 @@
           });
         }
         const path = location.pathname.split("/").pop() || "index.html";
+
         const navLinks = document.querySelectorAll("aside nav a");
         navLinks.forEach((a) => {
           const href = a.getAttribute("href");
-          if (href === path) {
+          if (href === path || path == "") {
             a.classList.add("bg-[#FF3F6C]", "font-semibold", "text-white");
             a.classList.remove("bg-gray-100");
           } else if (href === "index.html" && path === "") {
