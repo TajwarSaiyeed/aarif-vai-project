@@ -645,14 +645,57 @@
       </div>
     </section>
 
-    <!-- new arrivals -->
+    <!-- Top Sellers -->
     <section class="bg-white pt-7 pb-5 md:pt-11 md:pb-8 xl:py-11 xl:pb-14">
       <div class="section px-10 xl:px-0">
-        <h2
-          class="text-lg sm:text-xl md:text-[25px] mb-6 xl:mb-7 font-bold uppercase text-center text-gray-800 sm:text-left"
+        <div class="flex items-start justify-center sm:justify-between">
+          <h2
+            class="text-lg sm:text-xl md:text-[25px] mb-6 xl:mb-7 font-bold uppercase text-center text-gray-800 sm:text-left"
+          >
+            Top sellers
+          </h2>
+          <button
+            class="py-2 px-4 border hidden md:block font-bold uppercase text-[#c53c5d] shadow-lg hover:shadow-md bg-white rounded-full cursor-pointer"
+          >
+            View All
+          </button>
+        </div>
+
+        <div class="my-4"></div>
+        <div
+          class="hidden xl:grid grid-cols-3 lg:grid-cols-5 place-items-between gap-10 w-full"
+          id="products-grid-desktop1"
         >
-          New Arrivals
-        </h2>
+          <!-- Product cards will be generated here for desktop -->
+        </div>
+      </div>
+
+      <div class="xl:hidden relative">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 pl-5 pb-5" id="products-slider-mobile1">
+            <!-- Product cards will be generated here for mobile -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <div class="h-2 mb-5 bg-[#f4f4f5] block xl:hidden"></div> -->
+
+    <!-- new arrivals -->
+    <section class="bg-[#FF3F6C]/10 pb-7 pt-10 md:pt-10 md:pb-11 xl:pb-14">
+      <div class="section px-10 xl:px-0">
+        <div class="flex items-start justify-center sm:justify-between">
+          <h2
+            class="text-lg sm:text-xl md:text-[25px] mb-6 xl:mb-7 font-bold uppercase text-center text-gray-800 sm:text-left"
+          >
+            New Arrivals
+          </h2>
+          <button
+            class="py-2 px-4 border hidden md:block font-bold uppercase text-[#c53c5d] shadow-lg hover:shadow-md bg-white rounded-full cursor-pointer"
+          >
+            View All
+          </button>
+        </div>
 
         <!-- Product Grid - Desktop -->
         <div
@@ -667,34 +710,6 @@
       <div class="xl:hidden relative">
         <div class="overflow-x-auto scrollbar-hide">
           <div class="flex gap-4 pl-5 pb-5" id="products-slider-mobile">
-            <!-- Product cards will be generated here for mobile -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="h-2 mb-5 bg-[#f4f4f5] block xl:hidden"></div>
-
-    <section class="bg-white pb-7 md:pb-11 xl:pb-14">
-      <div class="section px-10 xl:px-0">
-        <h2
-          class="text-lg sm:text-xl md:text-[25px] mb-6 xl:mb-7 font-bold uppercase text-center text-gray-800 sm:text-left"
-        >
-          Top sellers
-        </h2>
-
-        <div class="my-4"></div>
-        <div
-          class="hidden xl:grid grid-cols-3 lg:grid-cols-5 place-items-between gap-10 w-full"
-          id="products-grid-desktop1"
-        >
-          <!-- Product cards will be generated here for desktop -->
-        </div>
-      </div>
-
-      <div class="xl:hidden relative">
-        <div class="overflow-x-auto scrollbar-hide">
-          <div class="flex gap-4 pl-5 pb-5" id="products-slider-mobile1">
             <!-- Product cards will be generated here for mobile -->
           </div>
         </div>
@@ -733,7 +748,7 @@
 
     <!-- exclusive offers -->
 
-    <div class="lg:hidden !bg-[#FF3F6C]/10 py-5 mt-4">
+    <div class="lg:hidden !bg-[#FF3F6C]/10 pt-5 mt-4">
       <div
         class="font-semibold mb-4 flex items-center gap-3 text-[#c53c5d] pl-4"
       >
@@ -755,7 +770,7 @@
       </div>
     </div>
 
-    <div class="!py-10 !bg-[#FF3F6C]/10">
+    <div class="!pt-10 !bg-[#FF3F6C]/10">
       <section class="section flex-col gap-6 hidden lg:flex">
         <div class="flex flex-col gap-4">
           <h3 class="text-lg font-semibold text-[#c53c5d] uppercase">
