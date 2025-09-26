@@ -114,21 +114,22 @@ body {
   overflow-y: auto;
 }
 
-#filter-close-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
+/* Header Clear All button in filter modal */
+#header-clear-btn {
+  background: transparent;
   border: none;
-  background: none;
   cursor: pointer;
-  color: #666;
+  padding: 6px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-#filter-close-btn:hover {
-  color: #333;
+#header-clear-btn:active,
+#header-clear-btn:focus {
+  outline: none;
 }
+
+/* Bottom action bar - Close button uses the same utility styles as other buttons */
 
 /* Filter modal two-part layout styling */
 .filter-content {

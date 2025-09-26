@@ -1077,28 +1077,20 @@
             class="flex items-center justify-between border-b border-gray-200 pb-4 mb-4"
           >
             <h2 class="text-lg font-bold text-gray-800">Filter</h2>
-            <button
-              class="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              id="filter-close-btn"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
+            <div class="flex items-center gap-3">
+              <button
+                id="clear-filters-btn"
+                class="uppercase font-bold text-[#ff3f6c] text-md hover:text-[#e84a7a]"
               >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
+                Clear All
+              </button>
+            </div>
           </div>
 
           <!-- Filter content with left-right layout -->
           <div class="filter-content flex h-full">
             <!-- Left side - Categories -->
-            <div class="filter-categories w-1/2 border-r border-gray-200 pr-4">
+            <div class="filter-categories w-1/4 border-r border-gray-200 pr-4">
               <div class="space-y-2">
                 <div
                   class="filter-category-item p-3 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors border-l-4 border-transparent"
@@ -1213,7 +1205,7 @@
             </div>
 
             <!-- Right side - Subcategories/Options -->
-            <div class="filter-options w-1/2 pl-4">
+            <div class="filter-options w-3/4 pl-4">
               <div id="filter-options-content" class="space-y-3 pb-20">
                 <!-- Default state -->
                 <div
@@ -1446,9 +1438,9 @@
             <div class="flex gap-3">
               <button
                 class="flex-1 border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors cursor-pointer"
-                id="clear-filters-btn"
+                id="filter-close-btn"
               >
-                Clear All
+                Close
               </button>
               <button
                 class="flex-1 bg-pink-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-pink-600 transition-colors"
