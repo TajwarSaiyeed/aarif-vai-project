@@ -178,7 +178,7 @@ body {
 
 /* Popup visual tweaks */
 #panda-popup {
-  max-width: 260px;
+  max-width: 300px;
   min-height: 420px;
 }
 #panda-popup .product-image {
