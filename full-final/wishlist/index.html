@@ -8,108 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="stylesheet" href="../global.css" />
-
     <link rel="stylesheet" href="../footer.css" />
-    <style>
-      /* Mobile Sidebar Overlay Styles */
-      #mobile-sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        visibility: hidden;
-        opacity: 0;
-        transition: all 0.3s ease-in-out;
-      }
-
-      #mobile-sidebar-overlay.open {
-        visibility: visible;
-        opacity: 1;
-      }
-
-      #mobile-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 75%;
-        height: 100%;
-        background-color: white;
-        z-index: 1001;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-        overflow-y: auto;
-      }
-
-      #mobile-sidebar.open {
-        transform: translateX(0);
-      }
-
-      /* Mobile navigation specific styles */
-      .mobile-nav-header {
-        background-color: #f5f5f5;
-        padding: 1rem;
-        border-bottom: 1px solid #e5e5e5;
-      }
-
-      .mobile-nav-content {
-        padding: 0;
-      }
-
-      /* Accordion styles for mobile sidebar */
-      .accordion-item {
-        border-bottom: 1px solid #e5e5e5;
-      }
-
-      .accordion-header {
-        padding: 1rem;
-        background-color: white;
-        border: none;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        font-weight: 600;
-        color: #282c3f;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out;
-      }
-
-      .accordion-content.open {
-        max-height: 500px;
-      }
-
-      /* Static links styling for mobile */
-      .mobile-static-links {
-        padding: 1rem;
-        border-bottom: 1px solid #e5e5e5;
-      }
-
-      .mobile-static-links a {
-        display: block;
-        padding: 0.5rem 0;
-        color: #3e4152;
-        text-decoration: none;
-        font-size: 0.875rem;
-      }
-
-      .mobile-static-links a:hover {
-        font-weight: 600;
-      }
-      .section {
-        max-width: 1685px;
-        margin: 0 auto;
-        padding: 0 50px;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <header
@@ -382,7 +282,7 @@
     </header>
 
     <!-- main div here -->
-    <main class="mt-15 xl:mt-24 max-w-[1685px] mx-auto">
+    <main class="mt-15 xl:mt-24 max-w-[1396px] mx-auto">
       <div class="text-base px-5 hidden xl:block">
         <b>My Wishlist</b>
         <span class="ml-2">13 items</span>
