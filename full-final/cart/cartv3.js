@@ -982,7 +982,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <!-- Product Image -->
       <div class="relative w-full h-full aspect-[1] skeleton-loading bg-white p-[10px]">
         <img src="../img.jpeg" alt="${item.title} ${item.description}"
-          class="w-full h-full object-cover object-top transition-opacity duration-300" loading="lazy"
+          class="w-full h-full object-contain object-top transition-opacity duration-300" loading="lazy"
             onload="this.parentNode.classList.remove('skeleton-loading')" 
           />
       </div>
