@@ -978,9 +978,15 @@
 
     <!-- exclusive offers -->
 
-    <div class="lg:hidden !bg-[#FF3F6C]/10 pt-5 mt-4">
+    <div class="lg:hidden bg-[#ff3f6c] py-6">
       <div
-        class="font-semibold mb-4 flex items-center gap-3 text-[#c53c5d] pl-4"
+        class="font-semibold mb-4 flex items-center gap-3 text-white pl-4"
+        style="
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-bottom: 12px;
+          border-bottom: 3px solid #f6cad4;
+        "
       >
         <span> Exclusive Offers </span>
       </div>
@@ -1000,10 +1006,13 @@
       </div>
     </div>
 
-    <div class="lg:!py-10 !pt-10 !bg-[#FF3F6C]/10">
+    <div class="lg:!py-6 !py-6 bg-[#ff3f6c]/10">
       <section class="section flex-col gap-6 hidden lg:flex">
         <div class="flex flex-col gap-4">
-          <h3 class="text-lg font-semibold text-[#c53c5d] uppercase">
+          <h3
+            class="text-lg font-semibold uppercase text-[#3e4152]"
+            style="margin-top: 0; margin-bottom: 0; padding-bottom: 12px"
+          >
             Exclusive Offers
           </h3>
           <div
@@ -3465,13 +3474,13 @@
           categoryButtons.forEach((buttonText, index) => {
             const button = document.createElement("button");
             button.className =
-              "py-2 px-4 border border-[#ff3f6c] bg-white text-gray-700 rounded-full cursor-pointer category-btn";
+              "py-2 px-4 border border-[#f6cad4] bg-white text-gray-700 rounded-full cursor-pointer category-btn";
             button.textContent = buttonText;
 
             // Make the first button (All) active by default
             if (index === 0) {
               button.classList.remove(
-                "border-[#ff3f6c]",
+                "border-[#f6cad4]",
                 "bg-white",
                 "text-gray-700"
               );
@@ -3494,13 +3503,13 @@
           categoryButtons.forEach((buttonText, index) => {
             const button = document.createElement("button");
             button.className =
-              "py-2 px-4 border border-[#ff3f6c] bg-white text-gray-700 rounded-full text-sm whitespace-nowrap cursor-pointer category-btn mobile-category-btn";
+              "py-2 px-4 border border-[#f6cad4] bg-white text-gray-700 rounded-full text-sm whitespace-nowrap cursor-pointer category-btn mobile-category-btn";
             button.textContent = buttonText;
 
             // Make the first button (All) active by default
             if (index === 0) {
               button.classList.remove(
-                "border-[#ff3f6c]",
+                "border-[#f6cad4",
                 "bg-white",
                 "text-gray-700"
               );
