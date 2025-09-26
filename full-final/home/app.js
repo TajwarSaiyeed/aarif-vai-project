@@ -206,32 +206,27 @@ document.body.addEventListener("click", function (e) {
 const categories = [
   {
     title: "Mens",
-    image: "https://picsum.photos/300/400?random=12",
+    image: "./c1.png",
   },
   {
     title: "Womens",
-    image:
-      "https://cdn1.iconfinder.com/data/icons/wedding-cartoon/512/sim2329-512.png",
+    image: "./c2.png",
   },
   {
     title: "Kids Perfume",
-    image:
-      "https://static.vecteezy.com/system/resources/thumbnails/007/479/888/small/icon-coat-suitable-for-men-accessories-symbol-long-shadow-style-simple-design-editable-design-template-simple-symbol-illustration-vector.jpg",
+    image: "./c3.png",
   },
   {
     title: "T-Shirts",
-    image:
-      "https://static.vecteezy.com/system/resources/previews/037/722/127/non_2x/coverall-clothes-icon-vector.jpg",
+    image: "./c4.png",
   },
   {
     title: "Shoes",
-    image:
-      "https://static.vecteezy.com/system/resources/thumbnails/007/479/888/small/icon-coat-suitable-for-men-accessories-symbol-long-shadow-style-simple-design-editable-design-template-simple-symbol-illustration-vector.jpg",
+    image: "./c5.png",
   },
   {
     title: "Watches",
-    image:
-      "https://static.vecteezy.com/system/resources/previews/037/722/127/non_2x/coverall-clothes-icon-vector.jpg",
+    image: "./c6.png",
   },
 ];
 
@@ -239,7 +234,7 @@ const categories = [
 function createCategoryCardHTML(category) {
   return `
           <div class="rounded-lg p-4 text-center flex-shrink-0 mobile-category-card">
-            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto skeleton-loading rounded-lg flex items-center justify-start mb-3 sm:mb-8 relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="w-20 h-20 sm:w-40 sm:h-40 mx-auto bg-[#FF3F6C]/10 rounded-lg flex items-center justify-start mb-3 sm:mb-8 relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <img
                 src="${category.image}"
                 alt="${category.title}"
