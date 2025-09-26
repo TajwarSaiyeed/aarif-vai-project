@@ -2343,6 +2343,42 @@ document.addEventListener("DOMContentLoaded", function () {
     if (defaultFilterMessage) {
       defaultFilterMessage.classList.remove("hidden");
     }
+
+    // Delegate checkbox change events inside option groups to update globalFilters
+    if (filterModal) {
+      filterModal.addEventListener("change", function (e) {
+        const input = e.target;
+        if (!input || input.type !== "checkbox") return;
+        const group = input.closest(".filter-option-group");
+        if (!group) return;
+
+        const optionKey = group.getAttribute("data-options");
+        const value = input.value;
+        const normalized = value; // already normalized in HTML values
+
+        let filterArrayKey = null;
+        if (optionKey === "color") filterArrayKey = "colors";
+        else if (optionKey === "bundles") filterArrayKey = "bundles";
+        else if (optionKey === "country-of-origin")
+          filterArrayKey = "countryOfOrigin";
+        else if (optionKey === "more-filters" || optionKey === "occasion")
+          filterArrayKey = "moreFilters";
+
+        if (!filterArrayKey) return;
+
+        if (input.checked) {
+          if (!globalFilters[filterArrayKey].includes(normalized)) {
+            globalFilters[filterArrayKey].push(normalized);
+          }
+        } else {
+          globalFilters[filterArrayKey] = globalFilters[filterArrayKey].filter(
+            (v) => v !== normalized
+          );
+        }
+
+        applyFilters();
+      });
+    }
   }
 
   // Initialize all filters

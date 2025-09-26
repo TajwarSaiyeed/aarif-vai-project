@@ -1201,6 +1201,98 @@
                     </svg>
                   </div>
                 </div>
+                <!-- New filter categories -->
+                <div
+                  class="filter-category-item p-3 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors border-l-4 border-transparent"
+                  data-category="color"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-gray-800">Color</span>
+                    <svg
+                      class="w-4 h-4 text-gray-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                <div
+                  class="filter-category-item p-3 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors border-l-4 border-transparent"
+                  data-category="bundles"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-gray-800">Bundles</span>
+                    <svg
+                      class="w-4 h-4 text-gray-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                <div
+                  class="filter-category-item p-3 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors border-l-4 border-transparent"
+                  data-category="country-of-origin"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-gray-800"
+                      >Country of Origin</span
+                    >
+                    <svg
+                      class="w-4 h-4 text-gray-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                <div
+                  class="filter-category-item p-3 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors border-l-4 border-transparent"
+                  data-category="more-filters"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-gray-800">More Filters</span>
+                    <svg
+                      class="w-4 h-4 text-gray-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                <div
+                  class="filter-category-item p-3 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors border-l-4 border-transparent"
+                  data-category="occasion"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-gray-800">Occasion</span>
+                    <svg
+                      class="w-4 h-4 text-gray-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1424,6 +1516,209 @@
                       <div class="flex items-center">
                         <span class="text-gray-700">2★ & above</span>
                       </div>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Color options (hidden by default) -->
+                <div class="filter-option-group hidden" data-options="color">
+                  <h3 class="font-semibold text-gray-800 mb-3">Colors</h3>
+                  <div class="space-y-2">
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="black"
+                      />
+                      <span class="text-gray-700">Black</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="white"
+                      />
+                      <span class="text-gray-700">White</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="blue"
+                      />
+                      <span class="text-gray-700">Blue</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="green"
+                      />
+                      <span class="text-gray-700">Green</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Bundles options (hidden by default) -->
+                <div class="filter-option-group hidden" data-options="bundles">
+                  <h3 class="font-semibold text-gray-800 mb-3">Bundles</h3>
+                  <div class="space-y-2">
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="combo-pack"
+                      />
+                      <span class="text-gray-700">Combo Pack</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="value-pack"
+                      />
+                      <span class="text-gray-700">Value Pack</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="gift-set"
+                      />
+                      <span class="text-gray-700">Gift Set</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Country of Origin options (hidden by default) -->
+                <div
+                  class="filter-option-group hidden"
+                  data-options="country-of-origin"
+                >
+                  <h3 class="font-semibold text-gray-800 mb-3">
+                    Country of Origin
+                  </h3>
+                  <div class="space-y-2">
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="india"
+                      />
+                      <span class="text-gray-700">India</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="china"
+                      />
+                      <span class="text-gray-700">China</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="vietnam"
+                      />
+                      <span class="text-gray-700">Vietnam</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- More Filters options (hidden by default) -->
+                <div
+                  class="filter-option-group hidden"
+                  data-options="more-filters"
+                >
+                  <h3 class="font-semibold text-gray-800 mb-3">More Filters</h3>
+                  <div class="space-y-2">
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="collar"
+                      />
+                      <span class="text-gray-700">Collar</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="fabric"
+                      />
+                      <span class="text-gray-700">Fabric</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="fit"
+                      />
+                      <span class="text-gray-700">Fit</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Occasion options (hidden by default) -->
+                <div class="filter-option-group hidden" data-options="occasion">
+                  <h3 class="font-semibold text-gray-800 mb-3">Occasion</h3>
+                  <div class="space-y-2">
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="casual"
+                      />
+                      <span class="text-gray-700">Casual</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="party"
+                      />
+                      <span class="text-gray-700">Party</span>
+                    </label>
+                    <label
+                      class="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded"
+                    >
+                      <input
+                        type="checkbox"
+                        class="mr-3 accent-pink-500"
+                        value="formal"
+                      />
+                      <span class="text-gray-700">Formal</span>
                     </label>
                   </div>
                 </div>
