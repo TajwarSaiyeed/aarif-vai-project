@@ -228,6 +228,26 @@ const categories = [
     title: "Watches",
     image: "./c6.png",
   },
+  {
+    title: "Bags",
+    image: "./c7.png",
+  },
+  {
+    title: "Sunglasses",
+    image: "./c1.png",
+  },
+  {
+    title: "Hats",
+    image: "./c2.png",
+  },
+  {
+    title: "Jackets",
+    image: "./c3.png",
+  },
+  {
+    title: "Jeans",
+    image: "./c4.png",
+  },
 ];
 
 // Function to create category card HTML with responsive sizing
@@ -285,10 +305,19 @@ if (categoryMobileSlider) {
 // Generate slider cards for all devices
 const categorySlider = document.querySelector("#category-slider");
 if (categorySlider) {
-  categories.forEach((category) => {
+  categories.slice(0, 6).forEach((category) => {
     const categoryCard = document.createElement("div");
     categoryCard.innerHTML = createCategoryCardHTML(category);
     categorySlider.appendChild(categoryCard);
+  });
+}
+
+const featuredCategories = document.querySelector("#featured-categories");
+if (featuredCategories) {
+  categories.forEach((category) => {
+    const categoryCard = document.createElement("div");
+    categoryCard.innerHTML = createCategoryCardHTML(category);
+    featuredCategories.appendChild(categoryCard);
   });
 }
 
@@ -297,7 +326,24 @@ if (categorySliderMobile) {
   categories.forEach((category) => {
     const categoryCard = document.createElement("div");
     categoryCard.innerHTML = createCategoryCardHTML(category);
+    if (category === categories[categories.length - 1]) {
+      categoryCard.classList.add("pr-10");
+    }
     categorySliderMobile.appendChild(categoryCard);
+  });
+}
+
+const featuredCategoriesSliderMobile = document.querySelector(
+  "#featured-categories-slider-mobile"
+);
+if (featuredCategoriesSliderMobile) {
+  categories.forEach((category) => {
+    const categoryCard = document.createElement("div");
+    categoryCard.innerHTML = createCategoryCardHTML(category);
+    if (category === categories[categories.length - 1]) {
+      categoryCard.classList.add("pr-10");
+    }
+    featuredCategoriesSliderMobile.appendChild(categoryCard);
   });
 }
 
