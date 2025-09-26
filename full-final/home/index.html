@@ -731,6 +731,50 @@
       </section>
     </section>
 
+    <!-- exclusive offers -->
+
+    <div class="lg:hidden bg-[#fff8f8] py-5 mt-4">
+      <div
+        class="font-semibold mb-4 flex items-center gap-3 text-gray-800 pl-4"
+      >
+        <span> Exclusive Offers </span>
+      </div>
+
+      <div
+        class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar pl-4"
+        id="mobileExclusiveCategoryContainer"
+      >
+        <!-- Dynamic category buttons will be created by JavaScript -->
+      </div>
+
+      <div
+        class="flex gap-4 overflow-x-auto hide-scrollbar pl-4"
+        id="mobileExclusiveProductsContainer"
+      >
+        <!-- Dynamic product cards will be created by JavaScript -->
+      </div>
+    </div>
+
+    <div class="!py-10 !bg-[#FF3F6C]/30">
+      <section class="section flex-col gap-6 hidden lg:flex">
+        <div class="flex flex-col gap-4">
+          <h3 class="text-lg font-semibold text-gray-800">Exclusive Offers</h3>
+          <div
+            class="flex gap-4 flex-wrap"
+            id="desktopExclusiveCategoryContainer"
+          >
+            <!-- Dynamic buttons will be created by JavaScript -->
+          </div>
+        </div>
+        <div
+          id="desktopExclusiveProductsGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+        >
+          <!-- Product cards will be injected here -->
+        </div>
+      </section>
+    </div>
+
     <!-- show by notes -->
     <section class="pt-7 pb-9 md:pt-11 md:pb-13 bg-[#ff3f6c]">
       <div class="section px-10 xl:pr-5 xl:px-0">
@@ -1985,61 +2029,6 @@
       </div>
     </div>
 
-    <script>
-      (function () {
-        const footerCategory = document.querySelector(
-          '#mobile-footer-nav .mobile-footer-nav-item[data-footer="category"]'
-        );
-        const drawer = document.getElementById("category-drawer");
-        const overlay = document.getElementById("category-drawer-overlay");
-
-        if (!drawer || !overlay || !footerCategory) return;
-
-        // ensure overlay has a smooth transition
-        overlay.style.transition =
-          overlay.style.transition || "opacity 300ms ease";
-
-        function openDrawer() {
-          // ensure overlay is visible for fade-in
-          overlay.style.display = "block";
-          // allow transition to apply
-          requestAnimationFrame(() => {
-            overlay.style.pointerEvents = "auto";
-            overlay.style.opacity = "1";
-          });
-          drawer.classList.remove("translate-y-full");
-          document.body.style.overflow = "hidden";
-        }
-
-        function closeDrawer() {
-          overlay.style.opacity = "0";
-          // after transition, hide overlay fully and disable pointer events
-          setTimeout(() => {
-            overlay.style.pointerEvents = "none";
-            overlay.style.display = "none";
-          }, 350);
-          drawer.classList.add("translate-y-full");
-          document.body.style.overflow = "";
-        }
-
-        footerCategory.addEventListener("click", (e) => {
-          e.preventDefault();
-          openDrawer();
-        });
-
-        overlay.addEventListener("click", () => {
-          closeDrawer();
-        });
-
-        // close button removed: overlay click and Escape close the drawer
-
-        // close on Escape
-        document.addEventListener("keydown", (ev) => {
-          if (ev.key === "Escape") closeDrawer();
-        });
-      })();
-    </script>
-
     <div class="content-overlay" id="contentOverlayFooter"></div>
     <!-- mobile footer -->
     <div id="footer-container" class="block xl:hidden">
@@ -2729,6 +2718,61 @@
       class="fixed inset-0 bg-black/40 z-[99] hidden"
     ></div>
 
+    <script>
+      (function () {
+        const footerCategory = document.querySelector(
+          '#mobile-footer-nav .mobile-footer-nav-item[data-footer="category"]'
+        );
+        const drawer = document.getElementById("category-drawer");
+        const overlay = document.getElementById("category-drawer-overlay");
+
+        if (!drawer || !overlay || !footerCategory) return;
+
+        // ensure overlay has a smooth transition
+        overlay.style.transition =
+          overlay.style.transition || "opacity 300ms ease";
+
+        function openDrawer() {
+          // ensure overlay is visible for fade-in
+          overlay.style.display = "block";
+          // allow transition to apply
+          requestAnimationFrame(() => {
+            overlay.style.pointerEvents = "auto";
+            overlay.style.opacity = "1";
+          });
+          drawer.classList.remove("translate-y-full");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeDrawer() {
+          overlay.style.opacity = "0";
+          // after transition, hide overlay fully and disable pointer events
+          setTimeout(() => {
+            overlay.style.pointerEvents = "none";
+            overlay.style.display = "none";
+          }, 350);
+          drawer.classList.add("translate-y-full");
+          document.body.style.overflow = "";
+        }
+
+        footerCategory.addEventListener("click", (e) => {
+          e.preventDefault();
+          openDrawer();
+        });
+
+        overlay.addEventListener("click", () => {
+          closeDrawer();
+        });
+
+        // close button removed: overlay click and Escape close the drawer
+
+        // close on Escape
+        document.addEventListener("keydown", (ev) => {
+          if (ev.key === "Escape") closeDrawer();
+        });
+      })();
+    </script>
+
     <script src="../js/global.js"></script>
     <script>
       (function () {
@@ -3154,6 +3198,509 @@
 
         orderBtn && orderBtn.addEventListener("click", () => hidePopup());
       })();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const categoryButtons = [
+          "All",
+          "Shampoo",
+          "Lip Balm",
+          "Deodorant",
+          "Roll-Ons",
+        ];
+
+        const categoryContainer = document.getElementById(
+          "desktopExclusiveCategoryContainer"
+        );
+        if (categoryContainer) {
+          categoryButtons.forEach((buttonText, index) => {
+            const button = document.createElement("button");
+            button.className =
+              "py-2 px-4 border border-gray-300 bg-white text-gray-700 rounded-full cursor-pointer category-btn";
+            button.textContent = buttonText;
+
+            // Make the first button (All) active by default
+            if (index === 0) {
+              button.classList.remove(
+                "border-gray-300",
+                "bg-white",
+                "text-gray-700"
+              );
+              button.classList.add(
+                "border-rose-500",
+                "bg-[#FF3F6C]",
+                "text-white"
+              );
+            }
+
+            categoryContainer.appendChild(button);
+          });
+        }
+        // Create mobile category buttons
+        const mobileExclusiveCategoryContainer = document.getElementById(
+          "mobileExclusiveCategoryContainer"
+        );
+
+        if (mobileExclusiveCategoryContainer) {
+          categoryButtons.forEach((buttonText, index) => {
+            const button = document.createElement("button");
+            button.className =
+              "py-2 px-4 border border-gray-300 bg-white text-gray-700 rounded-full text-sm whitespace-nowrap cursor-pointer category-btn mobile-category-btn";
+            button.textContent = buttonText;
+
+            // Make the first button (All) active by default
+            if (index === 0) {
+              button.classList.remove(
+                "border-gray-300",
+                "bg-white",
+                "text-gray-700"
+              );
+              button.classList.add(
+                "border-rose-500",
+                "bg-[#FF3F6C]",
+                "text-white"
+              );
+            }
+
+            if (index === categoryButtons.length - 1) {
+              button.classList.add("mr-4");
+            }
+
+            mobileExclusiveCategoryContainer.appendChild(button);
+          });
+        }
+
+        document.querySelectorAll(".category-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active styling from all buttons
+            document.querySelectorAll(".category-btn").forEach((btn) => {
+              btn.classList.remove(
+                "border-rose-500",
+                "bg-[#FF3F6C]",
+                "text-white"
+              );
+              btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
+            });
+
+            // Add active styling to clicked button
+            this.classList.remove(
+              "border-gray-300",
+              "bg-white",
+              "text-gray-700"
+            );
+            this.classList.add("border-rose-500", "bg-[#FF3F6C]", "text-white");
+
+            // Here you can add logic to filter products based on the category
+            console.log("Selected category:", this.textContent);
+          });
+        });
+
+        // Recommended Products Data for "You may also like" section
+        const recommendedProducts = [
+          {
+            id: 1,
+            title: "Bella Vita Organic",
+            description: "Vitamin C Glow Face Wash",
+            image: "https://picsum.photos/300/400?random=10",
+            currentPrice: "₹299",
+            originalPrice: "₹399",
+            discountPercent: "25",
+            rating: "4.2",
+            ratingCount: "1.2k",
+            href: "#",
+            category: "Face Wash",
+          },
+          {
+            id: 2,
+            title: "Plum Green Tea",
+            description: "Pore Cleansing Gel Face Wash",
+            image: "https://picsum.photos/300/400?random=11",
+            currentPrice: "₹349",
+            originalPrice: "₹449",
+            discountPercent: "22",
+            rating: "4.5",
+            ratingCount: "890",
+            href: "#",
+            category: "Face Wash",
+          },
+          {
+            id: 3,
+            title: "Minimalist",
+            description: "2% Salicylic Acid Face Wash",
+            image: "https://picsum.photos/300/400?random=12",
+            currentPrice: "₹199",
+            originalPrice: "₹299",
+            discountPercent: "33",
+            rating: "4.3",
+            ratingCount: "654",
+            href: "#",
+            category: "Face Wash",
+          },
+          {
+            id: 4,
+            title: "Himalaya",
+            description: "Anti-Pimple Neem Face Wash",
+            image: "https://picsum.photos/300/400?random=13",
+            currentPrice: "₹175",
+            originalPrice: "₹225",
+            discountPercent: "22",
+            rating: "4.1",
+            ratingCount: "2.1k",
+            href: "#",
+            category: "Face Wash",
+          },
+          {
+            id: 5,
+            title: "L'Oreal Paris",
+            description: "Hyaluron Moisture Sealing",
+            image: "https://picsum.photos/300/400?random=14",
+            currentPrice: "₹549",
+            originalPrice: "₹699",
+            discountPercent: "21",
+            rating: "4.4",
+            ratingCount: "532",
+            href: "#",
+            category: "Shampoo",
+          },
+          {
+            id: 6,
+            title: "Olay Total Effects",
+            description: "Night Cream Anti-Aging",
+            image: "https://picsum.photos/300/400?random=15",
+            currentPrice: "₹899",
+            originalPrice: "₹1199",
+            discountPercent: "25",
+            rating: "4.6",
+            ratingCount: "1.5k",
+            href: "#",
+            category: "Lip Balm",
+          },
+          {
+            id: 7,
+            title: "Deconstruct",
+            description: "Oil-Free Moisturizer",
+            image: "https://picsum.photos/300/400?random=16",
+            currentPrice: "₹425",
+            originalPrice: "₹549",
+            discountPercent: "23",
+            rating: "4.2",
+            ratingCount: "743",
+            href: "#",
+            category: "Deodorant",
+          },
+          {
+            id: 8,
+            title: "Pilgrim",
+            description: "Hair Growth Serum",
+            image: "https://picsum.photos/300/400?random=17",
+            currentPrice: "₹649",
+            originalPrice: "₹899",
+            discountPercent: "28",
+            rating: "4.3",
+            ratingCount: "967",
+            href: "#",
+            category: "Roll-Ons",
+          },
+        ];
+
+        // Function to create product card HTML
+        function createProductCardHTML(item) {
+          return `
+      <div
+  class="relative text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
+  <!-- Product Link (excludes Add to Bag button) -->
+  <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+    <div class="relative overflow-hidden">
+      <!-- Product Image -->
+      <div class="relative w-full h-full aspect-[1] skeleton-loading bg-white p-[10px]">
+        <img src="../img.jpeg" alt="${item.title} ${item.description}"
+          class="w-full h-full object-contain object-top transition-opacity duration-300" loading="lazy"
+            onload="this.parentNode.classList.remove('skeleton-loading')" 
+          />
+      </div>
+
+      <!-- Content -->
+      <div class="relative px-2">
+        <div class="py-2">
+          <!-- Brand Title -->
+          <h3
+            class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight w-4/5 whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+            ${item.title}
+          </h3>
+
+          <!-- Description -->
+          <h4
+            class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis max-w-44 m-0 text-xs font-normal text-gray-800 h-3">
+            ${item.description}
+          </h4>
+
+          <!-- Price Container -->
+          <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
+            <!-- Current Price -->
+            <span class="font-semibold text-gray-800 text-sm">
+              <span class="relative -left-0.5">${item.currentPrice}</span>
+            </span>
+
+            <!-- Original Price -->
+            <span class="text-sm">
+              <span class="opacity-40 text-gray-800 line-through text-xs">
+                <span>${item.originalPrice}</span>
+              </span>
+            </span>
+
+            <!-- Discount -->
+            <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
+              <span>(${item.discountPercent}% OFF)</span>
+            </span>
+          </div>
+        </div>
+        <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Add to Bag Button (outside product link) -->
+  <div class="p-2">
+    <button
+      class="desktop-add-to-bag w-full uppercase text-[#ff3f6c] font-bold text-sm hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer"
+      data-product-id="${item.id}">Add to Bag</button>
+  </div>
+</div>
+  `;
+        }
+
+        // Function to create mobile product card HTML
+        function createMobileProductCardHTML(item) {
+          return `
+      <div class="flex-shrink-0 w-44 text-center hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white border border-gray-200 rounded-lg">
+        <!-- Product Link (excludes Add to Bag button) -->
+        <a href="${item.href}" class="block text-gray-800 no-underline outline-none">
+          <div class="relative overflow-hidden">
+            <!-- Product Image -->
+            <div class="relative w-full h-full max-h-[330px] bg-white p-[10px]">
+              <img
+                src="../img.jpeg"
+                alt="${item.title} ${item.description}"
+                class="w-full h-full object-cover object-top transition-opacity duration-300"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="relative px-2">
+              <div class="py-2">
+                <!-- Brand Title -->
+                <h3 class="text-left pl-2 font-bold text-gray-800 text-sm leading-tight whitespace-nowrap overflow-hidden text-ellipsis mb-0">
+                  ${item.title}
+                </h3>
+
+                <!-- Description -->
+                <h4 class="text-left pl-2 opacity-60 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-xs font-normal text-gray-800 h-3">
+                  ${item.description}
+                </h4>
+
+                <!-- Price Container -->
+                <div class="mt-0 pl-1.5 text-left overflow-hidden whitespace-nowrap text-ellipsis">
+                  <!-- Current Price -->
+                  <span class="font-semibold text-gray-800 text-sm">
+                    <span class="relative -left-0.5">${item.currentPrice}</span>
+                  </span>
+
+                  <!-- Original Price -->
+                  <span class="text-sm">
+                    <span class="opacity-40 text-gray-800 line-through text-xs">
+                      <span>${item.originalPrice}</span>
+                    </span>
+                  </span>
+
+                  <!-- Discount -->
+                  <span class="text-orange-400 font-bold text-xs whitespace-nowrap">
+                    <span>(${item.discountPercent}% OFF)</span>
+                  </span>
+                </div>
+              </div>
+              <div class="border-t border-gray-200 w-[90%] mx-auto"></div>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Add to Bag Button (outside product link) -->
+        <div class="p-2">
+          <button class="mobile-add-to-bag w-full uppercase text-[#ff3f6c] font-bold text-xs hover:text-[#ff3f6c]/80 transition-colors bg-transparent border-none cursor-pointer" data-product-id="${item.id}">Add to Bag</button>
+        </div>
+      </div>
+    `;
+        }
+
+        // Function to render products in the desktop grid
+        function renderProductGrid(productsToShow = recommendedProducts) {
+          const productsGrid = document.getElementById(
+            "desktopExclusiveProductsGrid"
+          );
+          if (!productsGrid) return;
+
+          productsGrid.innerHTML = "";
+          productsToShow.forEach((product) => {
+            const productCard = document.createElement("div");
+            productCard.innerHTML = createProductCardHTML(product);
+            productsGrid.appendChild(productCard);
+          });
+
+          // Add event listeners to desktop "Add to Bag" buttons
+          const addToBagButtons = productsGrid.querySelectorAll(
+            ".desktop-add-to-bag"
+          );
+          addToBagButtons.forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              const productId = parseInt(this.getAttribute("data-product-id"));
+              const product = recommendedProducts.find(
+                (p) => p.id === productId
+              );
+
+              if (product) {
+                // Add visual feedback
+                const originalText = this.textContent;
+                this.textContent = "ADDED";
+                this.classList.add("text-green-500");
+                this.classList.remove(
+                  "text-[#ff3f6c]",
+                  "hover:text-[#ff3f6c]/80"
+                );
+
+                setTimeout(() => {
+                  this.textContent = originalText;
+                  this.classList.remove("text-green-500");
+                  this.classList.add(
+                    "text-[#ff3f6c]",
+                    "hover:text-[#ff3f6c]/80"
+                  );
+                }, 2000);
+
+                console.log("Added to bag from desktop:", product.title);
+                // Here you could add the product to the actual cart
+              }
+            });
+          });
+        }
+
+        // Function to render products in the mobile grid
+        function renderMobileProductGrid(productsToShow = recommendedProducts) {
+          const mobileExclusiveProductsContainer = document.getElementById(
+            "mobileExclusiveProductsContainer"
+          );
+          if (!mobileExclusiveProductsContainer) return;
+
+          mobileExclusiveProductsContainer.innerHTML = "";
+          productsToShow.forEach((product, index) => {
+            const productCard = document.createElement("div");
+            productCard.innerHTML = createMobileProductCardHTML(product);
+            if (index === productsToShow.length - 1) {
+              productCard.classList.add("mr-4");
+            }
+            mobileExclusiveProductsContainer.appendChild(productCard);
+          });
+
+          // Add event listeners to mobile "Add to Bag" buttons
+          const mobileAddToBagButtons =
+            mobileExclusiveProductsContainer.querySelectorAll(
+              ".mobile-add-to-bag"
+            );
+          mobileAddToBagButtons.forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              const productId = parseInt(this.getAttribute("data-product-id"));
+              const product = recommendedProducts.find(
+                (p) => p.id === productId
+              );
+
+              if (product) {
+                // Add visual feedback
+                const originalText = this.textContent;
+                this.textContent = "ADDED";
+                this.classList.add("text-green-500");
+                this.classList.remove(
+                  "text-[#ff3f6c]",
+                  "hover:text-[#ff3f6c]/80"
+                );
+
+                setTimeout(() => {
+                  this.textContent = originalText;
+                  this.classList.remove("text-green-500");
+                  this.classList.add(
+                    "text-[#ff3f6c]",
+                    "hover:text-[#ff3f6c]/80"
+                  );
+                }, 2000);
+
+                console.log("Added to bag from mobile:", product.title);
+                // Here you could add the product to the actual cart
+              }
+            });
+          });
+        }
+
+        // Function to filter products by category for both desktop and mobile
+        function filterProductsByCategory(category) {
+          if (category === "All") {
+            renderProductGrid(recommendedProducts);
+            renderMobileProductGrid(recommendedProducts);
+          } else {
+            const filteredProducts = recommendedProducts.filter(
+              (product) => product.category === category
+            );
+            renderProductGrid(filteredProducts);
+            renderMobileProductGrid(filteredProducts);
+          }
+        }
+
+        // Update category button click handler to filter products for both desktop and mobile
+        document.querySelectorAll(".category-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const category = this.textContent.trim();
+
+            // Remove active styling from all buttons (both desktop and mobile)
+            document.querySelectorAll(".category-btn").forEach((btn) => {
+              btn.classList.remove(
+                "border-rose-500",
+                "bg-[#FF3F6C]",
+                "text-white"
+              );
+              btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
+            });
+
+            // Add active styling to all buttons with the same category text (both desktop and mobile)
+            document.querySelectorAll(".category-btn").forEach((btn) => {
+              if (btn.textContent.trim() === category) {
+                btn.classList.remove(
+                  "border-gray-300",
+                  "bg-white",
+                  "text-gray-700"
+                );
+                btn.classList.add(
+                  "border-rose-500",
+                  "bg-[#FF3F6C]",
+                  "text-white"
+                );
+              }
+            });
+
+            // Filter products by category for both grids
+            filterProductsByCategory(category);
+
+            console.log("Selected category:", category);
+          });
+        });
+
+        // Initial render of both product grids
+        renderProductGrid();
+        renderMobileProductGrid();
+      });
     </script>
   </body>
 </html>
