@@ -733,32 +733,34 @@
 
     <!-- exclusive offers -->
 
-    <div class="lg:hidden bg-[#fff8f8] py-5 mt-4">
+    <div class="lg:hidden !bg-[#FF3F6C]/10 py-5 mt-4">
       <div
-        class="font-semibold mb-4 flex items-center gap-3 text-gray-800 pl-4"
+        class="font-semibold mb-4 flex items-center gap-3 text-[#c53c5d] pl-4"
       >
         <span> Exclusive Offers </span>
       </div>
 
       <div
-        class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar pl-4"
+        class="flex gap-3 mb-5 overflow-x-auto hide-scrollbar pl-4 scrollbar-hide"
         id="mobileExclusiveCategoryContainer"
       >
         <!-- Dynamic category buttons will be created by JavaScript -->
       </div>
 
       <div
-        class="flex gap-4 overflow-x-auto hide-scrollbar pl-4"
+        class="flex gap-4 overflow-x-auto hide-scrollbar pl-4 scrollbar-hide"
         id="mobileExclusiveProductsContainer"
       >
         <!-- Dynamic product cards will be created by JavaScript -->
       </div>
     </div>
 
-    <div class="!py-10 !bg-[#FF3F6C]/30">
+    <div class="!py-10 !bg-[#FF3F6C]/10">
       <section class="section flex-col gap-6 hidden lg:flex">
         <div class="flex flex-col gap-4">
-          <h3 class="text-lg font-semibold text-gray-800">Exclusive Offers</h3>
+          <h3 class="text-lg font-semibold text-[#c53c5d] uppercase">
+            Exclusive Offers
+          </h3>
           <div
             class="flex gap-4 flex-wrap"
             id="desktopExclusiveCategoryContainer"
@@ -3204,10 +3206,11 @@
       document.addEventListener("DOMContentLoaded", function () {
         const categoryButtons = [
           "All",
-          "Shampoo",
-          "Lip Balm",
-          "Deodorant",
-          "Roll-Ons",
+          "Footwear",
+          "Bags",
+          "Add-Ons",
+          "Jewellery",
+          "Accessories",
         ];
 
         const categoryContainer = document.getElementById(
@@ -3217,13 +3220,13 @@
           categoryButtons.forEach((buttonText, index) => {
             const button = document.createElement("button");
             button.className =
-              "py-2 px-4 border border-gray-300 bg-white text-gray-700 rounded-full cursor-pointer category-btn";
+              "py-2 px-4 border border-[#ff3f6c] bg-white text-gray-700 rounded-full cursor-pointer category-btn";
             button.textContent = buttonText;
 
             // Make the first button (All) active by default
             if (index === 0) {
               button.classList.remove(
-                "border-gray-300",
+                "border-[#ff3f6c]",
                 "bg-white",
                 "text-gray-700"
               );
@@ -3246,13 +3249,13 @@
           categoryButtons.forEach((buttonText, index) => {
             const button = document.createElement("button");
             button.className =
-              "py-2 px-4 border border-gray-300 bg-white text-gray-700 rounded-full text-sm whitespace-nowrap cursor-pointer category-btn mobile-category-btn";
+              "py-2 px-4 border border-[#ff3f6c] bg-white text-gray-700 rounded-full text-sm whitespace-nowrap cursor-pointer category-btn mobile-category-btn";
             button.textContent = buttonText;
 
             // Make the first button (All) active by default
             if (index === 0) {
               button.classList.remove(
-                "border-gray-300",
+                "border-[#ff3f6c]",
                 "bg-white",
                 "text-gray-700"
               );
@@ -3280,12 +3283,16 @@
                 "bg-[#FF3F6C]",
                 "text-white"
               );
-              btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
+              btn.classList.add(
+                "border-[#ff3f6c]",
+                "bg-white",
+                "text-gray-700"
+              );
             });
 
             // Add active styling to clicked button
             this.classList.remove(
-              "border-gray-300",
+              "border-[#ff3f6c]",
               "bg-white",
               "text-gray-700"
             );
@@ -3309,7 +3316,7 @@
             rating: "4.2",
             ratingCount: "1.2k",
             href: "#",
-            category: "Face Wash",
+            category: "Footwear",
           },
           {
             id: 2,
@@ -3322,7 +3329,7 @@
             rating: "4.5",
             ratingCount: "890",
             href: "#",
-            category: "Face Wash",
+            category: "Footwear",
           },
           {
             id: 3,
@@ -3335,7 +3342,7 @@
             rating: "4.3",
             ratingCount: "654",
             href: "#",
-            category: "Face Wash",
+            category: "Bags",
           },
           {
             id: 4,
@@ -3348,7 +3355,7 @@
             rating: "4.1",
             ratingCount: "2.1k",
             href: "#",
-            category: "Face Wash",
+            category: "Add-Ons",
           },
           {
             id: 5,
@@ -3361,7 +3368,7 @@
             rating: "4.4",
             ratingCount: "532",
             href: "#",
-            category: "Shampoo",
+            category: "Jewellery",
           },
           {
             id: 6,
@@ -3374,7 +3381,7 @@
             rating: "4.6",
             ratingCount: "1.5k",
             href: "#",
-            category: "Lip Balm",
+            category: "Accessories",
           },
           {
             id: 7,
@@ -3387,7 +3394,7 @@
             rating: "4.2",
             ratingCount: "743",
             href: "#",
-            category: "Deodorant",
+            category: "Footwear",
           },
           {
             id: 8,
@@ -3400,7 +3407,7 @@
             rating: "4.3",
             ratingCount: "967",
             href: "#",
-            category: "Roll-Ons",
+            category: "Bags",
           },
         ];
 
@@ -3541,7 +3548,7 @@
           if (!productsGrid) return;
 
           productsGrid.innerHTML = "";
-          productsToShow.forEach((product) => {
+          productsToShow.slice(0, 5).forEach((product) => {
             const productCard = document.createElement("div");
             productCard.innerHTML = createProductCardHTML(product);
             productsGrid.appendChild(productCard);
@@ -3671,14 +3678,18 @@
                 "bg-[#FF3F6C]",
                 "text-white"
               );
-              btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
+              btn.classList.add(
+                "border-[#ff3f6c]",
+                "bg-white",
+                "text-gray-700"
+              );
             });
 
             // Add active styling to all buttons with the same category text (both desktop and mobile)
             document.querySelectorAll(".category-btn").forEach((btn) => {
               if (btn.textContent.trim() === category) {
                 btn.classList.remove(
-                  "border-gray-300",
+                  "border-[#ff3f6c]",
                   "bg-white",
                   "text-gray-700"
                 );
