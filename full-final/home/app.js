@@ -272,20 +272,13 @@ function createCategoryCardHTML(category) {
 // Function to create category card HTML with responsive sizing
 function createCategoryMobileCardHTML(category) {
   return `
-          <div class="rounded-lg text-center flex-shrink-0">
-            <div class="w-20 h-20 sm:w-32 sm:h-32 skeleton-loading rounded-xl flex items-center justify-start relative overflow-hidden  hover:shadow-xl transition-shadow duration-300">
-              <img
-                src="${category.image}"
-                alt="${category.title}"
-                class="w-full h-full object-cover object-center"
-                loading="lazy"
-              />
-            </div>
-            <h3 class="text-sm font-[600] text-[#3e4152] sm:text-xl md:text-2xl mt-[5px]">
-              ${category.title}
-            </h3>
-          </div>
-        `;
+    <div class="rounded-lg text-center flex-shrink-0">
+      <div class="w-20 h-20 sm:w-32 sm:h-32 skeleton-loading rounded-xl flex items-center justify-start relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img src="${category.image}" alt="${category.title}" class="w-full h-full object-cover object-center" loading="lazy" />
+      </div>
+      <h3 class="text-sm font-[600] text-[#3e4152] sm:text-xl md:text-2xl mt-[5px]">${category.title}</h3>
+    </div>
+  `;
 }
 
 // mobile top category slider
@@ -303,12 +296,24 @@ if (categoryMobileSlider) {
 }
 
 // Generate slider cards for all devices
-const categorySlider = document.querySelector("#category-slider");
-if (categorySlider) {
+const categorySliderDesktop = document.querySelector("#category-slider");
+if (categorySliderDesktop) {
   categories.slice(0, 6).forEach((category) => {
     const categoryCard = document.createElement("div");
-    categoryCard.innerHTML = createCategoryCardHTML(category);
-    categorySlider.appendChild(categoryCard);
+    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
+    categorySliderDesktop.appendChild(categoryCard);
+  });
+}
+
+const categorySliderMobile = document.querySelector("#category-slider-mobile");
+if (categorySliderMobile) {
+  categories.forEach((category) => {
+    const categoryCard = document.createElement("div");
+    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
+    if (category === categories[categories.length - 1]) {
+      categoryCard.classList.add("pr-5");
+    }
+    categorySliderMobile.appendChild(categoryCard);
   });
 }
 
@@ -318,18 +323,6 @@ if (featuredCategories) {
     const categoryCard = document.createElement("div");
     categoryCard.innerHTML = createCategoryCardHTML(category);
     featuredCategories.appendChild(categoryCard);
-  });
-}
-
-const categorySliderMobile = document.querySelector("#category-slider-mobile");
-if (categorySliderMobile) {
-  categories.forEach((category) => {
-    const categoryCard = document.createElement("div");
-    categoryCard.innerHTML = createCategoryCardHTML(category);
-    if (category === categories[categories.length - 1]) {
-      categoryCard.classList.add("pr-10");
-    }
-    categorySliderMobile.appendChild(categoryCard);
   });
 }
 
