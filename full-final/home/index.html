@@ -2964,13 +2964,13 @@
       >
         <div
           id="panda-popup"
-          class="relative w-[270px] max-w-[300px] rounded-2xl bg-[#ff3f6c] text-white px-4 py-6 shadow-lg"
-          style="min-height: 300px"
+          class="relative w-[300px] rounded-2xl bg-[#ff3f6c] text-white px-4 py-6 shadow-lg flex flex-col"
+          style="min-height: 450px"
         >
           <button
             id="panda-popup-close"
             aria-label="Close"
-            class="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#ffffff] flex items-center justify-center text-[#ff3f6c] text-xl"
+            class="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#ffffff] flex items-center justify-center text-[#ff3f6c] text-xl z-10"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -2988,8 +2988,8 @@
               <path d="m6 6 12 12" />
             </svg>
           </button>
-          <div class="flex flex-col items-center gap-2">
-            <div class="font-extrabold text-2xl tracking-tight">
+          <div class="flex flex-col flex-grow justify-between">
+            <div class="font-extrabold text-2xl tracking-tight text-center">
               panda<span class="font-normal">mart</span>
             </div>
 
@@ -2998,50 +2998,41 @@
                 <div
                   class="panda-carousel-slides flex transition-transform duration-300"
                 >
-                  <div
-                    class="panda-slide min-w-full flex flex-col items-center"
-                  >
-                    <div class="product-image bg-white rounded-md p-3">
+                  <!-- Slide 1 -->
+                  <div class="panda-slide min-w-full flex justify-center">
+                    <div
+                      class="product-image bg-white rounded-md p-3 h-60 flex items-center justify-center"
+                    >
                       <img
                         src="../img.png"
                         alt="Brightfields"
-                        class="w-28 mx-auto h-auto"
+                        class="w-full h-full object-contain"
                       />
                     </div>
-                    <!-- <h3 class="text-lg font-bold mt-3 text-center">
-                    Brightfields Banglamoti Boiled Rice L...
-                  </h3> -->
-                    <!-- <div class="text-base font-bold mt-2">Tk 110.00</div> -->
                   </div>
-                  <div
-                    class="panda-slide min-w-full flex flex-col items-center"
-                  >
-                    <div class="product-image bg-white rounded-md p-3">
+                  <!-- Slide 2 -->
+                  <div class="panda-slide min-w-full flex justify-center">
+                    <div
+                      class="product-image bg-white rounded-md p-3 h-60 flex items-center justify-center"
+                    >
                       <img
                         src="../img.jpeg"
                         alt="Product 2"
-                        class="w-28 mx-auto h-auto"
+                        class="w-full h-full object-contain"
                       />
                     </div>
-                    <!-- <h3 class="text-lg font-bold mt-3 text-center">
-                    Another Amazing Product
-                  </h3> -->
-                    <!-- <div class="text-base font-bold mt-2">Tk 150.00</div> -->
                   </div>
-                  <div
-                    class="panda-slide min-w-full flex flex-col items-center"
-                  >
-                    <div class="product-image bg-white rounded-md p-3">
+                  <!-- Slide 3 -->
+                  <div class="panda-slide min-w-full flex justify-center">
+                    <div
+                      class="product-image bg-white rounded-md p-3 h-60 flex items-center justify-center"
+                    >
                       <img
                         src="../perfume.jpg"
                         alt="Product 3"
-                        class="w-28 mx-auto h-auto"
+                        class="w-full h-full object-contain"
                       />
                     </div>
-                    <!-- <h3 class="text-lg font-bold mt-3 text-center">
-                    Third Item on Sale
-                  </h3> -->
-                    <!-- <div class="text-base font-bold mt-2">Tk 99.00</div> -->
                   </div>
                 </div>
               </div>
