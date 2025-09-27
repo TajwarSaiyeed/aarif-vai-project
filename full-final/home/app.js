@@ -332,7 +332,7 @@ const featuredCategories = document.querySelector("#featured-categories");
 if (featuredCategories) {
   categories.forEach((category) => {
     const categoryCard = document.createElement("div");
-    categoryCard.innerHTML = createCategoryCardHTML(category);
+    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
     featuredCategories.appendChild(categoryCard);
   });
 }
