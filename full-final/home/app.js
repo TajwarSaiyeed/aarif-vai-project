@@ -281,6 +281,17 @@ function createCategoryMobileCardHTML(category) {
   `;
 }
 
+function createSelectByCategoryMobileCardHTML(category) {
+  return `
+    <div class="rounded-lg text-center flex-shrink-0">
+      <div class="w-[110px] h-[110px] sm:w-32 sm:h-32 skeleton-loading rounded-xl flex items-center justify-start relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img src="${category.image}" alt="${category.title}" class="w-full h-full object-cover object-center" loading="lazy" />
+      </div>
+      <h3 class="text-sm font-[600] text-[#3e4152] sm:text-xl md:text-2xl mt-[5px]">${category.title}</h3>
+    </div>
+  `;
+}
+
 // mobile top category slider
 const categoryMobileSlider = document.querySelector("#category-mobile-slider");
 
@@ -309,7 +320,7 @@ const categorySliderMobile = document.querySelector("#category-slider-mobile");
 if (categorySliderMobile) {
   categories.forEach((category) => {
     const categoryCard = document.createElement("div");
-    categoryCard.innerHTML = createCategoryMobileCardHTML(category);
+    categoryCard.innerHTML = createSelectByCategoryMobileCardHTML(category);
     if (category === categories[categories.length - 1]) {
       categoryCard.classList.add("pr-5");
     }
