@@ -779,6 +779,26 @@ function createMobileProductCardHTML(item) {
   `;
 }
 
+/**
+ * Creates the HTML for a "More" card to be placed at the end of a slider.
+ * @returns {string} The HTML string for the card.
+ */
+function createMoreCardHTML() {
+  return `
+    <a href="#" class="flex-shrink-0 w-44 h-full text-center flex items-center justify-center bg-white rounded-lg hover:shadow-lg transition-shadow duration-300">
+      <div class="flex flex-col items-center justify-center text-gray-700">
+        <div class="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+        <span class="mt-2 font-semibold text-sm">More</span>
+      </div>
+    </a>
+  `;
+}
+
 const productsGridDesktop = document.querySelector("#products-grid-desktop");
 const productsGridDesktop1 = document.querySelector("#products-grid-desktop1");
 if (productsGridDesktop) {
@@ -801,26 +821,50 @@ const productsSliderMobile1 = document.querySelector(
   "#products-slider-mobile1"
 );
 
-if (productsSliderMobile) {
-  products.slice(0, 6).forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.innerHTML = createMobileProductCardHTML(product);
-    if (product === products.slice(0, 6)[products.slice(0, 6).length - 1]) {
-      productCard.classList.add("pr-10");
-    }
-    productsSliderMobile.appendChild(productCard);
+/**
+ * Populates a given mobile slider element with product cards and a "More" card.
+ * @param {HTMLElement} sliderElement - The container element for the slider.
+ */
+function populateMobileSlider(sliderElement) {
+  if (!sliderElement) {
+    return;
+  }
+
+  products.slice(0, 5).forEach((product) => {
+    const productCardWrapper = document.createElement("div");
+    productCardWrapper.innerHTML = createMobileProductCardHTML(product);
+    sliderElement.appendChild(productCardWrapper);
   });
+
+  const moreCardWrapper = document.createElement("div");
+  moreCardWrapper.innerHTML = createMoreCardHTML();
+  moreCardWrapper.classList.add("pr-10");
+  sliderElement.appendChild(moreCardWrapper);
 }
-if (productsSliderMobile1) {
-  products.slice(0, 6).forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.innerHTML = createMobileProductCardHTML(product);
-    if (product === products.slice(0, 6)[products.slice(0, 6).length - 1]) {
-      productCard.classList.add("pr-10");
-    }
-    productsSliderMobile1.appendChild(productCard);
-  });
-}
+
+populateMobileSlider(productsSliderMobile);
+populateMobileSlider(productsSliderMobile1);
+
+// if (productsSliderMobile) {
+//   products.slice(0, 6).forEach((product) => {
+//     const productCard = document.createElement("div");
+//     productCard.innerHTML = createMobileProductCardHTML(product);
+//     if (product === products.slice(0, 6)[products.slice(0, 6).length - 1]) {
+//       productCard.classList.add("pr-10");
+//     }
+//     productsSliderMobile.appendChild(productCard);
+//   });
+// }
+// if (productsSliderMobile1) {
+//   products.slice(0, 6).forEach((product) => {
+//     const productCard = document.createElement("div");
+//     productCard.innerHTML = createMobileProductCardHTML(product);
+//     if (product === products.slice(0, 6)[products.slice(0, 6).length - 1]) {
+//       productCard.classList.add("pr-10");
+//     }
+//     productsSliderMobile1.appendChild(productCard);
+//   });
+// }
 
 const shopByNotesProducts = [
   {
