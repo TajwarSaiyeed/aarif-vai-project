@@ -717,7 +717,7 @@
     </section>
 
     <section class="py-7 md:py-11 bg-white">
-      <div class="max-w-[1685px] mx-auto px-5 md:px-[50px] xl:px-0">
+      <div class="max-w-[1685px] mx-auto px-5 md:!px-[50px] xl:px-0">
         <h2
           class="text-lg sm:text-xl md:text-[22px] font-bold mb-6 uppercase text-center text-gray-800 sm:text-left"
         >
@@ -904,7 +904,7 @@
     <!-- exclusive offers -->
     <section class="bg-[#ff3f6c]/10 py-7 md:py-11">
       <!-- Main container with standard horizontal padding -->
-      <div class="section px-10 xl:px-0">
+      <div class="xl:px-0 max-w-[1685px] mx-auto md:!px-[50px]">
         <!-- Mobile View Container -->
         <div class="lg:hidden">
           <h2
@@ -913,12 +913,15 @@
             Exclusive Offers
           </h2>
           <div class="overflow-x-auto scrollbar-hide">
-            <div class="flex gap-3 mb-5" id="mobileExclusiveCategoryContainer">
+            <div
+              class="flex gap-3 mb-5 pl-5"
+              id="mobileExclusiveCategoryContainer"
+            >
               <!-- Dynamic category buttons will be created by JavaScript -->
             </div>
           </div>
           <div class="overflow-x-auto scrollbar-hide">
-            <div class="flex gap-4" id="mobileExclusiveProductsContainer">
+            <div class="flex gap-4 pl-5" id="mobileExclusiveProductsContainer">
               <!-- Dynamic product cards will be created by JavaScript -->
             </div>
           </div>
@@ -3779,7 +3782,7 @@
             const productCard = document.createElement("div");
             productCard.innerHTML = createMobileProductCardHTML(product);
             if (index === productsToShow.length - 1) {
-              productCard.classList.add("mr-4");
+              productCard.classList.add("pr-4");
             }
             mobileExclusiveProductsContainer.appendChild(productCard);
           });
