@@ -276,7 +276,7 @@ function createCategoryMobileCardHTML(category) {
       <div class="w-20 h-20 sm:w-32 sm:h-32 skeleton-loading rounded-xl flex items-center justify-start relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <img src="${category.image}" alt="${category.title}" class="w-full h-full object-cover object-center" loading="lazy" />
       </div>
-      <h3 class="text-sm font-[600] text-[#3e4152] sm:text-xl md:text-2xl mt-[5px]">${category.title}</h3>
+      <h3 class="text-sm font-[600] text-[#3e4152] sm:text-xl md:text-xl mt-[5px]">${category.title}</h3>
     </div>
   `;
 }
