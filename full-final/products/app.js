@@ -624,7 +624,7 @@ function createProductCardHTML(item, wishlisted = false) {
           </div>
 
         <img
-          class="w-full h-full aspect-[3/4] object-cover transition-all duration-300 bg-red-50"
+          class="w-full h-full object-cover transition-all duration-300 bg-red-50"
           src="../img.jpeg"
           alt=""
         />
